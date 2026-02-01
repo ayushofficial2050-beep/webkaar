@@ -1,0 +1,14 @@
+# WebKaar Robots File
+# Google Bot and all other crawlers are allowed
+
+User-agent: *
+Allow: /
+
+# JS aur CSS ko block mat karna (Kyunki tumhari site JS par chalti hai)
+Allow: /js/
+Allow: /css/
+Allow: /images/
+Allow: /tools/
+
+# Sitemap Location (Sabse Jaruri Line)
+Sitemap: https://webkaar.pages.dev/sitemap.xml

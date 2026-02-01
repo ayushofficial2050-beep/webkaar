@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Merge PDF Online - Combine PDF Files for Free | WebKaar</title>
+    <meta name="description" content="Free Online PDF Merger. Combine multiple PDF files into one single document instantly. Secure, private, and runs entirely in your browser. No file upload limits.">
+    <meta name="keywords" content="pdf merger, combine pdf, merge pdf online, pdf joiner, pdf binder, free pdf tool, webkaar">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/pdf-merger/">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/downloadjs@1.4.7/download.min.js"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">PDF Merger</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="upload-area" id="drop-zone">
+                <input type="file" id="file-input" accept="application/pdf" multiple hidden>
+                <div class="upload-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                </div>
+                <h3>Select PDF Files</h3>
+                <p>or drag and drop them here</p>
+                <button class="primary-btn" onclick="document.getElementById('file-input').click()">Choose Files</button>
+            </div>
+
+            <div id="file-list-container" class="file-list hidden">
+                <div class="list-header">
+                    <span>Files to Merge</span>
+                    <button id="clear-all" class="text-btn danger">Clear All</button>
+                </div>
+                <ul id="file-list"></ul>
+            </div>
+
+            <div id="action-area" class="hidden">
+                <button id="merge-btn" class="primary-btn full-width">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                    Merge PDFs
+                </button>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Combine PDFs Instantly</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar PDF Merger is the easiest way to combine multiple PDF files into one. Whether you have invoices, reports, or ebooks, you can merge them in seconds without installing any software.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why is it safe?</h3>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                Unlike other online tools, WebKaar processes your files <strong>locally in your browser</strong>. Your documents are never uploaded to our servers, ensuring 100% privacy and security.
+            </p>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">PDFs Merged Successfully!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Merge:</strong> Combine multiple PDFs into a single file.</p>
+                <p><strong>Order:</strong> Files are merged in the order you add them.</p>
+                <p><strong>Privacy:</strong> 100% Client-side. No server upload.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

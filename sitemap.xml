@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>https://webkaar.pages.dev/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/pages/about</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/pages/contact</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/pages/privacy</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/pages/disclaimer</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://webkaar.pages.dev/tools/image-compressor/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/image-resizer/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/img-to-pdf/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/aspect-ratio/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/color-picker/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/gradient-generator/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://webkaar.pages.dev/tools/pdf-merger/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/pdf-compressor/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+
+<url>
+  <loc>https://webkaar.pages.dev/tools/duplicate-remover/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/qr-generator/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/password-gen/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/stopwatch/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/word-counter/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/my-ip/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/unit-converter/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/bmi-calculator/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/text-diff/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/lorem-ipsum/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/case-converter/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/markdown-editor/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://webkaar.pages.dev/tools/json-formatter/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/base64/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/url-encoder/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/css-minifier/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/html-formatter/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/uuid-generator/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/unix-time/</loc>
+  <lastmod>2026-01-29T20:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+</urlset>

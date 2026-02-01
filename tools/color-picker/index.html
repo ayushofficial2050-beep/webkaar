@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Color Picker & Generator (HEX, RGB) | WebKaar</title>
+    <meta name="description" content="Free Online Color Picker. Generate HTML Color Codes (HEX, RGB). Pick colors from a visual wheel, convert RGB to HEX, and find trending palettes for web design.">
+    <meta name="keywords" content="color picker, html color codes, hex code finder, rgb to hex, web color picker, color palette generator, css colors">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/color-picker/">
+    <meta property="og:title" content="Color Picker & HTML Codes | WebKaar">
+    <meta property="og:description" content="Pick colors, convert HEX/RGB, and get design inspiration. Free and fast.">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/color-picker/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Color Picker Tool",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "description": "A design tool to pick colors, generate HEX/RGB codes and create palettes."
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Color Picker</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="color-preview-card">
+                <div class="color-display" id="color-display">
+                    <input type="color" id="native-picker" value="#2563eb">
+                </div>
+                <p class="tap-hint">Tap circle to pick color</p>
+            </div>
+
+            <div class="codes-card">
+                <div class="code-row">
+                    <span class="label">HEX</span>
+                    <input type="text" id="hex-input" value="#2563EB" maxlength="7">
+                    <button class="copy-btn" data-target="hex-input" aria-label="Copy HEX">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                </div>
+                <div class="code-row">
+                    <span class="label">RGB</span>
+                    <input type="text" id="rgb-input" value="rgb(37, 99, 235)" readonly>
+                    <button class="copy-btn" data-target="rgb-input" aria-label="Copy RGB">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="sliders-card">
+                <div class="slider-group">
+                    <label style="color: #ef4444;">Red</label>
+                    <input type="range" id="r-slider" min="0" max="255" value="37" class="color-range red">
+                    <span id="r-val">37</span>
+                </div>
+                <div class="slider-group">
+                    <label style="color: #10b981;">Green</label>
+                    <input type="range" id="g-slider" min="0" max="255" value="99" class="color-range green">
+                    <span id="g-val">99</span>
+                </div>
+                <div class="slider-group">
+                    <label style="color: #3b82f6;">Blue</label>
+                    <input type="range" id="b-slider" min="0" max="255" value="235" class="color-range blue">
+                    <span id="b-val">235</span>
+                </div>
+            </div>
+
+            <div class="palette-section">
+                <h3>Popular Colors</h3>
+                <div class="palette-grid" id="palette-grid">
+                    </div>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Advanced HTML Color Picker</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Color Picker is the perfect tool for web designers and developers. Whether you need to find the exact <strong>HEX code</strong> for a specific shade or convert <strong>RGB values</strong> for your CSS, this tool makes it effortless.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why use this tool?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Visual Selection:</strong> Tap the color wheel to visually pick any color.</li>
+                <li><strong>Instant Conversion:</strong> Automatically converts between HEX, RGB, and HSL formats.</li>
+                <li><strong>Fine Tuning:</strong> Use the Red, Green, and Blue sliders to adjust the shade precisely.</li>
+                <li><strong>Copy & Paste:</strong> One-click copy for CSS integration.</li>
+            </ul>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Understanding Color Codes</h3>
+            <p style="line-height: 1.6; margin-bottom: 10px;">
+                <strong>HEX (Hexadecimal):</strong> A 6-digit code used in HTML/CSS (e.g., #FF5733). It's the most common format for web design.
+                <br>
+                <strong>RGB (Red Green Blue):</strong> Defines color by the intensity of red, green, and blue light (0-255).
+            </p>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Copied!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Color Picker</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>1. Pick:</strong> Tap the big circle or use sliders to find a color.</p>
+                <p><strong>2. Copy:</strong> Click the copy icon next to HEX or RGB codes.</p>
+                <p><strong>3. Palette:</strong> Select from trending colors below.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

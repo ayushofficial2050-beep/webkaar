@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Online Case Converter Tool | Uppercase, Lowercase & Title Case | WebKaar</title>
+    <meta name="description" content="Free Online Text Case Converter. Convert text to UPPERCASE, lowercase, Sentence case, Title Case, and more instantly. Simple, fast, and secure.">
+    <meta name="keywords" content="case converter, text converter, uppercase to lowercase, title case generator, sentence case, caps converter, webkaar">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/case-converter/">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Case Converter</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="code-card">
+                <div class="card-header">
+                    <span class="label">Input Text</span>
+                    <div class="actions">
+                        <button id="paste-btn" class="text-btn">Paste</button>
+                        <button id="clear-btn" class="text-btn danger-text">Clear</button>
+                    </div>
+                </div>
+                <textarea id="input-text" placeholder="Type or paste your text here to convert..."></textarea>
+                <div class="stats-bar">
+                    <span id="word-count">0 words</span> • <span id="char-count">0 characters</span>
+                </div>
+            </div>
+
+            <div class="controls-grid">
+                <button class="control-btn" data-action="upper">UPPERCASE</button>
+                <button class="control-btn" data-action="lower">lowercase</button>
+                <button class="control-btn" data-action="sentence">Sentence case</button>
+                <button class="control-btn" data-action="capitalized">Capitalized Case</button>
+                <button class="control-btn" data-action="alternating">aLtErNaTiNg</button>
+                <button class="control-btn" data-action="inverse">InVeRsE cAsE</button>
+            </div>
+
+            <div class="download-section">
+                <button id="copy-btn" class="primary-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                    Copy Text
+                </button>
+                <button id="download-btn" class="secondary-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Download .txt
+                </button>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Convert Text Case Online</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Case Converter is a handy tool designed to adjust the capitalization of your text documents. Whether you accidentally left Caps Lock on or want to format a title properly, we've got you covered.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Available Modes</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>UPPERCASE:</strong> Converts all letters to capitals.</li>
+                <li><strong>lowercase:</strong> Converts all letters to small letters.</li>
+                <li><strong>Sentence case:</strong> Capitalizes the first letter of each sentence.</li>
+                <li><strong>Capitalized Case:</strong> Capitalizes the first letter of every word (Title Case).</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Copied to Clipboard!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Usage:</strong> Type text and click a button to transform it.</p>
+                <p><strong>Privacy:</strong> Conversion happens entirely in your browser.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

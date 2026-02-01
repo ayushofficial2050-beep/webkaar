@@ -1,0 +1,215 @@
+/* Tool Specific Styles */
+.tool-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Toggle Switch */
+.toggle-container {
+    display: flex;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 50px; /* Pill shape */
+    padding: 4px;
+    margin-bottom: 10px;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 40px;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.toggle-btn.active {
+    background-color: var(--primary-blue);
+    color: white;
+    box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
+}
+
+/* Input Card */
+.input-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group-row {
+    display: flex;
+    gap: 16px;
+}
+.input-group-row .input-group {
+    flex: 1;
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-size: 1.1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: var(--primary-blue);
+}
+
+/* Result Card */
+.result-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    text-align: center;
+    animation: slideUp 0.3s ease;
+}
+
+.result-card h3 {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.bmi-value {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.bmi-status {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 24px;
+}
+
+.bmi-desc {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 20px;
+}
+
+/* BMI Visual Meter */
+.bmi-meter {
+    margin-top: 10px;
+    position: relative;
+}
+
+.meter-bar {
+    height: 12px;
+    border-radius: 10px;
+    background: linear-gradient(to right, 
+        #3b82f6 0%,    /* Underweight (Blue) */
+        #3b82f6 18.5%, 
+        #10b981 18.5%, /* Normal (Green) */
+        #10b981 50%, 
+        #f59e0b 50%,   /* Overweight (Orange) */
+        #f59e0b 75%, 
+        #ef4444 75%,   /* Obese (Red) */
+        #ef4444 100%
+    );
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.meter-fill {
+    /* We use a marker instead of fill for this gradient bar */
+    position: absolute;
+    top: -4px;
+    width: 4px;
+    height: 20px;
+    background-color: var(--text-main);
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    left: 0%; /* Dynamic */
+    transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.meter-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+/* Primary Button */
+.primary-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.1s;
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Reused Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(4px);
+}
+.modal-overlay.hidden { display: none; }
+.modal-content {
+    background: var(--bg-surface); width: 90%; max-width: 400px;
+    padding: 24px; border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+.modal-header { display: flex; justify-content: space-between; margin-bottom: 16px; }
+.modal-header h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-main); }
+.icon-button { background: none; border: none; padding: 6px; cursor: pointer; color: var(--text-muted); }

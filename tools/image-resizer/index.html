@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Free Image Resizer | Change Dimensions (Width/Height) | WebKaar</title>
+    <meta name="description" content="Resize JPG, PNG, and WEBP images online. Change image dimensions (pixels) by width or height while maintaining aspect ratio. Fast, free, and works offline.">
+    <meta name="keywords" content="image resizer, resize image online, change photo size, resize pixels, image dimensions changer, resize jpg, resize png, photo resizer for instagram">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/image-resizer/">
+    <meta property="og:title" content="Online Image Resizer | WebKaar">
+    <meta property="og:description" content="Resize images to exact pixels instantly. 100% Free & Secure.">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/image-resizer/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Image Resizer Tool",
+      "applicationCategory": "PhotographyApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "description": "A tool to resize image dimensions (width and height) directly in the browser."
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Img Resizer</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="input-card" id="upload-card">
+                <div class="upload-area" id="dropZone">
+                    <svg class="upload-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    <p>Tap to Upload Image</p>
+                    <span class="file-hint">JPG, PNG supported</span>
+                    <input type="file" id="imageInput" accept="image/*" hidden>
+                </div>
+            </div>
+
+            <div id="editor-card" class="input-card hidden">
+                
+                <div class="preview-wrapper">
+                    <img id="imagePreview" src="" alt="Preview">
+                    <div class="size-tag" id="originalDimensions">0 x 0</div>
+                </div>
+
+                <div class="dimensions-grid">
+                    <div class="input-group">
+                        <label>Width (px)</label>
+                        <input type="number" id="widthInput" placeholder="Width">
+                    </div>
+                    <div class="input-group">
+                        <label>Height (px)</label>
+                        <input type="number" id="heightInput" placeholder="Height">
+                    </div>
+                </div>
+
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="lockRatio" checked>
+                    <label for="lockRatio">Lock Aspect Ratio</label>
+                </div>
+
+                <button id="resizeBtn" class="primary-btn full-width">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+                    Resize & Download
+                </button>
+
+                <button id="resetBtn" class="secondary-btn full-width" style="margin-top: 10px;">
+                    Pick New Image
+                </button>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Resize Images Online (Pixel Perfect)</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Image Resizer is the fastest way to change the dimensions (width and height) of your photos online. Whether you need to resize a photo for Instagram, create a thumbnail for YouTube, or adjust an image for a government application, this tool gives you exact control over pixels.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Key Features</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Aspect Ratio Lock:</strong> Prevents your image from looking stretched or squashed by automatically calculating the height when you enter the width.</li>
+                <li><strong>No Uploads:</strong> Your photos are resized directly in your browser for 100% privacy.</li>
+                <li><strong>Support for All Formats:</strong> Works perfectly with JPG, PNG, and JPEG files.</li>
+            </ul>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Common Social Media Sizes (2025)</h3>
+            <p style="margin-bottom: 10px;">Use these dimensions for best quality:</p>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Instagram Post:</strong> 1080 x 1080 px (Square).</li>
+                <li><strong>Instagram Story:</strong> 1080 x 1920 px.</li>
+                <li><strong>YouTube Thumbnail:</strong> 1280 x 720 px.</li>
+                <li><strong>Twitter Header:</strong> 1500 x 500 px.</li>
+            </ul>
+        </article>
+
+    </main>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>How to Resize</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Simple & Fast:</strong></p>
+                <p>1. Upload an image from your gallery.</p>
+                <p>2. Enter the new Width or Height.</p>
+                <p>3. Keep "Lock Ratio" on to prevent stretching.</p>
+                <p>4. Download the resized image instantly.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Check Theme
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

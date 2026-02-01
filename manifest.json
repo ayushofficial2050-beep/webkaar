@@ -1,0 +1,45 @@
+{
+  "name": "WebKaar",
+  "short_name": "WebKaar",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "description": "Professional offline tools for developers and creators.",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "images/icon192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "productivity",
+    "utilities",
+    "developer tools"
+  ],
+  "screenshots": [
+    {
+      "src": "images/screenshot-light.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home Screen Light Mode"
+    },
+    {
+      "src": "images/screenshot-dark.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Home Screen Dark Mode"
+    }
+  ]
+}

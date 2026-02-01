@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Base64 Encoder & Decoder Online | WebKaar</title>
+    <meta name="description" content="Free online Base64 Converter. Encode text to Base64 or Decode Base64 strings instantly. Supports UTF-8, Emojis, and works offline. Secure & Private.">
+    <meta name="keywords" content="base64 encode, base64 decode, base64 converter online, text to base64, decode base64 utf8, webkaar tools">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+    
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/base64/">
+
+    <meta property="og:title" content="Base64 Encoder & Decoder | WebKaar">
+    <meta property="og:description" content="Convert text to Base64 and back instantly. Secure, fast, and works offline.">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/base64/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Base64 Converter",
+      "operatingSystem": "Any",
+      "applicationCategory": "DeveloperApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "description": "A free online tool to encode and decode Base64 strings safely in the browser."
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Base64 Tool</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="mode-switch-container">
+                <div class="switch-bg"></div>
+                <button class="mode-btn active" data-mode="encode">Encoder</button>
+                <button class="mode-btn" data-mode="decode">Decoder</button>
+            </div>
+
+            <div class="editor-pane">
+                <div class="pane-header">
+                    <span id="input-label">Text to Encode</span>
+                    <button id="paste-btn" class="action-link">Paste</button>
+                </div>
+                <textarea id="input-text" placeholder="Type or paste content here..." spellcheck="false"></textarea>
+            </div>
+
+            <div class="action-arrow">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>
+            </div>
+
+            <div class="editor-pane output-pane">
+                <div class="pane-header">
+                    <span id="output-label">Base64 Result</span>
+                    <div class="actions">
+                        <button id="copy-btn" class="action-link">Copy</button>
+                        <button id="clear-btn" class="action-link danger">Clear</button>
+                    </div>
+                </div>
+                <textarea id="output-text" readonly placeholder="Result will appear here..." spellcheck="false"></textarea>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 40px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Free Base64 Encoder & Decoder</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Base64 Tool is a simple and secure way to convert text into Base64 format and vice versa. It is widely used by developers and data analysts to encode data for safe transmission over networks.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why use this tool?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>UTF-8 Support:</strong> Easily encode special characters and emojis (e.g., 🇮🇳, 🔥).</li>
+                <li><strong>100% Privacy:</strong> The conversion happens in your browser. No data is sent to any server.</li>
+                <li><strong>Fast & Responsive:</strong> Works perfectly on mobile phones and desktops.</li>
+            </ul>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">How to use?</h3>
+            <ol style="padding-left: 20px; line-height: 1.8;">
+                <li>Select <strong>Encoder</strong> to convert text to Base64.</li>
+                <li>Select <strong>Decoder</strong> to convert Base64 string back to text.</li>
+                <li>Type or Paste your content in the input box.</li>
+                <li>Copy the result instantly.</li>
+            </ol>
+        </article>
+    </main>
+    
+    <div id="toast" class="toast hidden">Copied to Clipboard!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Base64</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Encoder:</strong> Converts text into Base64 string. Supports UTF-8 (Emojis 🇮🇳).</p>
+                <p><strong>Decoder:</strong> Converts Base64 back to readable text.</p>
+                <p><strong>Secure:</strong> Conversion happens locally in your browser.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

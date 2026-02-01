@@ -1,0 +1,164 @@
+/* Container */
+.tool-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px 16px;
+}
+
+/* Input Card */
+.input-card {
+    background-color: var(--bg-surface);
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+}
+
+.input-card label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.input-card input[type="text"] {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-card input[type="text"]:focus {
+    border-color: var(--primary-blue);
+}
+
+/* Color Pickers */
+.color-options {
+    display: flex;
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.color-picker-group {
+    flex: 1;
+}
+
+input[type="color"] {
+    width: 100%;
+    height: 40px;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    background: transparent;
+}
+
+/* Result Card */
+.result-card {
+    text-align: center;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.qr-wrapper {
+    background: white; /* Always white container for safety */
+    padding: 16px;
+    border-radius: var(--radius-md);
+    display: inline-block;
+    box-shadow: var(--shadow-md);
+    margin-bottom: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.qr-wrapper img {
+    display: block; /* Removes bottom gap */
+}
+
+.success-msg {
+    color: var(--accent-green);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.full-width { width: 100%; }
+
+.primary-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    transition: transform 0.1s;
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+.secondary-btn {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: var(--text-main);
+    padding: 14px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+}
+
+.hidden { display: none; }
+
+/* Reuse Modal Styles from Password Gen or Global if moved */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+}
+.modal-content {
+    background: var(--bg-surface);
+    width: 100%;
+    max-width: 400px;
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.modal-body p {
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}

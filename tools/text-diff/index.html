@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Text Diff Checker | Compare Two Texts Online | WebKaar</title>
+    <meta name="description" content="Free Online Text Diff Checker. Compare two text files or strings to find differences. Highlights added and removed text instantly. No login required.">
+    <meta name="keywords" content="text diff, diff checker, compare text, text difference, file comparison, online diff tool, webkaar">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/text-diff/">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Diff Checker</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="diff-grid">
+                
+                <div class="code-card">
+                    <div class="card-header">
+                        <span class="label">Original Text</span>
+                        <button id="paste-original" class="text-btn">Paste</button>
+                    </div>
+                    <textarea id="original-text" placeholder="Paste original text here..."></textarea>
+                </div>
+
+                <div class="code-card">
+                    <div class="card-header">
+                        <span class="label">Modified Text</span>
+                        <button id="paste-modified" class="text-btn">Paste</button>
+                    </div>
+                    <textarea id="modified-text" placeholder="Paste modified text here..."></textarea>
+                </div>
+
+            </div>
+
+            <div class="controls-area">
+                <button id="compare-btn" class="primary-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5"></path><path d="M4 20L21 3"></path><path d="M21 16v5h-5"></path><path d="M15 15l-5 5"></path><path d="M4 4l5 5"></path></svg>
+                    Compare Differences
+                </button>
+                <button id="clear-btn" class="secondary-btn">Clear All</button>
+            </div>
+
+            <div class="code-card output-wrapper hidden" id="output-card">
+                <div class="card-header">
+                    <span class="label">Comparison Result</span>
+                    <div class="legend">
+                        <span class="legend-item"><span class="dot red"></span> Removed</span>
+                        <span class="legend-item"><span class="dot green"></span> Added</span>
+                    </div>
+                </div>
+                <div id="diff-output" class="diff-view"></div>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">How to use Text Diff Checker?</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                The WebKaar Text Diff Checker allows you to compare two text files and see the differences side-by-side. It highlights changes, making it easy to spot additions, deletions, and modifications.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Features</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Privacy Focused:</strong> Comparisons happen in your browser. No data is sent to any server.</li>
+                <li><strong>Color Coded:</strong> Red indicates text that was removed, and Green indicates text that was added.</li>
+                <li><strong>Mobile Friendly:</strong> Works perfectly on phones and desktops.</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Copied to Clipboard!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Compare:</strong> Finds differences between two texts.</p>
+                <p><strong>Red:</strong> Text removed from Original.</p>
+                <p><strong>Green:</strong> Text added to Modified.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

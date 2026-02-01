@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Free Image Compressor | Reduce JPG/PNG Size Online | WebKaar</title>
+    <meta name="description" content="Compress JPG, PNG, and WEBP images online for free. Reduce image size by up to 80% without losing quality. Works offline, secure, and fast.">
+    <meta name="keywords" content="image compressor, reduce image size, compress jpg, compress png, online photo compressor, reduce photo size in kb, image optimizer">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/image-compressor/">
+    <meta property="og:title" content="Free Image Compressor | WebKaar">
+    <meta property="og:description" content="Reduce image size instantly without uploading to server. 100% Secure & Free.">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/image-compressor/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Image Compressor Tool",
+      "applicationCategory": "PhotographyApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "description": "A browser-based tool to compress and optimize images without server upload."
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Image Compressor</h1>
+            </div>
+            <div style="width: 40px;"></div>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="upload-box" id="drop-zone">
+                <input type="file" id="file-input" accept="image/*" hidden>
+                <div class="upload-content">
+                    <div class="icon-circle">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    </div>
+                    <h3>Select an Image</h3>
+                    <p>or drag & drop here (JPG, PNG)</p>
+                    <button class="primary-btn" onclick="document.getElementById('file-input').click()">Choose File</button>
+                </div>
+            </div>
+
+            <div id="workspace" class="hidden">
+                
+                <div class="settings-card">
+                    <label>Compression Level: <span id="quality-value">80%</span></label>
+                    <input type="range" id="quality-slider" min="1" max="100" value="80">
+                </div>
+
+                <div class="preview-grid">
+                    <div class="preview-card">
+                        <span class="badge">Original</span>
+                        <img id="original-preview" src="" alt="Original">
+                        <div class="file-info" id="original-info">-- KB</div>
+                    </div>
+
+                    <div class="preview-card">
+                        <span class="badge success">Compressed</span>
+                        <img id="compressed-preview" src="" alt="Compressed">
+                        <div class="file-info highlight" id="compressed-info">-- KB</div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="download-btn" class="primary-btn full-width">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download Image
+                    </button>
+                    <button id="reset-btn" class="secondary-btn full-width">Compress Another</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Compress Images Online without Quality Loss</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Image Compressor is a smart tool that helps you reduce the file size of your photos (JPG, PNG, WEBP) by up to 80% while maintaining the best quality. Whether you need to upload a photo for a government form, optimize your website speed, or save storage space, this tool does it instantly.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why choose WebKaar Compressor?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>100% Privacy:</strong> Unlike other sites, your photos are compressed locally in your browser. No image is ever uploaded to a server.</li>
+                <li><strong>Custom Quality:</strong> Use the slider to balance between file size and image quality (e.g., reduce 5MB to 50KB).</li>
+                <li><strong>Unlimited & Free:</strong> Compress as many images as you want without any restrictions.</li>
+            </ul>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">How to reduce image size in KB?</h3>
+            <ol style="padding-left: 20px; line-height: 1.8;">
+                <li>Click on <strong>"Select an Image"</strong> or drag your file.</li>
+                <li>Adjust the <strong>Quality Slider</strong> (Lower % means smaller size).</li>
+                <li>Preview the "Before" and "After" size instantly.</li>
+                <li>Click <strong>Download</strong> to save your optimized image.</li>
+            </ol>
+        </article>
+
+    </main>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

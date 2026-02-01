@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Word Counter & Character Count Tool | WebKaar</title>
+    <meta name="description" content="Free Online Word Counter. Real-time character count, sentence counter, and reading time estimator. Best for bloggers, students, and social media posts.">
+    <meta name="keywords" content="word counter, character count, word count online, sentence counter, twitter character limit, essay word count, reading time calculator">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/word-counter/">
+    <meta property="og:title" content="Word Counter & Character Checker | WebKaar">
+    <meta property="og:description" content="Count words, characters, and sentences instantly. Perfect for writers.">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/word-counter/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Word Counter Tool",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "description": "A real-time tool to count words, characters, sentences, and paragraphs for text analysis."
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Word Counter</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-words">0</span>
+                    <span class="stat-label">Words</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-chars">0</span>
+                    <span class="stat-label">Chars</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-value" id="stat-sentences">0</span>
+                    <span class="stat-label">Sentences</span>
+                </div>
+                <div class="stat-card highlight">
+                    <span class="stat-value" id="stat-read-time">0s</span>
+                    <span class="stat-label">Read Time</span>
+                </div>
+            </div>
+
+            <div class="editor-wrapper">
+                <div class="editor-header">
+                    <span class="label">Type or Paste Text</span>
+                    <div class="editor-actions">
+                        <button id="copy-btn" class="action-link">Copy</button>
+                        <button id="clear-btn" class="action-link danger">Clear</button>
+                    </div>
+                </div>
+                <textarea id="text-input" placeholder="Start typing or paste your text here..." spellcheck="false"></textarea>
+            </div>
+
+            <div class="details-list">
+                <div class="detail-row">
+                    <span>Paragraphs</span>
+                    <span id="stat-paragraphs">0</span>
+                </div>
+                <div class="detail-row">
+                    <span>Chars (no spaces)</span>
+                    <span id="stat-chars-no-space">0</span>
+                </div>
+                <div class="detail-row">
+                    <span>Speaking Time</span>
+                    <span id="stat-speak-time">0s</span>
+                </div>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Free Online Word Counter & Character Count</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Word Counter is a real-time text analysis tool. Whether you are writing a blog post, an essay for school, or a caption for social media, keeping track of your word and character count is essential. Our tool calculates everything instantly as you type.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why use a Word Counter?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Bloggers & SEO:</strong> Ideally, a blog post should be over 300 words for Google ranking.</li>
+                <li><strong>Students:</strong> Ensure your assignments meet the required word limits (e.g., 500-word essay).</li>
+                <li><strong>Social Media:</strong> Check if your text fits within the character limits of Twitter, Instagram, etc.</li>
+            </ul>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Social Media Character Limits (2025)</h3>
+            <p style="margin-bottom: 10px;">Don't get your post cut off. Check your limits here:</p>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Twitter (X):</strong> 280 characters.</li>
+                <li><strong>Instagram Caption:</strong> 2,200 characters.</li>
+                <li><strong>LinkedIn Post:</strong> 3,000 characters.</li>
+                <li><strong>Google Meta Description:</strong> ~160 characters (recommended).</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Copied to Clipboard!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Word Counter</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Real-time Analysis:</strong> Counts words and characters as you type.</p>
+                <p><strong>Reading Time:</strong> Estimates how long it takes to read your text (avg 200 wpm).</p>
+                <p><strong>Privacy:</strong> Text processing happens locally. Nothing is sent to servers.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

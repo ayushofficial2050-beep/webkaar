@@ -1,0 +1,198 @@
+/* =========================================
+   WEBKAAR RESPONSIVE STYLES (Final Premium v3.0)
+   ========================================= */
+
+/* --- 1. GLOBAL MOBILE ADJUSTMENTS (Notch & Safe Areas) --- */
+:root {
+    --safe-area-top: env(safe-area-inset-top);
+    --safe-area-bottom: env(safe-area-inset-bottom);
+}
+
+/* --- 2. LARGE SCREENS (Desktop: > 1024px) --- */
+@media (min-width: 1024px) {
+    .app-container {
+        max-width: 1200px; 
+        margin: 0 auto;
+    }
+
+    /* Desktop par Sidebar hamesha dikhana hai to ye code use karein,
+       warna default drawer behavior hi sahi hai. */
+}
+
+/* --- 3. TABLETS (iPads: 768px - 1023px) --- */
+@media (max-width: 1023px) {
+    :root {
+        --sidebar-width: 260px;
+        --header-height: 60px;
+    }
+
+    .tools-container {
+        padding: 0 24px;
+    }
+
+    .grid-layout {
+        grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* --- 4. MOBILE DEVICES (Phones: < 768px) --- */
+@media (max-width: 767px) {
+    
+    /* A. Layout & Spacing */
+    .app-body {
+        /* Bottom Nav ke liye extra jagah chhodna */
+        padding-bottom: calc(70px + var(--safe-area-bottom));
+    }
+
+    /* B. Main Header (Notch Safe) */
+    .main-header {
+        padding-top: var(--safe-area-top);
+        height: calc(60px + var(--safe-area-top));
+    }
+
+    .header-content {
+        padding: 0 16px;
+    }
+
+    .app-name {
+        font-size: 1.15rem;
+    }
+
+    /* C. Sidebar Drawer */
+    .sidebar {
+        width: 85%;
+        max-width: 320px;
+        padding-top: var(--safe-area-top);
+    }
+
+    /* D. Hero Slider (App-Like Swipe) */
+    .hero-slider-container {
+        padding: 16px 16px 8px; /* Thoda tight spacing mobile ke liye */
+    }
+    
+    .hero-card {
+        flex: 0 0 85%; /* Card agle card ko thoda sa dikhayega (Peek effect) */
+        height: 130px;
+        padding: 20px;
+    }
+    
+    .hero-card h3 {
+        font-size: 1.1rem;
+    }
+
+    /* E. Search Bar (Easy Reach) */
+    .search-container {
+        padding: 16px 16px 12px;
+    }
+
+    .search-box input {
+        height: 50px;
+        font-size: 16px; /* iOS zoom fix */
+        padding: 0 44px;
+    }
+
+    /* F. Categories (Chips) */
+    .categories-container {
+        padding: 0 16px 8px 16px;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .tabs-wrapper {
+        gap: 8px;
+    }
+    
+    .tab-chip {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+        scroll-snap-align: start;
+    }
+
+    /* G. Tools Grid (2 Columns) */
+    .tools-container {
+        padding: 0 16px;
+    }
+
+    .grid-layout {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px;
+    }
+
+    .tool-card {
+        padding: 16px 12px;
+        min-height: 130px;
+    }
+
+    .tool-icon {
+        width: 44px;
+        height: 44px;
+        margin-bottom: 12px;
+        border-radius: 12px;
+    }
+    
+    .tool-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .tool-meta h3 {
+        font-size: 0.9rem;
+        margin-bottom: 2px;
+    }
+    
+    .category-label {
+        font-size: 0.65rem;
+    }
+
+    /* H. Bottom Navigation (VISIBLE ON MOBILE) */
+    .bottom-nav {
+        display: flex !important; /* Force show on mobile */
+        height: calc(60px + var(--safe-area-bottom));
+        padding-bottom: var(--safe-area-bottom);
+    }
+
+    /* I. Footer */
+    .main-footer {
+        padding: 20px 20px 80px; /* Extra space taaki content Nav ke peeche na chhupe */
+        margin-top: 20px;
+    }
+}
+
+/* --- 5. SMALL MOBILES (iPhone SE / Old Androids: < 360px) --- */
+@media (max-width: 359px) {
+    .grid-layout {
+        gap: 10px;
+    }
+    
+    .app-name {
+        font-size: 1rem;
+    }
+    
+    .hero-card {
+        height: 120px;
+    }
+    
+    .tool-card {
+        padding: 12px 8px;
+    }
+}
+
+/* --- 6. LANDSCAPE MODE --- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .main-header {
+        height: 50px;
+        padding-top: 0;
+    }
+    
+    .app-body {
+        padding-top: 50px;
+    }
+    
+    .bottom-nav {
+        display: none !important; /* Landscape me nav chhupa do taaki screen badi dikhe */
+    }
+    
+    .app-body {
+        padding-bottom: 20px;
+    }
+}

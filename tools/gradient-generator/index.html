@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>CSS Gradient Generator - Create Beautiful Gradients | WebKaar</title>
+    <meta name="description" content="Free Online CSS Gradient Generator. Create linear gradients, customize colors and direction, and get ready-to-use CSS code for your website.">
+    <meta name="keywords" content="css gradient generator, gradient maker, css background, color gradient, web design tool, webkaar">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/gradient-generator/">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Gradient Generator</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="preview-card" id="gradient-preview">
+                <div class="preview-label">Live Preview</div>
+            </div>
+
+            <div class="controls-card">
+                
+                <div class="control-row">
+                    <div class="color-group">
+                        <label>Color 1</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="color1" value="#3b82f6">
+                            <input type="text" id="hex1" value="#3b82f6" spellcheck="false">
+                        </div>
+                    </div>
+                    
+                    <button id="swap-colors" class="icon-btn-round" aria-label="Swap Colors">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+                    </button>
+
+                    <div class="color-group">
+                        <label>Color 2</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="color2" value="#8b5cf6">
+                            <input type="text" id="hex2" value="#8b5cf6" spellcheck="false">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-header">
+                        <label>Direction (Angle)</label>
+                        <span id="angle-val">135°</span>
+                    </div>
+                    <input type="range" id="angle-slider" min="0" max="360" value="135">
+                    <div class="direction-presets">
+                        <button class="chip" data-deg="0">⬆ Top</button>
+                        <button class="chip" data-deg="90">➡ Right</button>
+                        <button class="chip" data-deg="180">⬇ Bottom</button>
+                        <button class="chip" data-deg="270">⬅ Left</button>
+                    </div>
+                </div>
+
+                <button id="random-btn" class="secondary-btn full-width">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                    Random Colors
+                </button>
+
+            </div>
+
+            <div class="code-card">
+                <div class="code-header">
+                    <span>CSS Code</span>
+                    <button id="copy-btn" class="text-btn">Copy</button>
+                </div>
+                <div class="code-block" id="css-output">
+                    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+                </div>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Free CSS Gradient Maker</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                Design beautiful backgrounds for your website with the WebKaar CSS Gradient Generator. Quickly blend two colors, adjust the direction, and generate the CSS code instantly.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why use Gradients?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Modern Look:</strong> Adds depth and vibrancy to flat designs.</li>
+                <li><strong>Performance:</strong> Pure CSS gradients load faster than images.</li>
+                <li><strong>Customizable:</strong> Easily change colors and angles to fit your brand.</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Copied to Clipboard!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Gradient:</strong> A smooth transition between two colors.</p>
+                <p><strong>Usage:</strong> Copy the code and paste it into your CSS file under <code>background</code>.</p>
+                <p><strong>Colors:</strong> Supports Hex codes and Color Picker.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

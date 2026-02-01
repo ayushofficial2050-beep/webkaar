@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Strong Password Generator (100% Secure) | WebKaar</title>
+    <meta name="description" content="Generate strong, secure, and random passwords instantly. 100% Client-side generation (No data sent to server). Customize length, symbols, and numbers.">
+    <meta name="keywords" content="password generator, strong password maker, random password generator, secure password tool, online password creator, cybersecurity tool">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/password-gen/">
+    <meta property="og:title" content="Strong Password Generator | WebKaar">
+    <meta property="og:description" content="Create unhackable passwords instantly. Secure & Private.">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/password-gen/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Password Generator",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "description": "A secure tool to generate random strong passwords locally in the browser."
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Password Gen</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="result-box">
+                <div class="password-display" id="password-output">Click Generate</div>
+                <button id="copy-btn" class="icon-button" aria-label="Copy Password">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+            </div>
+            <div id="copy-msg" class="toast-msg hidden">Copied to clipboard!</div>
+
+            <div class="controls-card">
+                
+                <div class="control-group">
+                    <div class="label-row">
+                        <label>Password Length</label>
+                        <span id="length-val" class="highlight-text">12</span>
+                    </div>
+                    <input type="range" id="length-slider" min="4" max="32" value="12">
+                </div>
+
+                <hr class="divider">
+
+                <div class="settings-grid">
+                    <label class="checkbox-row">
+                        <span>Uppercase (A-Z)</span>
+                        <input type="checkbox" id="inc-upper" checked>
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="checkbox-row">
+                        <span>Lowercase (a-z)</span>
+                        <input type="checkbox" id="inc-lower" checked>
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="checkbox-row">
+                        <span>Numbers (0-9)</span>
+                        <input type="checkbox" id="inc-number" checked>
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="checkbox-row">
+                        <span>Symbols (!@#$)</span>
+                        <input type="checkbox" id="inc-symbol" checked>
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+
+                <button id="generate-btn" class="primary-btn full-width">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20"></path><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-6"></path><path d="M12 2l-5 5h10l-5-5z"></path></svg>
+                    Generate Password
+                </button>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Secure Random Password Generator</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                In today's digital world, using "123456" or "password" is a huge risk. The WebKaar Password Generator helps you create strong, unhackable passwords instantly. Protect your Facebook, Instagram, Google, and Bank accounts with military-grade random passwords.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why is this tool safe?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>100% Client-Side:</strong> The password is generated inside your phone/computer using JavaScript.</li>
+                <li><strong>No Server Storage:</strong> We do not send or save your passwords anywhere. It disappears when you refresh.</li>
+                <li><strong>Customizable:</strong> Choose length, symbols, and numbers to meet specific site requirements.</li>
+            </ul>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Tips for a Strong Password</h3>
+            <p style="line-height: 1.6;">
+                A strong password should be at least <strong>12 characters long</strong> and include a mix of uppercase letters, lowercase letters, numbers, and special symbols (!@#$). Avoid using your name or birthdate.
+            </p>
+        </article>
+
+    </main>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>How to use?</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>1. Set Length:</strong> Use the slider to choose how long you want your password to be.</p>
+                <p><strong>2. Select Options:</strong> Check boxes to include Capital letters, Numbers, or Symbols for better security.</p>
+                <p><strong>3. Generate:</strong> Click the blue button to create a unique password.</p>
+                <p><strong>4. Copy:</strong> Click the copy icon to save it to your clipboard.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

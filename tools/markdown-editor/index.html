@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Online Markdown Editor & Previewer | Live Edit | WebKaar</title>
+    <meta name="description" content="Free Online Markdown Editor with Live Preview. Write Markdown and see HTML output instantly. Download .md files or copy HTML. Fast, secure, and mobile-friendly.">
+    <meta name="keywords" content="markdown editor, online markdown, readme generator, md viewer, live markdown preview, markdown to html, webkaar">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/markdown-editor/">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Markdown Editor</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="toolbar">
+                <button class="tool-btn" data-markdown="**bold**" title="Bold">B</button>
+                <button class="tool-btn italic" data-markdown="*italic*" title="Italic">I</button>
+                <button class="tool-btn" data-markdown="# Heading" title="Heading">H1</button>
+                <button class="tool-btn" data-markdown="[Link](url)" title="Link">🔗</button>
+                <button class="tool-btn" data-markdown="`code`" title="Code">{'}'}</button>
+                <button class="tool-btn" data-markdown="> Quote" title="Quote">❞</button>
+                <div class="spacer"></div>
+                <button id="copy-html-btn" class="secondary-btn small-btn">Copy HTML</button>
+                <button id="download-btn" class="primary-btn small-btn">Download .md</button>
+            </div>
+
+            <div class="editor-grid">
+                
+                <div class="editor-pane input-pane">
+                    <div class="pane-header">Markdown</div>
+                    <textarea id="markdown-input" placeholder="Type your markdown here..."></textarea>
+                </div>
+
+                <div class="editor-pane preview-pane">
+                    <div class="pane-header">Preview</div>
+                    <div id="html-preview" class="markdown-body"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 1000px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Live Markdown Editor</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Markdown Editor is a real-time tool for writing and previewing Markdown content. Whether you are writing a README for GitHub, a blog post, or documentation, our editor renders your text instantly.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Key Features</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Instant Preview:</strong> See changes as you type.</li>
+                <li><strong>Export Options:</strong> Copy generated HTML or Download as `.md` file.</li>
+                <li><strong>Privacy:</strong> Everything runs locally in your browser.</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Copied to Clipboard!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Markdown:</strong> A lightweight markup language for creating formatted text.</p>
+                <p><strong>Shortcuts:</strong> Use the toolbar to insert bold, italics, links, and code blocks easily.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

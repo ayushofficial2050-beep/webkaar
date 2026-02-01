@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Duplicate Line Remover - Clean Your Text Lists | WebKaar</title>
+    <meta name="description" content="Free Online Duplicate Line Remover. Remove duplicate text lines, sort lists alphabetically, and clean your data instantly. Best for emails, names, and code.">
+    <meta name="keywords" content="duplicate remover, remove duplicate lines, text cleaner, list cleaner, unique line finder, webkaar">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/duplicate-remover/">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Duplicate Remover</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="toolbar-card">
+                <div class="toggle-group">
+                    <label class="toggle-label">
+                        <input type="checkbox" id="chk-empty" checked>
+                        <span>Remove Empty Lines</span>
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="chk-trim" checked>
+                        <span>Trim Whitespace</span>
+                    </label>
+                    <label class="toggle-label">
+                        <input type="checkbox" id="chk-sort">
+                        <span>Sort (A-Z)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="text-grid">
+                
+                <div class="text-card">
+                    <div class="card-header">
+                        <span class="header-label">Input Text</span>
+                        <div class="badge-count" id="count-original">0 Lines</div>
+                    </div>
+                    <textarea id="input-text" placeholder="Paste your list here...&#10;Apple&#10;Banana&#10;Apple&#10;Orange"></textarea>
+                    <div class="action-bar">
+                        <button id="clear-btn" class="text-btn">Clear</button>
+                        <button id="paste-btn" class="text-btn">Paste</button>
+                    </div>
+                </div>
+
+                <div class="process-action">
+                    <button id="process-btn" class="primary-btn">
+                        Remove Duplicates ↓
+                    </button>
+                </div>
+
+                <div class="text-card output-mode">
+                    <div class="card-header">
+                        <span class="header-label">Unique Result</span>
+                        <div class="badge-count unique" id="count-unique">0 Lines</div>
+                    </div>
+                    <textarea id="output-text" readonly placeholder="Result will appear here..."></textarea>
+                    <div class="action-bar">
+                        <div class="stats-text" id="removed-count">0 removed</div>
+                        <button id="copy-btn" class="icon-btn-text">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            Copy
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Remove Duplicate Lines Online</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Duplicate Line Remover is a free tool to clean up your text lists. Whether you have a list of email addresses, names, or database entries, this tool instantly finds and removes repeated lines.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Features</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Instant Cleanup:</strong> Deletes duplicates in milliseconds.</li>
+                <li><strong>Sorting:</strong> Organizes your list alphabetically (A-Z).</li>
+                <li><strong>Privacy:</strong> All processing happens in your browser.</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Copied to Clipboard!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Duplicate Remover:</strong> Finds unique lines in a text list.</p>
+                <p><strong>Options:</strong> Can remove empty lines and sort data.</p>
+                <p><strong>Privacy:</strong> 100% Client-side. No data sent to server.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

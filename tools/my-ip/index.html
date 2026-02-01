@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>What is My IP Address? Check Public IP & Location | WebKaar</title>
+    <meta name="description" content="Check your Public IP Address instantly. Find your ISP, City, Country, and Timezone. Free IP Location Finder and Network Status tool.">
+    <meta name="keywords" content="what is my ip, my ip address, check ip location, my isp name, public ip check, ip tracker, vpn leak test, ipv4 checker">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/my-ip/">
+    <meta property="og:title" content="What is My IP Address? | WebKaar">
+    <meta property="og:description" content="Check your IP, Location and ISP instantly.">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/my-ip/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "My IP Address Checker",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "description": "A free tool to check public IP address, ISP, and geolocation details."
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name">My IP Info</h1>
+            </div>
+            <div style="width: 40px;"></div>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="ip-card">
+                <p class="label">Your Public IP Address</p>
+                <h2 id="ip-display">Loading...</h2>
+                <span id="isp-display" class="isp-badge">Fetching ISP...</span>
+            </div>
+
+            <div class="details-grid hidden" id="details-box">
+                
+                <div class="detail-item">
+                    <span class="detail-label">Location</span>
+                    <span class="detail-value" id="location-val">-</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Country</span>
+                    <span class="detail-value">
+                        <span id="flag-icon">🏳️</span> <span id="country-val">-</span>
+                    </span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Timezone</span>
+                    <span class="detail-value" id="timezone-val">-</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Connection</span>
+                    <span class="detail-value" id="connection-val">-</span>
+                </div>
+
+            </div>
+
+            <button id="refresh-btn" class="secondary-btn full-width">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+                Refresh Data
+            </button>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">What is My IP Address?</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                Your IP (Internet Protocol) address is a unique number assigned to your device when you connect to the internet. WebKaar IP Checker allows you to see your public IPv4 address, identify your Internet Service Provider (ISP), and check your approximate geolocation.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why check your IP?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Verify VPN:</strong> Check if your VPN is working correctly by seeing if your location has changed.</li>
+                <li><strong>Network Issues:</strong> Identifying your ISP and IP can help troubleshoot connection problems.</li>
+                <li><strong>Security:</strong> Know what information websites can see about you.</li>
+            </ul>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Privacy Note</h3>
+            <p style="line-height: 1.6;">
+                This tool simply displays the information your browser sends to the web. We do not log, store, or track your IP address history. Your privacy is our priority.
+            </p>
+        </article>
+
+    </main>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="../../js/api.js"></script> 
+    <script src="script.js"></script>
+    
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

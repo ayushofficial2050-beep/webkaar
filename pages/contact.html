@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | WebKaar</title>
+    <meta name="theme-color" content="#0f172a">
+    
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <a href="../index.html" class="icon-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </a>
+            <div class="header-title">
+                <h1 class="app-name">Contact Us</h1>
+            </div>
+            <div style="width: 40px;"></div>
+        </div>
+    </header>
+
+    <main class="app-body" style="max-width: 600px; margin: 0 auto; padding: 20px; padding-top: 80px;">
+        
+        <div class="tool-card" style="text-align: left; cursor: default;">
+            <h2 style="margin-bottom: 16px;">Get in Touch</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">
+                Have questions, suggestions, or found a bug? We'd love to hear from you.
+            </p>
+
+            <div style="background: var(--bg-body); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);">
+                <h3 style="font-size: 1rem; margin-bottom: 8px;">📧 Email Us</h3>
+                <p style="font-weight: 600; color: var(--primary-blue);">ayushofficial2050@gmail</p>
+                </div>
+
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 1rem; margin-bottom: 8px;">📍 Location</h3>
+                <p style="color: var(--text-muted);">India 🇮🇳</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Dark Mode Logic (Footer wala same)
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

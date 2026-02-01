@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Free QR Code Generator (Custom Colors) | WebKaar</title>
+    <meta name="description" content="Create custom QR Codes for free. Generate colored QR codes for URLs, Text, WiFi, and Emails. Download high-quality PNG images instantly. No sign-up required.">
+    <meta name="keywords" content="qr code generator, create qr code, free qr maker, custom qr code, qr code with color, online qr tool, qr code for link">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/qr-generator/">
+    <meta property="og:title" content="Free QR Code Generator | WebKaar">
+    <meta property="og:description" content="Make custom colored QR codes instantly. Free & High Quality.">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/qr-generator/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "QR Code Generator",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "description": "A free tool to generate custom colored QR codes for websites and text."
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">QR Creator</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="input-card">
+                <label for="qr-text">Enter Text or URL</label>
+                <input type="text" id="qr-text" placeholder="https://example.com" autocomplete="off">
+                
+                <div class="color-options">
+                    <div class="color-picker-group">
+                        <label>Code Color</label>
+                        <input type="color" id="color-dark" value="#000000">
+                    </div>
+                    <div class="color-picker-group">
+                        <label>Background</label>
+                        <input type="color" id="color-light" value="#ffffff">
+                    </div>
+                </div>
+
+                <button id="generate-btn" class="primary-btn full-width">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Generate QR Code
+                </button>
+            </div>
+
+            <div id="result-area" class="result-card hidden">
+                <div class="qr-wrapper" id="qrcode"></div>
+                
+                <p class="success-msg">Scan to test, then download.</p>
+
+                <div class="action-buttons">
+                    <button id="download-btn" class="primary-btn">Download PNG</button>
+                    <button id="reset-btn" class="secondary-btn">Create New</button>
+                </div>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Free Custom QR Code Generator</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar QR Creator is the easiest way to make custom QR codes online. Whether you want to share a website link, a text message, or a phone number, our tool generates high-quality QR codes instantly.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why use WebKaar QR Tool?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Custom Colors:</strong> Don't stick to boring black and white. Match your brand colors.</li>
+                <li><strong>No Expiry:</strong> The QR codes generated here are static and will work forever.</li>
+                <li><strong>High Resolution:</strong> Download crisp PNG images suitable for printing on flyers or business cards.</li>
+                <li><strong>100% Free:</strong> Create unlimited QR codes without any hidden charges.</li>
+            </ul>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Common Uses</h3>
+            <p style="line-height: 1.6;">
+                Use QR codes for <strong>Business Cards</strong> (vCard), <strong>WiFi Passwords</strong>, <strong>Restaurant Menus</strong>, or directing customers to your <strong>Social Media</strong> pages.
+            </p>
+        </article>
+
+    </main>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About QR Code</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Create Custom QR Codes:</strong></p>
+                <p>1. Type any website link, text, or phone number.</p>
+                <p>2. Choose custom colors (Dark for code, Light for background).</p>
+                <p>3. Click Generate and Download the high-quality PNG.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

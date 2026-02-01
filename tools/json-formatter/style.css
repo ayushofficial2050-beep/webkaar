@@ -1,0 +1,169 @@
+/* Container */
+.tool-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Toolbar */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-surface);
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: 12px;
+    box-shadow: var(--shadow-sm);
+}
+
+.actions-left, .actions-right {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.action-btn.primary {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+.action-btn:active { transform: scale(0.96); }
+
+.icon-action {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-action:hover { background: var(--bg-body); color: var(--primary-blue); }
+.icon-action.danger:hover { color: #ef4444; }
+
+/* Error Box */
+.error-msg {
+    background: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fecaca;
+    padding: 10px 16px;
+    border-radius: var(--radius-md);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: shake 0.3s;
+}
+body.dark-mode .error-msg {
+    background: #450a0a;
+    border-color: #7f1d1d;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+/* Editor Grid */
+.editor-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    min-height: 0; /* Important for scroll */
+}
+
+.editor-pane {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-surface);
+    overflow: hidden;
+}
+
+.pane-header {
+    background: var(--bg-body);
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-color);
+}
+
+textarea {
+    flex: 1;
+    width: 100%;
+    border: none;
+    resize: none;
+    padding: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    background: var(--bg-surface);
+    outline: none;
+    line-height: 1.5;
+}
+
+.output-wrapper {
+    flex: 1;
+    display: flex;
+}
+
+/* Scrollbars inside editor */
+textarea::-webkit-scrollbar { width: 8px; height: 8px; }
+textarea::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+/* Mobile Stack */
+@media (max-width: 768px) {
+    .editor-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+
+/* Common Toast & Modal */
+.toast {
+    position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+    background: #1e293b; color: white; padding: 10px 20px; border-radius: 30px;
+    font-size: 0.9rem; z-index: 1000; animation: slideUp 0.3s;
+}
+@keyframes slideUp { from {opacity:0; transform:translate(-50%,20px);} to {opacity:1; transform:translate(-50%,0);} }
+.hidden { display: none; }
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(4px);
+}
+.modal-content {
+    background: var(--bg-surface); width: 100%; max-width: 400px;
+    border-radius: var(--radius-lg); padding: 24px;
+}
+.modal-header { display: flex; justify-content: space-between; margin-bottom: 16px; }
+.modal-header h3 { color: var(--text-main); }
+.modal-body p { color: var(--text-muted); margin-bottom: 8px; font-size: 0.9rem; }

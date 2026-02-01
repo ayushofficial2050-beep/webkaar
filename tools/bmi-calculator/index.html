@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>BMI Calculator - Calculate Body Mass Index Online | WebKaar</title>
+    <meta name="description" content="Free Online BMI Calculator. Check your Body Mass Index instantly. Supports both Metric (kg/cm) and Imperial (lbs/ft) units. See if you are underweight, healthy, or overweight.">
+    <meta name="keywords" content="bmi calculator, body mass index, check bmi, bmi chart, healthy weight calculator, fitness tool, webkaar">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/bmi-calculator/">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">BMI Calculator</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="toggle-container">
+                <button class="toggle-btn active" data-unit="metric">Metric (Kg/Cm)</button>
+                <button class="toggle-btn" data-unit="imperial">Imperial (Lbs/Ft)</button>
+            </div>
+
+            <div class="input-card">
+                
+                <div id="metric-inputs">
+                    <div class="input-group">
+                        <label>Height (cm)</label>
+                        <input type="number" id="height-cm" placeholder="e.g., 175" min="0">
+                    </div>
+                    <div class="input-group">
+                        <label>Weight (kg)</label>
+                        <input type="number" id="weight-kg" placeholder="e.g., 70" min="0">
+                    </div>
+                </div>
+
+                <div id="imperial-inputs" class="hidden">
+                    <div class="input-group-row">
+                        <div class="input-group">
+                            <label>Height (ft)</label>
+                            <input type="number" id="height-ft" placeholder="5">
+                        </div>
+                        <div class="input-group">
+                            <label>Height (in)</label>
+                            <input type="number" id="height-in" placeholder="9">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Weight (lbs)</label>
+                        <input type="number" id="weight-lbs" placeholder="e.g., 154">
+                    </div>
+                </div>
+
+                <button id="calculate-btn" class="primary-btn">Calculate BMI</button>
+            </div>
+
+            <div id="result-card" class="result-card hidden">
+                <h3>Your BMI is</h3>
+                <div class="bmi-value" id="bmi-value">0.0</div>
+                <div class="bmi-status" id="bmi-status">Normal</div>
+                
+                <div class="bmi-meter">
+                    <div class="meter-bar">
+                        <div class="meter-fill" id="meter-fill"></div>
+                    </div>
+                    <div class="meter-labels">
+                        <span>Under</span>
+                        <span>Normal</span>
+                        <span>Over</span>
+                        <span>Obese</span>
+                    </div>
+                </div>
+                
+                <p id="bmi-desc" class="bmi-desc">Your weight is healthy.</p>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Understanding BMI</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                Body Mass Index (BMI) is a simple index of weight-for-height that is commonly used to classify underweight, overweight and obesity in adults. It provides a good indicator of healthy body weight based on your height.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">BMI Categories</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Underweight:</strong> BMI less than 18.5</li>
+                <li><strong>Normal weight:</strong> BMI 18.5 to 24.9</li>
+                <li><strong>Overweight:</strong> BMI 25 to 29.9</li>
+                <li><strong>Obesity:</strong> BMI 30 or greater</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>BMI:</strong> Body Mass Index measures body fat based on height and weight.</p>
+                <p><strong>Privacy:</strong> All calculations happen on your device. No health data is stored.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

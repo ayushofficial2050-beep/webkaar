@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Online Stopwatch with Laps & Sound | WebKaar</title>
+    <meta name="description" content="Free Online Stopwatch with Split Laps and Sound Alerts. Accurate to milliseconds. Perfect for studying, workouts, and sports. Works offline.">
+    <meta name="keywords" content="online stopwatch, stopwatch with laps, timer with sound, study timer, workout timer, pomodoro timer, stopwatch milliseconds, digital stopwatch">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/stopwatch/">
+    <meta property="og:title" content="Precision Stopwatch & Timer | WebKaar">
+    <meta property="og:description" content="Track time with milliseconds accuracy. Features laps, sound alerts, and themes.">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/stopwatch/">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Online Stopwatch",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      },
+      "description": "A precision stopwatch tool with lap functionality and custom time alerts."
+    }
+    </script>
+</head>
+<body data-theme="default">
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Stopwatch</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="timer-card">
+                <div class="time-display">
+                    <span id="minutes">00</span>:<span id="seconds">00</span><small>.<span id="milliseconds">00</span></small>
+                </div>
+                
+                <div id="target-badge" class="target-badge hidden">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12.0001 22C13.1001 22 14.0001 21.1 14.0001 20H10.0001C10.0001 21.1 10.8901 22 12.0001 22ZM18.0001 16V11C18.0001 7.93 16.3601 5.36 13.5001 4.68V4C13.5001 3.17 12.8301 2.5 12.0001 2.5C11.1701 2.5 10.5001 3.17 10.5001 4V4.68C7.63005 5.36 6.00005 7.92 6.00005 11V16L4.00005 18V19H20.0001V18L18.0001 16ZM16.0001 17H8.00005V11C8.00005 8.52 9.51005 6.5 12.0001 6.5C14.4901 6.5 16.0001 8.52 16.0001 11V17Z" /></svg>
+                    Alert at <span id="target-val">5</span>m
+                </div>
+
+                <div class="controls-wrapper">
+                    <button id="lapResetBtn" class="round-btn secondary">Lap</button>
+                    
+                    <div class="dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                    </div>
+
+                    <button id="startStopBtn" class="round-btn primary">Start</button>
+                </div>
+            </div>
+
+            <div class="settings-grid">
+                
+                <div class="setting-box">
+                    <span class="label">Set Alert (Minutes)</span>
+                    <div class="chip-group">
+                        <button class="chip" onclick="setTarget(1)">1m</button>
+                        <button class="chip" onclick="setTarget(5)">5m</button>
+                        <button class="chip" onclick="setTarget(10)">10m</button>
+                        
+                        <div class="custom-chip-wrapper">
+                            <input type="number" id="customInput" class="custom-input" placeholder="Custom" min="1" oninput="setCustomTarget(this.value)">
+                        </div>
+
+                        <button class="chip active off-btn" onclick="setTarget(0)">Off</button>
+                    </div>
+                </div>
+
+                <div class="setting-box row">
+                    <div class="opt">
+                        <span class="label">Sound</span>
+                        <label class="switch">
+                            <input type="checkbox" id="soundToggle" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="opt">
+                        <span class="label">Theme</span>
+                        <select id="themeSelect" class="theme-select">
+                            <option value="default">Blue</option>
+                            <option value="ocean">Ocean</option>
+                            <option value="sunset">Sunset</option>
+                            <option value="neon">Neon</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="laps-section hidden" id="lapsSection">
+                <div class="laps-header">
+                    <span>Lap No.</span>
+                    <span>Split Time</span>
+                </div>
+                <ul id="lapsList" class="laps-list"></ul>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Advanced Online Stopwatch with Laps</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Stopwatch is a precise time-tracking tool designed for professionals, students, and athletes. Whether you are timing a sprint, managing a <strong>Pomodoro study session</strong>, or cooking in the kitchen, our stopwatch provides millisecond accuracy with customizable alerts.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Key Features</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Millisecond Precision:</strong> Track time down to the smallest fraction (00:00.00).</li>
+                <li><strong>Lap Functionality:</strong> Record split times for multiple laps without stopping the main timer. Perfect for runners.</li>
+                <li><strong>Smart Alerts:</strong> Set a custom target (e.g., 25 minutes for study) and get a sound notification when time is up.</li>
+                <li><strong>Custom Themes:</strong> Switch between Blue, Ocean, Sunset, and Neon modes to reduce eye strain.</li>
+            </ul>
+
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Use Cases</h3>
+            <p style="line-height: 1.6;">
+                <strong>For Students:</strong> Use the 25-minute alert for efficient study sessions.<br>
+                <strong>For Fitness:</strong> Time your planks, intervals, or rest periods between sets.<br>
+                <strong>For Productivity:</strong> Measure how long tasks take to improve your time management.
+            </p>
+        </article>
+
+    </main>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Stopwatch Features</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>• Custom Alert:</strong> Type any minute (e.g., 25) in the 'Custom' box to get an alarm.</p>
+                <p><strong>• Themes:</strong> Switch between colors to match your mood.</p>
+                <p><strong>• Precision:</strong> Tracks milliseconds for accurate timing.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>
