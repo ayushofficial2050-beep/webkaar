@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Free Online Signature Generator - Draw & Download Signature | WebKaar</title>
+    <meta name="description" content="Create your digital signature online for free. Draw your e-signature on mobile or desktop and download as a transparent PNG. Perfect for PDFs and docs.">
+    <meta name="keywords" content="signature generator, digital signature, e-signature, online signature maker, draw signature, webkaar">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/signature-generator/">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Signature Maker</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="controls-bar">
+                <div class="color-picker-group">
+                    <button class="color-btn active" data-color="#000000" style="background: #000;"></button>
+                    <button class="color-btn" data-color="#0047AB" style="background: #0047AB;"></button>
+                    <button class="color-btn" data-color="#FF0000" style="background: #FF0000;"></button>
+                </div>
+                
+                <div class="size-slider">
+                    <label>Pen Size</label>
+                    <input type="range" id="pen-size" min="1" max="5" value="2">
+                </div>
+            </div>
+
+            <div class="canvas-wrapper">
+                <canvas id="sig-canvas"></canvas>
+                <div class="placeholder-text" id="placeholder">Sign Here</div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="clear-btn" class="secondary-btn">Clear</button>
+                <button id="download-btn" class="primary-btn">Download PNG</button>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Create E-Signature Online</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                Need to sign a PDF or document? Use WebKaar's Digital Signature Generator to draw your signature and download it as a transparent image.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why use this tool?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Paperless:</strong> No need to print, sign, and scan.</li>
+                <li><strong>Transparent:</strong> Downloads as PNG with no background.</li>
+                <li><strong>Secure:</strong> Your signature is processed locally in your browser.</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Signature Downloaded!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Draw:</strong> Use your mouse or finger to sign in the box.</p>
+                <p><strong>Customize:</strong> Change pen color (Black/Blue/Red) and size.</p>
+                <p><strong>Save:</strong> Download transparent PNG to use in documents.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

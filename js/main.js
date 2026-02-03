@@ -70,7 +70,27 @@ const TOOLS_DB = [
         featured: true,
         badge: null
     },
-    
+{
+    id: 'speed-test',
+    title: 'Internet Speed Test',
+    category: 'utility',
+    desc: 'Check internet download speed and ping latency',
+    tags: ['speed', 'internet', 'wifi', 'download', 'check'],
+    url: 'tools/speed-test/index.html',
+    featured: true,
+    badge: 'hot'
+},
+    {
+        id: 'typing-test',
+        title: 'Typing Speed Test',
+        category: 'utility',
+        desc: 'Check your typing speed (WPM) and accuracy',
+        tags: ['typing', 'speed', 'wpm', 'test', 'game'],
+        url: 'tools/typing-test/index.html',
+        featured: true,
+        badge: 'hot'
+    },
+
     // --- 2. PDF TOOLS (New Section) ---
     {
         id: 'pdf-compressor',
@@ -296,7 +316,17 @@ const TOOLS_DB = [
     url: 'tools/duplicate-remover/index.html',
     featured: false,
     badge: 'new'
-}
+},
+    {
+        id: 'signature-generator',
+        title: 'Signature Generator',
+        category: 'utility',
+        desc: 'Draw and download digital signatures',
+        tags: ['sign', 'signature', 'draw', 'pdf', 'png'],
+        url: 'tools/signature-generator/index.html',
+        featured: true,
+        badge: 'new'
+    }
 ];
 
 /* ==========================================================================
@@ -330,7 +360,11 @@ const ICON_LIBRARY = {
     'aspect-ratio': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line></svg>',
     'pdf-compressor': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>',
 'gradient-generator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="21" x2="21" y2="3"></line></svg>',
-'duplicate-remover': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>'
+'duplicate-remover': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>',
+'speed-test': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12A10 10 0 0 0 12 2v10zM2 12a10 10 0 0 1 10-10v10z"></path><path d="M12 22a10 10 0 0 0 10-10H2a10 10 0 0 0 10 10z"></path></svg>',
+    'typing-test': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="12" rx="2"></rect><path d="M6 16v4"></path><path d="M10 16v4"></path><path d="M14 16v4"></path><path d="M18 16v4"></path><path d="M2 20h20"></path></svg>',
+
+'signature-generator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3l5 5L8 21H3v-5L16 3z"></path><path d="M12 18l-4 4"></path><path d="M20 22h-6"></path></svg>'
 };
 
 /* ==========================================================================

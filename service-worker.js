@@ -1,10 +1,10 @@
 /**
  * WebKaar Ultimate Service Worker
  * Features: Instant Updates, Offline Support, Smart Caching
- * Version: v21 (Always change this number when you update code)
+ * Version: v24 (Always change this number when you update code)
  */
 
-const CACHE_NAME = 'webkaar-v21-live'; // ✅ Jab bhi code update karo, ye number badha dena (v8 -> v21)
+const CACHE_NAME = 'webkaar-v24-live'; // ✅ Jab bhi code update karo, ye number badha dena (v8 -> v24)
 
 // 1. FILES TO CACHE IMMEDIATELY (App Shell)
 // Sirf wo files jo website khulne ke liye zaroori hain
@@ -18,6 +18,7 @@ const CORE_ASSETS = [
     './js/main.js',
     './js/api.js',             // Screenshot mein ye file thi, isliye add kiya hai
     './images/logo.png',
+'./images/webkaar.mp4',
     './images/favicon-32x32.png',
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
     'https://unpkg.com/@phosphor-icons/web'

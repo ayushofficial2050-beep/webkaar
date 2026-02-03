@@ -170,4 +170,20 @@
   <priority>0.80</priority>
 </url>
 
+<url>
+  <loc>https://webkaar.pages.dev/tools/speed-test/</loc>
+  <lastmod>2026-01-29T21:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/typing-test/</loc>
+  <lastmod>2026-01-29T21:30:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://webkaar.pages.dev/tools/signature-generator/</loc>
+  <lastmod>2026-02-03T21:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
 </urlset>
