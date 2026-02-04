@@ -412,3 +412,122 @@ body.dark-mode .bottom-nav {
     background: rgba(15, 23, 42, 0.85);
     border-bottom: 1px solid rgba(255,255,255,0.05);
 }
+/* =========================================
+   STICKY SOCIAL SIDEBAR (FINAL COMPACT)
+   ========================================= */
+.sticky-social-bar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Gap aur kam kiya */
+    padding: 8px;
+    
+    /* 🔥 TRANSPARENT GREY BLUE (See-through) */
+    background: rgba(30, 41, 59, 0.85); /* Dark Grey-Blue with 85% opacity */
+    backdrop-filter: blur(8px);          /* Blur effect peeche */
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* 🔥 SHARP EDGES (No Curve) */
+    border-radius: 0px; 
+    
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: none;
+    box-shadow: -4px 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Dark Mode Adjustment */
+body.dark-mode .sticky-social-bar {
+    background: rgba(15, 23, 42, 0.9); /* Thoda aur dark */
+}
+
+/* --- BUTTONS (SMALL & COLORFUL) --- */
+.social-btn {
+    width: 32px;  /* 🔥 EXTRA SMALL SIZE (Desktop) */
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Sharp Square Buttons */
+    border-radius: 2px; 
+    
+    color: white !important;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.social-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* --- ALWAYS COLORFUL (Not just on hover) --- */
+.social-btn.whatsapp { background: #25D366; }
+.social-btn.facebook { background: #1877F2; }
+.social-btn.twitter { background: #000000; }
+.social-btn.copy-link { background: #475569; }
+
+/* Dark Mode Twitter */
+body.dark-mode .social-btn.twitter { background: #ffffff; color: black !important; }
+
+/* Hover Effect */
+.social-btn:hover {
+    transform: translateX(-3px);
+    filter: brightness(1.1); /* Thoda chamkega */
+}
+
+/* --- TOOLTIP (SHARP) --- */
+.tooltip {
+    position: absolute;
+    right: 45px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 0px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.social-btn:hover .tooltip { opacity: 1; visibility: visible; }
+
+/* --------------------------------------
+   MOBILE OPTIMIZATION
+   -------------------------------------- */
+@media (max-width: 768px) {
+    .sticky-social-bar {
+        top: auto;
+        bottom: 140px; /* Thoda aur upar */
+        right: 0;
+        transform: none;
+        
+        /* Mobile Padding & Gap */
+        padding: 6px;
+        gap: 6px;
+        
+        /* Sharp Edges on Mobile too */
+        border-radius: 4px 0 0 4px; 
+    }
+
+    .social-btn {
+        width: 30px;  /* 🔥 EXTRA SMALL SIZE (Mobile) */
+        height: 30px;
+    }
+    
+    .social-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .tooltip { display: none; }
+}
+
