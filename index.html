@@ -557,6 +557,8 @@
             <li><a href="tools/html-formatter/index.html">HTML Formatter</a></li>
             <li><a href="tools/uuid-generator/index.html">UUID Generator</a></li>
             <li><a href="tools/unix-time/index.html">Unix Timestamp Converter</a></li>
+<li><a href="tools/age-calculator/index.html">Age Calculator</a></li>
+
 
             <li><a href="pages/about.html">About WebKaar</a></li>
             <li><a href="pages/contact.html">Contact Us</a></li>
@@ -564,6 +566,70 @@
             <li><a href="pages/disclaimer.html">Disclaimer</a></li>
         </ul>
     </noscript>
+
+    <div id="install-banner" class="install-banner" style="display: none;">
+        <div class="install-content">
+            <img src="images/icon192.png" alt="App Icon" class="install-icon">
+            <div class="install-text">
+                <h3>Install WebKaar</h3>
+                <p>Add to Home Screen for fast access.</p>
+            </div>
+        </div>
+        <div class="install-actions">
+            <button id="btn-install" class="btn-install">Install</button>
+            <button id="btn-close-install" class="btn-close">Not Now</button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            let deferredPrompt;
+            const banner = document.getElementById('install-banner');
+            const installBtn = document.getElementById('btn-install');
+            const closeBtn = document.getElementById('btn-close-install');
+
+            // 1. Check agar user ne pehle kabhi close/install kiya hai
+            const hasSeenPrompt = localStorage.getItem('webkaar_install_seen');
+
+            if (!hasSeenPrompt) {
+                // Agar nahi dekha, tabhi event listener lagao
+                window.addEventListener('beforeinstallprompt', (e) => {
+                    e.preventDefault();
+                    deferredPrompt = e;
+                    
+                    // 3 Second baad show karo (Thoda smooth lagta hai)
+                    setTimeout(() => {
+                        banner.style.display = 'flex'; // Show banner
+                    }, 3000);
+                });
+            }
+
+            // 2. Install Button Click
+            installBtn.addEventListener('click', async () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    const { outcome } = await deferredPrompt.userChoice;
+                    console.log('User response:', outcome);
+                    deferredPrompt = null;
+                }
+                // Hide and Save Preference
+                banner.style.display = 'none';
+                localStorage.setItem('webkaar_install_seen', 'true');
+            });
+
+            // 3. Close Button Click (Dobara nahi dikhega)
+            closeBtn.addEventListener('click', () => {
+                banner.style.display = 'none';
+                localStorage.setItem('webkaar_install_seen', 'true');
+            });
+
+            // 4. Agar already install ho gaya
+            window.addEventListener('appinstalled', () => {
+                banner.style.display = 'none';
+                localStorage.setItem('webkaar_install_seen', 'true');
+            });
+        })();
+    </script>
 
 </body>
 </html>

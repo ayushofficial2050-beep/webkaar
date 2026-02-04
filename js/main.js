@@ -37,6 +37,18 @@ const TOOLS_DB = [
     { id: 'my-ip', title: 'What is My IP', category: 'utility', desc: 'Check public IP address', tags: ['network', 'address', 'wifi'], url: 'tools/my-ip/index.html', featured: false, badge: null },
     { id: 'unit-converter', title: 'Unit Converter', category: 'converter', desc: 'Convert length, weight', tags: ['math', 'measure', 'metric'], url: 'tools/unit-converter/index.html', featured: true, badge: null },
     { id: 'bmi-calculator', title: 'BMI Calculator', category: 'utility', desc: 'Calculate Body Mass Index', tags: ['health', 'weight', 'medical'], url: 'tools/bmi-calculator/index.html', featured: false, badge: null },
+     
+{ 
+    id: 'age-calculator', 
+    title: 'Age Calculator', 
+    category: 'utility', 
+    desc: 'Calculate exact age & next birthday', 
+    tags: ['age', 'birthday', 'date', 'calc'], 
+    url: 'tools/age-calculator/index.html', 
+    featured: true, 
+    badge: 'new' 
+},
+
     { id: 'duplicate-remover', title: 'Duplicate Remover', category: 'text', desc: 'Remove duplicate lines', tags: ['text', 'clean', 'list'], url: 'tools/duplicate-remover/index.html', featured: false, badge: 'new' },
     { id: 'text-diff', title: 'Text Diff Checker', category: 'utility', desc: 'Compare two texts', tags: ['compare', 'difference', 'git'], url: 'tools/text-diff/index.html', featured: false, badge: null },
     { id: 'lorem-ipsum', title: 'Lorem Ipsum', category: 'utility', desc: 'Generate dummy text', tags: ['dummy', 'text', 'design'], url: 'tools/lorem-ipsum/index.html', featured: false, badge: null },
@@ -105,7 +117,9 @@ const ICON_LIBRARY = {
     'typing-test': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="12" rx="2"></rect><path d="M6 16v4"></path><path d="M10 16v4"></path><path d="M14 16v4"></path><path d="M18 16v4"></path><path d="M2 20h20"></path></svg>',
     'signature-generator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3l5 5L8 21H3v-5L16 3z"></path><path d="M12 18l-4 4"></path><path d="M20 22h-6"></path></svg>',
     'steganography': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12l5 5L22 3"></path><path d="M12 17a5 5 0 0 0-5-5"></path><path d="M12 7a5 5 0 0 1 5 5"></path></svg>',
-'video-compressor': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>'
+'video-compressor': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>',
+'age-calculator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>'
+
 };
 
 /* ==========================================================================

@@ -51,7 +51,7 @@ We currently host **20+ Professional Tools** across various categories:
 
 | Light Mode | Dark Mode |
 |:---:|:---:|
-| <img src="images/screenshot-light.png" alt="Light Mode" width="250"> | <img src="images/screenshot-dark.png" alt="Dark Mode" width="250"> |
+| <img src="images/screenshot1.jpg" alt="Light Mode" width="250"> | <img src="images/screenshot2.jpg" alt="Dark Mode" width="250"> |
 
 > *Note: Open the app on mobile for the best experience.*
 

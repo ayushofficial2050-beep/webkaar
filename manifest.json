@@ -1,11 +1,12 @@
 {
-  "name": "WebKaar",
+  "name": "WebKaar Tools",
   "short_name": "WebKaar",
   "start_url": "./index.html",
+  "id": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
-  "description": "Professional offline tools for developers and creators.",
+  "description": "50+ Free Tools for Developers & Creators. Image Tools, PDF Tools, Converters & More.",
   "orientation": "portrait-primary",
   "icons": [
     {
@@ -21,25 +22,48 @@
       "purpose": "any maskable"
     }
   ],
+  "shortcuts": [
+    {
+      "name": "Compress Image",
+      "short_name": "Compressor",
+      "description": "Reduce image size instantly",
+      "url": "/tools/image-compressor/index.html",
+      "icons": [{ "src": "images/icon192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Age Calculator",
+      "short_name": "My Age",
+      "description": "Check your exact age",
+      "url": "/tools/age-calculator/index.html",
+      "icons": [{ "src": "images/icon192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Image Resizer",
+      "short_name": "Resizer",
+      "description": "Change image dimensions",
+      "url": "/tools/image-resizer/index.html",
+      "icons": [{ "src": "images/icon192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/screenshot1.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "label": "Home Screen"
+    },
+    {
+      "src": "images/screenshot2.jpg",
+      "sizes": "1080x1920",
+      "type": "image/jpg",
+      "form_factor": "narrow",
+      "label": "Tools List"
+    }
+  ],
   "categories": [
     "productivity",
     "utilities",
     "developer tools"
-  ],
-  "screenshots": [
-    {
-      "src": "images/screenshot-light.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Home Screen Light Mode"
-    },
-    {
-      "src": "images/screenshot-dark.png",
-      "sizes": "1080x1920",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Home Screen Dark Mode"
-    }
   ]
 }
