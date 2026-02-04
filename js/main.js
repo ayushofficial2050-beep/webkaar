@@ -1,7 +1,6 @@
 /**
  * WebKaar - Professional Web Application
- * Main Logic Controller (Fixed: Badge & Slider)
- * Version: 3.1.0 (Bug Fixes)
+ * Main Logic Controller (Final V7.0 - Lag Free + Auto Slide Fixed)
  * @author Ayush Tiwari
  */
 
@@ -12,320 +11,61 @@
    ========================================================================== */
 
 const APP_CONFIG = {
-    version: '3.2.0', // Version bump for new tool
+    version: '7.0.0',
     localStorageKeys: { theme: 'webkaar_theme_pref' },
     searchDebounce: 250,
-    sliderInterval: 3000 // 3 Seconds speed
+    sliderInterval: 3000 // 3 Seconds Auto Slide Speed
 };
 
 const TOOLS_DB = [
     // --- 1. IMAGE TOOLS ---
-    {
-        id: 'image-compressor',
-        title: 'Image Compressor',
-        category: 'design',
-        desc: 'Reduce file size instantly without quality loss',
-        tags: ['photo', 'jpg', 'png', 'reduce', 'optimize'],
-        url: 'tools/image-compressor/index.html',
-        featured: true,
-        badge: 'hot'
-    },
-    {
-        id: 'image-resizer',
-        title: 'Image Resizer',
-        category: 'design',
-        desc: 'Resize images to specific dimensions (px)',
-        tags: ['photo', 'scale', 'dimension', 'width', 'height'],
-        url: 'tools/image-resizer/index.html',
-        featured: true,
-        badge: null
-    },
-    {
-        id: 'img-to-pdf',
-        title: 'Image to PDF',
-        category: 'converter',
-        desc: 'Convert JPG/PNG images to PDF document',
-        tags: ['photo', 'document', 'convert', 'scan'],
-        url: 'tools/img-to-pdf/index.html',
-        featured: false,
-        badge: 'hot'
-    },
-    {
-        id: 'aspect-ratio',
-        title: 'Aspect Ratio Calc',
-        category: 'design',
-        desc: 'Calculate dimensions based on ratio',
-        tags: ['screen', 'width', 'height', 'scale'],
-        url: 'tools/aspect-ratio/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'color-picker',
-        title: 'Color Picker',
-        category: 'design',
-        desc: 'Get HEX, RGB, and HSL color codes',
-        tags: ['palette', 'paint', 'css', 'hex'],
-        url: 'tools/color-picker/index.html',
-        featured: true,
-        badge: null
-    },
-{
-    id: 'speed-test',
-    title: 'Internet Speed Test',
-    category: 'utility',
-    desc: 'Check internet download speed and ping latency',
-    tags: ['speed', 'internet', 'wifi', 'download', 'check'],
-    url: 'tools/speed-test/index.html',
-    featured: true,
-    badge: 'hot'
-},
-    {
-        id: 'typing-test',
-        title: 'Typing Speed Test',
-        category: 'utility',
-        desc: 'Check your typing speed (WPM) and accuracy',
-        tags: ['typing', 'speed', 'wpm', 'test', 'game'],
-        url: 'tools/typing-test/index.html',
-        featured: true,
-        badge: 'hot'
-    },
+    { id: 'image-compressor', title: 'Image Compressor', category: 'design', desc: 'Reduce file size instantly', tags: ['photo', 'jpg', 'png', 'reduce'], url: 'tools/image-compressor/index.html', featured: true, badge: 'hot' },
+    { id: 'image-resizer', title: 'Image Resizer', category: 'design', desc: 'Resize images to dimensions', tags: ['photo', 'scale', 'dimension'], url: 'tools/image-resizer/index.html', featured: true, badge: null },
+    { id: 'img-to-pdf', title: 'Image to PDF', category: 'converter', desc: 'Convert JPG/PNG to PDF', tags: ['photo', 'document', 'convert'], url: 'tools/img-to-pdf/index.html', featured: false, badge: 'hot' },
+    { id: 'aspect-ratio', title: 'Aspect Ratio Calc', category: 'design', desc: 'Calculate dimensions based on ratio', tags: ['screen', 'width', 'scale'], url: 'tools/aspect-ratio/index.html', featured: false, badge: null },
+    { id: 'color-picker', title: 'Color Picker', category: 'design', desc: 'Get HEX, RGB, HSL codes', tags: ['palette', 'paint', 'css'], url: 'tools/color-picker/index.html', featured: true, badge: null },
+    { id: 'gradient-generator', title: 'Gradient Generator', category: 'design', desc: 'Create CSS gradients', tags: ['css', 'color', 'background'], url: 'tools/gradient-generator/index.html', featured: true, badge: 'new' },
 
-    // --- 2. PDF TOOLS (New Section) ---
-    {
-        id: 'pdf-compressor',
-        title: 'PDF Compressor',
-        category: 'utility',
-        desc: 'Reduce PDF file size with adjustable quality slider',
-        tags: ['pdf', 'compress', 'shrink', 'optimize', 'size'],
-        url: 'tools/pdf-compressor/index.html',
-        featured: true,
-        badge: 'new'
-    },
-    {
-        id: 'pdf-merger',
-        title: 'PDF Merger',
-        category: 'utility',
-        desc: 'Combine multiple PDFs into one file',
-        tags: ['document', 'combine', 'join', 'office'],
-        url: 'tools/pdf-merger/index.html',
-        featured: false,
-        badge: 'hot'
-    },
+    // --- 2. UTILITY & TEXT ---
+    { id: 'speed-test', title: 'Internet Speed Test', category: 'utility', desc: 'Check internet speed', tags: ['speed', 'internet', 'wifi'], url: 'tools/speed-test/index.html', featured: true, badge: 'hot' },
+    { id: 'typing-test', title: 'Typing Speed Test', category: 'utility', desc: 'Check typing WPM', tags: ['typing', 'speed', 'game'], url: 'tools/typing-test/index.html', featured: true, badge: 'hot' },
+    { id: 'signature-generator', title: 'Signature Generator', category: 'utility', desc: 'Draw digital signatures', tags: ['sign', 'draw', 'pdf'], url: 'tools/signature-generator/index.html', featured: true, badge: 'new' },
+    { id: 'qr-generator', title: 'QR Code Generator', category: 'utility', desc: 'Create custom QR codes', tags: ['barcode', 'scan', 'link'], url: 'tools/qr-generator/index.html', featured: true, badge: 'hot' },
+    { id: 'password-gen', title: 'Password Generator', category: 'utility', desc: 'Generate strong passwords', tags: ['security', 'lock', 'privacy'], url: 'tools/password-gen/index.html', featured: true, badge: 'hot' },
+    { id: 'stopwatch', title: 'Stopwatch', category: 'utility', desc: 'Online stopwatch with laps', tags: ['time', 'clock', 'timer'], url: 'tools/stopwatch/index.html', featured: true, badge: null },
+    { id: 'word-counter', title: 'Word Counter', category: 'utility', desc: 'Count words and chars', tags: ['text', 'write', 'seo'], url: 'tools/word-counter/index.html', featured: true, badge: null },
+    { id: 'my-ip', title: 'What is My IP', category: 'utility', desc: 'Check public IP address', tags: ['network', 'address', 'wifi'], url: 'tools/my-ip/index.html', featured: false, badge: null },
+    { id: 'unit-converter', title: 'Unit Converter', category: 'converter', desc: 'Convert length, weight', tags: ['math', 'measure', 'metric'], url: 'tools/unit-converter/index.html', featured: true, badge: null },
+    { id: 'bmi-calculator', title: 'BMI Calculator', category: 'utility', desc: 'Calculate Body Mass Index', tags: ['health', 'weight', 'medical'], url: 'tools/bmi-calculator/index.html', featured: false, badge: null },
+    { id: 'duplicate-remover', title: 'Duplicate Remover', category: 'text', desc: 'Remove duplicate lines', tags: ['text', 'clean', 'list'], url: 'tools/duplicate-remover/index.html', featured: false, badge: 'new' },
+    { id: 'text-diff', title: 'Text Diff Checker', category: 'utility', desc: 'Compare two texts', tags: ['compare', 'difference', 'git'], url: 'tools/text-diff/index.html', featured: false, badge: null },
+    { id: 'lorem-ipsum', title: 'Lorem Ipsum', category: 'utility', desc: 'Generate dummy text', tags: ['dummy', 'text', 'design'], url: 'tools/lorem-ipsum/index.html', featured: false, badge: null },
+    { id: 'case-converter', title: 'Case Converter', category: 'utility', desc: 'Convert text case', tags: ['text', 'caps', 'format'], url: 'tools/case-converter/index.html', featured: false, badge: null },
+    { id: 'markdown-editor', title: 'Markdown Editor', category: 'utility', desc: 'Write and preview Markdown', tags: ['md', 'write', 'preview'], url: 'tools/markdown-editor/index.html', featured: false, badge: null },
+    { id: 'steganography', title: 'Secret Hider', category: 'utility', desc: 'Hide text in images', tags: ['spy', 'secret', 'image'], url: 'tools/steganography/index.html', featured: true, badge: 'hot' },
 
-    // --- 3. UTILITY TOOLS ---
-    {
-        id: 'qr-generator',
-        title: 'QR Code Generator',
-        category: 'utility',
-        desc: 'Create custom QR codes for links and text',
-        tags: ['barcode', 'scan', 'link', 'share'],
-        url: 'tools/qr-generator/index.html',
-        featured: true,
-        badge: 'hot'
-    },
-    {
-        id: 'password-gen',
-        title: 'Password Generator',
-        category: 'utility',
-        desc: 'Generate strong, secure random passwords',
-        tags: ['security', 'lock', 'random', 'privacy'],
-        url: 'tools/password-gen/index.html',
-        featured: true,
-        badge: 'hot'
-    },
-    {
-        id: 'stopwatch',
-        title: 'Stopwatch',
-        category: 'utility',
-        desc: 'Online stopwatch with laps and sound',
-        tags: ['time', 'clock', 'timer', 'lap'],
-        url: 'tools/stopwatch/index.html',
-        featured: true,
-        badge: null
-    },
-    {
-        id: 'word-counter',
-        title: 'Word Counter',
-        category: 'utility',
-        desc: 'Count words, characters, and sentences',
-        tags: ['text', 'write', 'blog', 'seo', 'essay'],
-        url: 'tools/word-counter/index.html',
-        featured: true,
-        badge: null
-    },
-    {
-        id: 'my-ip',
-        title: 'What is My IP',
-        category: 'utility',
-        desc: 'Check your public IP address and location',
-        tags: ['network', 'address', 'internet', 'wifi'],
-        url: 'tools/my-ip/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'unit-converter',
-        title: 'Unit Converter',
-        category: 'converter',
-        desc: 'Convert length, weight, temperature',
-        tags: ['math', 'measure', 'calc', 'metric'],
-        url: 'tools/unit-converter/index.html',
-        featured: true,
-        badge: null
-    },
-    {
-        id: 'bmi-calculator',
-        title: 'BMI Calculator',
-        category: 'utility',
-        desc: 'Calculate Body Mass Index for health',
-        tags: ['health', 'fitness', 'weight', 'medical'],
-        url: 'tools/bmi-calculator/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'text-diff',
-        title: 'Text Diff Checker',
-        category: 'utility',
-        desc: 'Compare two texts for differences',
-        tags: ['compare', 'difference', 'merge', 'git'],
-        url: 'tools/text-diff/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'lorem-ipsum',
-        title: 'Lorem Ipsum',
-        category: 'utility',
-        desc: 'Generate dummy text for designs',
-        tags: ['dummy', 'text', 'filler', 'design'],
-        url: 'tools/lorem-ipsum/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'case-converter',
-        title: 'Case Converter',
-        category: 'utility',
-        desc: 'Convert text to UPPERCASE, lowercase',
-        tags: ['text', 'caps', 'capital', 'format'],
-        url: 'tools/case-converter/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'markdown-editor',
-        title: 'Markdown Editor',
-        category: 'utility',
-        desc: 'Write and preview Markdown live',
-        tags: ['md', 'readme', 'write', 'preview'],
-        url: 'tools/markdown-editor/index.html',
-        featured: false,
-        badge: null
-    },
+    // --- 3. PDF TOOLS ---
+    { id: 'pdf-compressor', title: 'PDF Compressor', category: 'utility', desc: 'Reduce PDF file size', tags: ['pdf', 'compress', 'size'], url: 'tools/pdf-compressor/index.html', featured: true, badge: 'new' },
+    { id: 'pdf-merger', title: 'PDF Merger', category: 'utility', desc: 'Combine PDFs', tags: ['document', 'combine', 'join'], url: 'tools/pdf-merger/index.html', featured: false, badge: 'hot' },
 
-    // --- 4. DEVELOPER TOOLS ---
-    {
-        id: 'json-formatter',
-        title: 'JSON Formatter',
-        category: 'dev',
-        desc: 'Beautify, validate and minify JSON',
-        tags: ['code', 'developer', 'parse', 'lint'],
-        url: 'tools/json-formatter/index.html',
-        featured: true,
-        badge: 'hot'
-    },
-    {
-        id: 'base64',
-        title: 'Base64 Tool',
-        category: 'dev',
-        desc: 'Encode and Decode Base64 strings',
-        tags: ['decoder', 'encoder', 'binary', 'text'],
-        url: 'tools/base64/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'url-encoder',
-        title: 'URL Encoder',
-        category: 'dev',
-        desc: 'Encode and Decode URLs safely',
-        tags: ['link', 'percent', 'escape', 'web'],
-        url: 'tools/url-encoder/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'css-minifier',
-        title: 'CSS Minifier',
-        category: 'dev',
-        desc: 'Minify CSS code to reduce file size',
-        tags: ['style', 'optimize', 'compress', 'web'],
-        url: 'tools/css-minifier/index.html',
-        featured: false,
-        badge: null 
-    },
-    {
-        id: 'html-formatter',
-        title: 'HTML Formatter',
-        category: 'dev',
-        desc: 'Beautify and indent HTML code',
-        tags: ['markup', 'web', 'pretty', 'clean'],
-        url: 'tools/html-formatter/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'uuid-generator',
-        title: 'UUID Generator',
-        category: 'dev',
-        desc: 'Generate unique v4 UUIDs',
-        tags: ['guid', 'id', 'unique', 'identifier'],
-        url: 'tools/uuid-generator/index.html',
-        featured: false,
-        badge: null
-    },
-    {
-        id: 'unix-time',
-        title: 'Unix Timestamp',
-        category: 'dev',
-        desc: 'Convert human time to Unix epoch',
-        tags: ['date', 'epoch', 'seconds', 'time'],
-        url: 'tools/unix-time/index.html',
-        featured: false,
-        badge: null
-    },
-{
-    id: 'gradient-generator',
-    title: 'Gradient Generator',
-    category: 'design',
-    desc: 'Create CSS gradients and get copy-paste code',
-    tags: ['css', 'color', 'background', 'generator', 'design'],
-    url: 'tools/gradient-generator/index.html',
-    featured: true,
-    badge: 'new'
-},
-
-{
-    id: 'duplicate-remover',
-    title: 'Duplicate Remover',
-    category: 'text',
-    desc: 'Remove duplicate lines and clean text lists',
-    tags: ['text', 'clean', 'list', 'deduplicate', 'unique','Remover'],
-    url: 'tools/duplicate-remover/index.html',
-    featured: false,
-    badge: 'new'
-},
-    {
-        id: 'signature-generator',
-        title: 'Signature Generator',
-        category: 'utility',
-        desc: 'Draw and download digital signatures',
-        tags: ['sign', 'signature', 'draw', 'pdf', 'png'],
-        url: 'tools/signature-generator/index.html',
-        featured: true,
-        badge: 'new'
+    // --- 4. DEV TOOLS ---
+    { id: 'json-formatter', title: 'JSON Formatter', category: 'dev', desc: 'Beautify & minify JSON', tags: ['code', 'developer', 'json'], url: 'tools/json-formatter/index.html', featured: true, badge: 'hot' },
+    { id: 'base64', title: 'Base64 Tool', category: 'dev', desc: 'Encode/Decode Base64', tags: ['decoder', 'encoder', 'text'], url: 'tools/base64/index.html', featured: false, badge: null },
+    { id: 'url-encoder', title: 'URL Encoder', category: 'dev', desc: 'Encode/Decode URLs', tags: ['link', 'escape', 'web'], url: 'tools/url-encoder/index.html', featured: false, badge: null },
+    { id: 'css-minifier', title: 'CSS Minifier', category: 'dev', desc: 'Minify CSS code', tags: ['style', 'optimize', 'web'], url: 'tools/css-minifier/index.html', featured: false, badge: null },
+    { id: 'html-formatter', title: 'HTML Formatter', category: 'dev', desc: 'Beautify HTML code', tags: ['markup', 'web', 'clean'], url: 'tools/html-formatter/index.html', featured: false, badge: null },
+    { id: 'uuid-generator', title: 'UUID Generator', category: 'dev', desc: 'Generate unique UUIDs', tags: ['guid', 'id', 'unique'], url: 'tools/uuid-generator/index.html', featured: false, badge: null },
+    { id: 'unix-time', title: 'Unix Timestamp', category: 'dev', desc: 'Convert Unix time', tags: ['date', 'epoch', 'time'], url: 'tools/unix-time/index.html', featured: false, badge: null },
+// --- VIDEO TOOLS (Add New) ---
+    { 
+        id: 'video-compressor', 
+        title: 'Video Compressor', 
+        category: 'converter', 
+        desc: 'Reduce video size efficiently (MP4/MOV)', 
+        tags: ['video', 'mp4', 'compress', 'size', 'reduce'], 
+        url: 'tools/video-compressor/index.html', 
+        featured: true, 
+        badge: 'new' 
     }
 ];
 
@@ -359,24 +99,17 @@ const ICON_LIBRARY = {
     'color-picker': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>',
     'aspect-ratio': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line></svg>',
     'pdf-compressor': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 14 10 14 10 20"></polyline><polyline points="20 10 14 10 14 4"></polyline><line x1="14" y1="10" x2="21" y2="3"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>',
-'gradient-generator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="21" x2="21" y2="3"></line></svg>',
-'duplicate-remover': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>',
-'speed-test': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12A10 10 0 0 0 12 2v10zM2 12a10 10 0 0 1 10-10v10z"></path><path d="M12 22a10 10 0 0 0 10-10H2a10 10 0 0 0 10 10z"></path></svg>',
+    'gradient-generator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="21" x2="21" y2="3"></line></svg>',
+    'duplicate-remover': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>',
+    'speed-test': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12A10 10 0 0 0 12 2v10zM2 12a10 10 0 0 1 10-10v10z"></path><path d="M12 22a10 10 0 0 0 10-10H2a10 10 0 0 0 10 10z"></path></svg>',
     'typing-test': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="12" rx="2"></rect><path d="M6 16v4"></path><path d="M10 16v4"></path><path d="M14 16v4"></path><path d="M18 16v4"></path><path d="M2 20h20"></path></svg>',
-
-'signature-generator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3l5 5L8 21H3v-5L16 3z"></path><path d="M12 18l-4 4"></path><path d="M20 22h-6"></path></svg>'
+    'signature-generator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3l5 5L8 21H3v-5L16 3z"></path><path d="M12 18l-4 4"></path><path d="M20 22h-6"></path></svg>',
+    'steganography': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12l5 5L22 3"></path><path d="M12 17a5 5 0 0 0-5-5"></path><path d="M12 7a5 5 0 0 1 5 5"></path></svg>',
+'video-compressor': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>'
 };
 
 /* ==========================================================================
-   3. DOM ELEMENT CACHING & INIT
-   ========================================================================== */
-
-const DOM = {
-    // We will fetch elements dynamically in INIT to avoid null errors
-};
-
-/* ==========================================================================
-   4. RENDER ENGINE
+   3. RENDER ENGINE (OPTIMIZED)
    ========================================================================== */
 
 const RenderManager = {
@@ -416,19 +149,21 @@ const RenderManager = {
         const total = allTools.length;
         const nextBatch = allTools.slice(this.currentIndex, this.currentIndex + this.BATCH_SIZE);
 
+        const fragment = document.createDocumentFragment();
+
         nextBatch.forEach(tool => {
             const cardHTML = this.createCard(tool);
-            grid.appendChild(cardHTML);
+            fragment.appendChild(cardHTML);
         });
 
+        grid.appendChild(fragment);
         this.currentIndex += this.BATCH_SIZE;
 
         if (loadMoreBtn) {
             if (this.currentIndex < total) {
                 loadMoreBtn.style.display = 'block';
-                loadMoreBtn.innerText = 'More Tools';
+                loadMoreBtn.textContent = 'Load More Tools';
                 loadMoreBtn.disabled = false;
-                loadMoreBtn.style.opacity = '1';
             } else {
                 loadMoreBtn.style.display = 'none';
             }
@@ -444,37 +179,28 @@ const RenderManager = {
         const bgClass = this.getIconColor(tool.category);
         let iconSVG = ICON_LIBRARY[tool.id] || ICON_LIBRARY['default'];
 
-        // Determine Badge
         let badgeHTML = '';
         if (tool.badge) {
             badgeHTML = `<span class="new-badge badge-${tool.badge}">${tool.badge.toUpperCase()}</span>`;
-        } else if (tool.featured && !tool.badge) {
-            // Only show HOT if no specific badge
-            badgeHTML = `<span class="new-badge badge-hot">HOT</span>`;
         }
 
         link.innerHTML = `
             <div class="tool-icon ${bgClass}">
                 ${iconSVG}
+                ${badgeHTML}
             </div>
             <div class="tool-meta">
                 <h3>${tool.title}</h3>
                 <span class="category-label">${this.capitalize(tool.category)}</span>
             </div>
-            ${badgeHTML}
         `;
         return link;
     },
 
     getIconColor(category) {
         const colors = {
-            'design': 'purple-bg',
-            'dev': 'dark-blue-bg',
-            'utility': 'green-bg',
-            'converter': 'orange-bg',
-            'text': 'red-bg',
-            'pdf': 'red-bg',
-            'health': 'blue-bg'
+            'design': 'purple-bg', 'dev': 'dark-blue-bg', 'utility': 'green-bg',
+            'converter': 'orange-bg', 'text': 'red-bg', 'pdf': 'red-bg', 'health': 'blue-bg'
         };
         return colors[category] || 'blue-bg';
     },
@@ -486,7 +212,7 @@ const RenderManager = {
 };
 
 /* ==========================================================================
-   5. THEME CONTROLLER
+   4. THEME CONTROLLER
    ========================================================================== */
 
 const ThemeManager = {
@@ -529,12 +255,11 @@ const ThemeManager = {
 };
 
 /* ==========================================================================
-   6. NAVIGATION CONTROLLER
+   5. NAVIGATION CONTROLLER
    ========================================================================== */
 
 const NavManager = {
     init() {
-        const sidebar = document.getElementById('sidebar-drawer');
         const btnOpen = document.getElementById('open-sidebar-btn');
         const btnClose = document.getElementById('close-sidebar-btn');
         const overlay = document.getElementById('app-overlay');
@@ -561,7 +286,7 @@ const NavManager = {
 };
 
 /* ==========================================================================
-   7. SEARCH ENGINE
+   6. SEARCH ENGINE
    ========================================================================== */
 
 const SearchManager = {
@@ -598,10 +323,8 @@ const SearchManager = {
     executeSearch(query) {
         const loadMore = document.querySelector('.load-more-wrapper');
         const grid = document.getElementById('tools-grid');
-        const noResultsId = 'no-results-msg';
 
         if (query === '') {
-            this.toggleNoResults(false);
             RenderManager.resetGrid();
             return;
         }
@@ -609,47 +332,30 @@ const SearchManager = {
         if (loadMore) loadMore.style.display = 'none';
         if (grid) grid.innerHTML = '';
         
+        const fragment = document.createDocumentFragment();
         let visibleCount = 0;
         
         TOOLS_DB.forEach(tool => {
-            const match = 
-                tool.title.toLowerCase().includes(query) || 
-                tool.category.includes(query) || 
-                tool.tags.join(' ').includes(query);
-
+            const match = tool.title.toLowerCase().includes(query) || tool.category.includes(query) || tool.tags.join(' ').includes(query);
             if (match) {
-                const card = RenderManager.createCard(tool);
-                grid.appendChild(card);
+                fragment.appendChild(RenderManager.createCard(tool));
                 visibleCount++;
             }
         });
 
-        this.toggleNoResults(visibleCount === 0);
-    },
-
-    toggleNoResults(show) {
-        const grid = document.getElementById('tools-grid');
-        let msg = document.getElementById('no-results-msg');
-        
-        if (show) {
-            if (!msg) {
-                msg = document.createElement('div');
-                msg.id = 'no-results-msg';
-                msg.style.textAlign = 'center';
-                msg.style.padding = '40px';
-                msg.style.gridColumn = '1 / -1';
-                msg.style.color = 'var(--text-muted)';
-                msg.innerHTML = `<p>No tools found matching your search.</p>`;
-                if(grid) grid.appendChild(msg);
-            }
+        if(visibleCount === 0) {
+            const msg = document.createElement('div');
+            msg.style.cssText = 'text-align:center; padding:40px; grid-column:1/-1; color:var(--text-muted);';
+            msg.innerHTML = `<p>No tools found matching "${query}".</p>`;
+            grid.appendChild(msg);
         } else {
-            if (msg) msg.remove();
+            grid.appendChild(fragment);
         }
     }
 };
 
 /* ==========================================================================
-   8. CATEGORY FILTER
+   7. CATEGORY FILTER
    ========================================================================== */
 
 const CategoryManager = {
@@ -663,7 +369,6 @@ const CategoryManager = {
                 tabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
                 
-                // Clear search when changing category
                 if (searchInput && searchInput.value !== '') {
                     searchInput.value = '';
                     if(clearBtn) clearBtn.classList.add('hidden');
@@ -677,7 +382,7 @@ const CategoryManager = {
 };
 
 /* ==========================================================================
-   9. HERO SLIDER LOGIC (Auto Swipe)
+   8. HERO SLIDER LOGIC (AUTO SLIDE ENABLED)
    ========================================================================== */
 
 const SliderManager = {
@@ -691,16 +396,17 @@ const SliderManager = {
 
         this.startAutoScroll();
 
-        // Pause on interaction
+        // Touch interactions (Pause on hold)
         this.slider.addEventListener('touchstart', () => this.pauseScroll());
         this.slider.addEventListener('mousedown', () => this.pauseScroll());
         
-        // Resume after
+        // Resume on release
         this.slider.addEventListener('touchend', () => this.resumeScroll());
         this.slider.addEventListener('mouseup', () => this.resumeScroll());
     },
 
     startAutoScroll() {
+        // Clear any existing interval to prevent double-speed
         if (this.interval) clearInterval(this.interval);
         
         this.interval = setInterval(() => {
@@ -714,13 +420,15 @@ const SliderManager = {
         if (!this.slider) return;
         
         // Calculate scroll amount based on card width + gap
+        // We look for the first card to get accurate width
         const card = this.slider.querySelector('.hero-card');
         if(!card) return;
         
+        // Card width + Gap (16px from CSS)
         const scrollAmount = card.offsetWidth + 16; 
         const maxScroll = this.slider.scrollWidth - this.slider.clientWidth;
 
-        // Reset if at end, else scroll forward
+        // Reset to start if we reached the end
         if (this.slider.scrollLeft >= maxScroll - 20) {
             this.slider.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
@@ -730,64 +438,20 @@ const SliderManager = {
 
     pauseScroll() {
         this.isPaused = true;
-        clearInterval(this.interval);
+        if (this.interval) clearInterval(this.interval);
     },
 
     resumeScroll() {
+        // Delay resume slightly to avoid jumpy behavior
         setTimeout(() => {
             this.isPaused = false;
             this.startAutoScroll();
-        }, 5000);
+        }, 500); // 0.5s delay before resuming
     }
 };
 
 /* ==========================================================================
-   10. APP INIT
-   ========================================================================== */
-
-const WebKaarApp = {
-    init() {
-        console.log(`%c WebKaar v${APP_CONFIG.version} - Loaded`, 'color: #2563eb; font-weight: bold;');
-        
-        ThemeManager.init();
-        RenderManager.init();
-        NavManager.init();
-        SearchManager.init();
-        CategoryManager.init();
-        
-        // Load Content & Slider
-        ContentLoader.init();
-        SliderManager.init(); 
-        
-        // --- NEW: Yahan se Intro Video start hoga ---
-        if (typeof IntroManager !== 'undefined') {
-            IntroManager.init();
-        }
-        
-        document.body.classList.add('loaded');
-    }
-};
-
-// Load More Button Logic
-const ContentLoader = {
-    init() {
-        const btn = document.getElementById('show-more-tools');
-        if (btn) {
-            btn.addEventListener('click', () => {
-                btn.innerText = 'Loading...';
-                btn.disabled = true;
-                setTimeout(() => {
-                    RenderManager.loadNextBatch();
-                    btn.innerText = 'More Tools';
-                    btn.disabled = false;
-                }, 300);
-            });
-        }
-    }
-};
-
-/* ==========================================================================
-   11. INTRO SPLASH CONTROLLER (Button Logic Only)
+   9. INTRO SPLASH CONTROLLER
    ========================================================================== */
 
 const IntroManager = {
@@ -807,45 +471,31 @@ const IntroManager = {
         const overlay = document.getElementById('intro-overlay');
         const video = document.getElementById('intro-video');
         const skipBtn = document.getElementById('skip-intro-btn');
-        const unmuteBtn = document.getElementById('unmute-btn'); // New Button
+        const unmuteBtn = document.getElementById('unmute-btn');
 
         if (!overlay || !video) return;
 
         overlay.classList.remove('overlay-hidden');
         overlay.classList.add('overlay-visible');
 
-        // Muted Autoplay (Standard)
         video.muted = true;
         video.currentTime = 0;
-        
-        // Disable generic click on video (taki pause na ho galti se)
         video.style.pointerEvents = 'none'; 
-
         video.play().catch(e => console.warn("Autoplay blocked", e));
 
-        // --- BUTTON LOGIC: SIRF BUTTON DABANE SE AAWAJ AAYEGI ---
         if(unmuteBtn) {
             unmuteBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Click pass na ho
-                
-                // Mute Toggle Logic
-                video.muted = false; // Mute Hatao
-                video.volume = 1.0;  // Full Volume
-                
-                // Button Text Change kar do
-                unmuteBtn.innerHTML = `
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-                    <span>Sound On</span>
-                `;
-                unmuteBtn.style.backgroundColor = 'rgba(37, 99, 235, 0.9)'; // Blue color (Active)
+                e.stopPropagation();
+                video.muted = false;
+                video.volume = 1.0;
+                unmuteBtn.innerHTML = `<span>Sound On</span>`;
+                unmuteBtn.style.backgroundColor = 'rgba(37, 99, 235, 0.9)';
             });
         }
 
-        // --- CLOSE FUNCTION ---
         this.closeIntro = () => {
             overlay.classList.remove('overlay-visible');
             overlay.classList.add('overlay-hidden');
-            
             setTimeout(() => {
                 video.pause();
                 sessionStorage.setItem('intro_shown', 'true');
@@ -853,21 +503,53 @@ const IntroManager = {
             }, 500);
         };
 
-        if(skipBtn) {
-            skipBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.closeIntro();
-            });
-        }
-        
+        if(skipBtn) skipBtn.addEventListener('click', (e) => { e.stopPropagation(); this.closeIntro(); });
         video.addEventListener('ended', () => this.closeIntro());
     }
 };
 
-// Make sure this line is inside your DOMContentLoaded or WebKaarApp.init()
-// IntroManager.init();
+// Load More Button
+const ContentLoader = {
+    init() {
+        const btn = document.getElementById('show-more-tools');
+        if (btn) {
+            btn.addEventListener('click', () => {
+                btn.textContent = 'Loading...';
+                btn.disabled = true;
+                setTimeout(() => {
+                    RenderManager.loadNextBatch();
+                    btn.textContent = 'Load More Tools';
+                    btn.disabled = false;
+                }, 300);
+            });
+        }
+    }
+};
 
-// Start Application
+/* ==========================================================================
+   10. APP INIT
+   ========================================================================== */
+
+const WebKaarApp = {
+    init() {
+        console.log(`%c WebKaar v${APP_CONFIG.version} - Loaded`, 'color: #2563eb; font-weight: bold;');
+        
+        ThemeManager.init();
+        RenderManager.init();
+        NavManager.init();
+        SearchManager.init();
+        CategoryManager.init();
+        
+        // Critical for Auto-Slide
+        SliderManager.init(); 
+        
+        ContentLoader.init();
+        IntroManager.init(); 
+        
+        document.body.classList.add('loaded');
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     WebKaarApp.init();
 });

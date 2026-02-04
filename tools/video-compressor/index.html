@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Fast Video Compressor | Reduce Video Size Free | WebKaar</title>
+    <meta name="description" content="Compress videos instantly using browser native technology. No upload, no lag, works offline.">
+    
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-mode">
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Fast Compressor</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="input-card" id="upload-card">
+                <div class="upload-area" id="dropZone">
+                    <svg class="upload-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line></svg>
+                    <p>Select Video to Compress</p>
+                    <span class="file-hint">MP4, WEBM, MOV Supported</span>
+                    <input type="file" id="videoInput" accept="video/*" hidden>
+                </div>
+            </div>
+
+            <div id="editor-card" class="input-card hidden">
+                
+                <div class="preview-wrapper">
+                    <video id="videoPreview" playsinline muted style="width: 100%; border-radius: 8px; max-height: 300px; background: black;"></video>
+                    <div class="size-tag" id="originalSize">0 MB</div>
+                </div>
+
+                <div class="dimensions-grid" style="display: block;">
+                    <div class="input-group">
+                        <label style="display: flex; justify-content: space-between; align-items: center;">
+                            <span>Quality Level</span>
+                            <span id="estimatedSize" style="background: var(--primary-light); color: var(--primary-blue); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 700;">Est: ~Calculating...</span>
+                        </label>
+                        
+                        <div class="slider-container">
+                            <input type="range" id="qualitySlider" min="1" max="50" value="25" class="custom-range">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 5px;">
+                                <span id="qualityText">Balanced</span>
+                                <span>Small Size</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="progress-wrapper" class="hidden" style="margin-bottom: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 0.9rem;">
+                        <span>Processing...</span>
+                        <span id="progress-percent">0%</span>
+                    </div>
+                    <div style="width: 100%; background: var(--bg-body); height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div id="progress-bar" style="width: 0%; height: 100%; background: var(--primary-blue); transition: width 0.2s;"></div>
+                    </div>
+                    <p style="font-size: 0.75rem; color: var(--accent-orange); margin-top: 5px; text-align: center;">Processing in real-time. Please wait.</p>
+                </div>
+
+                <button id="compressBtn" class="primary-btn full-width">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    Start Compress
+                </button>
+
+                <a id="downloadBtn" class="primary-btn full-width hidden" style="background-color: var(--accent-green); text-decoration: none; text-align: center; justify-content: center;">
+                    Download Result
+                </a>
+
+                <button id="resetBtn" class="secondary-btn full-width" style="margin-top: 10px;">
+                    Pick Another Video
+                </button>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 30px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h3>Note on Formats</h3>
+            <p>This tool uses your browser's native engine. The output format will usually be <strong>.WEBM</strong> or <strong>.MP4</strong> depending on your device (Android/iOS).</p>
+        </article>
+    </main>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>How it works</h3>
+                <button id="close-modal" class="icon-button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+            </div>
+            <div class="modal-body">
+                <p>We use your device's native encoder to rewrite the video at a lower bitrate.</p>
+                <p><strong>Tip:</strong> Keep the tab open while processing.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>if(localStorage.getItem('webkaar_theme_pref')==='dark')document.body.classList.add('dark-mode');</script>
+</body>
+</html>

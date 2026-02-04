@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-GNNE51D2B7');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Steganography Online - Hide Secret Text in Images | WebKaar</title>
+    <meta name="description" content="Advanced Image Steganography Tool. Hide secret messages and passwords inside photos securely. Free online tool for encryption and decryption.">
+    <meta name="keywords" content="steganography, hide text in image, secret message, image encryption, spy tool, webkaar">
+    <meta name="author" content="WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/steganography/">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header" style="z-index: 100;">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Secret Hider</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="tabs-wrapper">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="encode">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        Hide Data
+                    </button>
+                    <button class="tab-btn" data-tab="decode">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3"></path></svg>
+                        Reveal Data
+                    </button>
+                </div>
+            </div>
+
+            <div id="encode-panel" class="panel active">
+                
+                <div class="upload-area" id="encode-dropzone">
+                    <input type="file" id="encode-file" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <div class="icon-circle">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        </div>
+                        <h3>Upload Cover Image</h3>
+                        <p>JPG or PNG supported</p>
+                    </div>
+                </div>
+
+                <div id="encode-workspace" class="workspace hidden">
+                    <div class="preview-container">
+                        <img id="encode-preview" src="" alt="Preview">
+                        <div class="image-meta" id="encode-meta">0 x 0 px</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Secret Message</label>
+                        <textarea id="secret-message" placeholder="Type your secret message here... (Max 1000 chars)"></textarea>
+                        <div class="char-count"><span id="char-counter">0</span> / 1000</div>
+                    </div>
+
+                    <button id="encrypt-btn" class="primary-btn full-width">
+                        <span class="btn-text">🔒 Encrypt & Download Image</span>
+                        <div class="loader hidden"></div>
+                    </button>
+                </div>
+
+            </div>
+
+            <div id="decode-panel" class="panel">
+                
+                <div class="upload-area" id="decode-dropzone">
+                    <input type="file" id="decode-file" accept="image/*" hidden>
+                    <div class="upload-content">
+                        <div class="icon-circle green">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </div>
+                        <h3>Upload Secret Image</h3>
+                        <p>Upload the PNG you downloaded earlier</p>
+                    </div>
+                </div>
+
+                <div id="decode-workspace" class="workspace hidden">
+                    <div class="preview-container">
+                        <img id="decode-preview" src="" alt="Preview">
+                    </div>
+
+                    <button id="decrypt-btn" class="primary-btn green-btn full-width">
+                        🔓 Reveal Message
+                    </button>
+
+                    <div id="result-container" class="result-card hidden">
+                        <div class="result-header">
+                            <span>Hidden Message Found:</span>
+                            <button id="copy-btn" class="sm-btn">Copy</button>
+                        </div>
+                        <p id="decoded-text" class="secret-text-display"></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 60px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Advanced Image Steganography</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                WebKaar Steganography tool allows you to hide text inside images using advanced LSB (Least Significant Bit) manipulation. The resulting image looks 100% identical to the original but contains your hidden data.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">How it works</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>No Server:</strong> All processing happens in your browser. Your secrets never leave your device.</li>
+                <li><strong>PNG Output:</strong> You must save the image as PNG to prevent data loss (JPEG compression destroys hidden data).</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Message Copied!</div>
+    
+    <canvas id="processor-canvas" style="display: none;"></canvas>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Steganography</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Note:</strong> This tool uses the Blue channel LSB method.</p>
+                <p><strong>Important:</strong> Do not compress the downloaded image (e.g., sending via WhatsApp) or the message will be lost. Share as Document/File.</p>
+            </div>
+        </div>
+    </div>
+
+        <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>
+

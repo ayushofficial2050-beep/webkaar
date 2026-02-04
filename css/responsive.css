@@ -1,5 +1,6 @@
 /* =========================================
-   WEBKAAR RESPONSIVE STYLES (Final Premium v3.0)
+   WEBKAAR RESPONSIVE STYLES (Final App v4.0)
+   Target: 3-Column Grid, Notch Safe, Native Feel
    ========================================= */
 
 /* --- 1. GLOBAL MOBILE ADJUSTMENTS (Notch & Safe Areas) --- */
@@ -14,9 +15,6 @@
         max-width: 1200px; 
         margin: 0 auto;
     }
-
-    /* Desktop par Sidebar hamesha dikhana hai to ye code use karein,
-       warna default drawer behavior hi sahi hai. */
 }
 
 /* --- 3. TABLETS (iPads: 768px - 1023px) --- */
@@ -27,11 +25,12 @@
     }
 
     .tools-container {
-        padding: 0 24px;
+        padding: 0 20px;
     }
 
+    /* Tablet Grid (Auto fit) */
     .grid-layout {
-        grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
         gap: 20px;
     }
 }
@@ -41,8 +40,8 @@
     
     /* A. Layout & Spacing */
     .app-body {
-        /* Bottom Nav ke liye extra jagah chhodna */
-        padding-bottom: calc(70px + var(--safe-area-bottom));
+        /* Extra padding bottom so content isn't hidden behind Bottom Nav */
+        padding-bottom: calc(80px + var(--safe-area-bottom));
     }
 
     /* B. Main Header (Notch Safe) */
@@ -62,37 +61,37 @@
     /* C. Sidebar Drawer */
     .sidebar {
         width: 85%;
-        max-width: 320px;
+        max-width: 300px;
         padding-top: var(--safe-area-top);
     }
 
-    /* D. Hero Slider (App-Like Swipe) */
+    /* D. Hero Slider (Native Swipe Feel) */
     .hero-slider-container {
-        padding: 16px 16px 8px; /* Thoda tight spacing mobile ke liye */
+        padding: 16px 16px 8px; /* Tighter padding */
     }
     
     .hero-card {
-        flex: 0 0 85%; /* Card agle card ko thoda sa dikhayega (Peek effect) */
-        height: 130px;
+        flex: 0 0 90%; /* Show 90% of card, peek next one */
+        height: 140px;
         padding: 20px;
     }
     
     .hero-card h3 {
-        font-size: 1.1rem;
+        font-size: 1.15rem;
     }
 
     /* E. Search Bar (Easy Reach) */
     .search-container {
-        padding: 16px 16px 12px;
+        padding: 12px 16px;
     }
 
     .search-box input {
-        height: 50px;
-        font-size: 16px; /* iOS zoom fix */
+        height: 48px;
+        font-size: 16px; /* Prevents iOS auto-zoom */
         padding: 0 44px;
     }
 
-    /* F. Categories (Chips) */
+    /* F. Categories (Scrollable Chips) */
     .categories-container {
         padding: 0 16px 8px 16px;
         scroll-snap-type: x mandatory;
@@ -104,30 +103,33 @@
     
     .tab-chip {
         padding: 8px 16px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         scroll-snap-align: start;
     }
 
-    /* G. Tools Grid (2 Columns) */
+    /* G. Tools Grid (3 COLUMNS - MINI APP STYLE) */
     .tools-container {
-        padding: 0 16px;
+        padding: 0 12px;
     }
 
     .grid-layout {
-        grid-template-columns: repeat(2, 1fr); 
-        gap: 12px;
+        /* Force 3 columns on mobile */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px 8px; /* Vertical gap 20px, Horizontal 8px */
     }
 
     .tool-card {
-        padding: 16px 12px;
-        min-height: 130px;
+        padding: 0; /* Remove padding for icon-only look */
+        min-height: auto; /* Allow auto height */
     }
 
+    /* Adjust Icon Size for Small Screens */
     .tool-icon {
-        width: 44px;
-        height: 44px;
-        margin-bottom: 12px;
-        border-radius: 12px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 6px;
+        border-radius: 14px;
+        font-size: 1.5rem;
     }
     
     .tool-icon svg {
@@ -136,32 +138,47 @@
     }
 
     .tool-meta h3 {
-        font-size: 0.9rem;
-        margin-bottom: 2px;
+        font-size: 0.75rem; /* Smaller text for 3-grid */
+        margin: 0;
+        line-height: 1.2;
     }
     
-    .category-label {
-        font-size: 0.65rem;
-    }
-
-    /* H. Bottom Navigation (VISIBLE ON MOBILE) */
+    /* H. Bottom Navigation (VISIBLE) */
     .bottom-nav {
-        display: flex !important; /* Force show on mobile */
+        display: flex !important; /* Force Show */
         height: calc(60px + var(--safe-area-bottom));
         padding-bottom: var(--safe-area-bottom);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95); /* Semi-transparent */
+    }
+    
+    /* Dark mode support for nav */
+    body.dark-mode .bottom-nav {
+        background: rgba(30, 41, 59, 0.95);
     }
 
     /* I. Footer */
     .main-footer {
-        padding: 20px 20px 80px; /* Extra space taaki content Nav ke peeche na chhupe */
+        padding: 20px 20px 100px; /* Big padding for bottom nav space */
         margin-top: 20px;
     }
 }
 
-/* --- 5. SMALL MOBILES (iPhone SE / Old Androids: < 360px) --- */
+/* --- 5. SMALL MOBILES (iPhone SE / Fold / Older: < 360px) --- */
 @media (max-width: 359px) {
     .grid-layout {
-        gap: 10px;
+        grid-template-columns: repeat(3, 1fr); /* Still keep 3 columns */
+        gap: 16px 4px; /* Tighter gap */
+    }
+    
+    .tool-icon {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .tool-meta h3 {
+        font-size: 0.7rem;
     }
     
     .app-name {
@@ -169,11 +186,7 @@
     }
     
     .hero-card {
-        height: 120px;
-    }
-    
-    .tool-card {
-        padding: 12px 8px;
+        height: 130px;
     }
 }
 
@@ -186,13 +199,10 @@
     
     .app-body {
         padding-top: 50px;
+        padding-bottom: 20px;
     }
     
     .bottom-nav {
-        display: none !important; /* Landscape me nav chhupa do taaki screen badi dikhe */
-    }
-    
-    .app-body {
-        padding-bottom: 20px;
+        display: none !important; /* Hide nav in landscape for more space */
     }
 }

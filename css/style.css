@@ -1,574 +1,258 @@
 /* =========================================
-   WEBKAAR PREMIUM STYLESHEET (Final Build v3.0)
+   WEBKAAR PREMIUM STYLESHEET (Final App Version v6.0)
+   Features: 90FPS, Native App Feel, Auto Slide
    ========================================= */
 
 /* =========================================
    1. CSS VARIABLES & THEME CONFIG
    ========================================= */
 :root {
-    /* --- COLOR PALETTE: BLUE IDENTITY --- */
-    --primary-blue: #2563eb;       /* Brand Blue */
-    --primary-dark: #1e40af;       /* Darker shade for hover */
-    --primary-light: #eff6ff;      /* Light shade for backgrounds */
-    --accent-green: #10b981;       /* Success/Safe status */
-    --accent-orange: #f59e0b;      /* Warning/Hot status */
-    --accent-red: #ef4444;         /* Error/New status */
-    --accent-purple: #8b5cf6;      /* Pro status */
+    /* --- COLOR PALETTE --- */
+    --primary-blue: #2563eb;       
+    --primary-dark: #1e40af;       
+    --primary-light: #eff6ff;      
+    --accent-green: #10b981;       
+    --accent-orange: #f59e0b;      
+    --accent-red: #ef4444;         
+    --accent-purple: #8b5cf6;      
     
-    /* --- LIGHT MODE DEFAULTS --- */
-    --bg-body: #f8fafc;            /* Slate-50 */
-    --bg-surface: #ffffff;         /* Pure White */
-    --bg-glass: rgba(255, 255, 255, 0.85); /* Semi-transparent for blur */
+    /* --- LIGHT MODE --- */
+    --bg-body: #f8fafc;            
+    --bg-surface: #ffffff;         
+    --bg-glass: rgba(255, 255, 255, 0.95); 
     
-    --text-main: #1e293b;          /* Slate-800 */
-    --text-muted: #64748b;         /* Slate-500 */
-    --border-color: #e2e8f0;       /* Slate-200 */
+    --text-main: #1e293b;          
+    --text-muted: #64748b;         
+    --border-color: #e2e8f0;       
     
-    /* Modern Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-    --shadow-floating: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-    
-    /* Glow Effects */
-    --glow-blue: 0 10px 30px -10px rgba(37, 99, 235, 0.4);
-    --glow-green: 0 10px 30px -10px rgba(16, 185, 129, 0.4);
-    --glow-purple: 0 10px 30px -10px rgba(139, 92, 246, 0.4);
+    /* Shadows & Glow */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --shadow-card: 0 10px 15px -3px rgba(0,0,0,0.1);
 
     /* --- MEASUREMENTS --- */
-    --header-height: 64px;
+    --header-height: 72px;
     --sidebar-width: 280px;
-    --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
-    --radius-xl: 24px; /* For Hero Cards */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    
-    /* --- ANIMATION --- */
-    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --radius-xl: 20px; 
+    --font-sans: 'Inter', sans-serif;
 }
 
-/* --- DARK MODE OVERRIDES --- */
+/* --- DARK MODE --- */
 body.dark-mode {
-    --bg-body: #0f172a;            /* Slate-900 (Deep Blue/Black) */
-    --bg-surface: #1e293b;         /* Slate-800 */
-    --bg-glass: rgba(30, 41, 59, 0.85); /* Dark Glass */
+    --bg-body: #0f172a;            
+    --bg-surface: #1e293b;         
+    --bg-glass: rgba(30, 41, 59, 0.95);
     
-    --text-main: #f1f5f9;          /* Slate-100 */
-    --text-muted: #94a3b8;         /* Slate-400 */
-    --border-color: #334155;       /* Slate-700 */
+    --text-main: #f1f5f9;          
+    --text-muted: #94a3b8;         
+    --border-color: #334155;       
     
     --primary-light: rgba(37, 99, 235, 0.15); 
-    
-    /* Glowy Shadows for Dark Mode */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
-    --shadow-floating: 0 10px 20px -3px rgba(0, 0, 0, 0.5);
-    
-    --glow-blue: 0 10px 30px -10px rgba(37, 99, 235, 0.6);
-    --glow-green: 0 10px 30px -10px rgba(16, 185, 129, 0.6);
-    --glow-purple: 0 10px 30px -10px rgba(139, 92, 246, 0.6);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+    --shadow-card: 0 10px 20px rgba(0,0,0,0.5);
 }
 
 /* =========================================
-   2. GLOBAL RESET & BASE STYLES
+   2. GLOBAL RESET & APP FEEL
    ========================================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-}
-
-html {
-    scroll-behavior: smooth;
-    font-size: 16px;
-}
-
-body {
-    font-family: var(--font-sans);
-    background-color: var(--bg-body);
-    color: var(--text-main);
-    line-height: 1.6;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { 
+    font-family: var(--font-sans); 
+    background-color: var(--bg-body); 
+    color: var(--text-main); 
+    line-height: 1.5; 
     overflow-x: hidden;
+    overscroll-behavior-y: none; /* Disables pull-to-refresh effect */
 }
-
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { font-family: inherit; }
 
 /* =========================================
-   3. APP HEADER (Glassmorphism)
+   3. APP HEADER
    ========================================= */
 .main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--header-height);
+    position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
     background-color: var(--bg-glass);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border-color);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color var(--transition-smooth);
+    z-index: 1000; display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
 
 .header-content {
-    width: 100%;
-    max-width: 1200px;
-    padding: 0 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    width: 100%; max-width: 1200px; padding: 0 16px;
+    display: flex; align-items: center; justify-content: space-between;
 }
 
-.header-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* CURVE LOGO STYLE */
-.app-logo, .app-logo-img {
-    width: 32px;
-    height: 32px;
-    object-fit: contain;
-    border-radius: 8px; /* Squircle Curve */
-}
-
-.app-name {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--primary-blue);
-    letter-spacing: -0.5px;
-}
+.header-title { display: flex; align-items: center; gap: 10px; }
+.app-logo, .app-logo-img { width: 44px; height: 44px; border-radius: 10px; }
+.app-name { font-size: 1.4rem; font-weight: 700; color: var(--primary-blue);
+letter-spacing: -0.5px; }
 
 .icon-button {
-    background: transparent;
-    border: none;
-    color: var(--text-main);
-    padding: 10px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s;
+    background: transparent; border: none; color: var(--text-main);
+    padding: 8px; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
 }
-
-.icon-button:hover { background-color: var(--bg-body); }
-.icon-button:active { transform: scale(0.96); }
+.icon-button:active { background-color: var(--border-color); }
 
 /* =========================================
-   4. SIDEBAR DRAWER
+   4. SIDEBAR
    ========================================= */
 .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: var(--sidebar-width);
-    height: 100%;
-    background-color: var(--bg-surface);
-    z-index: 2000;
-    transform: translateX(-100%);
-    transition: transform var(--transition-smooth);
-    display: flex;
-    flex-direction: column;
-    box-shadow: var(--shadow-floating);
-    border-right: 1px solid var(--border-color);
-    will-change: transform; /* Performance Hint */
+    position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100%;
+    background-color: var(--bg-surface); z-index: 2000;
+    transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column; border-right: 1px solid var(--border-color);
 }
-
 .sidebar.active { transform: translateX(0); }
 
 .sidebar-header {
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    border-bottom: 1px solid var(--border-color);
+    height: var(--header-height); display: flex; align-items: center;
+    justify-content: space-between; padding: 0 20px; border-bottom: 1px solid var(--border-color);
 }
+.sidebar-brand { font-weight: 700; font-size: 1.4rem; color: var(--primary-blue); display: flex; gap: 12px; align-items: center; }
 
-.sidebar-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: var(--primary-blue);
-}
-
-.sidebar-menu {
-    flex: 1;
-    overflow-y: auto;
-    padding: 8px 0;
-}
-
+.sidebar-menu { flex: 1; overflow-y: auto; padding: 10px 0; }
 .menu-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 24px;
-    color: var(--text-main);
-    font-weight: 500;
-    transition: background-color 0.2s, color 0.2s;
-    border-left: 3px solid transparent;
+    display: flex; align-items: center; gap: 12px; padding: 12px 24px;
+    color: var(--text-main); font-weight: 500; border-left: 3px solid transparent;
 }
-
-.menu-item svg { color: var(--text-muted); transition: color 0.2s; }
-.menu-item:hover { background-color: var(--primary-light); }
-.menu-item.active {
-    background-color: var(--primary-light);
-    color: var(--primary-blue);
-    border-left-color: var(--primary-blue);
-}
+.menu-item svg { color: var(--text-muted); }
+.menu-item.active { background-color: var(--primary-light); color: var(--primary-blue); border-left-color: var(--primary-blue); }
 .menu-item.active svg { color: var(--primary-blue); }
 
-.sidebar-footer {
-    padding: 20px;
-    border-top: 1px solid var(--border-color);
-    background-color: var(--bg-surface);
-}
+.sidebar-footer { padding: 20px; border-top: 1px solid var(--border-color); background: var(--bg-surface); }
+.theme-switch-wrapper { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.app-version { text-align: center; font-size: 0.75rem; color: var(--text-muted); }
 
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.app-version {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    opacity: 0.7;
-}
-
-/* =========================================
-   5. OVERLAY
-   ========================================= */
+/* Overlay */
 .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    z-index: 1500;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity var(--transition-smooth);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); z-index: 1500;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s;
 }
 .overlay.active { opacity: 1; visibility: visible; }
 
 /* =========================================
-   6. MAIN BODY & HERO SECTION
+   5. APP BODY & HERO SLIDER (AUTO SLIDE READY)
    ========================================= */
-.app-body {
-    padding-top: var(--header-height);
-    min-height: 100vh;
-    padding-bottom: 80px; /* Space for Bottom Nav */
-}
+.app-body { padding-top: var(--header-height); min-height: 100vh; padding-bottom: 80px; }
 
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* =========================================
-   7. HERO SLIDER (Auto Swipe Cards)
-   ========================================= */
 .hero-slider-container {
-    padding: 20px 16px 10px;
-    max-width: 1200px;
-    margin: 0 auto;
-    overflow: hidden;
+    padding: 20px 16px 10px; max-width: 1200px; margin: 0 auto;
 }
 
 .hero-slider {
-    display: flex;
-    gap: 16px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    padding-bottom: 20px; /* Space for shadows */
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    display: flex; gap: 16px; overflow-x: auto;
+    scroll-snap-type: x mandatory; padding-bottom: 10px;
+    scrollbar-width: none; -ms-overflow-style: none;
+    scroll-behavior: smooth; /* IMPORTANT for Auto Slide */
 }
 .hero-slider::-webkit-scrollbar { display: none; }
 
+/* CLEAN HERO CARD */
 .hero-card {
-    flex: 0 0 85%;
-    max-width: 380px;
-    height: 140px;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-xl);
-    position: relative;
-    padding: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-    scroll-snap-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-    cursor: pointer;
+    flex: 0 0 85%; max-width: 360px; height: 140px;
+    border-radius: var(--radius-xl); position: relative; padding: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    scroll-snap-align: center; cursor: pointer; overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s;
+    color: white; 
+}
+.hero-card:active { transform: scale(0.98); }
+
+/* Card Backgrounds */
+.hero-card.glow-effect { background: linear-gradient(135deg, #2563eb, #1d4ed8); } /* Blue */
+.hero-card.orange-glow { background: linear-gradient(135deg, #f59e0b, #ea580c); } /* Orange */
+.hero-card.red-glow { background: linear-gradient(135deg, #ef4444, #dc2626); } /* Red */
+
+/* Card Content */
+.card-content { z-index: 2; display: flex; flex-direction: column; gap: 4px; }
+.hero-card h3 { font-size: 1.2rem; font-weight: 700; margin: 0; }
+.hero-card p { font-size: 0.85rem; opacity: 0.9; margin: 0; }
+
+.card-icon { z-index: 2; color: white; transform: scale(1.2); opacity: 0.9; }
+
+/* Subtle Decoration */
+.hero-card::after {
+    content: ''; position: absolute; right: -20px; bottom: -20px;
+    width: 100px; height: 100px; background: rgba(255,255,255,0.1);
+    border-radius: 50%; pointer-events: none;
 }
 
-@media (min-width: 768px) {
-    .hero-card { flex: 0 0 320px; }
-}
-
-/* Glow Effects (Blue, Green, Purple) */
-.hero-card.glow-effect {
-    box-shadow: var(--glow-blue);
-    border-color: rgba(37, 99, 235, 0.3);
-}
-.hero-card.blue-glow {
-    box-shadow: var(--glow-green);
-    border-color: rgba(16, 185, 129, 0.3);
-}
-.hero-card.purple-glow {
-    box-shadow: var(--glow-purple);
-    border-color: rgba(139, 92, 246, 0.3);
-}
-
-/* Animated Background Glow */
-.glow-bg {
-    position: absolute;
-    top: -50%; left: -50%; width: 200%; height: 200%;
-    background: radial-gradient(circle, rgba(37,99,235,0.1) 0%, transparent 60%);
-    opacity: 0.5;
-    z-index: 0;
-    pointer-events: none;
-    animation: rotateGlow 10s linear infinite;
-}
-.blue-glow .glow-bg { background: radial-gradient(circle, rgba(16,185,129,0.1) 0%, transparent 60%); }
-.purple-glow .glow-bg { background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 60%); }
-
-@keyframes rotateGlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-/* Content inside Hero Card */
-.card-content { z-index: 1; display: flex; flex-direction: column; gap: 4px; }
-.card-icon { z-index: 1; color: var(--primary-blue); transform: scale(1.2); }
-.blue-glow .card-icon { color: var(--accent-green); }
-.purple-glow .card-icon { color: var(--accent-purple); }
-
-.hero-card h3 { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-top: 6px; }
-.hero-card p { font-size: 0.9rem; color: var(--text-muted); }
-
-/* --- BADGES (NEW, HOT, PRO) --- */
+/* Badges inside Slider */
 .badge-new, .badge-hot, .badge-pro {
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 4px 8px;
-    border-radius: 6px; 
-    display: inline-block;
-    width: fit-content;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border: 1px solid transparent; /* Border for better pop */
-}
-
-/* NEW - Bright Blue */
-.badge-new { 
-    background: rgba(59, 130, 246, 0.15); 
-    color: #3b82f6; 
-    border-color: rgba(59, 130, 246, 0.2);
-}
-
-/* HOT - Fire Red (Orange se better hai attention ke liye) */
-.badge-hot { 
-    background: rgba(239, 68, 68, 0.15); 
-    color: #ef4444; 
-    border-color: rgba(239, 68, 68, 0.2);
-}
-
-/* PRO - Purple (Agar kabhi future mein use kiya to) */
-.badge-pro { 
-    background: rgba(139, 92, 246, 0.15); 
-    color: #8b5cf6; 
-    border-color: rgba(139, 92, 246, 0.2);
+    font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 20px;
+    display: inline-block; width: fit-content; text-transform: uppercase;
+    background: rgba(255,255,255,0.2); color: white; margin-bottom: 6px;
 }
 
 /* =========================================
-   8. SEARCH CONTAINER
+   6. SEARCH & CATEGORIES
    ========================================= */
-.search-container {
-    padding: 10px 16px 20px;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.search-box {
-    position: relative;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
+.search-container { padding: 10px 16px 20px; max-width: 800px; margin: 0 auto; }
+.search-box { position: relative; width: 100%; display: flex; align-items: center; }
 .search-box input {
-    width: 100%;
-    height: 56px;
-    padding: 0 50px;
-    font-size: 1.05rem;
-    font-family: var(--font-sans);
-    color: var(--text-main);
-    background-color: var(--bg-surface);
-    border: 2px solid var(--border-color);
-    border-radius: 99px;
-    transition: all 0.2s ease;
-    outline: none;
-    box-shadow: var(--shadow-sm);
+    width: 100%; height: 50px; padding: 0 46px;
+    font-size: 1rem; color: var(--text-main); background: var(--bg-surface);
+    border: 2px solid var(--border-color); border-radius: 99px; outline: none;
+    -webkit-appearance: none; /* Fix iOS input shadow */
 }
-
-.search-box input:focus {
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
-}
-
-.search-icon {
-    position: absolute;
-    left: 20px;
-    color: var(--text-muted);
-    pointer-events: none;
-}
-
-.clear-btn {
-    position: absolute;
-    right: 18px;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    border-radius: 50%;
-}
-.clear-btn:hover { background-color: var(--bg-body); color: var(--text-main); }
+.search-box input:focus { border-color: var(--primary-blue); }
+.search-icon { position: absolute; left: 16px; color: var(--text-muted); pointer-events: none; }
+.clear-btn { position: absolute; right: 16px; background: none; border: none; color: var(--text-muted); cursor: pointer; }
 .hidden { display: none !important; }
 
-/* =========================================
-   9. CATEGORIES (Pills)
-   ========================================= */
-.categories-container {
-    padding: 0 16px 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.tabs-wrapper {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    padding: 4px 4px 12px 4px;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
+.categories-container { padding: 0 16px 20px; max-width: 1200px; margin: 0 auto; }
+.tabs-wrapper { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
 .tabs-wrapper::-webkit-scrollbar { display: none; }
-
 .tab-chip {
-    flex: 0 0 auto;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: 99px;
-    cursor: pointer;
-    transition: all 0.2s;
-    user-select: none;
+    flex: 0 0 auto; padding: 8px 18px; font-size: 0.85rem; font-weight: 600;
+    color: var(--text-muted); background: var(--bg-surface);
+    border: 1px solid var(--border-color); border-radius: 99px; cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
 }
-
-.tab-chip:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
-.tab-chip.active {
-    background-color: var(--primary-blue);
-    color: white;
-    border-color: var(--primary-blue);
-    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-}
+.tab-chip.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+.tab-chip svg { width: 14px; height: 14px; opacity: 0.8; }
+.tab-chip.active svg { opacity: 1; }
 
 /* =========================================
-   10. TOOLS GRID & SKELETON
+   7. TOOLS GRID (NATIVE APP STYLE)
    ========================================= */
-.tools-container {
-    padding: 0 16px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+.tools-container { padding: 0 12px; max-width: 1200px; margin: 0 auto; }
 
 .grid-layout {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
-    gap: 16px;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns on Mobile */
+    gap: 20px 10px; 
 }
 
+@media (min-width: 600px) {
+    .grid-layout { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 24px 16px; }
+}
+
+/* Card */
 .tool-card {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 24px 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    content-visibility: auto; 
-    contain-intrinsic-size: 160px 180px; 
+    background: transparent; border: none; padding: 0;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    cursor: pointer; position: relative; overflow: visible;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.1s;
 }
+.tool-card:active { transform: scale(0.95); opacity: 0.8; }
 
-@media (hover: hover) {
-    .tool-card:hover {
-        transform: translateY(-4px);
-        box-shadow: var(--shadow-md);
-        border-color: var(--primary-blue);
-    }
-}
-.tool-card:active { transform: scale(0.98); }
-
-/* --- SKELETON LOADING ANIMATION --- */
-.tool-card.skeleton {
-    cursor: default;
-    border-color: transparent;
-}
-.tool-card.skeleton div {
-    background: linear-gradient(90deg, var(--bg-body) 25%, var(--border-color) 50%, var(--bg-body) 75%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-}
-@keyframes shimmer {
-    0% { background-position: 200% 0; }
-    100% { background-position: -200% 0; }
-}
-
-/* Tool Icons */
+/* Icons */
 .tool-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px; /* Curve Icon Background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 16px;
-    color: white;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 6px -2px rgba(0,0,0,0.1);
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 8px; color: white; font-size: 1.8rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
 }
 
 /* Gradients */
@@ -579,214 +263,152 @@ button { font-family: inherit; }
 .orange-bg { background: linear-gradient(135deg, #f97316, #ea580c); }
 .red-bg { background: linear-gradient(135deg, #ef4444, #dc2626); }
 
+/* Hanging Badge (App Notification Style) */
+.new-badge {
+    display: block !important; position: absolute;
+    top: -6px; right: 50%; margin-right: -32px;
+    font-size: 0.55rem; font-weight: 800; padding: 2px 6px;
+    border-radius: 8px; color: white; border: 2px solid var(--bg-body); 
+    z-index: 10; text-transform: uppercase; pointer-events: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.badge-hot { background: #ef4444; }
+.badge-new { background: #3b82f6; }
+
+/* App Name */
 .tool-meta h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--text-main);
-    margin-bottom: 4px;
-    line-height: 1.3;
+    font-size: 0.8rem; font-weight: 500; color: var(--text-main); margin: 0;
+    line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden; width: 100%; padding: 0 2px;
 }
-.category-label {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+.category-label { display: none !important; }
+
+/* Skeleton */
+.tool-card.skeleton { pointer-events: none; }
+.tool-card.skeleton .tool-icon { background: var(--border-color); box-shadow: none; }
+.tool-card.skeleton .tool-meta h3 { width: 60%; height: 10px; background: var(--border-color); border-radius: 4px; margin-top: 4px; }
 
 /* =========================================
-   11. LOAD MORE, FOOTER & BOTTOM NAV
+   8. FOOTER & BOTTOM NAV
    ========================================= */
-.load-more-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-}
-
+.load-more-wrapper { display: flex; justify-content: center; margin-top: 30px; }
 .outline-btn {
-    background: transparent;
-    border: 2px solid var(--border-color);
-    color: var(--text-main);
-    padding: 12px 36px;
-    font-size: 0.95rem;
-    font-weight: 600;
-    border-radius: 99px;
-    cursor: pointer;
-    transition: all 0.2s;
+    background: transparent; border: 1px solid var(--border-color); color: var(--text-main);
+    padding: 10px 30px; font-size: 0.9rem; font-weight: 600; border-radius: 99px; cursor: pointer;
 }
-.outline-btn:hover { border-color: var(--primary-blue); color: var(--primary-blue); }
-.outline-btn:active { background-color: var(--border-color); }
+.outline-btn:active { background: var(--border-color); }
 
-.main-footer {
-    text-align: center;
-    padding: 32px 16px;
-    border-top: 1px solid var(--border-color);
-    background-color: var(--bg-surface);
-    margin-top: 60px;
-}
+.main-footer { text-align: center; padding: 32px 16px; border-top: 1px solid var(--border-color); background: var(--bg-surface); margin-top: 40px; }
+.main-footer p { color: var(--text-muted); font-size: 0.85rem; }
+.footer-links { display: flex; justify-content: center; gap: 16px; font-size: 0.85rem; margin-top: 10px; }
+.footer-links a { color: var(--text-muted); }
 
-.main-footer p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px; }
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    font-size: 0.9rem;
-}
-.footer-links a { color: var(--text-muted); transition: color 0.2s; }
-.footer-links a:hover { color: var(--primary-blue); text-decoration: underline; }
-
-/* --- BOTTOM NAVIGATION (Mobile) --- */
+/* Mobile Bottom Nav (App Like) */
 .bottom-nav {
-    display: none; /* Hidden by default, JS/Media Query enables it */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: var(--bg-surface);
-    border-top: 1px solid var(--border-color);
-    padding: 8px 0;
-    z-index: 9999;
-    justify-content: space-around;
+    display: none; position: fixed; bottom: 0; left: 0; width: 100%;
+    background: var(--bg-surface); border-top: 1px solid var(--border-color);
+    padding: 8px 0; z-index: 9999; justify-content: space-around;
     padding-bottom: env(safe-area-inset-bottom);
-    box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
 }
-
-.nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    color: var(--text-muted);
-    font-size: 0.75rem;
-    padding: 4px 12px;
-    border-radius: 8px;
-    transition: color 0.2s;
-}
+.nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); font-size: 0.7rem; padding: 4px 12px; }
 .nav-item.active { color: var(--primary-blue); }
-.nav-item:active { transform: scale(0.95); }
 
 /* =========================================
-   12. MISC UI (Toggle, Spinner, Etc)
+   9. MISC & INTRO UI
    ========================================= */
-/* Toggle Switch */
 .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
 .switch input { opacity: 0; width: 0; height: 0; }
-.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; }
-.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; box-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
 input:checked + .slider { background-color: var(--primary-blue); }
 input:checked + .slider:before { transform: translateX(20px); }
-.slider.round { border-radius: 34px; }
-.slider.round:before { border-radius: 50%; }
 
-/* Loading Spinner */
-.loading-spinner {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    font-weight: 500;
-    gap: 10px;
+/* Intro Overlay */
+#intro-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background-color: #000; z-index: 99999;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.5s;
 }
-.loading-spinner::before {
-    content: "";
-    width: 24px;
-    height: 24px;
-    border: 3px solid var(--border-color);
-    border-top-color: var(--primary-blue);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+.overlay-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.video-wrapper { width: 90%; max-width: 500px; aspect-ratio: 1/1; position: relative; overflow: hidden; border-radius: 12px; }
+#intro-video { width: 100%; height: 100%; object-fit: cover; }
+#skip-intro-btn { position: absolute; top: 15px; left: 15px; background: none; border: none; color: white; cursor: pointer; }
+#unmute-btn {
+    position: absolute; bottom: 15px; right: 15px;
+    background: rgba(0,0,0,0.6); color: white; border: none;
+    padding: 6px 14px; border-radius: 20px; font-size: 0.8rem;
+    display: flex; align-items: center; gap: 6px; cursor: pointer;
 }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* Install Button */
-.install-card:active { transform: scale(0.98); }
 
 /* =========================================
-   INTRO SPLASH SCREEN (Fixed)
+   ✨ MAGIC POLISH (Feel Good Fixes)
    ========================================= */
-#intro-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.85); /* Dark background */
-    backdrop-filter: blur(8px);
-    z-index: 99999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+
+/* 1. TEXT SELECTION BAND KARO (App Feel) */
+body, .tool-card, .hero-card, .tab-chip, button, a {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
+    -webkit-tap-highlight-color: transparent; /* Blue box hatao */
 }
 
-.overlay-hidden {
+/* 2. BETTER TOUCH FEEDBACK (Button Daban chahiye) */
+.tool-card:active .tool-icon, 
+.hero-card:active, 
+.tab-chip:active, 
+.icon-button:active {
+    transform: scale(0.92) !important; /* Thoda aur andar dabega */
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 3. FONT RENDERING (Text Sharp Dikhega) */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* 4. SCROLLING SMOOTHNESS (Makkhan Scroll) */
+.categories-container, 
+.hero-slider, 
+.app-body {
+    -webkit-overflow-scrolling: touch; /* iOS Momentum Scroll */
+}
+
+/* 5. MICRO-INTERACTION (Icons Fade-in ho) */
+.tool-icon {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-.overlay-visible {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
+    transform: scale(0.5);
 }
 
-.video-wrapper {
-    width: 90%;
-    max-width: 800px;
-    aspect-ratio: 1 / 1;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    border-radius: 12px;
-    overflow: hidden;
-    position: relative; /* Button positioning ke liye */
+/* Har icon thoda ruk ke aayega (Cascade Effect) */
+.tool-card:nth-child(1) .tool-icon { animation-delay: 0.05s; }
+.tool-card:nth-child(2) .tool-icon { animation-delay: 0.1s; }
+.tool-card:nth-child(3) .tool-icon { animation-delay: 0.15s; }
+.tool-card:nth-child(4) .tool-icon { animation-delay: 0.2s; }
+.tool-card:nth-child(5) .tool-icon { animation-delay: 0.25s; }
+.tool-card:nth-child(6) .tool-icon { animation-delay: 0.3s; }
+/* ... aur aise hi load hote rahenge */
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
-#intro-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+/* 6. GLASSMORPHISM KO THODA AUR REAL BANAO */
+.main-header, .bottom-nav {
+    background: rgba(255, 255, 255, 0.85); /* Thoda transparent */
+    backdrop-filter: blur(12px) saturate(180%); /* iOS jaisa blur */
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Bahut halka border */
 }
 
-/* CROSS BUTTON (Top Left) */
-#skip-intro-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 100000;
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.7);
-    cursor: pointer;
-    padding: 8px;
-}
-#skip-intro-btn:hover {
-    color: #ef4444; /* Red */
-    transform: scale(1.1);
-}
-
-/* NEW UNMUTE BUTTON (Bottom Right - Grey) */
-#unmute-btn {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    z-index: 100001;
-    background-color: rgba(100, 116, 139, 0.8); /* Grey Color */
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    cursor: pointer;
-    backdrop-filter: blur(4px);
-    transition: background 0.2s;
-}
-#unmute-btn:hover {
-    background-color: rgba(100, 116, 139, 1);
+/* Dark Mode ke liye */
+body.dark-mode .main-header, 
+body.dark-mode .bottom-nav {
+    background: rgba(15, 23, 42, 0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }

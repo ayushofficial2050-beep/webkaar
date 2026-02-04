@@ -29,248 +29,234 @@
 
     <style>
         /* =========================================
-           INTERNAL STYLING (Page Specific)
+           PAGE SPECIFIC STYLES (Fixed Header)
            ========================================= */
         
+        :root {
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0;
+            --text-main-local: #1e293b; /* Dark Text for Light Mode */
+            --text-muted-local: #64748b;
+            --bg-body-local: #f8fafc;
+            --shadow-soft: 0 10px 30px -10px rgba(0,0,0,0.08);
+        }
+
+        /* 🔥 DARK MODE VARIABLES (Explicit Override) */
+        html.dark-mode {
+            --card-bg: #1e293b; 
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main-local: #f1f5f9; /* White Text for Dark Mode */
+            --text-muted-local: #94a3b8;
+            --bg-body-local: #0f172a; 
+            --shadow-soft: 0 10px 30px -10px rgba(0,0,0,0.5);
+        }
+
         body {
-            background-color: var(--bg-body);
+            background-color: var(--bg-body-local);
+            color: var(--text-main-local);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .about-container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 20px 20px 60px 20px;
+            padding: 20px 20px 80px 20px;
             text-align: center;
-            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
+        /* --- 🔥 HEADER TEXT FIX (Updated) --- */
+        .page-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            /* Yahan galti thi 'blue', ab variable use kar rahe hain */
+            color: var(--text-main-local) !important; 
+            letter-spacing: -0.5px;
+        }
+
+        /* --- STAGGERED ANIMATIONS --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
             to { opacity: 1; transform: translateY(0); }
         }
 
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+
         /* --- HERO SECTION --- */
-        .app-hero {
-            margin-bottom: 40px;
-            margin-top: 20px;
-        }
+        .app-hero { margin-bottom: 40px; margin-top: 20px; }
 
         .hero-logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.4);
+            width: 100px; height: 100px; border-radius: 24px;
+            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.3);
             margin-bottom: 16px;
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-
-        .hero-logo:hover { transform: scale(1.05) rotate(3deg); }
+        .hero-logo:hover { transform: scale(1.1) rotate(5deg); }
 
         .app-title {
-            font-size: 2rem;
-            font-weight: 800;
-            color: var(--text-main);
-            letter-spacing: -1px;
-            margin-bottom: 8px;
+            font-size: 2rem; font-weight: 800;
+            color: var(--text-main-local);
+            letter-spacing: -1px; margin-bottom: 8px;
         }
 
         .app-version {
-            color: var(--primary-blue);
-            background: rgba(37, 99, 235, 0.1);
-            font-size: 0.8rem;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-weight: 600;
-            display: inline-block;
+            color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            font-size: 0.8rem; padding: 6px 16px;
+            border-radius: 50px; font-weight: 600;
+            display: inline-block; border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         /* --- PRIVACY CARD --- */
         .privacy-promise {
-            background: var(--bg-surface);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-left: 4px solid var(--accent-green);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 16px;
-            text-align: left;
-            margin-bottom: 40px;
-            box-shadow: var(--shadow-sm);
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-left: 4px solid #10b981;
+            border-radius: 16px; padding: 20px;
+            display: flex; align-items: flex-start; gap: 16px;
+            text-align: left; margin-bottom: 40px;
+            box-shadow: var(--shadow-soft);
         }
 
         .privacy-icon {
-            color: var(--accent-green);
-            font-size: 28px;
-            padding-top: 2px;
+            color: #10b981; font-size: 28px; padding-top: 2px;
         }
 
         .privacy-text h4 {
-            font-size: 1rem;
-            color: var(--text-main);
-            font-weight: 700;
-            margin-bottom: 4px;
+            font-size: 1rem; color: var(--text-main-local);
+            font-weight: 700; margin-bottom: 4px;
         }
 
         .privacy-text p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.5;
+            font-size: 0.85rem; color: var(--text-muted-local);
+            line-height: 1.5; margin: 0;
         }
 
-        /* --- TEAM SLIDER (Infinite Scroll) --- */
+        /* --- TEAM GRID --- */
         .section-label {
-            text-align: left;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 16px;
-            padding-left: 4px;
+            text-align: left; font-size: 0.8rem;
+            color: var(--text-muted-local);
+            font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; margin-bottom: 16px; padding-left: 4px;
         }
 
-        .team-wrapper {
-            width: 100%;
-            overflow: hidden;
-            padding: 10px 0 50px 0;
-            position: relative;
-            /* Fade Effect on Edges */
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        }
-
-        .slider-track {
-            display: flex;
-            gap: 20px;
-            width: max-content;
-            /* Animation speed optimized for readability */
-            animation: scrollTeam 20s linear infinite; 
-        }
-
-        /* Stop scrolling on hover */
-        .slider-track:hover { animation-play-state: paused; }
-
-        @keyframes scrollTeam {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); } /* Moves exactly half way */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 16px; margin-bottom: 40px;
         }
 
         .team-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 24px 16px;
-            width: 200px;
-            flex-shrink: 0;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-            transition: transform 0.2s;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px; padding: 24px 16px;
+            text-align: center; display: flex; flex-direction: column;
+            align-items: center; box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease;
+        }
+        .team-card:hover { transform: translateY(-5px); border-color: #3b82f6; }
+
+        .img-wrapper { position: relative; margin-bottom: 16px; }
+        .img-wrapper::before {
+            content: ''; position: absolute; inset: -3px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50%; opacity: 0.8;
         }
 
-        .team-card:hover { transform: translateY(-5px); border-color: var(--primary-blue); }
-
         .team-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--bg-body);
-            box-shadow: 0 0 0 2px var(--primary-blue);
-            margin-bottom: 12px;
-            background-color: var(--bg-body);
+            width: 80px; height: 80px; border-radius: 50%;
+            object-fit: cover; border: 3px solid var(--card-bg);
+            position: relative; z-index: 2; background-color: #cbd5e1;
         }
 
         .team-info h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 4px;
+            font-size: 1.05rem; font-weight: 700;
+            color: var(--text-main-local); margin-bottom: 6px;
         }
 
         .role-badge {
-            font-size: 0.7rem;
-            color: var(--primary-blue);
-            background: rgba(37, 99, 235, 0.08);
-            padding: 4px 10px;
-            border-radius: 8px;
-            font-weight: 600;
-            text-transform: uppercase;
+            font-size: 0.7rem; color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+            padding: 4px 10px; border-radius: 20px;
+            font-weight: 700; text-transform: uppercase;
         }
 
         /* --- SOCIAL LIST --- */
         .social-container {
-            background: var(--bg-surface);
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            overflow: hidden; box-shadow: var(--shadow-soft);
         }
 
         .social-btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            width: 100%;
-            text-decoration: none;
-            border-bottom: 1px solid var(--border-color);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 20px; width: 100%; text-decoration: none;
+            border-bottom: 1px solid var(--card-border);
             transition: background 0.2s;
         }
-
         .social-btn:last-child { border-bottom: none; }
-        .social-btn:active { background-color: var(--primary-light); }
+        .social-btn:active { background-color: rgba(0,0,0,0.05); }
+        html.dark-mode .social-btn:active { background-color: rgba(255,255,255,0.05); }
 
         .social-left { display: flex; align-items: center; gap: 14px; }
-        
-        .social-text { display: flex; flex-direction: column; text-align: left; }
-        .social-title { font-size: 0.95rem; font-weight: 600; color: var(--text-main); }
-        .social-desc { font-size: 0.75rem; color: var(--text-muted); }
+        .social-title { font-size: 0.95rem; font-weight: 600; color: var(--text-main-local); }
+        .social-desc { font-size: 0.75rem; color: var(--text-muted-local); }
 
         .s-icon { font-size: 24px; }
         .insta { color: #E1306C; }
         .yt { color: #FF0000; }
         .mail { color: #2563eb; }
-        .arrow-icon { color: var(--text-muted); opacity: 0.5; }
+        .arrow-icon { color: var(--text-muted-local); opacity: 0.5; font-size: 18px; }
 
         /* --- FOOTER --- */
         .footer-credit { margin-top: 50px; text-align: center; }
-        .brand-footer { font-size: 1.2rem; font-weight: 800; color: var(--text-muted); opacity: 0.3; letter-spacing: -1px; margin-bottom: 8px; }
-        .made-with { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 6px; }
-        .heart-beat { color: #ef4444; font-size: 1rem; animation: beat 1.5s ease-in-out infinite; }
+        .brand-footer { font-size: 1.4rem; font-weight: 900; color: var(--text-muted-local); opacity: 0.2; letter-spacing: -1px; margin-bottom: 10px; }
+        .made-with { font-size: 0.85rem; color: var(--text-muted-local); display: flex; align-items: center; justify-content: center; gap: 6px; }
+        .heart-beat { color: #ef4444; font-size: 1rem; animation: beat 1.2s ease-in-out infinite; }
 
-        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+        @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
 
     </style>
 </head>
 <body>
 
-    <header class="main-header">
+    <header class="main-header" style="background: var(--bg-glass); backdrop-filter: blur(12px);">
         <div class="header-content">
             <button onclick="history.back()" class="icon-button" style="font-size: 24px;">
                 <i class="ph-bold ph-arrow-left"></i>
             </button>
+            
             <div class="header-title">
-                <span class="app-name" style="color: var(--text-main);">About Us</span>
+                <span class="page-title">About Us</span>
             </div>
-            <div style="width: 40px;"></div> </div>
+            
+            <button id="theme-toggle-btn" class="icon-button" style="font-size: 24px;">
+                <i class="ph-fill ph-moon"></i>
+            </button>
+        </div>
     </header>
 
     <main class="app-body">
         <div class="about-container">
             
-            <div class="app-hero">
+            <div class="app-hero fade-in-up">
                 <img src="../images/logo.png" alt="WebKaar Logo" class="hero-logo">
                 <div class="app-title">WebKaar</div>
-                <div class="app-version">Version 3.0.0</div>
+                <div class="app-version">Version 4.0.0</div>
             </div>
 
-            <div class="privacy-promise">
+            <div class="privacy-promise fade-in-up delay-1">
                 <div class="privacy-icon">
                     <i class="ph-fill ph-shield-check"></i>
                 </div>
@@ -280,81 +266,35 @@
                 </div>
             </div>
 
-            <div class="section-label">The Team Behind WebKaar</div>
+            <div class="section-label fade-in-up delay-2">Founders & Developers</div>
             
-            <div class="team-wrapper">
-                <div class="slider-track">
-                    
-                    <div class="team-card">
-                        <img src="../images/ayush.jpg" alt="Ayush" class="team-img">
-                        <div class="team-info">
-                            <h3>Ayush Tiwari</h3>
-                            <span class="role-badge">Founder & Dev</span>
-                        </div>
+            <div class="team-grid">
+                
+                <div class="team-card fade-in-up delay-3">
+                    <div class="img-wrapper">
+                        <img src="../images/ayush.jpg" alt="Ayush" class="team-img" onerror="this.src='../images/logo.png'">
                     </div>
-
-                    <div class="team-card">
-                        <img src="../images/aryan.jpg" alt="Aryan" class="team-img" onerror="this.src='../images/logo.png'">
-                        <div class="team-info">
-                            <h3>Aryan Singh</h3>
-                            <span class="role-badge">Code Wizard</span>
-                        </div>
+                    <div class="team-info">
+                        <h3>Ayush Tiwari</h3>
+                        <span class="role-badge">Founder & Lead Dev</span>
                     </div>
-
-                    <div class="team-card">
-                        <img src="../images/prince.jpg" alt="Prince" class="team-img" onerror="this.src='../images/logo.png'">
-                        <div class="team-info">
-                            <h3>Prince Singh</h3>
-                            <span class="role-badge">JS Developer</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <img src="../images/ardhya.jpg" alt="Ardhya" class="team-img" onerror="this.src='../images/logo.png'">
-                        <div class="team-info">
-                            <h3>Ardhya Sai</h3>
-                            <span class="role-badge">Lead Tester</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <img src="../images/ayush.jpg" alt="Ayush" class="team-img">
-                        <div class="team-info">
-                            <h3>Ayush Tiwari</h3>
-                            <span class="role-badge">Founder & Dev</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <img src="../images/aryan.jpg" alt="Aryan" class="team-img" onerror="this.src='../images/logo.png'">
-                        <div class="team-info">
-                            <h3>Aryan Singh</h3>
-                            <span class="role-badge">Code Wizard</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <img src="../images/prince.jpg" alt="Prince" class="team-img" onerror="this.src='../images/logo.png'">
-                        <div class="team-info">
-                            <h3>Prince Singh</h3>
-                            <span class="role-badge">JS Developer</span>
-                        </div>
-                    </div>
-
-                    <div class="team-card">
-                        <img src="../images/ardhya.jpg" alt="Ardhya" class="team-img" onerror="this.src='../images/logo.png'">
-                        <div class="team-info">
-                            <h3>Ardhya Sai</h3>
-                            <span class="role-badge">Lead Tester</span>
-                        </div>
-                    </div>
-
                 </div>
+
+                <div class="team-card fade-in-up delay-4">
+                    <div class="img-wrapper">
+                        <img src="../images/aryan.jpg" alt="Aryan" class="team-img" onerror="this.src='../images/logo.png'">
+                    </div>
+                    <div class="team-info">
+                        <h3>Aryan Singh</h3>
+                        <span class="role-badge">Co-Founder & Tech</span>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="section-label" style="margin-top: 20px;">Connect With Us</div>
+            <div class="section-label fade-in-up delay-4">Connect With Us</div>
             
-            <div class="social-container">
+            <div class="social-container fade-in-up delay-5">
                 
                 <a href="https://www.instagram.com/fsthavoc?igsh=MWpvd284NTZnM29zMw==" target="_blank" class="social-btn">
                     <div class="social-left">
@@ -391,18 +331,44 @@
 
             </div>
 
-            <div class="footer-credit">
+            <div class="footer-credit fade-in-up delay-5">
                 <div class="brand-footer">WEBKAAR</div>
                 <div class="made-with">
                     Made with <i class="ph-fill ph-heart heart-beat"></i> in India 🇮🇳
                 </div>
-                <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 6px;">
+                <div style="font-size: 0.75rem; color: var(--text-muted-local); margin-top: 6px;">
                     &copy; 2026 WebKaar Team
                 </div>
             </div>
 
         </div>
     </main>
+
+    <script>
+        const themeBtn = document.getElementById('theme-toggle-btn');
+        const themeIcon = themeBtn.querySelector('i');
+        const html = document.documentElement;
+
+        function updateIcon() {
+            if (html.classList.contains('dark-mode')) {
+                themeIcon.classList.replace('ph-moon', 'ph-sun');
+            } else {
+                themeIcon.classList.replace('ph-sun', 'ph-moon');
+            }
+        }
+
+        updateIcon();
+
+        themeBtn.addEventListener('click', () => {
+            html.classList.toggle('dark-mode');
+            if (html.classList.contains('dark-mode')) {
+                localStorage.setItem('webkaar_theme_pref', 'dark');
+            } else {
+                localStorage.setItem('webkaar_theme_pref', 'light');
+            }
+            updateIcon();
+        });
+    </script>
 
 </body>
 </html>
