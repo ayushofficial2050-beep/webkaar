@@ -4,10 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.tab-btn');
     const panels = document.querySelectorAll('.panel');
     const canvas = document.getElementById('processor-canvas');
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
     const toast = document.getElementById('toast');
 
-    // Encode Elements
+    // Encode
     const encDrop = document.getElementById('encode-dropzone');
     const encFile = document.getElementById('encode-file');
     const encWorkspace = document.getElementById('encode-workspace');
@@ -15,9 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const encMeta = document.getElementById('encode-meta');
     const secretInput = document.getElementById('secret-message');
     const charCounter = document.getElementById('char-counter');
-    const encryptBtn = document.getElementById('encrypt-btn');
+    const shareBtn = document.getElementById('share-btn');
+    const downloadBtn = document.getElementById('download-btn');
 
-    // Decode Elements
+    // Decode
     const decDrop = document.getElementById('decode-dropzone');
     const decFile = document.getElementById('decode-file');
     const decWorkspace = document.getElementById('decode-workspace');
@@ -33,11 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
             tabs.forEach(t => t.classList.remove('active'));
             panels.forEach(p => p.classList.remove('active'));
             tab.classList.add('active');
-            document.getElementById(`${tab.dataset.tab}-panel`).classList.add('active');
+            
+            const targetId = tab.dataset.tab === 'encode' ? 'encode-panel' : 'decode-panel';
+            document.getElementById(targetId).classList.add('active');
+            
+            resetWorkspaces();
         });
     });
 
-    /* --- CHARACTER COUNT --- */
+    /* --- INPUT COUNT --- */
     secretInput.addEventListener('input', () => {
         const len = secretInput.value.length;
         charCounter.textContent = len;
@@ -49,56 +54,84 @@ document.addEventListener('DOMContentLoaded', () => {
     encDrop.addEventListener('click', () => encFile.click());
     decDrop.addEventListener('click', () => decFile.click());
 
-    // Encode File Load
     encFile.addEventListener('change', (e) => handleFile(e.target.files[0], 'encode'));
-    // Decode File Load
     decFile.addEventListener('change', (e) => handleFile(e.target.files[0], 'decode'));
 
     function handleFile(file, mode) {
         if(!file) return;
-        if(!file.type.startsWith('image/')) {
-            alert('Please upload an image file (JPG/PNG).');
+        
+        // 🔥 MAGIC: Accept .webkaar / .enc files as Images for decoding
+        let blob = file;
+        
+        // Force browser to read .webkaar as PNG
+        if (mode === 'decode') {
+            blob = new Blob([file], { type: 'image/png' });
+        } else if(!file.type.startsWith('image/')) {
+            showToast("⚠️ Please upload a valid image (JPG/PNG)");
             return;
         }
 
         const reader = new FileReader();
         reader.onload = (event) => {
-            if(mode === 'encode') {
-                encPreview.src = event.target.result;
-                encWorkspace.classList.remove('hidden');
-                encDrop.classList.add('hidden');
-                // Wait for image load to get dimensions
-                encPreview.onload = () => {
-                    encMeta.textContent = `${encPreview.naturalWidth} x ${encPreview.naturalHeight} px`;
+            const imgObj = new Image();
+            imgObj.onload = () => {
+                if(mode === 'encode') {
+                    encPreview.src = imgObj.src;
+                    encWorkspace.classList.remove('hidden');
+                    encDrop.classList.add('hidden');
+                    encMeta.textContent = `${imgObj.width} x ${imgObj.height} px`;
+                } else {
+                    decPreview.src = imgObj.src;
+                    decWorkspace.classList.remove('hidden');
+                    decDrop.classList.add('hidden');
+                    resultContainer.classList.add('hidden');
                 }
-            } else {
-                decPreview.src = event.target.result;
-                decWorkspace.classList.remove('hidden');
-                decDrop.classList.add('hidden');
-                resultContainer.classList.add('hidden');
-            }
+            };
+            imgObj.src = event.target.result;
         };
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(blob);
     }
 
-    /* --- ENCRYPTION LOGIC --- */
-    encryptBtn.addEventListener('click', () => {
+    function resetWorkspaces() {
+        encWorkspace.classList.add('hidden');
+        encDrop.classList.remove('hidden');
+        encFile.value = '';
+        secretInput.value = '';
+        charCounter.textContent = '0';
+        
+        decWorkspace.classList.add('hidden');
+        decDrop.classList.remove('hidden');
+        decFile.value = '';
+        resultContainer.classList.add('hidden');
+    }
+
+    /* --- 🔥 SHARE & DOWNLOAD HANDLERS --- */
+    shareBtn.addEventListener('click', () => processImage('share'));
+    downloadBtn.addEventListener('click', () => processImage('download'));
+
+    function processImage(action) {
         const text = secretInput.value;
-        if (!text) return alert("Please type a message!");
-        if (text.length > 1000) return alert("Message too long (Max 1000 chars)");
+        if (!text) return showToast("⚠️ Type a secret message first!");
+        
+        // UTF-8 Encoder (Emoji Fix)
+        const encoder = new TextEncoder();
+        const bytes = encoder.encode(text);
+        if (bytes.length > 5000) return showToast("⚠️ Message too long!");
 
-        encryptBtn.disabled = true;
-        encryptBtn.querySelector('.btn-text').textContent = "Processing...";
+        toggleLoading(action === 'share' ? shareBtn : downloadBtn, true);
 
-        // Small timeout to let UI update
         setTimeout(() => {
-            hideTextInImage(encPreview, text);
-            encryptBtn.disabled = false;
-            encryptBtn.querySelector('.btn-text').textContent = "🔒 Encrypt & Download Image";
+            try {
+                hideData(encPreview, text, action);
+            } catch (error) {
+                console.error(error);
+                showToast("❌ Error hiding data. Try a larger image.");
+                toggleLoading(action === 'share' ? shareBtn : downloadBtn, false);
+            }
         }, 100);
-    });
+    }
 
-    function hideTextInImage(img, text) {
+    function hideData(img, text, action) {
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
         ctx.drawImage(img, 0, 0);
@@ -106,26 +139,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const data = imgData.data;
 
-        // Convert text to binary + Terminator (00000000)
-        let binary = '';
-        for (let i = 0; i < text.length; i++) {
-            binary += text.charCodeAt(i).toString(2).padStart(8, '0');
+        // 1. Convert Text to Binary (UTF-8)
+        const encoder = new TextEncoder();
+        const uint8Array = encoder.encode(text);
+        
+        let binaryString = "";
+        for (let byte of uint8Array) {
+            binaryString += byte.toString(2).padStart(8, '0');
         }
-        binary += '00000000'; // Null terminator to mark end
+        binaryString += "00000000"; // Terminator
 
-        // Capacity Check
-        if (binary.length > (data.length / 4)) {
-            alert("Image is too small for this text! Use a larger image.");
-            return;
+        // 2. Capacity Check
+        if (binaryString.length > data.length / 4) {
+            toggleLoading(action === 'share' ? shareBtn : downloadBtn, false);
+            return showToast("❌ Image too small for this message!");
         }
 
+        // 3. Embed Data (Blue Channel LSB)
         let binIdx = 0;
-        // Use Blue Channel LSB (Index i+2)
         for (let i = 0; i < data.length; i += 4) {
-            if (binIdx < binary.length) {
-                const bit = binary[binIdx];
-                // Reset LSB to 0 then set to bit value
-                data[i + 2] = (data[i + 2] & ~1) | parseInt(bit);
+            if (binIdx < binaryString.length) {
+                data[i + 2] = (data[i + 2] & ~1) | parseInt(binaryString[binIdx]);
                 binIdx++;
             } else {
                 break;
@@ -134,59 +168,95 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.putImageData(imgData, 0, 0);
         
-        // Auto Download
-        const link = document.createElement('a');
-        link.download = `secret_${Date.now()}.png`;
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-        
-        showToast("Image Downloaded! Don't compress it.");
+        // 4. 🔥 SAVE AS .WEBKAAR (Magic Trick)
+        canvas.toBlob((blob) => {
+            const fileName = `secret_msg_${Date.now()}.webkaar`; 
+            const file = new File([blob], fileName, { type: 'image/png' });
+
+            if (action === 'share') {
+                // Try Native Share (Mobile)
+                if (navigator.share && navigator.canShare({ files: [file] })) {
+                    navigator.share({
+                        files: [file],
+                        title: 'Secret Message',
+                        text: 'Here is a secret message file. Open in WebKaar tool to decode.'
+                    }).catch(console.error);
+                } else {
+                    showToast("⚠️ Sharing not supported, downloading instead.");
+                    downloadBlob(blob, fileName);
+                }
+            } else {
+                downloadBlob(blob, fileName);
+            }
+            toggleLoading(action === 'share' ? shareBtn : downloadBtn, false);
+        }, 'image/png');
     }
 
-    /* --- DECRYPTION LOGIC --- */
+    function downloadBlob(blob, name) {
+        const link = document.createElement('a');
+        link.download = name;
+        link.href = URL.createObjectURL(blob);
+        link.click();
+        showToast("✅ File Saved! Share this file.");
+    }
+
+    function toggleLoading(btn, isLoading) {
+        const loader = btn.querySelector('.loader');
+        const text = btn.querySelector('.btn-text');
+        if(loader && text) {
+            loader.style.display = isLoading ? 'inline-block' : 'none';
+            text.style.display = isLoading ? 'none' : 'inline';
+            btn.disabled = isLoading;
+        }
+    }
+
+    /* --- 🔥 DECRYPTION LOGIC --- */
     decryptBtn.addEventListener('click', () => {
         try {
-            const text = revealTextFromImage(decPreview);
-            if (text && text.length > 0) {
-                decodedText.textContent = text;
+            const msg = revealData(decPreview);
+            if (msg) {
+                decodedText.textContent = msg;
                 resultContainer.classList.remove('hidden');
-                showToast("Message Found!");
+                showToast("🔓 Message Revealed!");
+                resultContainer.scrollIntoView({ behavior: 'smooth' });
             } else {
-                alert("No hidden message found, or image was compressed.");
+                showToast("❌ No hidden message found.");
             }
         } catch (e) {
-            console.error(e);
-            alert("Error reading image.");
+            showToast("❌ Error reading file.");
         }
     });
 
-    function revealTextFromImage(img) {
+    function revealData(img) {
         canvas.width = img.naturalWidth;
         canvas.height = img.naturalHeight;
         ctx.drawImage(img, 0, 0);
-
         const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-        let binary = '';
-        let text = '';
-        let currentByte = '';
-
+        
+        let extractedBits = "";
+        let byteBuffer = [];
+        
         for (let i = 0; i < data.length; i += 4) {
             // Read Blue Channel LSB
-            const bit = (data[i + 2] & 1).toString();
-            currentByte += bit;
+            extractedBits += (data[i + 2] & 1).toString();
 
-            if (currentByte.length === 8) {
-                if (currentByte === '00000000') return text; // Terminator found
-                
-                const charCode = parseInt(currentByte, 2);
-                // Basic ASCII check (printable)
-                if (charCode === 0) return text; 
-                
-                text += String.fromCharCode(charCode);
-                currentByte = '';
+            if (extractedBits.length === 8) {
+                const byteValue = parseInt(extractedBits, 2);
+                if (byteValue === 0) break; // Terminator
+                byteBuffer.push(byteValue);
+                extractedBits = "";
             }
         }
-        return ""; // Nothing found
+
+        if (byteBuffer.length === 0) return null;
+
+        // Convert Bytes back to Text (UTF-8)
+        try {
+            const decoder = new TextDecoder();
+            const decodedString = decoder.decode(new Uint8Array(byteBuffer));
+            if(decodedString.length > 0) return decodedString;
+        } catch(e) { return null; }
+        return null;
     }
 
     /* --- UTILS --- */
@@ -205,8 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const infoBtn = document.getElementById('info-btn');
     const modal = document.getElementById('info-modal');
     const close = document.getElementById('close-modal');
-
-    if (infoBtn) {
+    if(infoBtn) {
         infoBtn.onclick = () => modal.classList.remove('hidden');
         close.onclick = () => modal.classList.add('hidden');
     }
