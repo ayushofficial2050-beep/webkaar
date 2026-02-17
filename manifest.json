@@ -8,7 +8,7 @@
   "theme_color": "#0f172a",
   "description": "50+ Free Tools for Developers & Creators. Image Tools, PDF Tools, Converters & More.",
   "orientation": "portrait-primary",
-  "version": "1.0.0",  // ← Ye add kar diya – ab "Version 1.0.0" dikhega
+  "version": "3.0.0",  // ← Ye add kar diya – ab "Version 3.0.0" dikhega
   "icons": [
     {
       "src": "images/icon192.png",

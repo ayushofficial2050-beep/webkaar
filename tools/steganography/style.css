@@ -6,6 +6,10 @@
     --z-modal: 2000;
     --z-toast: 3000;
     --primary-green: #10b981; /* WhatsApp Green */
+    --primary-blue: #3b82f6; /* Default blue for tabs/focus – agar change karna hai to yahan kar */
+    --accent-green: #059669; /* Darker green for dark mode buttons/toast */
+    --radius-md: 8px;
+    --radius-lg: 16px;
 }
 
 /* Tool Container */
@@ -99,7 +103,7 @@ body.dark-mode .tab-btn.active {
 }
 
 /* =========================================
-   4. UPLOAD AREA
+   4. UPLOAD AREA + DRAG SUPPORT
    ========================================= */
 .upload-area {
     border: 2px dashed var(--border-color);
@@ -111,13 +115,27 @@ body.dark-mode .tab-btn.active {
     transition: all 0.2s;
 }
 
-.upload-area:hover {
-    border-color: var(--primary-blue);
-    background: rgba(59, 130, 246, 0.04);
+.upload-area:hover,
+.upload-area.drag-over {
+    border-color: var(--primary-green);
+    background: rgba(16, 185, 129, 0.08);
+    transform: scale(1.02);
 }
 
 .upload-content h3 { font-size: 1.1rem; color: var(--text-main); margin: 15px 0 5px; }
 .upload-content p { font-size: 0.9rem; color: var(--text-muted); }
+
+.drag-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 8px;
+    opacity: 0.7;
+}
+
+.upload-area.drag-over .drag-hint {
+    color: var(--primary-green);
+    opacity: 1;
+}
 
 .icon-circle {
     width: 64px; height: 64px;
@@ -129,7 +147,8 @@ body.dark-mode .tab-btn.active {
     transition: transform 0.3s;
 }
 
-.upload-area:hover .icon-circle { transform: scale(1.1); }
+.upload-area:hover .icon-circle,
+.upload-area.drag-over .icon-circle { transform: scale(1.1); }
 .icon-circle.green { background: rgba(16, 185, 129, 0.1); color: var(--primary-green); }
 
 /* =========================================
@@ -165,10 +184,12 @@ textarea {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.95rem; resize: none; outline: none;
     transition: border-color 0.2s;
+    -webkit-appearance: none; /* iOS fix */
 }
 
 textarea:focus { border-color: var(--primary-blue); }
 .char-count { text-align: right; font-size: 0.8rem; color: var(--text-muted); margin-top: 4px; }
+.char-count.warning { color: #ef4444 !important; }
 
 /* =========================================
    6. BUTTONS & ACTIONS
@@ -185,7 +206,14 @@ textarea:focus { border-color: var(--primary-blue); }
 .primary-btn:active, .secondary-btn:active { transform: scale(0.98); }
 
 .primary-btn { background: var(--primary-blue); color: white; border: none; }
-.primary-btn.green-btn { background: var(--primary-green); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); }
+.primary-btn.green-btn { 
+    background: var(--primary-green); 
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25); 
+}
+body.dark-mode .primary-btn.green-btn {
+    background: var(--accent-green);
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
+}
 .secondary-btn { background: transparent; border: 2px solid var(--border-color); color: var(--text-main); }
 
 .hint-text {
@@ -247,8 +275,9 @@ textarea:focus { border-color: var(--primary-blue); }
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 .modal-header { display: flex; justify-content: space-between; margin-bottom: 15px; }
-.icon-button { background: none; border: none; cursor: pointer; color: var(--text-muted); padding: 4px; }
+.icon-button { background: none; border: none; cursor: pointer; color: var(--text-muted); padding: 12px; font-size: 1.2rem; }
 
+/* Toast */
 .toast {
     position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(20px);
     background-color: var(--accent-green); color: white; padding: 12px 24px;
@@ -256,4 +285,3 @@ textarea:focus { border-color: var(--primary-blue); }
     opacity: 0; visibility: hidden; transition: all 0.3s;
 }
 .toast.visible { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
-
