@@ -8,6 +8,7 @@
   "theme_color": "#0f172a",
   "description": "50+ Free Tools for Developers & Creators. Image Tools, PDF Tools, Converters & More.",
   "orientation": "portrait-primary",
+  "version": "1.0.0",  // ← Ye add kar diya – ab "Version 1.0.0" dikhega
   "icons": [
     {
       "src": "images/icon192.png",
@@ -51,14 +52,14 @@
       "sizes": "1080x1920",
       "type": "image/jpg",
       "form_factor": "narrow",
-      "label": "Home Screen"
+      "label": "Home Screen with Tools"
     },
     {
       "src": "images/screenshot2.jpg",
       "sizes": "1080x1920",
       "type": "image/jpg",
       "form_factor": "narrow",
-      "label": "Tools List"
+      "label": "Tools List View"
     }
   ],
   "categories": [
