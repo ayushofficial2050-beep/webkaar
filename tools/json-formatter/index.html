@@ -1,29 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-GNNE51D2B7');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>JSON Formatter & Validator Online | WebKaar</title>
-    <meta name="description" content="Free Online JSON Formatter. Beautify messy JSON, Minify for production, and Validate errors instantly. Works offline in your browser. Secure & Fast.">
-    <meta name="keywords" content="json formatter, json beautifier, json validator, minify json, json viewer, online json parser, debug json">
-    <meta name="author" content="WebKaar">
+    <!-- 🔥 TITLE (Optimized: Keyword front-load + all features + brand, ~60 chars) -->
+    <title>JSON Formatter & Validator Online | Beautify, Minify & Validate | WebKaar</title>
+
+    <!-- 🔥 META DESCRIPTION (~158 chars, features + benefits + privacy + dev appeal) -->
+    <meta name="description" content="Free online JSON formatter & validator: Beautify messy JSON with indentation, minify for production, validate syntax errors instantly. 100% client-side, offline, no login, secure & fast for developers – WebKaar Tools.">
+
+    <!-- 🔥 KEYWORDS (Expanded with common dev searches) -->
+    <meta name="keywords" content="json formatter, json beautifier online, json validator, minify json, json viewer, json parser online, debug json errors, pretty print json, json formatter validator, webkaar tools">
+
+    <meta name="author" content="Ayush Tiwari">
     <meta name="theme-color" content="#0f172a">
 
+    <!-- 🔥 CANONICAL (Already perfect) -->
     <link rel="canonical" href="https://webkaar.pages.dev/tools/json-formatter/">
-    <meta property="og:title" content="JSON Formatter & Validator | WebKaar">
-    <meta property="og:description" content="Beautify, Minify, and Validate JSON instantly. Developer friendly and secure.">
-    <meta property="og:url" content="https://webkaar.pages.dev/tools/json-formatter/">
+
+    <!-- 🔥 OPEN GRAPH (Synced & enhanced for dev sharing) -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/json-formatter/">
+    <meta property="og:title" content="JSON Formatter & Validator - Beautify & Minify JSON">
+    <meta property="og:description" content="Format, validate syntax, and minify JSON instantly in browser. Offline-capable, no login, privacy-first tool for developers by WebKaar.">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/og-json-formatter.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="WebKaar Tools">
+
+    <!-- 🔥 TWITTER CARDS (Synced) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="JSON Formatter | Beautify, Validate & Minify - WebKaar">
+    <meta name="twitter:description" content="Pretty-print JSON, check errors, shrink for prod. Free, offline, dev-friendly tool!">
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-json-formatter.jpg">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/responsive.css">
@@ -31,18 +64,25 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+    <!-- 🔥 STRUCTURED DATA (Enhanced for developer tool visibility) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "JSON Formatter",
+      "name": "JSON Formatter & Validator by WebKaar",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Any",
       "offers": {
         "@type": "Offer",
-        "price": "0"
+        "price": "0",
+        "priceCurrency": "USD"
       },
-      "description": "A powerful tool to format, validate and minify JSON data directly in the browser."
+      "description": "Free browser-based JSON formatter, beautifier, minifier, and validator tool. Pretty-print messy JSON with indentation and syntax highlighting, validate for errors, minify to reduce size for production. All processing local in browser – no data sent to servers, works offline, no login required. Perfect for API debugging, code review, and web development.",
+      "url": "https://webkaar.pages.dev/tools/json-formatter/",
+      "author": {
+        "@type": "Person",
+        "name": "Ayush Tiwari"
+      }
     }
     </script>
 </head>

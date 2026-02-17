@@ -1,14 +1,13 @@
-# WebKaar Robots File
-# Google Bot and all other crawlers are allowed
-
+# WebKaar robots.txt — updated Feb 2026
 User-agent: *
 Allow: /
 
-# JS aur CSS ko block mat karna (Kyunki tumhari site JS par chalti hai)
+# Explicitly allow important static assets
 Allow: /js/
 Allow: /css/
 Allow: /images/
 Allow: /tools/
+Allow: /manifest.json
 
-# Sitemap Location (Sabse Jaruri Line)
+# Sitemap for better crawling & indexing
 Sitemap: https://webkaar.pages.dev/sitemap.xml

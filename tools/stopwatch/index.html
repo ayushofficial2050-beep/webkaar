@@ -1,29 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GNNE51D2B7"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-GNNE51D2B7');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Online Stopwatch with Laps & Sound | WebKaar</title>
-    <meta name="description" content="Free Online Stopwatch with Split Laps and Sound Alerts. Accurate to milliseconds. Perfect for studying, workouts, and sports. Works offline.">
-    <meta name="keywords" content="online stopwatch, stopwatch with laps, timer with sound, study timer, workout timer, pomodoro timer, stopwatch milliseconds, digital stopwatch">
-    <meta name="author" content="WebKaar">
+    <!-- 🔥 TITLE (Optimized: Keyword front-load + key features + brand, ~60 chars) -->
+    <title>Online Stopwatch with Laps & Sound Alerts | Milliseconds Accuracy | WebKaar</title>
+
+    <!-- 🔥 META DESCRIPTION (~158 chars, features + use cases + privacy + appeal) -->
+    <meta name="description" content="Free online stopwatch with split laps, sound alerts, and millisecond precision. Ideal for workouts, studying (Pomodoro), sports timing, experiments & more. Works offline, 100% client-side, no login – WebKaar Tools.">
+
+    <!-- 🔥 KEYWORDS (Expanded with high-search terms) -->
+    <meta name="keywords" content="online stopwatch, stopwatch with laps, stopwatch milliseconds, timer with sound, study timer, pomodoro timer online, workout stopwatch, sports timer, digital stopwatch free, webkaar tools">
+
+    <meta name="author" content="Ayush Tiwari">
     <meta name="theme-color" content="#0f172a">
 
+    <!-- 🔥 CANONICAL (Already perfect) -->
     <link rel="canonical" href="https://webkaar.pages.dev/tools/stopwatch/">
-    <meta property="og:title" content="Precision Stopwatch & Timer | WebKaar">
-    <meta property="og:description" content="Track time with milliseconds accuracy. Features laps, sound alerts, and themes.">
-    <meta property="og:url" content="https://webkaar.pages.dev/tools/stopwatch/">
+
+    <!-- 🔥 OPEN GRAPH (Synced & enhanced for sharing) -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/stopwatch/">
+    <meta property="og:title" content="Online Stopwatch - Laps, Sound Alerts & Milliseconds">
+    <meta property="og:description" content="Track time precisely with lap splits & customizable sound notifications. Free, offline, no login – perfect for workouts, study sessions & sports. WebKaar Tools.">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/og-stopwatch.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="WebKaar Tools">
+
+    <!-- 🔥 TWITTER CARDS (Synced) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Online Stopwatch | Laps & Sound - WebKaar">
+    <meta name="twitter:description" content="Accurate timer with laps & alerts. Free, offline, great for workouts & study!">
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-stopwatch.jpg">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/responsive.css">
@@ -31,18 +64,25 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
+    <!-- 🔥 STRUCTURED DATA (Enhanced for timer/utility tool) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Online Stopwatch",
+      "name": "Online Stopwatch with Laps by WebKaar",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "Any",
       "offers": {
         "@type": "Offer",
-        "price": "0"
+        "price": "0",
+        "priceCurrency": "USD"
       },
-      "description": "A precision stopwatch tool with lap functionality and custom time alerts."
+      "description": "Free online stopwatch tool with split lap timing, customizable sound alerts, and millisecond precision. Supports pause/resume, reset, and multiple lap tracking. Works completely offline in the browser – no login required, no data sent to servers, privacy-focused. Ideal for workouts, Pomodoro study sessions, sports timing, cooking, experiments, and any activity needing accurate time measurement.",
+      "url": "https://webkaar.pages.dev/tools/stopwatch/",
+      "author": {
+        "@type": "Person",
+        "name": "Ayush Tiwari"
+      }
     }
     </script>
 </head>
