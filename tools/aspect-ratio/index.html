@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+   <!-- 🔥 GOOGLE ANALYTICS (New GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G0FCCE2LMY');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- 🔥 TITLE (Optimized: Main keyword first + features + brand, ~58 chars) -->
+    <title>Aspect Ratio Calculator Online | Resize Images & Videos | WebKaar Tools</title>
+
+    <!-- 🔥 META DESCRIPTION (~155 chars, engaging + benefits + privacy + CTA) -->
+    <meta name="description" content="Free online aspect ratio calculator: Maintain proportions while resizing images/videos. Convert to 16:9, 4:3, 21:9, 1:1 & more. Instant new dimensions, no login, 100% client-side privacy. WebKaar Tools.">
+
+    <!-- 🔥 KEYWORDS (Expanded with high-search volume terms) -->
+    <meta name="keywords" content="aspect ratio calculator, aspect ratio finder, screen resolution calculator, 16:9 calculator, 4:3 ratio, resize image aspect ratio, video aspect ratio tool, maintain proportions, webkaar tools">
+
+    <meta name="author" content="Ayush Tiwari">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- 🔥 CANONICAL (Already perfect, confirmed) -->
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/aspect-ratio/">
+
+    <!-- 🔥 OPEN GRAPH (Added for social sharing boost) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/aspect-ratio/">
+    <meta property="og:title" content="Aspect Ratio Calculator - Resize Images & Videos Perfectly">
+    <meta property="og:description" content="Calculate and convert aspect ratios instantly: 16:9, 4:3, 21:9 etc. Keep proportions while resizing photos/videos. Free, no login, privacy-focused tool by WebKaar.">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/og-aspect-ratio.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="WebKaar Tools">
+
+    <!-- 🔥 TWITTER CARDS (Added, synced with OG) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aspect Ratio Calculator | Maintain Proportions - WebKaar">
+    <meta name="twitter:description" content="Resize images/videos without distortion. Free aspect ratio tool for 16:9, 4:3 & more. No login, client-side only!">
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-aspect-ratio.jpg">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 🔥 STRUCTURED DATA (Added for rich results & trust) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Aspect Ratio Calculator by WebKaar",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online tool to calculate and convert aspect ratios for images and videos. Maintain perfect proportions while finding new dimensions. Supports common ratios like 16:9, 4:3, 21:9, 1:1. 100% client-side, no login, privacy-first.",
+      "url": "https://webkaar.pages.dev/tools/aspect-ratio/",
+      "author": {
+        "@type": "Person",
+        "name": "Ayush Tiwari"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Aspect Ratio</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="calc-grid">
+                
+                <div class="input-card">
+                    <div class="card-header">Original Size</div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Width</label>
+                            <input type="number" id="w1" placeholder="1920" value="1920">
+                        </div>
+                        <div class="input-group">
+                            <label>Height</label>
+                            <input type="number" id="h1" placeholder="1080" value="1080">
+                        </div>
+                    </div>
+                    
+                    <div class="presets">
+                        <button class="chip" data-w="1920" data-h="1080">16:9 (HD)</button>
+                        <button class="chip" data-w="1080" data-h="1080">1:1 (Insta)</button>
+                        <button class="chip" data-w="800" data-h="600">4:3 (Old)</button>
+                    </div>
+
+                    <div class="ratio-display">
+                        Ratio: <span id="ratio-result" class="highlight">16:9</span>
+                    </div>
+                </div>
+
+                <div class="input-card">
+                    <div class="card-header">New Size (Resize)</div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>New Width</label>
+                            <input type="number" id="w2" placeholder="e.g. 1280">
+                        </div>
+                        <div class="input-group">
+                            <label>New Height</label>
+                            <input type="number" id="h2" placeholder="Auto">
+                        </div>
+                    </div>
+                    <p class="help-text">Change one value, the other updates automatically.</p>
+                </div>
+
+            </div>
+
+            <div class="preview-box">
+                <div class="preview-label">Visual Preview</div>
+                <div class="preview-canvas">
+                    <div id="aspect-box" class="aspect-box">
+                        <span id="box-label">16:9</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">Understanding Aspect Ratio</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                Aspect ratio is the proportional relationship between the width and height of an image or screen. Common ratios include <strong>16:9</strong> (standard for YouTube/TV), <strong>4:3</strong> (old monitors), and <strong>1:1</strong> (Instagram posts).
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">How this tool helps?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Designers:</strong> Calculate exact dimensions when resizing images.</li>
+                <li><strong>Video Editors:</strong> Ensure your project settings match the correct ratio.</li>
+                <li><strong>Developers:</strong> Find the correct CSS aspect-ratio values.</li>
+            </ul>
+        </article>
+
+    </main>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Calculator:</strong> Find new width/height while keeping the shape same.</p>
+                <p><strong>Detector:</strong> Enter dimensions to see the ratio (e.g., 1920x1080 = 16:9).</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

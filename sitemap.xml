@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Homepage - Highest priority -->
+  <url>
+    <loc>https://webkaar.pages.dev/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Static pages -->
+  <url>
+    <loc>https://webkaar.pages.dev/pages/about</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://webkaar.pages.dev/pages/contact</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://webkaar.pages.dev/pages/privacy</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://webkaar.pages.dev/pages/disclaimer</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- High-priority tools (frequent updates expected) -->
+  <url>
+    <loc>https://webkaar.pages.dev/tools/image-compressor/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://webkaar.pages.dev/tools/video-compressor/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://webkaar.pages.dev/tools/pdf-merger/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://webkaar.pages.dev/tools/pdf-compressor/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://webkaar.pages.dev/tools/speed-test/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Medium-priority tools -->
+  <url>
+    <loc>https://webkaar.pages.dev/tools/qr-generator/</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- ... baaki tools same priority ke hisab se daal de (0.80 ya 0.70) ... -->
+
+  <!-- Low-priority tools & pages -->
+  <!-- Example -->
+  <url>
+    <loc>https://webkaar.pages.dev/tools/lorem-ipsum/</loc>
+    <lastmod>2026-02-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+</urlset>

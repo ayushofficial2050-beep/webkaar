@@ -1,0 +1,180 @@
+/* Tool Specific Styles */
+.tool-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Gauge Card */
+.gauge-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+/* Gauge Wrapper */
+.gauge-wrapper {
+    position: relative;
+    width: 280px;
+    height: 140px; /* Half circle */
+    margin-bottom: 20px;
+}
+
+.gauge {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.gauge-bg {
+    stroke: var(--bg-body); /* Darker track */
+    stroke-linecap: round;
+}
+
+.gauge-fill {
+    stroke: var(--primary-blue);
+    stroke-linecap: round;
+    stroke-dasharray: 251.2; /* Circumference of half circle r=80 */
+    stroke-dashoffset: 251.2; /* Start Empty */
+    transition: stroke-dashoffset 0.5s ease-out, stroke 0.3s;
+    filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+}
+
+/* Speed Text inside Gauge */
+.gauge-text {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    margin-bottom: -10px;
+}
+
+#speed-value {
+    display: block;
+    font-size: 3.5rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-main);
+    line-height: 1;
+}
+
+.unit {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+/* Status Badge */
+.status-badge {
+    background: var(--bg-body);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+}
+
+/* Start Button */
+.glow-btn {
+    padding: 14px 40px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.glow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+}
+
+.glow-btn:disabled {
+    background: var(--bg-body);
+    color: var(--text-muted);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.stat-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.stat-icon {
+    color: var(--primary-blue);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.stat-info label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.stat-info span {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+    .gauge-wrapper { width: 240px; height: 120px; }
+    #speed-value { font-size: 2.8rem; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat-box { flex-direction: row; text-align: left; padding: 12px 20px; }
+    .stat-info { margin-left: 12px; }
+}
+
+/* Modal (Reused) */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(4px); transition: all 0.3s ease;
+}
+.modal-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.modal-content {
+    background: var(--bg-surface); width: 90%; max-width: 400px;
+    padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--border-color);
+}
+.modal-header { display: flex; justify-content: space-between; margin-bottom: 16px; }
+.modal-header h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-main); }
+.modal-body p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px; }
+.icon-button { background: none; border: none; padding: 6px; cursor: pointer; color: var(--text-muted); }
+.hidden { display: none !important; }

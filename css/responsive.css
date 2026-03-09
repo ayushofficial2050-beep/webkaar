@@ -1,0 +1,208 @@
+/* =========================================
+   WEBKAAR RESPONSIVE STYLES (Final App v4.0)
+   Target: 3-Column Grid, Notch Safe, Native Feel
+   ========================================= */
+
+/* --- 1. GLOBAL MOBILE ADJUSTMENTS (Notch & Safe Areas) --- */
+:root {
+    --safe-area-top: env(safe-area-inset-top);
+    --safe-area-bottom: env(safe-area-inset-bottom);
+}
+
+/* --- 2. LARGE SCREENS (Desktop: > 1024px) --- */
+@media (min-width: 1024px) {
+    .app-container {
+        max-width: 1200px; 
+        margin: 0 auto;
+    }
+}
+
+/* --- 3. TABLETS (iPads: 768px - 1023px) --- */
+@media (max-width: 1023px) {
+    :root {
+        --sidebar-width: 260px;
+        --header-height: 60px;
+    }
+
+    .tools-container {
+        padding: 0 20px;
+    }
+
+    /* Tablet Grid (Auto fit) */
+    .grid-layout {
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        gap: 20px;
+    }
+}
+
+/* --- 4. MOBILE DEVICES (Phones: < 768px) --- */
+@media (max-width: 767px) {
+    
+    /* A. Layout & Spacing */
+    .app-body {
+        /* Extra padding bottom so content isn't hidden behind Bottom Nav */
+        padding-bottom: calc(80px + var(--safe-area-bottom));
+    }
+
+    /* B. Main Header (Notch Safe) */
+    .main-header {
+        padding-top: var(--safe-area-top);
+        height: calc(60px + var(--safe-area-top));
+    }
+
+    .header-content {
+        padding: 0 16px;
+    }
+
+    .app-name {
+        font-size: 1.15rem;
+    }
+
+    /* C. Sidebar Drawer */
+    .sidebar {
+        width: 85%;
+        max-width: 300px;
+        padding-top: var(--safe-area-top);
+    }
+
+    /* D. Hero Slider (Native Swipe Feel) */
+    .hero-slider-container {
+        padding: 16px 16px 8px; /* Tighter padding */
+    }
+    
+    .hero-card {
+        flex: 0 0 90%; /* Show 90% of card, peek next one */
+        height: 140px;
+        padding: 20px;
+    }
+    
+    .hero-card h3 {
+        font-size: 1.15rem;
+    }
+
+    /* E. Search Bar (Easy Reach) */
+    .search-container {
+        padding: 12px 16px;
+    }
+
+    .search-box input {
+        height: 48px;
+        font-size: 16px; /* Prevents iOS auto-zoom */
+        padding: 0 44px;
+    }
+
+    /* F. Categories (Scrollable Chips) */
+    .categories-container {
+        padding: 0 16px 8px 16px;
+        scroll-snap-type: x mandatory;
+    }
+    
+    .tabs-wrapper {
+        gap: 8px;
+    }
+    
+    .tab-chip {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        scroll-snap-align: start;
+    }
+
+    /* G. Tools Grid (3 COLUMNS - MINI APP STYLE) */
+    .tools-container {
+        padding: 0 12px;
+    }
+
+    .grid-layout {
+        /* Force 3 columns on mobile */
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px 8px; /* Vertical gap 20px, Horizontal 8px */
+    }
+
+    .tool-card {
+        padding: 0; /* Remove padding for icon-only look */
+        min-height: auto; /* Allow auto height */
+    }
+
+    /* Adjust Icon Size for Small Screens */
+    .tool-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 6px;
+        border-radius: 14px;
+        font-size: 1.5rem;
+    }
+    
+    .tool-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .tool-meta h3 {
+        font-size: 0.75rem; /* Smaller text for 3-grid */
+        margin: 0;
+        line-height: 1.2;
+    }
+    
+    /* H. Bottom Navigation (VISIBLE) */
+    .bottom-nav {
+        display: flex !important; /* Force Show */
+        height: calc(60px + var(--safe-area-bottom));
+        padding-bottom: var(--safe-area-bottom);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95); /* Semi-transparent */
+    }
+    
+    /* Dark mode support for nav */
+    body.dark-mode .bottom-nav {
+        background: rgba(30, 41, 59, 0.95);
+    }
+
+    /* I. Footer */
+    .main-footer {
+        padding: 20px 20px 100px; /* Big padding for bottom nav space */
+        margin-top: 20px;
+    }
+}
+
+/* --- 5. SMALL MOBILES (iPhone SE / Fold / Older: < 360px) --- */
+@media (max-width: 359px) {
+    .grid-layout {
+        grid-template-columns: repeat(3, 1fr); /* Still keep 3 columns */
+        gap: 16px 4px; /* Tighter gap */
+    }
+    
+    .tool-icon {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .tool-meta h3 {
+        font-size: 0.7rem;
+    }
+    
+    .app-name {
+        font-size: 1rem;
+    }
+    
+    .hero-card {
+        height: 130px;
+    }
+}
+
+/* --- 6. LANDSCAPE MODE --- */
+@media (max-height: 500px) and (orientation: landscape) {
+    .main-header {
+        height: 50px;
+        padding-top: 0;
+    }
+    
+    .app-body {
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+    
+    .bottom-nav {
+        display: none !important; /* Hide nav in landscape for more space */
+    }
+}

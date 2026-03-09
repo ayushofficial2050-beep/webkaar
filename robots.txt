@@ -1,0 +1,13 @@
+# WebKaar robots.txt — updated Feb 2026
+User-agent: *
+Allow: /
+
+# Explicitly allow important static assets
+Allow: /js/
+Allow: /css/
+Allow: /images/
+Allow: /tools/
+Allow: /manifest.json
+
+# Sitemap for better crawling & indexing
+Sitemap: https://webkaar.pages.dev/sitemap.xml

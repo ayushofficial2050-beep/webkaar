@@ -1,0 +1,287 @@
+/* =========================================
+   COLOR PICKER TOOL STYLES
+   ========================================= */
+
+/* Container */
+.tool-container {
+    max-width: 500px; /* Thoda narrow rakha hai focus ke liye */
+    margin: 0 auto;
+    padding: 20px 16px;
+}
+
+/* --- 1. PREVIEW SECTION --- */
+.color-preview-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.color-display {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 6px solid var(--bg-surface); /* Mota border for pop effect */
+    box-shadow: 
+        0 0 0 1px var(--border-color), /* Thin outer ring */
+        var(--shadow-floating);        /* Soft shadow */
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bouncy effect */
+    background-color: #2563eb; /* Default fallback */
+}
+
+.color-display:active {
+    transform: scale(0.92);
+}
+
+/* Hide Native Input but keep clickable area */
+#native-picker {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    height: 150%;
+    opacity: 0;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.tap-hint {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* --- 2. CODES CARD (FIXED) --- */
+.codes-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 16px; /* Thoda padding kam kiya mobile ke liye */
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+}
+
+.code-row {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Gap kam kiya taaki sab fit ho jaye */
+    margin-bottom: 12px;
+    position: relative; /* Positioning fix */
+}
+.code-row:last-child { margin-bottom: 0; }
+
+.label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    width: 35px; /* Label ki width fix ki */
+    color: var(--text-muted);
+    text-transform: uppercase;
+    flex-shrink: 0; /* Label shrink nahi hoga */
+}
+
+/* Input Container Wrapper (New Trick) */
+.code-row input {
+    flex: 1; /* Available space lega */
+    min-width: 0; /* Text overflow handle karega */
+    background: var(--bg-body);
+    border: 2px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 10px 40px 10px 12px; /* Right padding badhaya taaki button text ke upar na aaye */
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    outline: none;
+    transition: all 0.2s;
+}
+
+.code-row input:focus {
+    background: var(--bg-surface);
+    border-color: var(--primary-blue);
+}
+
+/* Copy Button Overlay (Ab yeh input ke andar dikhega, right side par) */
+.copy-btn {
+    position: absolute;
+    right: 4px; /* Right edge se thoda andar */
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Input ke upar rahega */
+}
+
+.copy-btn:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--primary-blue);
+}
+
+.copy-btn:active {
+    transform: scale(0.9);
+}
+/* --- 3. SLIDERS CARD --- */
+.sliders-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow-sm);
+}
+
+.slider-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.slider-group:last-child { margin-bottom: 0; }
+
+.slider-group label {
+    font-weight: 700;
+    width: 50px;
+    font-size: 0.9rem;
+}
+
+.slider-group span {
+    width: 35px;
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
+
+/* Range Inputs styling */
+input[type=range] {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Dynamic Gradients for Track */
+input[type=range].red { background: linear-gradient(to right, #1f0000, #ff0000); }
+input[type=range].green { background: linear-gradient(to right, #001f00, #00ff00); }
+input[type=range].blue { background: linear-gradient(to right, #00001f, #0000ff); }
+
+/* Slider Thumb (The Handle) */
+input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.1s;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+    transform: scale(1.2);
+    border-color: var(--text-muted);
+}
+
+/* Firefox Support for Thumb */
+input[type=range]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 2px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+/* --- 4. PALETTE GRID --- */
+.palette-section h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.palette-item {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px; /* Softer corners */
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s, border-color 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.palette-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.palette-item:active {
+    transform: scale(0.9);
+    border-color: var(--text-main);
+}
+
+/* --- 5. TOAST & UTILS --- */
+.toast {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1e293b; /* Slate-800 */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    animation: slideUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translate(-50%, 20px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.hidden { display: none; }
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; backdrop-filter: blur(4px);
+}
+.modal-content {
+    background: var(--bg-surface); width: 100%; max-width: 400px;
+    border-radius: var(--radius-lg); padding: 24px;
+    border: 1px solid var(--border-color);
+}
+.modal-header {
+    display: flex; justify-content: space-between; margin-bottom: 16px;
+}
+.modal-header h3 { font-size: 1.1rem; color: var(--text-main); }
+.modal-body p { color: var(--text-muted); line-height: 1.5; margin-bottom: 8px; font-size: 0.9rem; }

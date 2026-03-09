@@ -1,0 +1,578 @@
+/* =========================================
+   WEBKAAR PREMIUM STYLESHEET (Final App Version v6.0)
+   Features: 90FPS, Native App Feel, Auto Slide
+   ========================================= */
+
+/* =========================================
+   1. CSS VARIABLES & THEME CONFIG
+   ========================================= */
+:root {
+    /* --- COLOR PALETTE --- */
+    --primary-blue: #2563eb;       
+    --primary-dark: #1e40af;       
+    --primary-light: #eff6ff;      
+    --accent-green: #10b981;       
+    --accent-orange: #f59e0b;      
+    --accent-red: #ef4444;         
+    --accent-purple: #8b5cf6;      
+    
+    /* --- LIGHT MODE --- */
+    --bg-body: #f8fafc;            
+    --bg-surface: #ffffff;         
+    --bg-glass: rgba(255, 255, 255, 0.95); 
+    
+    --text-main: #1e293b;          
+    --text-muted: #64748b;         
+    --border-color: #e2e8f0;       
+    
+    /* Shadows & Glow */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --shadow-card: 0 10px 15px -3px rgba(0,0,0,0.1);
+
+    /* --- MEASUREMENTS --- */
+    --header-height: 72px;
+    --sidebar-width: 280px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px; 
+    --font-sans: 'Inter', sans-serif;
+}
+
+/* --- DARK MODE --- */
+body.dark-mode {
+    --bg-body: #0f172a;            
+    --bg-surface: #1e293b;         
+    --bg-glass: rgba(30, 41, 59, 0.95);
+    
+    --text-main: #f1f5f9;          
+    --text-muted: #94a3b8;         
+    --border-color: #334155;       
+    
+    --primary-light: rgba(37, 99, 235, 0.15); 
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+    --shadow-card: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+   2. GLOBAL RESET & APP FEEL
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { 
+    font-family: var(--font-sans); 
+    background-color: var(--bg-body); 
+    color: var(--text-main); 
+    line-height: 1.5; 
+    overflow-x: hidden;
+    overscroll-behavior-y: none; /* Disables pull-to-refresh effect */
+}
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { font-family: inherit; }
+
+/* =========================================
+   3. APP HEADER
+   ========================================= */
+.main-header {
+    position: fixed; top: 0; left: 0; width: 100%; height: var(--header-height);
+    background-color: var(--bg-glass);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000; display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+
+.header-content {
+    width: 100%; max-width: 1200px; padding: 0 16px;
+    display: flex; align-items: center; justify-content: space-between;
+}
+
+.header-title { display: flex; align-items: center; gap: 10px; }
+.app-logo, .app-logo-img { width: 44px; height: 44px; border-radius: 10px; }
+.app-name { font-size: 1.4rem; font-weight: 700; color: var(--primary-blue);
+letter-spacing: -0.5px; }
+
+.icon-button {
+    background: transparent; border: none; color: var(--text-main);
+    padding: 8px; border-radius: 50%; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+}
+.icon-button:active { background-color: var(--border-color); }
+
+/* =========================================
+   4. SIDEBAR
+   ========================================= */
+.sidebar {
+    position: fixed; top: 0; left: 0; width: var(--sidebar-width); height: 100%;
+    background-color: var(--bg-surface); z-index: 2000;
+    transform: translateX(-100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex; flex-direction: column; border-right: 1px solid var(--border-color);
+}
+.sidebar.active { transform: translateX(0); }
+
+.sidebar-header {
+    height: var(--header-height); display: flex; align-items: center;
+    justify-content: space-between; padding: 0 20px; border-bottom: 1px solid var(--border-color);
+}
+.sidebar-brand { font-weight: 700; font-size: 1.4rem; color: var(--primary-blue); display: flex; gap: 12px; align-items: center; }
+
+.sidebar-menu { flex: 1; overflow-y: auto; padding: 10px 0; }
+.menu-item {
+    display: flex; align-items: center; gap: 12px; padding: 12px 24px;
+    color: var(--text-main); font-weight: 500; border-left: 3px solid transparent;
+}
+.menu-item svg { color: var(--text-muted); }
+.menu-item.active { background-color: var(--primary-light); color: var(--primary-blue); border-left-color: var(--primary-blue); }
+.menu-item.active svg { color: var(--primary-blue); }
+
+.sidebar-footer { padding: 20px; border-top: 1px solid var(--border-color); background: var(--bg-surface); }
+.theme-switch-wrapper { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.app-version { text-align: center; font-size: 0.75rem; color: var(--text-muted); }
+
+/* Overlay */
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); z-index: 1500;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s;
+}
+.overlay.active { opacity: 1; visibility: visible; }
+
+/* =========================================
+   5. APP BODY & HERO SLIDER (AUTO SLIDE READY)
+   ========================================= */
+.app-body { padding-top: var(--header-height); min-height: 100vh; padding-bottom: 80px; }
+
+.hero-slider-container {
+    padding: 20px 16px 10px; max-width: 1200px; margin: 0 auto;
+}
+
+.hero-slider {
+    display: flex; gap: 16px; overflow-x: auto;
+    scroll-snap-type: x mandatory; padding-bottom: 10px;
+    scrollbar-width: none; -ms-overflow-style: none;
+    scroll-behavior: smooth; /* IMPORTANT for Auto Slide */
+}
+.hero-slider::-webkit-scrollbar { display: none; }
+
+/* CLEAN HERO CARD */
+.hero-card {
+    flex: 0 0 85%; max-width: 360px; height: 140px;
+    border-radius: var(--radius-xl); position: relative; padding: 20px;
+    display: flex; justify-content: space-between; align-items: center;
+    scroll-snap-align: center; cursor: pointer; overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s;
+    color: white; 
+}
+.hero-card:active { transform: scale(0.98); }
+
+/* Card Backgrounds */
+.hero-card.glow-effect { background: linear-gradient(135deg, #2563eb, #1d4ed8); } /* Blue */
+.hero-card.orange-glow { background: linear-gradient(135deg, #f59e0b, #ea580c); } /* Orange */
+.hero-card.red-glow { background: linear-gradient(135deg, #ef4444, #dc2626); } /* Red */
+
+/* Card Content */
+.card-content { z-index: 2; display: flex; flex-direction: column; gap: 4px; }
+.hero-card h3 { font-size: 1.2rem; font-weight: 700; margin: 0; }
+.hero-card p { font-size: 0.85rem; opacity: 0.9; margin: 0; }
+
+.card-icon { z-index: 2; color: white; transform: scale(1.2); opacity: 0.9; }
+
+/* Subtle Decoration */
+.hero-card::after {
+    content: ''; position: absolute; right: -20px; bottom: -20px;
+    width: 100px; height: 100px; background: rgba(255,255,255,0.1);
+    border-radius: 50%; pointer-events: none;
+}
+
+/* Badges inside Slider */
+.badge-new, .badge-hot, .badge-pro {
+    font-size: 0.65rem; font-weight: 800; padding: 3px 8px; border-radius: 20px;
+    display: inline-block; width: fit-content; text-transform: uppercase;
+    background: rgba(255,255,255,0.2); color: white; margin-bottom: 6px;
+}
+
+/* =========================================
+   6. SEARCH & CATEGORIES
+   ========================================= */
+.search-container { padding: 10px 16px 20px; max-width: 800px; margin: 0 auto; }
+.search-box { position: relative; width: 100%; display: flex; align-items: center; }
+.search-box input {
+    width: 100%; height: 50px; padding: 0 46px;
+    font-size: 1rem; color: var(--text-main); background: var(--bg-surface);
+    border: 2px solid var(--border-color); border-radius: 99px; outline: none;
+    -webkit-appearance: none; /* Fix iOS input shadow */
+}
+.search-box input:focus { border-color: var(--primary-blue); }
+.search-icon { position: absolute; left: 16px; color: var(--text-muted); pointer-events: none; }
+.clear-btn { position: absolute; right: 16px; background: none; border: none; color: var(--text-muted); cursor: pointer; }
+.hidden { display: none !important; }
+
+.categories-container { padding: 0 16px 20px; max-width: 1200px; margin: 0 auto; }
+.tabs-wrapper { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 5px; scrollbar-width: none; }
+.tabs-wrapper::-webkit-scrollbar { display: none; }
+.tab-chip {
+    flex: 0 0 auto; padding: 8px 18px; font-size: 0.85rem; font-weight: 600;
+    color: var(--text-muted); background: var(--bg-surface);
+    border: 1px solid var(--border-color); border-radius: 99px; cursor: pointer;
+    display: flex; align-items: center; gap: 6px;
+}
+.tab-chip.active { background: var(--primary-blue); color: white; border-color: var(--primary-blue); }
+.tab-chip svg { width: 14px; height: 14px; opacity: 0.8; }
+.tab-chip.active svg { opacity: 1; }
+
+/* =========================================
+   7. TOOLS GRID (NATIVE APP STYLE)
+   ========================================= */
+.tools-container { padding: 0 12px; max-width: 1200px; margin: 0 auto; }
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 Columns on Mobile */
+    gap: 20px 10px; 
+}
+
+@media (min-width: 600px) {
+    .grid-layout { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 24px 16px; }
+}
+
+/* Card */
+.tool-card {
+    background: transparent; border: none; padding: 0;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    cursor: pointer; position: relative; overflow: visible;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.1s;
+}
+.tool-card:active { transform: scale(0.95); opacity: 0.8; }
+
+/* Icons */
+.tool-icon {
+    width: 56px; height: 56px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 8px; color: white; font-size: 1.8rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+}
+
+/* Gradients */
+.blue-bg { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.dark-blue-bg { background: linear-gradient(135deg, #1e40af, #1e3a8a); }
+.green-bg { background: linear-gradient(135deg, #10b981, #059669); }
+.purple-bg { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.orange-bg { background: linear-gradient(135deg, #f97316, #ea580c); }
+.red-bg { background: linear-gradient(135deg, #ef4444, #dc2626); }
+
+/* Hanging Badge (App Notification Style) */
+.new-badge {
+    display: block !important; position: absolute;
+    top: -6px; right: 50%; margin-right: -32px;
+    font-size: 0.55rem; font-weight: 800; padding: 2px 6px;
+    border-radius: 8px; color: white; border: 2px solid var(--bg-body); 
+    z-index: 10; text-transform: uppercase; pointer-events: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+.badge-hot { background: #ef4444; }
+.badge-new { background: #3b82f6; }
+
+/* App Name */
+.tool-meta h3 {
+    font-size: 0.8rem; font-weight: 500; color: var(--text-main); margin: 0;
+    line-height: 1.2; display: -webkit-box; -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical; overflow: hidden; width: 100%; padding: 0 2px;
+}
+.category-label { display: none !important; }
+
+/* Skeleton */
+.tool-card.skeleton { pointer-events: none; }
+.tool-card.skeleton .tool-icon { background: var(--border-color); box-shadow: none; }
+.tool-card.skeleton .tool-meta h3 { width: 60%; height: 10px; background: var(--border-color); border-radius: 4px; margin-top: 4px; }
+
+/* =========================================
+   8. FOOTER & BOTTOM NAV
+   ========================================= */
+.load-more-wrapper { display: flex; justify-content: center; margin-top: 30px; }
+.outline-btn {
+    background: transparent; border: 1px solid var(--border-color); color: var(--text-main);
+    padding: 10px 30px; font-size: 0.9rem; font-weight: 600; border-radius: 99px; cursor: pointer;
+}
+.outline-btn:active { background: var(--border-color); }
+
+.main-footer { text-align: center; padding: 32px 16px; border-top: 1px solid var(--border-color); background: var(--bg-surface); margin-top: 40px; }
+.main-footer p { color: var(--text-muted); font-size: 0.85rem; }
+.footer-links { display: flex; justify-content: center; gap: 16px; font-size: 0.85rem; margin-top: 10px; }
+.footer-links a { color: var(--text-muted); }
+
+/* Mobile Bottom Nav (App Like) */
+.bottom-nav {
+    display: none; position: fixed; bottom: 0; left: 0; width: 100%;
+    background: var(--bg-surface); border-top: 1px solid var(--border-color);
+    padding: 8px 0; z-index: 9999; justify-content: space-around;
+    padding-bottom: env(safe-area-inset-bottom);
+}
+.nav-item { display: flex; flex-direction: column; align-items: center; gap: 4px; color: var(--text-muted); font-size: 0.7rem; padding: 4px 12px; }
+.nav-item.active { color: var(--primary-blue); }
+
+/* =========================================
+   9. MISC & INTRO UI
+   ========================================= */
+.switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #cbd5e1; transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--primary-blue); }
+input:checked + .slider:before { transform: translateX(20px); }
+
+/* Intro Overlay */
+#intro-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+    background-color: #000; z-index: 99999;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.5s;
+}
+.overlay-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.video-wrapper { width: 90%; max-width: 500px; aspect-ratio: 1/1; position: relative; overflow: hidden; border-radius: 12px; }
+#intro-video { width: 100%; height: 100%; object-fit: cover; }
+#skip-intro-btn { position: absolute; top: 15px; left: 15px; background: none; border: none; color: white; cursor: pointer; }
+#unmute-btn {
+    position: absolute; bottom: 15px; right: 15px;
+    background: rgba(0,0,0,0.6); color: white; border: none;
+    padding: 6px 14px; border-radius: 20px; font-size: 0.8rem;
+    display: flex; align-items: center; gap: 6px; cursor: pointer;
+}
+
+/* =========================================
+   ✨ MAGIC POLISH (Feel Good Fixes)
+   ========================================= */
+
+/* 1. TEXT SELECTION BAND KARO (App Feel) */
+body, .tool-card, .hero-card, .tab-chip, button, a {
+    -webkit-user-select: none; /* Chrome/Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE/Edge */
+    user-select: none;         /* Standard */
+    -webkit-tap-highlight-color: transparent; /* Blue box hatao */
+}
+
+/* 2. BETTER TOUCH FEEDBACK (Button Daban chahiye) */
+.tool-card:active .tool-icon, 
+.hero-card:active, 
+.tab-chip:active, 
+.icon-button:active {
+    transform: scale(0.92) !important; /* Thoda aur andar dabega */
+    transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 3. FONT RENDERING (Text Sharp Dikhega) */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* 4. SCROLLING SMOOTHNESS (Makkhan Scroll) */
+.categories-container, 
+.hero-slider, 
+.app-body {
+    -webkit-overflow-scrolling: touch; /* iOS Momentum Scroll */
+}
+
+/* 5. MICRO-INTERACTION (Icons Fade-in ho) */
+.tool-icon {
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+/* Har icon thoda ruk ke aayega (Cascade Effect) */
+.tool-card:nth-child(1) .tool-icon { animation-delay: 0.05s; }
+.tool-card:nth-child(2) .tool-icon { animation-delay: 0.1s; }
+.tool-card:nth-child(3) .tool-icon { animation-delay: 0.15s; }
+.tool-card:nth-child(4) .tool-icon { animation-delay: 0.2s; }
+.tool-card:nth-child(5) .tool-icon { animation-delay: 0.25s; }
+.tool-card:nth-child(6) .tool-icon { animation-delay: 0.3s; }
+/* ... aur aise hi load hote rahenge */
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.5); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* 6. GLASSMORPHISM KO THODA AUR REAL BANAO */
+.main-header, .bottom-nav {
+    background: rgba(255, 255, 255, 0.85); /* Thoda transparent */
+    backdrop-filter: blur(12px) saturate(180%); /* iOS jaisa blur */
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    border-bottom: 1px solid rgba(0,0,0,0.05); /* Bahut halka border */
+}
+
+/* Dark Mode ke liye */
+body.dark-mode .main-header, 
+body.dark-mode .bottom-nav {
+    background: rgba(15, 23, 42, 0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+/* =========================================
+   STICKY SOCIAL SIDEBAR (FINAL COMPACT)
+   ========================================= */
+.sticky-social-bar {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 6px; /* Gap aur kam kiya */
+    padding: 8px;
+    
+    /* 🔥 TRANSPARENT GREY BLUE (See-through) */
+    background: rgba(30, 41, 59, 0.85); /* Dark Grey-Blue with 85% opacity */
+    backdrop-filter: blur(8px);          /* Blur effect peeche */
+    -webkit-backdrop-filter: blur(8px);
+    
+    /* 🔥 SHARP EDGES (No Curve) */
+    border-radius: 0px; 
+    
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: none;
+    box-shadow: -4px 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Dark Mode Adjustment */
+body.dark-mode .sticky-social-bar {
+    background: rgba(15, 23, 42, 0.9); /* Thoda aur dark */
+}
+
+/* --- BUTTONS (SMALL & COLORFUL) --- */
+.social-btn {
+    width: 32px;  /* 🔥 EXTRA SMALL SIZE (Desktop) */
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Sharp Square Buttons */
+    border-radius: 2px; 
+    
+    color: white !important;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.social-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* --- ALWAYS COLORFUL (Not just on hover) --- */
+.social-btn.whatsapp { background: #25D366; }
+.social-btn.facebook { background: #1877F2; }
+.social-btn.twitter { background: #000000; }
+.social-btn.copy-link { background: #475569; }
+
+/* Dark Mode Twitter */
+body.dark-mode .social-btn.twitter { background: #ffffff; color: black !important; }
+
+/* Hover Effect */
+.social-btn:hover {
+    transform: translateX(-3px);
+    filter: brightness(1.1); /* Thoda chamkega */
+}
+
+/* --- TOOLTIP (SHARP) --- */
+.tooltip {
+    position: absolute;
+    right: 45px;
+    background: rgba(0,0,0,0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 0px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.2s;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.social-btn:hover .tooltip { opacity: 1; visibility: visible; }
+
+/* --------------------------------------
+   MOBILE OPTIMIZATION
+   -------------------------------------- */
+@media (max-width: 768px) {
+    .sticky-social-bar {
+        top: auto;
+        bottom: 140px; /* Thoda aur upar */
+        right: 0;
+        transform: none;
+        
+        /* Mobile Padding & Gap */
+        padding: 6px;
+        gap: 6px;
+        
+        /* Sharp Edges on Mobile too */
+        border-radius: 4px 0 0 4px; 
+    }
+
+    .social-btn {
+        width: 30px;  /* 🔥 EXTRA SMALL SIZE (Mobile) */
+        height: 30px;
+    }
+    
+    .social-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .tooltip { display: none; }
+}
+/* INSTALL BANNER STYLE */
+.install-banner {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 16px;
+    z-index: 10000;
+    display: flex; /* Script ise control karega */
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid rgba(0,0,0,0.05);
+    animation: slideDown 0.5s ease-out;
+}
+
+body.dark-mode .install-banner {
+    background: rgba(30, 41, 59, 0.95);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.install-content { display: flex; align-items: center; gap: 12px; }
+.install-icon { width: 48px; height: 48px; border-radius: 10px; }
+.install-text h3 { font-size: 1rem; margin: 0; color: var(--text-main); }
+.install-text p { font-size: 0.8rem; margin: 2px 0 0 0; color: var(--text-muted); }
+.install-actions { display: flex; gap: 10px; }
+
+.btn-install {
+    flex: 2; background: var(--primary-blue); color: white; border: none;
+    padding: 10px; border-radius: 8px; font-weight: 600; cursor: pointer;
+}
+.btn-close {
+    flex: 1; background: transparent; color: var(--text-muted);
+    border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; cursor: pointer;
+}
+
+@keyframes slideDown {
+    from { transform: translate(-50%, -50px); opacity: 0; }
+    to { transform: translate(-50%, 0); opacity: 1; }
+}
+

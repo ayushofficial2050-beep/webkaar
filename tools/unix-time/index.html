@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- 🔥 GOOGLE ANALYTICS (New GA4) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-G0FCCE2LMY');
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- 🔥 TITLE (Optimized: Exact high-search phrases + bidirectional + brand, ~60 chars) -->
+    <title>Unix Timestamp Converter Online | Epoch to Date & Live Time | WebKaar</title>
+
+    <!-- 🔥 META DESCRIPTION (~158 chars, features + live + dev use + privacy) -->
+    <meta name="description" content="Free online Unix timestamp converter: Convert epoch time to human-readable date/time and vice versa. View current Unix time live. Millisecond support, timezone aware. 100% client-side, no login, secure & fast – essential for developers. WebKaar Tools.">
+
+    <!-- 🔥 KEYWORDS (Expanded with developer searches) -->
+    <meta name="keywords" content="unix timestamp converter, epoch converter, unix to date, date to unix, current unix time, epoch time converter, timestamp to date online, unix epoch converter milliseconds, webkaar tools">
+
+    <meta name="author" content="Ayush Tiwari">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- 🔥 CANONICAL (Already perfect) -->
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/unix-time/">
+
+    <!-- 🔥 OPEN GRAPH (Synced & enhanced for sharing) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/unix-time/">
+    <meta property="og:title" content="Unix Timestamp Converter - Epoch to Date & Live Time">
+    <meta property="og:description" content="Convert Unix timestamps to readable dates and back instantly. See current epoch time live. Free, no login, developer-friendly tool by WebKaar.">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/og-unix-time.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="WebKaar Tools">
+
+    <!-- 🔥 TWITTER CARDS (Synced) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Unix Timestamp Converter | Epoch & Live Time - WebKaar">
+    <meta name="twitter:description" content="Convert epoch to date/time & vice versa instantly. Live current time, free & private tool for devs!">
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-unix-time.jpg">
+
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('webkaar_theme_pref');
+            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                document.documentElement.classList.add('dark-mode');
+            } else {
+                document.documentElement.classList.remove('dark-mode');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+    <!-- 🔥 STRUCTURED DATA (Enhanced for dev/utility tool) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Unix Timestamp Converter by WebKaar",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Free online Unix timestamp (epoch time) converter tool to convert Unix timestamps to human-readable date/time (and vice versa). Displays current live Unix time with millisecond precision and timezone support. All conversion happens 100% client-side in the browser – no data sent to servers, no login required, fully private. Essential for developers working with APIs, databases, logging, JavaScript Date objects, and system timestamps.",
+      "url": "https://webkaar.pages.dev/tools/unix-time/",
+      "author": {
+        "@type": "Person",
+        "name": "Ayush Tiwari"
+      }
+    }
+    </script>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Unix Converter</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="tool-container">
+            
+            <div class="live-clock-card">
+                <div class="clock-label">Current Unix Time</div>
+                <div class="clock-display" id="current-unix">Loading...</div>
+                <button id="copy-current" class="text-btn small">Copy</button>
+            </div>
+
+            <div class="converter-grid">
+                
+                <div class="card">
+                    <h3>Timestamp to Date</h3>
+                    <div class="input-group">
+                        <input type="number" id="input-timestamp" placeholder="e.g. 1769356252">
+                    </div>
+                    <button id="btn-to-date" class="primary-btn full-width">Convert</button>
+                    
+                    <div id="result-date" class="result-box hidden">
+                        <div class="result-label">GMT / UTC</div>
+                        <div class="result-value" id="res-utc"></div>
+                        <div class="result-label">Your Local Time</div>
+                        <div class="result-value" id="res-local"></div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Date to Timestamp</h3>
+                    <div class="input-group">
+                        <input type="datetime-local" id="input-date">
+                    </div>
+                    <button id="btn-to-unix" class="primary-btn full-width">Convert</button>
+
+                    <div id="result-unix" class="result-box hidden">
+                        <div class="result-label">Unix Timestamp (Seconds)</div>
+                        <div class="result-value code-font">
+                            <span id="res-seconds"></span>
+                            <button class="copy-icon" onclick="copyText('res-seconds')">📋</button>
+                        </div>
+                        <div class="result-label">Milliseconds</div>
+                        <div class="result-value code-font" id="res-ms"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">What is Unix Time?</h2>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                Unix time (also known as Epoch time) is a system for describing a point in time. It is the number of seconds that have elapsed since the <strong>Unix Epoch</strong>, minus leap seconds. The Unix Epoch is 00:00:00 UTC on 1 January 1970.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why use this tool?</h3>
+            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
+                <li><strong>Debugging:</strong> Convert API timestamps to readable dates.</li>
+                <li><strong>Database:</strong> Generate timestamps for database queries.</li>
+                <li><strong>Time Zones:</strong> Check UTC vs Local time easily.</li>
+            </ul>
+        </article>
+
+    </main>
+    
+    <div id="toast" class="toast hidden">Copied to Clipboard!</div>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Tool</h3>
+                <button id="close-modal" class="icon-button">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Unix Time:</strong> Seconds since Jan 1, 1970.</p>
+                <p><strong>Usage:</strong> Enter a number to get the date, or select a date to get the number.</p>
+                <p><strong>Privacy:</strong> All calculations are done locally.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" style="margin-top: 40px;">
+        <p>&copy; 2026 WebKaar Inc.</p>
+        <div class="footer-links">
+            <a href="../../pages/about.html">About</a> •
+            <a href="../../pages/contact.html">Contact</a> •
+            <a href="../../pages/privacy.html">Privacy</a> •
+            <a href="../../pages/disclaimer.html">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+/* Tool Specific Styles */
+.tool-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Controls Card */
+.controls-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 150px;
+}
+
+.control-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Stepper Input */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-body);
+    overflow: hidden;
+}
+
+.stepper-btn {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-surface);
+    border: none;
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.stepper-btn:hover {
+    background-color: var(--primary-light);
+}
+
+.stepper-btn:active {
+    background-color: var(--border-color);
+}
+
+.input-wrapper input {
+    flex: 1;
+    height: 44px;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-main);
+    background: transparent;
+    outline: none;
+    appearance: none; /* Hide default arrows */
+}
+
+/* Output Card */
+.code-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background-color: var(--bg-body);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+textarea {
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    border: none;
+    resize: vertical;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    outline: none;
+    line-height: 1.6;
+}
+
+/* Primary Button */
+.primary-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 0 24px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.1s;
+    min-width: 180px;
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+/* Shared Modal & Toast */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5); z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(4px); transition: all 0.3s ease;
+}
+.modal-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.modal-content {
+    background: var(--bg-surface); width: 90%; max-width: 400px;
+    padding: 24px; border-radius: var(--radius-lg); border: 1px solid var(--border-color);
+}
+.modal-header { display: flex; justify-content: space-between; margin-bottom: 16px; }
+.modal-header h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-main); }
+.modal-body p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 12px; }
+.modal-body strong { color: var(--text-main); }
+
+.toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+    background-color: var(--accent-green); color: white; padding: 12px 24px;
+    border-radius: 50px; font-weight: 600; font-size: 0.9rem;
+    opacity: 0; visibility: hidden; transition: all 0.3s ease; z-index: 3000;
+}
+.toast.visible { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+.icon-button { background: none; border: none; padding: 6px; cursor: pointer; color: var(--text-muted); }
+.icon-button:hover { color: var(--text-main); }
+
+@media (max-width: 600px) {
+    .controls-card { flex-direction: column; align-items: stretch; }
+    .primary-btn { width: 100%; }
+}
