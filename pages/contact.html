@@ -1,55 +1,265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | WebKaar</title>
-    <meta name="theme-color" content="#0f172a">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G0FCCE2LMY');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Contact Us | WebKaar Support</title>
+    <meta name="description" content="Get in touch with the WebKaar team via WhatsApp or Email. We are here to help you with any questions or bugs.">
+    <meta name="author" content="Ayush Tiwari">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://webkaar.pages.dev/pages/contact">
+
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('webkaar_theme_pref');
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                    document.documentElement.classList.add('dark-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================
+           🚀 PREMIUM CONTACT PAGE STYLES
+           ========================================= */
+        body { overflow-x: hidden; }
+
+        .ct-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px 16px 80px 16px; /* Adjust padding for mobile screens */
+            text-align: center;
+        }
+
+        /* --- HERO SECTION --- */
+        .ct-hero { margin-bottom: 40px; }
+        
+        .ct-icon-header {
+            font-size: 42px;
+            color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.1);
+            width: 80px; height: 80px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; margin: 0 auto 20px auto;
+            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.2);
+            animation: floatIcon 3s ease-in-out infinite;
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .ct-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--text-main) 30%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ct-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 95%;
+            margin: 0 auto;
+        }
+
+        /* --- CONTACT CARDS (Overflow Fixed) --- */
+        .ct-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px; /* Reduced gap slightly for mobile breathing room */
+            text-align: left;
+            text-decoration: none;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ct-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-blue);
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.1);
+        }
+        body.dark-mode .ct-card:hover {
+            box-shadow: 0 12px 25px rgba(37, 99, 235, 0.2);
+        }
+
+        .ct-icon-box {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .ct-card:hover .ct-icon-box { transform: scale(1.15) rotate(-5deg); }
+        
+        /* Specific Colors */
+        .ct-icon-box.whatsapp { background: rgba(37, 211, 102, 0.1); color: #25D366; }
+        .ct-icon-box.email { background: rgba(59, 130, 246, 0.1); color: var(--primary-blue); }
+        .ct-icon-box.insta { background: rgba(225, 48, 108, 0.1); color: #E1306C; }
+        .ct-icon-box.loc { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+
+        /* 🔥 FIX FOR OVERFLOWING TEXT 🔥 */
+        .ct-info { 
+            flex: 1; 
+            min-width: 0; /* Important: Allows text to wrap/truncate inside flex container */
+        }
+        .ct-info h3 { font-size: 1.1rem; color: var(--text-main); font-weight: 700; margin-bottom: 4px; line-height: 1.2; }
+        .ct-info p { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-bottom: 4px; line-height: 1.3; }
+        .ct-info .ct-highlight { 
+            font-weight: 600; 
+            font-size: 0.95rem; 
+            display: block;
+            word-wrap: break-word; /* Forces long emails to break to next line instead of overflowing */
+            overflow-wrap: break-word;
+        }
+
+        .ct-arrow { color: var(--text-muted); opacity: 0.4; font-size: 20px; transition: transform 0.3s; flex-shrink: 0; }
+        .ct-card:hover .ct-arrow { transform: translateX(5px); opacity: 1; }
+        
+        /* Target arrow colors on hover based on card */
+        .ct-card.wa-card:hover .ct-arrow { color: #25D366; }
+        .ct-card.mail-card:hover .ct-arrow { color: var(--primary-blue); }
+        .ct-card.ig-card:hover .ct-arrow { color: #E1306C; }
+
+        /* --- ANIMATIONS --- */
+        .slide-up-fade {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: ctSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes ctSlideUp { to { opacity: 1; transform: translateY(0); } }
+        .d-1 { animation-delay: 0.1s; }
+        .d-2 { animation-delay: 0.2s; }
+        .d-3 { animation-delay: 0.3s; }
+        .d-4 { animation-delay: 0.4s; }
+
+    </style>
 </head>
 <body>
 
-    <header class="main-header">
+    <script>
+        if(document.documentElement.classList.contains('dark-mode')) {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+
+    <header class="main-header" style="background: var(--bg-surface); backdrop-filter: blur(12px);">
         <div class="header-content">
-            <a href="../index.html" class="icon-button">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            </a>
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
+            </button>
             <div class="header-title">
-                <h1 class="app-name">Contact Us</h1>
+                <h1 class="app-name" style="font-size: 1.15rem;">Contact Us</h1>
             </div>
             <div style="width: 40px;"></div>
         </div>
     </header>
 
-    <main class="app-body" style="max-width: 600px; margin: 0 auto; padding: 20px; padding-top: 80px;">
-        
-        <div class="tool-card" style="text-align: left; cursor: default;">
-            <h2 style="margin-bottom: 16px;">Get in Touch</h2>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">
-                Have questions, suggestions, or found a bug? We'd love to hear from you.
-            </p>
-
-            <div style="background: var(--bg-body); padding: 20px; border-radius: 12px; border: 1px solid var(--border-color);">
-                <h3 style="font-size: 1rem; margin-bottom: 8px;">📧 Email Us</h3>
-                <p style="font-weight: 600; color: var(--primary-blue);">ayushofficial2050@gmail</p>
+    <main class="app-body">
+        <div class="ct-container">
+            
+            <div class="ct-hero slide-up-fade">
+                <div class="ct-icon-header">
+                    <i class="ph-fill ph-headset"></i>
                 </div>
-
-            <div style="margin-top: 20px;">
-                <h3 style="font-size: 1rem; margin-bottom: 8px;">📍 Location</h3>
-                <p style="color: var(--text-muted);">India 🇮🇳</p>
+                <h1 class="ct-title">How can we help?</h1>
+                <p class="ct-subtitle">Found a bug or have a suggestion? Reach out to us directly. We are always here to listen and improve!</p>
             </div>
-        </div>
 
+            <a href="https://wa.me/919409285860" target="_blank" class="ct-card wa-card slide-up-fade d-1">
+                <div class="ct-icon-box whatsapp">
+                    <i class="ph-fill ph-whatsapp-logo"></i>
+                </div>
+                <div class="ct-info">
+                    <h3>WhatsApp Chat</h3>
+                    <p>Direct message for quick help.</p>
+                    <span class="ct-highlight" style="color: #25D366;">+91 9409285860</span>
+                </div>
+                <i class="ph-bold ph-caret-right ct-arrow"></i>
+            </a>
+
+            <a href="mailto:ayushofficial2050@gmail.com" class="ct-card mail-card slide-up-fade d-2">
+                <div class="ct-icon-box email">
+                    <i class="ph-fill ph-envelope-simple"></i>
+                </div>
+                <div class="ct-info">
+                    <h3>Email Support</h3>
+                    <p>For detailed queries or business.</p>
+                    <span class="ct-highlight" style="color: var(--primary-blue);">ayushofficial2050@gmail.com</span>
+                </div>
+                <i class="ph-bold ph-caret-right ct-arrow"></i>
+            </a>
+
+            <a href="https://www.instagram.com/fsthavoc?igsh=MWpvd284NTZnM29zMw==" target="_blank" class="ct-card ig-card slide-up-fade d-3">
+                <div class="ct-icon-box insta">
+                    <i class="ph-fill ph-instagram-logo"></i>
+                </div>
+                <div class="ct-info">
+                    <h3>Instagram</h3>
+                    <p>Stay updated with our progress.</p>
+                    <span class="ct-highlight" style="color: #E1306C;">@fsthavoc</span>
+                </div>
+                <i class="ph-bold ph-caret-right ct-arrow"></i>
+            </a>
+
+            <div class="ct-card slide-up-fade d-4" style="cursor: default;">
+                <div class="ct-icon-box loc">
+                    <i class="ph-fill ph-map-pin"></i>
+                </div>
+                <div class="ct-info">
+                    <h3>Location</h3>
+                    <p>Operating securely from</p>
+                    <span class="ct-highlight" style="color: #10b981;">India 🇮🇳</span>
+                </div>
+            </div>
+
+        </div>
     </main>
 
-    <script>
-        // Dark Mode Logic (Footer wala same)
-        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-    </script>
+    <footer class="main-footer">
+        <p>&copy; 2026 WebKaar Inc. • Built by Ayush Tiwari</p>
+        <div class="footer-links">
+            <a href="../pages/about">About</a> •
+            <a href="../pages/contact">Contact</a> •
+            <a href="../pages/privacy">Privacy</a> •
+            <a href="../pages/disclaimer">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/main.js"></script>
+
 </body>
 </html>
