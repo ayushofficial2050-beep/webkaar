@@ -1,6 +1,6 @@
 /**
  * WebKaar - Professional Web Application
- * Main Logic Controller (Final V7.0 - Lag Free + Auto Slide Fixed)
+ * Main Logic Controller (Final V3.0 - Lag Free + Auto Slide Fixed)
  * @author Ayush Tiwari
  */
 
@@ -11,7 +11,7 @@
    ========================================================================== */
 
 const APP_CONFIG = {
-    version: '7.0.0',
+    version: '3.0.0',
     localStorageKeys: { theme: 'webkaar_theme_pref' },
     searchDebounce: 250,
     sliderInterval: 3000 // 3 Seconds Auto Slide Speed
@@ -19,24 +19,24 @@ const APP_CONFIG = {
 
 const TOOLS_DB = [
     // --- 1. IMAGE TOOLS ---
-    { id: 'image-compressor', title: 'Image Compressor', category: 'design', desc: 'Reduce file size instantly', tags: ['photo', 'jpg', 'png', 'reduce'], url: 'tools/image-compressor/index.html', featured: true, badge: 'hot' },
-    { id: 'image-resizer', title: 'Image Resizer', category: 'design', desc: 'Resize images to dimensions', tags: ['photo', 'scale', 'dimension'], url: 'tools/image-resizer/index.html', featured: true, badge: null },
-    { id: 'img-to-pdf', title: 'Image to PDF', category: 'converter', desc: 'Convert JPG/PNG to PDF', tags: ['photo', 'document', 'convert'], url: 'tools/img-to-pdf/index.html', featured: false, badge: 'hot' },
-    { id: 'aspect-ratio', title: 'Aspect Ratio Calc', category: 'design', desc: 'Calculate dimensions based on ratio', tags: ['screen', 'width', 'scale'], url: 'tools/aspect-ratio/index.html', featured: false, badge: null },
-    { id: 'color-picker', title: 'Color Picker', category: 'design', desc: 'Get HEX, RGB, HSL codes', tags: ['palette', 'paint', 'css'], url: 'tools/color-picker/index.html', featured: true, badge: null },
-    { id: 'gradient-generator', title: 'Gradient Generator', category: 'design', desc: 'Create CSS gradients', tags: ['css', 'color', 'background'], url: 'tools/gradient-generator/index.html', featured: true, badge: 'new' },
+    { id: 'image-compressor', title: 'Image Compressor', category: 'design', desc: 'Reduce file size instantly', tags: ['photo', 'jpg', 'png', 'reduce'], url: 'tools/image-compressor/', featured: true, badge: 'hot' },
+    { id: 'image-resizer', title: 'Image Resizer', category: 'design', desc: 'Resize images to dimensions', tags: ['photo', 'scale', 'dimension'], url: 'tools/image-resizer/', featured: true, badge: null },
+    { id: 'img-to-pdf', title: 'Image to PDF', category: 'converter', desc: 'Convert JPG/PNG to PDF', tags: ['photo', 'document', 'convert'], url: 'tools/img-to-pdf/', featured: false, badge: 'hot' },
+    { id: 'aspect-ratio', title: 'Aspect Ratio Calc', category: 'design', desc: 'Calculate dimensions based on ratio', tags: ['screen', 'width', 'scale'], url: 'tools/aspect-ratio/', featured: false, badge: null },
+    { id: 'color-picker', title: 'Color Picker', category: 'design', desc: 'Get HEX, RGB, HSL codes', tags: ['palette', 'paint', 'css'], url: 'tools/color-picker/', featured: true, badge: null },
+    { id: 'gradient-generator', title: 'Gradient Generator', category: 'design', desc: 'Create CSS gradients', tags: ['css', 'color', 'background'], url: 'tools/gradient-generator/', featured: true, badge: 'new' },
 
     // --- 2. UTILITY & TEXT ---
-    { id: 'speed-test', title: 'Internet Speed Test', category: 'utility', desc: 'Check internet speed', tags: ['speed', 'internet', 'wifi'], url: 'tools/speed-test/index.html', featured: true, badge: 'hot' },
-    { id: 'typing-test', title: 'Typing Speed Test', category: 'utility', desc: 'Check typing WPM', tags: ['typing', 'speed', 'game'], url: 'tools/typing-test/index.html', featured: true, badge: 'hot' },
-    { id: 'signature-generator', title: 'Signature Generator', category: 'utility', desc: 'Draw digital signatures', tags: ['sign', 'draw', 'pdf'], url: 'tools/signature-generator/index.html', featured: true, badge: 'new' },
-    { id: 'qr-generator', title: 'QR Code Generator', category: 'utility', desc: 'Create custom QR codes', tags: ['barcode', 'scan', 'link'], url: 'tools/qr-generator/index.html', featured: true, badge: 'hot' },
-    { id: 'password-gen', title: 'Password Generator', category: 'utility', desc: 'Generate strong passwords', tags: ['security', 'lock', 'privacy'], url: 'tools/password-gen/index.html', featured: true, badge: 'hot' },
-    { id: 'stopwatch', title: 'Stopwatch', category: 'utility', desc: 'Online stopwatch with laps', tags: ['time', 'clock', 'timer'], url: 'tools/stopwatch/index.html', featured: true, badge: null },
-    { id: 'word-counter', title: 'Word Counter', category: 'utility', desc: 'Count words and chars', tags: ['text', 'write', 'seo'], url: 'tools/word-counter/index.html', featured: true, badge: null },
-    { id: 'my-ip', title: 'What is My IP', category: 'utility', desc: 'Check public IP address', tags: ['network', 'address', 'wifi'], url: 'tools/my-ip/index.html', featured: false, badge: null },
-    { id: 'unit-converter', title: 'Unit Converter', category: 'converter', desc: 'Convert length, weight', tags: ['math', 'measure', 'metric'], url: 'tools/unit-converter/index.html', featured: true, badge: null },
-    { id: 'bmi-calculator', title: 'BMI Calculator', category: 'utility', desc: 'Calculate Body Mass Index', tags: ['health', 'weight', 'medical'], url: 'tools/bmi-calculator/index.html', featured: false, badge: null },
+    { id: 'speed-test', title: 'Internet Speed Test', category: 'utility', desc: 'Check internet speed', tags: ['speed', 'internet', 'wifi'], url: 'tools/speed-test/', featured: true, badge: 'hot' },
+    { id: 'typing-test', title: 'Typing Speed Test', category: 'utility', desc: 'Check typing WPM', tags: ['typing', 'speed', 'game'], url: 'tools/typing-test/', featured: true, badge: 'hot' },
+    { id: 'signature-generator', title: 'Signature Generator', category: 'utility', desc: 'Draw digital signatures', tags: ['sign', 'draw', 'pdf'], url: 'tools/signature-generator/', featured: true, badge: 'new' },
+    { id: 'qr-generator', title: 'QR Code Generator', category: 'utility', desc: 'Create custom QR codes', tags: ['barcode', 'scan', 'link'], url: 'tools/qr-generator/', featured: true, badge: 'hot' },
+    { id: 'password-gen', title: 'Password Generator', category: 'utility', desc: 'Generate strong passwords', tags: ['security', 'lock', 'privacy'], url: 'tools/password-gen/', featured: true, badge: 'hot' },
+    { id: 'stopwatch', title: 'Stopwatch', category: 'utility', desc: 'Online stopwatch with laps', tags: ['time', 'clock', 'timer'], url: 'tools/stopwatch/', featured: true, badge: null },
+    { id: 'word-counter', title: 'Word Counter', category: 'utility', desc: 'Count words and chars', tags: ['text', 'write', 'seo'], url: 'tools/word-counter/', featured: true, badge: null },
+    { id: 'my-ip', title: 'What is My IP', category: 'utility', desc: 'Check public IP address', tags: ['network', 'address', 'wifi'], url: 'tools/my-ip/', featured: false, badge: null },
+    { id: 'unit-converter', title: 'Unit Converter', category: 'converter', desc: 'Convert length, weight', tags: ['math', 'measure', 'metric'], url: 'tools/unit-converter/', featured: true, badge: null },
+    { id: 'bmi-calculator', title: 'BMI Calculator', category: 'utility', desc: 'Calculate Body Mass Index', tags: ['health', 'weight', 'medical'], url: 'tools/bmi-calculator/', featured: false, badge: null },
      
 { 
     id: 'age-calculator', 
@@ -44,30 +44,30 @@ const TOOLS_DB = [
     category: 'utility', 
     desc: 'Calculate exact age & next birthday', 
     tags: ['age', 'birthday', 'date', 'calc'], 
-    url: 'tools/age-calculator/index.html', 
+    url: 'tools/age-calculator/', 
     featured: true, 
     badge: 'new' 
 },
 
-    { id: 'duplicate-remover', title: 'Duplicate Remover', category: 'text', desc: 'Remove duplicate lines', tags: ['text', 'clean', 'list'], url: 'tools/duplicate-remover/index.html', featured: false, badge: 'new' },
-    { id: 'text-diff', title: 'Text Diff Checker', category: 'utility', desc: 'Compare two texts', tags: ['compare', 'difference', 'git'], url: 'tools/text-diff/index.html', featured: false, badge: null },
-    { id: 'lorem-ipsum', title: 'Lorem Ipsum', category: 'utility', desc: 'Generate dummy text', tags: ['dummy', 'text', 'design'], url: 'tools/lorem-ipsum/index.html', featured: false, badge: null },
-    { id: 'case-converter', title: 'Case Converter', category: 'utility', desc: 'Convert text case', tags: ['text', 'caps', 'format'], url: 'tools/case-converter/index.html', featured: false, badge: null },
-    { id: 'markdown-editor', title: 'Markdown Editor', category: 'utility', desc: 'Write and preview Markdown', tags: ['md', 'write', 'preview'], url: 'tools/markdown-editor/index.html', featured: false, badge: null },
-    { id: 'steganography', title: 'Secret Hider', category: 'utility', desc: 'Hide text in images', tags: ['spy', 'secret', 'image'], url: 'tools/steganography/index.html', featured: true, badge: 'hot' },
+    { id: 'duplicate-remover', title: 'Duplicate Remover', category: 'text', desc: 'Remove duplicate lines', tags: ['text', 'clean', 'list'], url: 'tools/duplicate-remover/', featured: false, badge: 'new' },
+    { id: 'text-diff', title: 'Text Diff Checker', category: 'utility', desc: 'Compare two texts', tags: ['compare', 'difference', 'git'], url: 'tools/text-diff/', featured: false, badge: null },
+    { id: 'lorem-ipsum', title: 'Lorem Ipsum', category: 'utility', desc: 'Generate dummy text', tags: ['dummy', 'text', 'design'], url: 'tools/lorem-ipsum/', featured: false, badge: null },
+    { id: 'case-converter', title: 'Case Converter', category: 'utility', desc: 'Convert text case', tags: ['text', 'caps', 'format'], url: 'tools/case-converter/', featured: false, badge: null },
+    { id: 'markdown-editor', title: 'Markdown Editor', category: 'utility', desc: 'Write and preview Markdown', tags: ['md', 'write', 'preview'], url: 'tools/markdown-editor/', featured: false, badge: null },
+    { id: 'steganography', title: 'Secret Hider', category: 'utility', desc: 'Hide text in images', tags: ['spy', 'secret', 'image'], url: 'tools/steganography/', featured: true, badge: 'hot' },
 
     // --- 3. PDF TOOLS ---
     { id: 'pdf-compressor', title: 'PDF Compressor', category: 'utility', desc: 'Reduce PDF file size', tags: ['pdf', 'compress', 'size'], url: 'tools/pdf-compressor/index.html', featured: true, badge: 'new' },
-    { id: 'pdf-merger', title: 'PDF Merger', category: 'utility', desc: 'Combine PDFs', tags: ['document', 'combine', 'join'], url: 'tools/pdf-merger/index.html', featured: false, badge: 'hot' },
+    { id: 'pdf-merger', title: 'PDF Merger', category: 'utility', desc: 'Combine PDFs', tags: ['document', 'combine', 'join'], url: 'tools/pdf-merger/', featured: false, badge: 'hot' },
 
     // --- 4. DEV TOOLS ---
     { id: 'json-formatter', title: 'JSON Formatter', category: 'dev', desc: 'Beautify & minify JSON', tags: ['code', 'developer', 'json'], url: 'tools/json-formatter/index.html', featured: true, badge: 'hot' },
-    { id: 'base64', title: 'Base64 Tool', category: 'dev', desc: 'Encode/Decode Base64', tags: ['decoder', 'encoder', 'text'], url: 'tools/base64/index.html', featured: false, badge: null },
-    { id: 'url-encoder', title: 'URL Encoder', category: 'dev', desc: 'Encode/Decode URLs', tags: ['link', 'escape', 'web'], url: 'tools/url-encoder/index.html', featured: false, badge: null },
-    { id: 'css-minifier', title: 'CSS Minifier', category: 'dev', desc: 'Minify CSS code', tags: ['style', 'optimize', 'web'], url: 'tools/css-minifier/index.html', featured: false, badge: null },
-    { id: 'html-formatter', title: 'HTML Formatter', category: 'dev', desc: 'Beautify HTML code', tags: ['markup', 'web', 'clean'], url: 'tools/html-formatter/index.html', featured: false, badge: null },
-    { id: 'uuid-generator', title: 'UUID Generator', category: 'dev', desc: 'Generate unique UUIDs', tags: ['guid', 'id', 'unique'], url: 'tools/uuid-generator/index.html', featured: false, badge: null },
-    { id: 'unix-time', title: 'Unix Timestamp', category: 'dev', desc: 'Convert Unix time', tags: ['date', 'epoch', 'time'], url: 'tools/unix-time/index.html', featured: false, badge: null },
+    { id: 'base64', title: 'Base64 Tool', category: 'dev', desc: 'Encode/Decode Base64', tags: ['decoder', 'encoder', 'text'], url: 'tools/base64/', featured: false, badge: null },
+    { id: 'url-encoder', title: 'URL Encoder', category: 'dev', desc: 'Encode/Decode URLs', tags: ['link', 'escape', 'web'], url: 'tools/url-encoder/', featured: false, badge: null },
+    { id: 'css-minifier', title: 'CSS Minifier', category: 'dev', desc: 'Minify CSS code', tags: ['style', 'optimize', 'web'], url: 'tools/css-minifier/', featured: false, badge: null },
+    { id: 'html-formatter', title: 'HTML Formatter', category: 'dev', desc: 'Beautify HTML code', tags: ['markup', 'web', 'clean'], url: 'tools/html-formatter/', featured: false, badge: null },
+    { id: 'uuid-generator', title: 'UUID Generator', category: 'dev', desc: 'Generate unique UUIDs', tags: ['guid', 'id', 'unique'], url: 'tools/uuid-generator/', featured: false, badge: null },
+    { id: 'unix-time', title: 'Unix Timestamp', category: 'dev', desc: 'Convert Unix time', tags: ['date', 'epoch', 'time'], url: 'tools/unix-time/', featured: false, badge: null },
 // --- VIDEO TOOLS (Add New) ---
     { 
         id: 'video-compressor', 
@@ -75,7 +75,7 @@ const TOOLS_DB = [
         category: 'converter', 
         desc: 'Reduce video size efficiently (MP4/MOV)', 
         tags: ['video', 'mp4', 'compress', 'size', 'reduce'], 
-        url: 'tools/video-compressor/index.html', 
+        url: 'tools/video-compressor/', 
         featured: true, 
         badge: 'new' 
     }
