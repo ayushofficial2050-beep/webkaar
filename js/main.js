@@ -29,6 +29,17 @@ const TOOLS_DB = [
     // --- 2. UTILITY & TEXT ---
     { id: 'speed-test', title: 'Internet Speed Test', category: 'utility', desc: 'Check internet speed', tags: ['speed', 'internet', 'wifi'], url: 'tools/speed-test/', featured: true, badge: 'hot' },
     { id: 'typing-test', title: 'Typing Speed Test', category: 'utility', desc: 'Check typing WPM', tags: ['typing', 'speed', 'game'], url: 'tools/typing-test/', featured: true, badge: 'hot' },
+{ 
+        id: 'text-to-handwriting', 
+        title: 'Text to Handwriting', 
+        category: 'text', 
+        desc: 'Convert text to realistic handwriting', 
+        tags: ['write', 'notes', 'student', 'assignment', 'font'], 
+        url: 'tools/text-to-handwriting/', 
+        featured: true, 
+        badge: 'hot' 
+    },
+
     { id: 'signature-generator', title: 'Signature Generator', category: 'utility', desc: 'Draw digital signatures', tags: ['sign', 'draw', 'pdf'], url: 'tools/signature-generator/', featured: true, badge: 'new' },
     { id: 'qr-generator', title: 'QR Code Generator', category: 'utility', desc: 'Create custom QR codes', tags: ['barcode', 'scan', 'link'], url: 'tools/qr-generator/', featured: true, badge: 'hot' },
     { id: 'password-gen', title: 'Password Generator', category: 'utility', desc: 'Generate strong passwords', tags: ['security', 'lock', 'privacy'], url: 'tools/password-gen/', featured: true, badge: 'hot' },
@@ -118,7 +129,8 @@ const ICON_LIBRARY = {
     'signature-generator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3l5 5L8 21H3v-5L16 3z"></path><path d="M12 18l-4 4"></path><path d="M20 22h-6"></path></svg>',
     'steganography': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12l5 5L22 3"></path><path d="M12 17a5 5 0 0 0-5-5"></path><path d="M12 7a5 5 0 0 1 5 5"></path></svg>',
 'video-compressor': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>',
-'age-calculator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>'
+'age-calculator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>',
+'text-to-handwriting': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>'
 
 };
 

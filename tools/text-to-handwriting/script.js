@@ -1,107 +1,182 @@
-// Elements
-const dobInput = document.getElementById('dobInput');
-const todayInput = document.getElementById('todayInput');
-const calcBtn = document.getElementById('calcBtn');
-const resetBtn = document.getElementById('resetBtn');
+document.addEventListener('DOMContentLoaded', () => {
 
-const inputCard = document.getElementById('input-card');
-const resultCard = document.getElementById('result-card');
-
-// Output Elements
-const yearsVal = document.getElementById('yearsVal');
-const monthsVal = document.getElementById('monthsVal');
-const daysVal = document.getElementById('daysVal');
-const nextBirthday = document.getElementById('nextBirthday');
-const dayBorn = document.getElementById('dayBorn');
-const totalDays = document.getElementById('totalDays');
-
-// Modal
-const infoBtn = document.getElementById('info-btn');
-const infoModal = document.getElementById('info-modal');
-const closeModal = document.getElementById('close-modal');
-
-// Init: Set "Today" input to current date
-const today = new Date();
-todayInput.valueAsDate = today;
-
-// Modal Logic
-infoBtn.addEventListener('click', () => infoModal.classList.remove('hidden'));
-closeModal.addEventListener('click', () => infoModal.classList.add('hidden'));
-infoModal.addEventListener('click', (e) => { if (e.target === infoModal) infoModal.classList.add('hidden'); });
-
-// Calculate Logic
-calcBtn.addEventListener('click', () => {
-    if(!dobInput.value) {
-        alert("Please select your Date of Birth");
-        return;
-    }
-
-    const birthDate = new Date(dobInput.value);
-    const targetDate = new Date(todayInput.value);
-
-    if(birthDate > targetDate) {
-        alert("Date of Birth cannot be in the future!");
-        return;
-    }
-
-    // 1. Calculate Years, Months, Days
-    let years = targetDate.getFullYear() - birthDate.getFullYear();
-    let months = targetDate.getMonth() - birthDate.getMonth();
-    let days = targetDate.getDate() - birthDate.getDate();
-
-    if (days < 0) {
-        months--;
-        // Days in previous month
-        const prevMonthDate = new Date(targetDate.getFullYear(), targetDate.getMonth(), 0);
-        days += prevMonthDate.getDate();
-    }
-
-    if (months < 0) {
-        years--;
-        months += 12;
-    }
-
-    // 2. Extra Info
-    // Day Born
-    const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    const bornDayName = daysOfWeek[birthDate.getDay()];
-
-    // Total Days Lived
-    const diffTime = Math.abs(targetDate - birthDate);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-
-    // Next Birthday Countdown
-    const currentYear = targetDate.getFullYear();
-    let nextBday = new Date(birthDate);
-    nextBday.setFullYear(currentYear);
-
-    if (nextBday < targetDate) {
-        nextBday.setFullYear(currentYear + 1);
-    }
+    const canvas = document.getElementById('page-canvas');
+    const ctx = canvas.getContext('2d');
     
-    const diffBday = Math.ceil((nextBday - targetDate) / (1000 * 60 * 60 * 24));
+    // UI Elements
+    const textInput = document.getElementById('text-input');
+    const fontSelect = document.getElementById('font-select');
+    const customFontUpload = document.getElementById('custom-font-upload');
+    const sizeSlider = document.getElementById('size-slider');
+    const sizeVal = document.getElementById('size-val');
+    const messSlider = document.getElementById('mess-slider');
+    const messVal = document.getElementById('mess-val');
+    const inkColors = document.querySelectorAll('input[name="ink-color"]');
+    const downloadBtn = document.getElementById('download-btn');
     
-    let bdayText = `${diffBday} Days left`;
-    if(diffBday === 0) bdayText = "🎉 Happy Birthday! 🎂";
-    if(diffBday === 365 || diffBday === 366) bdayText = "🎉 Happy Birthday! 🎂";
+    // Modal
+    const infoBtn = document.getElementById('info-btn');
+    const closeModal = document.getElementById('close-modal');
+    const infoModal = document.getElementById('info-modal');
 
-    // 3. Update UI
-    yearsVal.innerText = years;
-    monthsVal.innerText = months;
-    daysVal.innerText = days;
-    
-    dayBorn.innerText = bornDayName;
-    totalDays.innerText = diffDays.toLocaleString();
-    nextBirthday.innerText = bdayText;
+    let currentCustomFont = '';
 
-    // Switch Cards
-    inputCard.classList.add('hidden');
-    resultCard.classList.remove('hidden');
-});
+    // A4 Paper Constants (HD Resolution)
+    const CANVAS_WIDTH = 1240;
+    const CANVAS_HEIGHT = 1754;
+    const MARGIN_LEFT = 160; // Space for red line margin
+    const MARGIN_RIGHT = 60;
+    const MARGIN_TOP = 190; // Start of first blue line
+    const LINE_HEIGHT = 45; // Gap between blue lines
 
-// Reset
-resetBtn.addEventListener('click', () => {
-    inputCard.classList.remove('hidden');
-    resultCard.classList.add('hidden');
-    dobInput.value = '';
+    canvas.width = CANVAS_WIDTH;
+    canvas.height = CANVAS_HEIGHT;
+
+    // Default Demo Text
+    textInput.value = "Hey there,\n\nNotice how the text now touches the blue lines perfectly?\n\nIf you increase the 'Human Realism' slider, words will randomly shift up and down slightly, making it look 100% human and less like a robot.\n\nYou can even select 'Upload Custom Font' to use your own handwriting!\n\nCreated by Ayush Tiwari.\n\nBest of luck with your assignments!";
+
+    // --- EVENT LISTENERS ---
+    textInput.addEventListener('input', drawPage);
+    inkColors.forEach(radio => radio.addEventListener('change', drawPage));
+
+    sizeSlider.addEventListener('input', (e) => {
+        sizeVal.innerText = e.target.value + 'px';
+        drawPage();
+    });
+
+    messSlider.addEventListener('input', (e) => {
+        let val = parseInt(e.target.value);
+        if(val === 0) messVal.innerText = "Robot (Perfect)";
+        else if(val <= 3) messVal.innerText = "Normal";
+        else if(val <= 6) messVal.innerText = "Messy Human";
+        else if(val <= 9) messVal.innerText = "In a Hurry!";
+        else messVal.innerText = "Doctor Level!";
+        drawPage();
+    });
+
+    // Font Selection & Custom Upload Logic
+    fontSelect.addEventListener('change', (e) => {
+        if(e.target.value === 'custom') {
+            customFontUpload.style.display = 'block';
+        } else {
+            customFontUpload.style.display = 'none';
+            drawPage();
+        }
+    });
+
+    customFontUpload.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if(!file) return;
+        
+        const url = URL.createObjectURL(file);
+        const fontName = 'UserCustomFont_' + Date.now();
+        
+        const customFont = new FontFace(fontName, `url(${url})`);
+        customFont.load().then((loadedFont) => {
+            document.fonts.add(loadedFont);
+            currentCustomFont = `'${fontName}', sans-serif`;
+            drawPage();
+        }).catch(err => alert('Error loading font file. Please use a valid .ttf or .otf file.'));
+    });
+
+    // Make sure fonts are loaded before drawing the first time
+    document.fonts.ready.then(() => drawPage());
+
+    // --- RENDER ENGINE ---
+    function drawPage() {
+        // 1. Draw Paper Background
+        ctx.fillStyle = '#fdfdfc'; // Off-white cream paper color
+        ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+
+        // 2. Draw Blue Ruled Lines
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = '#9caadd'; 
+        for (let y = MARGIN_TOP; y < CANVAS_HEIGHT; y += LINE_HEIGHT) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(CANVAS_WIDTH, y);
+            ctx.stroke();
+        }
+
+        // 3. Draw Red Margin
+        ctx.strokeStyle = '#f28b82'; 
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(MARGIN_LEFT, 0); ctx.lineTo(MARGIN_LEFT, CANVAS_HEIGHT);
+        ctx.moveTo(MARGIN_LEFT + 6, 0); ctx.lineTo(MARGIN_LEFT + 6, CANVAS_HEIGHT);
+        ctx.stroke();
+
+        // 4. Setup Text Options
+        const text = textInput.value;
+        const fontSize = parseInt(sizeSlider.value) * 1.5; // Scale font for HD canvas
+        const inkColor = document.querySelector('input[name="ink-color"]:checked').value;
+        
+        let fontStyle = fontSelect.value;
+        if (fontStyle === 'custom') {
+            fontStyle = currentCustomFont || 'sans-serif'; // Fallback
+        }
+
+        ctx.font = `${fontSize}px ${fontStyle}`;
+        ctx.fillStyle = inkColor;
+        
+        // 🔥 CRITICAL: 'alphabetic' makes text sit EXACTLY on the drawn y-coordinate line
+        ctx.textBaseline = 'alphabetic'; 
+
+        const messiness = parseInt(messSlider.value);
+
+        // 5. Draw the text with Smart Word Wrap
+        // Start X is after the red margin. Start Y is exactly on the first blue line.
+        writeHumanText(ctx, text, MARGIN_LEFT + 25, MARGIN_TOP, CANVAS_WIDTH - MARGIN_LEFT - MARGIN_RIGHT, LINE_HEIGHT, messiness);
+    }
+
+    function writeHumanText(context, text, startX, startY, maxWidth, lineHeight, messiness) {
+        const paragraphs = text.split('\n');
+        let currentY = startY; 
+
+        for (let i = 0; i < paragraphs.length; i++) {
+            let words = paragraphs[i].split(' ');
+            let lineX = startX;
+
+            for (let n = 0; n < words.length; n++) {
+                let word = words[n];
+                // Measure word with trailing space
+                let wordWidth = context.measureText(word + ' ').width;
+
+                // Word Wrap: If word exceeds margin, move to next line
+                if (lineX + wordWidth > startX + maxWidth && lineX > startX) {
+                    lineX = startX;
+                    currentY += lineHeight; 
+                }
+
+                // 🔥 ANTI-ROBOT ALGORITHM (Jitter)
+                let randomYOffset = 0;
+                if (messiness > 0) {
+                    // Random shift up or down. Max shift depends on messiness slider (0 to 10)
+                    // If messiness is 10, shift can be roughly +/- 12px
+                    randomYOffset = (Math.random() - 0.5) * messiness * 2.5; 
+                }
+
+                // Draw word and move X cursor forward
+                context.fillText(word + ' ', lineX, currentY + randomYOffset);
+                lineX += wordWidth;
+            }
+            // Move down for the next paragraph
+            currentY += lineHeight; 
+        }
+    }
+
+    // Modal Logic
+    infoBtn.addEventListener('click', () => infoModal.classList.remove('hidden'));
+    closeModal.addEventListener('click', () => infoModal.classList.add('hidden'));
+    infoModal.addEventListener('click', (e) => {
+        if(e.target === infoModal) infoModal.classList.add('hidden');
+    });
+
+    // Download Logic
+    downloadBtn.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.download = `WebKaar_Assignment_${Date.now()}.jpg`;
+        link.href = canvas.toDataURL('image/jpeg', 0.95); // High quality export
+        link.click();
+    });
 });
