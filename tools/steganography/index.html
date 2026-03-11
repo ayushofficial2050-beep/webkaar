@@ -20,6 +20,19 @@
     <meta name="keywords" content="secret hider, hide text in image, steganography online, hide message in photo, image steganography tool, secret message in image, webkaar tools">
     <meta name="author" content="Ayush Tiwari">
     <meta name="theme-color" content="#0f172a">
+<meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/steganography/">
+    <meta property="og:title" content="Secret Hider - Hide Text in Images | WebKaar">
+    <meta property="og:description" content="Hide private messages inside any image securely. Decode hidden texts. 100% Client-side steganography tool. Keep your secrets safe!">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/og-steganography.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="WebKaar Tools">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Secret Hider | Hide Text in Images - WebKaar">
+    <meta name="twitter:description" content="Securely hide and decode secret messages inside images. Fully private & offline!">
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-steganography.jpg">
     <link rel="canonical" href="https://webkaar.pages.dev/tools/steganography/">
 
     <script>
@@ -48,7 +61,7 @@
 
     <header class="main-header">
         <div class="header-content">
-            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+            <button onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); } else { window.location.href = '/'; }" class="icon-button" aria-label="Go Back">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             </button>
             <div class="header-title" style="display: flex; align-items: center; gap: 8px;">

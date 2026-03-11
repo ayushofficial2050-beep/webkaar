@@ -71,7 +71,7 @@
 
     <header class="main-header" style="background: var(--bg-surface); backdrop-filter: blur(12px);">
         <div class="header-content">
-            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+            <button onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); } else { window.location.href = '/'; }" class="icon-button" aria-label="Go Back">
                 <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
             </button>
             <div class="header-title">
