@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date()); gtag('config', 'G-G0FCCE2LMY');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>What's New & Updates | WebKaar Roadmap</title>
+    <meta name="description" content="Track the latest updates, new tools, and the upcoming roadmap for WebKaar. See what Ayush Tiwari is building next for you!">
+    <meta name="theme-color" content="#0f172a">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/pages/updates">
+    <meta property="og:title" content="WebKaar Updates & Roadmap 🚀">
+    <meta property="og:description" content="Check out the newest tools added to WebKaar and see what's coming next! 100% Free & Private tools.">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/og-updates.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark' || (!localStorage.getItem('webkaar_theme_pref') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
+    <style>
+        .up-container { max-width: 700px; margin: 0 auto; padding: 20px 16px 80px; }
+        
+        /* 🔥 HERO LOGO SECTION 🔥 */
+        .up-header { text-align: center; margin-bottom: 40px; padding-top: 20px; animation: slideDown 0.6s ease; }
+        .up-logo { 
+            width: 85px; height: 85px; 
+            margin: 0 auto 16px auto; 
+            border-radius: 20px; 
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+            border: 2px solid var(--border-color);
+            background: var(--bg-surface);
+            padding: 4px;
+            display: block;
+        }
+        .up-header h1 { font-size: 2.2rem; font-weight: 900; color: var(--text-main); margin-bottom: 10px; letter-spacing: -0.5px; }
+        .up-header p { color: var(--text-muted); font-size: 1rem; max-width: 90%; margin: 0 auto; }
+
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Timeline Styles */
+        .timeline { position: relative; padding-left: 24px; margin-bottom: 50px; }
+        .timeline::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+            width: 3px; background: var(--border-color); border-radius: 3px;
+        }
+
+        .tl-item { position: relative; margin-bottom: 35px; }
+        .tl-dot {
+            position: absolute; left: -30px; top: 4px; width: 14px; height: 14px;
+            border-radius: 50%; background: var(--border-color); border: 4px solid var(--bg-body);
+            box-shadow: 0 0 0 2px var(--border-color);
+            transition: all 0.3s;
+        }
+        .tl-dot.green { 
+            background: #10b981; 
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2); 
+            animation: pulse-dot 2s infinite;
+        }
+
+        @keyframes pulse-dot { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+        .tl-date { font-size: 0.85rem; color: var(--primary-blue); font-weight: 700; margin-bottom: 8px; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .tl-card {
+            background: var(--bg-surface); border: 1px solid var(--border-color);
+            border-radius: 20px; padding: 24px; box-shadow: var(--shadow-sm);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .tl-card:hover { border-color: var(--primary-blue); transform: translateY(-2px); }
+
+        .tl-title { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+        .tl-badge { background: rgba(37, 99, 235, 0.1); color: var(--primary-blue); padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; }
+        
+        .tl-list { list-style: none; padding: 0; margin: 0; }
+        .tl-list li { position: relative; padding-left: 24px; margin-bottom: 12px; color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; font-weight: 500;}
+        .tl-list li::before { content: '✨'; position: absolute; left: 0; top: 0; font-size: 0.9rem; }
+        .tl-list li.fix::before { content: '🛠️'; }
+        .tl-list li.fire::before { content: '🔥'; }
+
+        /* Upcoming Section */
+        .upcoming-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 10px;}
+        .upc-card {
+            display: flex; align-items: center; gap: 16px; padding: 20px;
+            background: var(--bg-surface); border: 2px dashed var(--border-color);
+            border-radius: 20px; transition: transform 0.2s, border-color 0.2s;
+        }
+        .upc-card:hover { border-color: var(--text-muted); transform: scale(1.01); }
+        .upc-icon { width: 54px; height: 54px; border-radius: 14px; background: rgba(139, 92, 246, 0.1); color: #8b5cf6; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0;}
+        .upc-info h4 { margin: 0 0 6px 0; color: var(--text-main); font-weight: 800; font-size: 1.05rem;}
+        .upc-info p { margin: 0; color: var(--text-muted); font-size: 0.9rem; font-weight: 500; line-height: 1.4;}
+    </style>
+</head>
+<body>
+    <script>
+        if(document.documentElement.classList.contains('dark-mode')) {
+            document.body.classList.add('dark-mode');
+        }
+    </script>
+
+    <header class="main-header" style="background: var(--bg-surface); backdrop-filter: blur(12px);">
+        <div class="header-content">
+            <button onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); } else { window.location.href = '../'; }" class="icon-button" aria-label="Go Back">
+                <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.15rem;">Updates & Roadmap</h1>
+            </div>
+            <div style="width: 40px;"></div>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="up-container">
+            
+            <div class="up-header">
+                <img src="../images/logo.png" alt="WebKaar Logo" class="up-logo" onerror="this.style.display='none'">
+                <h1>WebKaar Changelog</h1>
+                <p>Track new tools, daily updates, and see what we are building next to make your digital life easier.</p>
+            </div>
+
+            <h3 style="color: var(--text-main); font-weight: 800; margin-bottom: 24px; font-size: 1.3rem; display: flex; align-items: center; gap: 8px;">
+                <i class="ph-fill ph-rocket-launch" style="color: var(--primary-blue);"></i> Latest Updates
+            </h3>
+            
+            <div class="timeline">
+                
+                <div class="tl-item">
+                    <div class="tl-dot green"></div>
+                    <span class="tl-date">Today</span>
+                    <div class="tl-card">
+                        <div class="tl-title">
+                            YouTube Downloader & Handwriting Tool
+                            <span class="tl-badge">v3.1.0</span>
+                        </div>
+                        <ul class="tl-list">
+                            <li class="fire">Added <strong>YouTube HD Thumbnail Grabber</strong> (Supports Shorts & 4K directly without server).</li>
+                            <li class="fire">Added <strong>Text to Handwriting Converter</strong> with 10+ custom fonts & smart Jitter logic.</li>
+                            <li>Massive Upgrade to <strong>Image Compressor</strong> (Added format selection like WEBP, transparency fix).</li>
+                            <li class="fix">Fixed UI overlap bugs on Contact & About pages.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tl-item">
+                    <div class="tl-dot"></div>
+                    <span class="tl-date">Few Days Ago</span>
+                    <div class="tl-card">
+                        <div class="tl-title">
+                            WebKaar v3.0 Launch
+                            <span class="tl-badge">v3.0.0</span>
+                        </div>
+                        <ul class="tl-list">
+                            <li>Complete UI overhaul with Glassmorphism design & Native App feel.</li>
+                            <li class="fire">Added <strong>Secret Hider (Steganography)</strong> tool for ultimate privacy.</li>
+                            <li>Implemented lag-free category filters and lightning-fast dark mode.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="color: var(--text-main); font-weight: 800; margin-top: 40px; margin-bottom: 8px; font-size: 1.3rem; display: flex; align-items: center; gap: 8px;">
+                <i class="ph-fill ph-map-trifold" style="color: #f59e0b;"></i> Coming Soon (Roadmap)
+            </h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Based on highest user demand, these tools are currently under development.</p>
+            
+            <div class="upcoming-grid">
+                <div class="upc-card">
+                    <div class="upc-icon"><i class="ph-fill ph-eraser"></i></div>
+                    <div class="upc-info">
+                        <h4>Background Remover</h4>
+                        <p>1-click AI background removal for photos, fully client-side.</p>
+                    </div>
+                </div>
+                <div class="upc-card">
+                    <div class="upc-icon" style="color: #ef4444; background: rgba(239, 68, 68, 0.1);"><i class="ph-fill ph-file-pdf"></i></div>
+                    <div class="upc-info">
+                        <h4>PDF to Word Converter</h4>
+                        <p>High-accuracy document converter without losing text formatting.</p>
+                    </div>
+                </div>
+                <div class="upc-card">
+                    <div class="upc-icon" style="color: #3b82f6; background: rgba(59, 130, 246, 0.1);"><i class="ph-fill ph-robot"></i></div>
+                    <div class="upc-info">
+                        <h4>AI Text Detector</h4>
+                        <p>Check if text was written by ChatGPT or a real human.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 WebKaar Inc. • Built by Ayush Tiwari</p>
+        <div class="footer-links">
+            <a href="about">About</a> •
+            <a href="contact">Contact</a> •
+            <a href="privacy">Privacy</a> •
+            <a href="disclaimer">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

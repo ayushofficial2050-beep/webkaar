@@ -26,6 +26,17 @@ const TOOLS_DB = [
     { id: 'color-picker', title: 'Color Picker', category: 'design', desc: 'Get HEX, RGB, HSL codes', tags: ['palette', 'paint', 'css'], url: 'tools/color-picker/', featured: true, badge: null },
     { id: 'gradient-generator', title: 'Gradient Generator', category: 'design', desc: 'Create CSS gradients', tags: ['css', 'color', 'background'], url: 'tools/gradient-generator/', featured: true, badge: 'new' },
 
+{ 
+        id: 'youtube-thumbnail', 
+        title: 'YouTube Thumbnail Grabber', 
+        category: 'utility', 
+        desc: 'Download YouTube thumbnails in HD & 4K', 
+        tags: ['video', 'youtube', 'thumbnail', 'download', 'image'], 
+        url: 'tools/youtube-thumbnail/', 
+        featured: true, 
+        badge: 'hot' 
+    },
+
     // --- 2. UTILITY & TEXT ---
     { id: 'speed-test', title: 'Internet Speed Test', category: 'utility', desc: 'Check internet speed', tags: ['speed', 'internet', 'wifi'], url: 'tools/speed-test/', featured: true, badge: 'hot' },
     { id: 'typing-test', title: 'Typing Speed Test', category: 'utility', desc: 'Check typing WPM', tags: ['typing', 'speed', 'game'], url: 'tools/typing-test/', featured: true, badge: 'hot' },
@@ -130,7 +141,9 @@ const ICON_LIBRARY = {
     'steganography': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12l5 5L22 3"></path><path d="M12 17a5 5 0 0 0-5-5"></path><path d="M12 7a5 5 0 0 1 5 5"></path></svg>',
 'video-compressor': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>',
 'age-calculator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>',
-'text-to-handwriting': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>'
+'text-to-handwriting': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>',
+
+'youtube-thumbnail': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>'
 
 };
 
@@ -572,6 +585,11 @@ const WebKaarApp = {
         ContentLoader.init();
         IntroManager.init(); 
         
+const countEl = document.getElementById('live-tool-count');
+        if(countEl && typeof TOOLS_DB !== 'undefined') {
+            countEl.innerText = TOOLS_DB.length + "+";
+        }
+
         document.body.classList.add('loaded');
     }
 };

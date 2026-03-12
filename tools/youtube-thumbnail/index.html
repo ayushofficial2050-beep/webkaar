@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G0FCCE2LMY');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>YouTube Thumbnail Grabber HD | Download 4K Thumbnails Free | WebKaar</title>
+    <meta name="description" content="Download high-quality YouTube thumbnails in HD, 4K, and standard resolutions for free. Just paste the video URL and grab the image instantly. 100% Free & Fast.">
+    <meta name="keywords" content="youtube thumbnail downloader, grab youtube thumbnail, download youtube thumbnail hd, youtube video image extractor, save yt thumbnail, webkaar tools">
+    <meta name="author" content="Ayush Tiwari">
+    <meta name="theme-color" content="#0f172a">
+<meta property="og:image" content="https://webkaar.pages.dev/images/og-youtube-thumb.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-youtube-thumb.jpg">
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/youtube-thumbnail/">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "YouTube Thumbnail Grabber by WebKaar",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Any",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+      "description": "Easily extract and download YouTube video thumbnails in Max Resolution (4K/HD), High Quality, and Standard sizes. Works with Shorts and standard videos.",
+      "url": "https://webkaar.pages.dev/tools/youtube-thumbnail/",
+      "author": { "@type": "Person", "name": "Ayush Tiwari" }
+    }
+    </script>
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/youtube-thumbnail/">
+    <meta property="og:title" content="YouTube HD Thumbnail Grabber | WebKaar">
+    <meta property="og:description" content="Paste any YouTube link and instantly download its thumbnail in 4K, HD, or SD format for free. Perfect for creators!">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/og-youtube.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="WebKaar Tools">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="YouTube HD Thumbnail Downloader - WebKaar">
+    <meta name="twitter:description" content="Extract and save YouTube video thumbnails in highest quality instantly.">
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-youtube.jpg">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        (function() {
+            try {
+                if (localStorage.getItem('webkaar_theme_pref') === 'dark' || (!localStorage.getItem('webkaar_theme_pref') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+</head>
+<body>
+    <script>if(document.documentElement.classList.contains('dark-mode')) document.body.classList.add('dark-mode');</script>
+
+    <header class="main-header" style="background: var(--bg-surface); backdrop-filter: blur(12px);">
+        <div class="header-content">
+            <button onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); } else { window.location.href = '/'; }" class="icon-button" aria-label="Go Back">
+                <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.15rem;">YT Thumbnail Grabber</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <i class="ph-bold ph-info" style="font-size: 22px;"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="yt-container">
+            
+            <div class="yt-card text-center slide-down">
+                <div class="icon-circle yt-icon">
+                    <i class="ph-fill ph-youtube-logo" style="font-size: 38px; color: #ff0000;"></i>
+                </div>
+                <h2 style="margin-bottom: 8px; font-weight: 800; color: var(--text-main);">Grab Any Thumbnail</h2>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">Paste the YouTube video or Shorts link below.</p>
+                
+                <div class="input-group">
+                    <i class="ph-bold ph-link yt-link-icon"></i>
+                    <input type="text" id="yt-url" class="yt-input" placeholder="e.g., https://youtu.be/dQw4w9WgXcQ">
+                    <button id="fetch-btn" class="primary-btn yt-btn">Grab Images</button>
+                </div>
+                <p id="error-msg" class="error-msg hidden"><i class="ph-bold ph-warning-circle"></i> Invalid YouTube URL. Please check and try again.</p>
+            </div>
+
+            <div id="results-section" class="hidden">
+                <hr class="divider">
+                <h3 style="margin-bottom: 20px; color: var(--text-main); font-weight: 700;"><i class="ph-bold ph-image"></i> Available Resolutions</h3>
+                
+                <div class="thumbnails-grid" id="thumbnails-container">
+                    </div>
+            </div>
+
+        </div>
+
+        <article class="tool-content" style="max-width: 900px; margin: 40px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px; font-weight: 800; letter-spacing: -0.5px;">Best YouTube Thumbnail Downloader</h2>
+            <p style="margin-bottom: 24px; line-height: 1.6; font-size: 0.95rem;">
+                WebKaar YouTube Thumbnail Grabber allows creators, designers, and marketers to easily extract and download the cover image of any YouTube video. Whether it is a standard video or a YouTube Short, our tool fetches the highest available quality instantly.
+            </p>
+            <h3 style="color: var(--text-main); font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">How to save a YouTube Thumbnail?</h3>
+            <ol style="margin-bottom: 24px; padding-left: 20px; line-height: 1.8; font-size: 0.95rem;">
+                <li>Copy the link of the YouTube video (e.g., youtube.com/watch?v=... or youtu.be/...).</li>
+                <li>Paste the URL into the input box above.</li>
+                <li>Click on <strong>"Grab Images"</strong>.</li>
+                <li>Choose your preferred resolution (Max Res 4K, HQ, or Standard) and click <strong>Download</strong>.</li>
+            </ol>
+            <p style="font-size: 0.85rem;"><strong>Note:</strong> Thumbnails belong to their respective creators. Please ensure you have the right to use them for your projects.</p>
+        </article>
+    </main>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Thumbnail Grabber</h3>
+                <button id="close-modal" class="icon-button"><i class="ph-bold ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <ul class="info-list">
+                    <li><i class="ph-fill ph-monitor-play" style="color:#ff0000;"></i> <strong>Shorts Supported:</strong> Works seamlessly with standard videos and YouTube Shorts.</li>
+                    <li><i class="ph-fill ph-image" style="color:var(--primary-blue);"></i> <strong>Multiple Formats:</strong> Gets the hidden MaxRes (1080p/4K) cover along with standard sizes.</li>
+                    <li><i class="ph-fill ph-lightning" style="color:#f59e0b;"></i> <strong>Instant Fetch:</strong> 100% client-side API processing. No waiting, no ads!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 WebKaar Inc. • Built by Ayush Tiwari</p>
+        <div class="footer-links">
+            <a href="../../pages/about">About</a> •
+            <a href="../../pages/contact">Contact</a> •
+            <a href="../../pages/privacy">Privacy</a> •
+            <a href="../../pages/disclaimer">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

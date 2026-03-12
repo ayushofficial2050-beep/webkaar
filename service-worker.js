@@ -1,10 +1,10 @@
 /**
  * WebKaar Ultimate Service Worker
  * Features: Instant Updates, Offline Support, Smart Caching
- * Version: v42 (Always change this number when you update code)
+ * Version: v44 (Always change this number when you update code)
  */
 
-const CACHE_NAME = 'webkaar-v42-live'; // ✅ Jab bhi code update karo, ye number badha dena (v8 -> v42)
+const CACHE_NAME = 'webkaar-v44-live'; // ✅ Jab bhi code update karo, ye number badha dena (v8 -> v44)
 
 // 1. FILES TO CACHE IMMEDIATELY (App Shell)
 // Sirf wo files jo website khulne ke liye zaroori hain
