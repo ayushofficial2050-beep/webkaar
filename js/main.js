@@ -39,6 +39,18 @@ const TOOLS_DB = [
 
     // --- 2. UTILITY & TEXT ---
     { id: 'speed-test', title: 'Internet Speed Test', category: 'utility', desc: 'Check internet speed', tags: ['speed', 'internet', 'wifi'], url: 'tools/speed-test/', featured: true, badge: 'hot' },
+
+{ 
+        id: 'game-optimizer', 
+        title: 'Pro Game Optimizer', 
+        category: 'utility', // Yeh automatically Green Card banayega
+        desc: 'Fix lag & find perfect DPI/Sensitivity', 
+        tags: ['gaming', 'lag', 'dpi', 'sensitivity', 'fps', 'booster'], 
+        url: 'tools/game-optimizer/', 
+        featured: true, 
+        badge: 'hot' 
+    },
+
     { id: 'typing-test', title: 'Typing Speed Test', category: 'utility', desc: 'Check typing WPM', tags: ['typing', 'speed', 'game'], url: 'tools/typing-test/', featured: true, badge: 'hot' },
 { 
         id: 'text-to-handwriting', 
@@ -143,7 +155,9 @@ const ICON_LIBRARY = {
 'age-calculator': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>',
 'text-to-handwriting': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>',
 
-'youtube-thumbnail': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>'
+'youtube-thumbnail': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>',
+
+'game-optimizer': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="4" ry="4"></rect><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line></svg>'
 
 };
 

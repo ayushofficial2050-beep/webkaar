@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G0FCCE2LMY');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Smart Game Optimizer | Lag Fix, Auto DPI & 200+ Sens | WebKaar</title>
+    <meta name="description" content="Intelligent Game Optimizer for Mobile. Auto-detects screen resolution to calculate safe DPI, fix lag, and generate perfect 200+ headshot sensitivity for Free Fire, BGMI & more.">
+    <meta name="keywords" content="smart game optimizer, fix mobile game lag, free fire 200 sensitivity, bgmi extreme fps, gaming phone optimizer, auto dpi calculator, webkaar tools">
+    <meta name="author" content="Ayush Tiwari">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/game-optimizer/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/game-optimizer/">
+    <meta property="og:title" content="Smart Game Optimizer - Auto DPI & Lag Fixer">
+    <meta property="og:description" content="Calculate your perfect gaming sensitivity and safe DPI based on your actual screen width and RAM. 100% Free & Safe!">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/og-game-optimizer.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pro Game Optimizer - WebKaar">
+    <meta name="twitter:description" content="Get exact DPI & Sensitivity for your smartphone model to fix lag and hit perfect headshots.">
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-game-optimizer.jpg">
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark' || (!localStorage.getItem('webkaar_theme_pref') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+</head>
+<body>
+    <script>if(document.documentElement.classList.contains('dark-mode')) document.body.classList.add('dark-mode');</script>
+
+    <header class="main-header" style="background: var(--bg-surface); backdrop-filter: blur(12px);">
+        <div class="header-content">
+            <button onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); } else { window.location.href = '../../'; }" class="icon-button" aria-label="Go Back">
+                <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.15rem;">Pro Game Optimizer</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <i class="ph-bold ph-info" style="font-size: 22px;"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-body">
+        <div class="game-container">
+            
+            <div id="wizard-container" class="game-card slide-down">
+                
+                <div class="wizard-header">
+                    <div class="wizard-icon"><i class="ph-fill ph-cpu"></i></div>
+                    <div class="wizard-title-area">
+                        <h2 id="step-title">Hardware Detection</h2>
+                        <div class="progress-tracker">
+                            <span class="step-dot active" id="dot-1"></span>
+                            <span class="step-line"></span>
+                            <span class="step-dot" id="dot-2"></span>
+                            <span class="step-line"></span>
+                            <span class="step-dot" id="dot-3"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="step-1" class="wizard-step">
+                    <div class="input-group" style="margin-bottom: 20px;">
+                        <label>Select or Type Device Model <span class="required">*</span></label>
+                        <input list="popular-phones" id="device-model" class="custom-input" placeholder="e.g., POCO X3 Pro, iPhone 14...">
+                        <datalist id="popular-phones">
+                            <option value="POCO X3 / X3 Pro">
+                            <option value="POCO F4 / F5">
+                            <option value="ROG Phone 5 / 6 / 7">
+                            <option value="iQOO Neo 7 / 9 / 12">
+                            <option value="Redmi Note 12 / 13 Pro Max">
+                            <option value="Realme GT Neo 3 / GT 5">
+                            <option value="Samsung Galaxy S23 / S24 Ultra">
+                            <option value="iPhone 13 / 14 / 15 Pro Max">
+                            <option value="OnePlus 11 / 12 / 12R">
+                            <option value="Vivo V27 / V29 / X100">
+                        </datalist>
+                    </div>
+                    
+                    <div class="auto-detect-box">
+                        <p style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
+                            <i class="ph-bold ph-scan"></i> We need your exact screen resolution to calculate perfect DPI.
+                        </p>
+                        <button id="detect-screen-btn" class="secondary-btn w-100" style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                            <i class="ph-bold ph-corners-out" style="font-size: 20px;"></i> Auto-Detect My Display
+                        </button>
+                        <p id="screen-result" class="success-text hidden" style="color: #10b981; font-weight: 700; font-size: 0.9rem; text-align: center; margin-bottom: 15px;"></p>
+                    </div>
+
+                    <button class="primary-btn next-btn" onclick="nextStep(1)">Next Step <i class="ph-bold ph-arrow-right"></i></button>
+                </div>
+
+                <div id="step-2" class="wizard-step hidden">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Total Device RAM <span class="required">*</span></label>
+                            <select id="total-ram" class="custom-select">
+                                <option value="" disabled selected>Select Total RAM</option>
+                                <option value="2">2 GB</option>
+                                <option value="3">3 GB</option>
+                                <option value="4">4 GB</option>
+                                <option value="6">6 GB</option>
+                                <option value="8">8 GB</option>
+                                <option value="12">12 GB or more</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Remaining Free Storage <span class="required">*</span></label>
+                            <select id="free-storage" class="custom-select">
+                                <option value="" disabled selected>Select Free Storage</option>
+                                <option value="critical">Under 2 GB (Critical)</option>
+                                <option value="warning">2 GB - 5 GB (Warning)</option>
+                                <option value="good">More than 5 GB (Optimal)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="secondary-btn prev-btn" onclick="prevStep(2)"><i class="ph-bold ph-arrow-left"></i> Back</button>
+                        <button class="primary-btn next-btn" onclick="nextStep(2)">Next Step <i class="ph-bold ph-arrow-right"></i></button>
+                    </div>
+                </div>
+
+                <div id="step-3" class="wizard-step hidden">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label>Target Game <span class="required">*</span></label>
+                            <select id="game-select" class="custom-select">
+                                <option value="" disabled selected>Select Game</option>
+                                <option value="freefire">Free Fire (Supports 200 Sens)</option>
+                                <option value="bgmi">BGMI / PUBG Mobile</option>
+                                <option value="scarfall">Scarfall 2.0</option>
+                                <option value="codm">Call of Duty Mobile</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Your Playstyle <span class="required">*</span></label>
+                            <select id="playstyle" class="custom-select">
+                                <option value="" disabled selected>Select Playstyle</option>
+                                <option value="rusher">Aggressive / Rusher (Fast Movement)</option>
+                                <option value="sniper">Sniper / Assaulter (Accuracy Focus)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button class="secondary-btn prev-btn" onclick="prevStep(3)"><i class="ph-bold ph-arrow-left"></i> Back</button>
+                        <button id="analyze-btn" class="primary-btn boost-btn">
+                            <i class="ph-bold ph-radar"></i> Generate AI Settings
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="scan-section" class="game-card hidden text-center">
+                <div class="scanner-ring"></div>
+                <h3 id="scan-text">Calibrating Resolution Engine...</h3>
+                <p id="scan-subtext">Calculating safe DPI based on screen width...</p>
+                <div class="progress-bar-container">
+                    <div id="scan-progress" class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div id="result-wrapper" class="hidden slide-down">
+                
+                <div id="capture-area" style="padding-bottom: 10px;">
+                    <div class="result-header">
+                        <h2><i class="ph-fill ph-check-circle" style="color: #10b981;"></i> Perfect Settings Found</h2>
+                        <p>Device: <strong id="res-device">Device Name</strong> | Game: <strong id="res-game">Game</strong></p>
+                        <div id="device-badge" class="badge-tag">Standard Device</div>
+                    </div>
+
+                    <div class="game-card dashboard-card">
+                        <h3><i class="ph-fill ph-android-logo"></i> Smart DPI & Phone Tweaks</h3>
+                        <div class="setting-list" id="device-settings">
+                            </div>
+                    </div>
+
+                    <div class="game-card dashboard-card">
+                        <h3><i class="ph-fill ph-game-controller"></i> In-Game Sensitivity (Latest)</h3>
+                        <div class="setting-list" id="in-game-settings">
+                            </div>
+                    </div>
+                    
+                    <div id="wm-watermark" class="hidden text-center" style="color: var(--text-muted); font-size: 0.8rem; font-weight: 700; margin-top: 10px; opacity: 0.5;">
+                        Generated via WebKaar Tools (webkaar.pages.dev)
+                    </div>
+                </div>
+
+                <div class="action-buttons-group" style="display: flex; gap: 16px; margin-top: 24px;">
+                    <button id="download-result-btn" class="primary-btn" style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 8px; background: #3b82f6; border: none; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);">
+                        <i class="ph-bold ph-download-simple" style="font-size: 20px;"></i> Save as Image
+                    </button>
+                    
+                    <button id="reset-btn" class="secondary-btn" style="flex: 1; display: flex; justify-content: center; align-items: center; gap: 8px;">
+                        <i class="ph-bold ph-arrows-clockwise" style="font-size: 20px;"></i> Reset Tool
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+
+        <article class="tool-content" style="max-width: 900px; margin: 50px auto 30px; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+            <h2 style="color: var(--text-main); font-size: 1.6rem; margin-bottom: 16px; font-weight: 900; letter-spacing: -0.5px;">Best Auto DPI & Game Optimizer for Android & iOS</h2>
+            <p style="margin-bottom: 24px; line-height: 1.7; font-size: 1rem;">
+                Are you tired of extreme lag, sudden frame drops, or missing crucial headshots in competitive matches? The WebKaar <strong>Smart Game Optimizer</strong> is built specifically for mobile gamers playing titles like Free Fire, BGMI (PUBG), Scarfall, and CODM. Unlike generic booster apps that just clear background cache, our tool uses a sophisticated engine to analyze your physical hardware.
+            </p>
+
+            <h3 style="color: var(--text-main); font-size: 1.25rem; margin-bottom: 14px; font-weight: 800;">How Does The Display Auto-Detect Work?</h3>
+            <p style="margin-bottom: 24px; line-height: 1.7; font-size: 0.95rem;">
+                DPI (Smallest Width) is not a random number you can guess based on RAM alone. It is mathematically tied to your screen's physical width and pixel density. Our <strong>"Auto-Detect My Display"</strong> feature securely reads your browser's window and screen metrics to calculate a Safe DPI limit, preventing the dreaded "Black Screen" or device bricking.
+            </p>
+
+            <div style="background: var(--bg-surface); padding: 24px; border-radius: 16px; border: 1px dashed var(--border-color); margin-bottom: 24px;">
+                <h4 style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 12px; font-weight: 700;">Features of the 2026 Engine:</h4>
+                <ul style="margin-bottom: 0; padding-left: 20px; line-height: 1.8; font-size: 0.95rem;">
+                    <li><strong>Free Fire 200+ Sensitivity Support:</strong> Fully updated with the latest in-game sliders.</li>
+                    <li><strong>Gaming Phone Detection:</strong> Automatically recognizes beasts like ROG, POCO, and iQOO to push limits higher safely.</li>
+                    <li><strong>Playstyle Adaptation:</strong> Unique algorithms for 'Rushers' (high-movement) vs 'Snipers' (precision-aiming).</li>
+                    <li><strong>Save & Share:</strong> Download your customized settings dashboard as a high-quality image with one click.</li>
+                </ul>
+            </div>
+        </article>
+    </main>
+
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About Smart Optimizer</h3>
+                <button id="close-modal" class="icon-button"><i class="ph-bold ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <ul class="info-list">
+                    <li><i class="ph-fill ph-arrows-out" style="color:var(--primary-blue);"></i> <strong>Real DPI Math:</strong> We read your physical screen width to calculate the safest Smallest Width (DPI).</li>
+                    <li><i class="ph-fill ph-crosshair" style="color:#ef4444;"></i> <strong>Updated Sens:</strong> Fully updated with the latest Free Fire 200 max limits.</li>
+                    <li><i class="ph-fill ph-shield-check" style="color:#10b981;"></i> <strong>Anti-Brick:</strong> Prevents black-screen issues by capping max DPI limits for low-end phones.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 WebKaar Inc. • Built by Ayush Tiwari</p>
+        <div class="footer-links">
+            <a href="../../pages/about">About</a> •
+            <a href="../../pages/contact">Contact</a> •
+            <a href="../../pages/privacy">Privacy</a> •
+            <a href="../../pages/disclaimer">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

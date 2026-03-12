@@ -6,11 +6,29 @@
 
   <url>
     <loc>https://webkaar.pages.dev/</loc>
-    <lastmod>2026-03-09</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
 
+  <url>
+    <loc>https://webkaar.pages.dev/tools/game-optimizer/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://webkaar.pages.dev/tools/youtube-thumbnail/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://webkaar.pages.dev/tools/text-to-handwriting/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
   <url>
     <loc>https://webkaar.pages.dev/tools/image-compressor/</loc>
     <lastmod>2026-03-09</lastmod>
@@ -212,6 +230,12 @@
     <priority>0.70</priority>
   </url>
 
+  <url>
+    <loc>https://webkaar.pages.dev/pages/updates</loc>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
   <url>
     <loc>https://webkaar.pages.dev/pages/about</loc>
     <lastmod>2026-03-09</lastmod>
