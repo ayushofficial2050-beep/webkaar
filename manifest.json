@@ -1,14 +1,14 @@
 {
-  "name": "WebKaar Tools",
+  "name": "WebKaar - Smart Online Tools",
   "short_name": "WebKaar",
-  "start_url": "./index.html",
+  "start_url": "/",
   "id": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
-  "description": "50+ Free Tools for Developers & Creators. Image Tools, PDF Tools, Converters & More.",
+  "description": "50+ Free Tools for Developers, Students & Creators. Image Compressor, Handwriting Converter, YT Downloader & More.",
   "orientation": "portrait-primary",
-  "version": "3.0.0",  // ← Ye add kar diya – ab "Version 3.0.0" dikhega
+  "version": "3.1.0",
   "icons": [
     {
       "src": "images/icon192.png",
@@ -25,46 +25,53 @@
   ],
   "shortcuts": [
     {
-      "name": "Compress Image",
+      "name": "YT Thumbnail Grabber",
+      "short_name": "YT Thumbnails",
+      "description": "Download 4K YouTube Thumbnails",
+      "url": "/tools/youtube-thumbnail/",
+      "icons": [{ "src": "images/shortcut-yt.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Text to Handwriting",
+      "short_name": "Handwriting",
+      "description": "Convert text to real handwriting",
+      "url": "/tools/text-to-handwriting/",
+      "icons": [{ "src": "images/shortcut-hw.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Image Compressor",
       "short_name": "Compressor",
-      "description": "Reduce image size instantly",
-      "url": "/tools/image-compressor/index.html",
-      "icons": [{ "src": "images/icon192.png", "sizes": "192x192", "type": "image/png" }]
+      "description": "Reduce JPG/PNG sizes instantly",
+      "url": "/tools/image-compressor/",
+      "icons": [{ "src": "images/shortcut-compress.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "Age Calculator",
-      "short_name": "My Age",
-      "description": "Check your exact age",
-      "url": "/tools/age-calculator/index.html",
-      "icons": [{ "src": "images/icon192.png", "sizes": "192x192", "type": "image/png" }]
-    },
-    {
-      "name": "Image Resizer",
-      "short_name": "Resizer",
-      "description": "Change image dimensions",
-      "url": "/tools/image-resizer/index.html",
-      "icons": [{ "src": "images/icon192.png", "sizes": "192x192", "type": "image/png" }]
+      "name": "Secret Hider",
+      "short_name": "Secret Hider",
+      "description": "Hide text inside images",
+      "url": "/tools/steganography/",
+      "icons": [{ "src": "images/shortcut-secret.png", "sizes": "192x192", "type": "image/png" }]
     }
   ],
   "screenshots": [
     {
       "src": "images/screenshot1.jpg",
       "sizes": "1080x1920",
-      "type": "image/jpg",
+      "type": "image/jpeg",
       "form_factor": "narrow",
-      "label": "Home Screen with Tools"
+      "label": "Home Screen with All Tools"
     },
     {
       "src": "images/screenshot2.jpg",
       "sizes": "1080x1920",
-      "type": "image/jpg",
+      "type": "image/jpeg",
       "form_factor": "narrow",
-      "label": "Tools List View"
+      "label": "Premium Tool Interface"
     }
   ],
   "categories": [
     "productivity",
     "utilities",
-    "developer tools"
+    "education"
   ]
 }
