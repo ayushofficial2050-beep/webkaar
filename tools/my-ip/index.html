@@ -4,184 +4,149 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- 🔥 GOOGLE ANALYTICS (New GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-G0FCCE2LMY');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G0FCCE2LMY');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- 🔥 TITLE (Optimized: Exact high-search phrase + details + brand, ~60 chars) -->
-    <title>What Is My IP Address? | Check Public IP Location & ISP | WebKaar</title>
-
-    <!-- 🔥 META DESCRIPTION (~158 chars, accurate + privacy + features) -->
-    <meta name="description" content="What is my IP? Check your public IP address instantly – see IPv4/IPv6, ISP name, city, country, region, timezone & more. Free IP lookup & location finder, no login, 100% client-side & secure. WebKaar Tools.">
-
-    <!-- 🔥 KEYWORDS (Expanded with top real searches) -->
-    <meta name="keywords" content="what is my ip, my ip address, check my ip, ip address lookup, my public ip, ip location finder, what is my ip address, my isp, ip checker online, vpn ip leak test, ipv4 address, webkaar tools">
-
-    <meta name="author" content="Ayush Tiwari">
+    <title>What Is My IP Address? | Check Public IP & Location | WebKaar</title>
+    <meta name="description" content="Check your public IP address instantly – see IPv4/IPv6, ISP name, city, country, region, & more. Free IP lookup & location finder.">
     <meta name="theme-color" content="#0f172a">
 
-    <!-- 🔥 CANONICAL (Already perfect) -->
-    <link rel="canonical" href="https://webkaar.pages.dev/tools/my-ip/">
-
-    <!-- 🔥 OPEN GRAPH (Synced & enhanced for sharing) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://webkaar.pages.dev/tools/my-ip/">
-    <meta property="og:title" content="What Is My IP Address? - Check Public IP & Location">
-    <meta property="og:description" content="Instantly see your public IP, ISP, city, country & timezone. Free IP checker tool – no tracking, privacy-first by WebKaar.">
-    <meta property="og:image" content="https://webkaar.pages.dev/images/og-my-ip.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="WebKaar Tools">
-
-    <!-- 🔥 TWITTER CARDS (Synced) -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="What Is My IP? | Public IP & Location Checker - WebKaar">
-    <meta name="twitter:description" content="Find your IP address, ISP & geolocation in seconds. Free, secure & private tool!">
-    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-my-ip.jpg">
-
     <script>
-        (function() {
-            const savedTheme = localStorage.getItem('webkaar_theme_pref');
-            const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
-                document.documentElement.classList.add('dark-mode');
-            } else {
-                document.documentElement.classList.remove('dark-mode');
-            }
-        })();
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark' || (!localStorage.getItem('webkaar_theme_pref') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
     </script>
 
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/responsive.css">
     <link rel="stylesheet" href="style.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- 🔥 STRUCTURED DATA (Enhanced for IP utility tool) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "What Is My IP Address Checker by WebKaar",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "Free online tool to instantly check your public IP address (IPv4/IPv6), ISP name, approximate geolocation (city, country, region), timezone, and network details. 100% client-side processing in browser – no data sent to servers, no login required, privacy-focused. Useful for VPN leak testing, network troubleshooting, and security checks.",
-      "url": "https://webkaar.pages.dev/tools/my-ip/",
-      "author": {
-        "@type": "Person",
-        "name": "Ayush Tiwari"
-      }
-    }
-    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <script>if(document.documentElement.classList.contains('dark-mode')) document.body.classList.add('dark-mode');</script>
 
     <header class="main-header">
         <div class="header-content">
             <button onclick="history.back()" class="icon-button" aria-label="Go Back">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
             </button>
             <div class="header-title">
                 <h1 class="app-name">My IP Info</h1>
             </div>
-            <div style="width: 40px;"></div>
+            <button id="info-btn" class="icon-button" aria-label="Tool Info">
+                <i class="ph-bold ph-info" style="font-size: 22px;"></i>
+            </button>
         </div>
     </header>
 
     <main class="app-body">
         <div class="tool-container">
             
-            <div class="ip-card">
-                <p class="label">Your Public IP Address</p>
-                <h2 id="ip-display">Loading...</h2>
-                <span id="isp-display" class="isp-badge">Fetching ISP...</span>
+            <div id="ip-card-main" class="ip-card">
+                <div class="card-header-actions">
+                    <p class="label">Your Public IP Address</p>
+                    <button id="copy-ip-btn" class="icon-button" aria-label="Copy IP" title="Copy IP"><i class="ph-bold ph-copy"></i></button>
+                </div>
+                <h2 id="ip-display" style="word-break: break-all;">Detecting...</h2>
+                <div class="badges-row">
+                    <span id="isp-display" class="isp-badge"><i class="ph-bold ph-spinner ph-spin"></i> Fetching Network...</span>
+                    <span id="type-display" class="isp-badge hidden">IPv4</span>
+                </div>
             </div>
 
-            <div class="details-grid hidden" id="details-box">
-                
-                <div class="detail-item">
-                    <span class="detail-label">Location</span>
-                    <span class="detail-value" id="location-val">-</span>
+            <div class="details-wrapper hidden" id="details-box">
+                <div class="map-container">
+                    <iframe id="map-frame" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=""></iframe>
                 </div>
 
-                <div class="detail-item">
-                    <span class="detail-label">Country</span>
-                    <span class="detail-value">
-                        <span id="flag-icon">🏳️</span> <span id="country-val">-</span>
-                    </span>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="ph-fill ph-map-pin"></i> ISP Location</span>
+                        <span class="detail-value" id="location-val">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="ph-fill ph-flag"></i> Country</span>
+                        <span class="detail-value"><span id="flag-icon">🏳️</span> <span id="country-val">-</span></span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="ph-fill ph-clock"></i> Timezone</span>
+                        <span class="detail-value" id="timezone-val">-</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="ph-fill ph-shield-check"></i> Connection</span>
+                        <span class="detail-value" id="connection-val">Secure</span>
+                    </div>
                 </div>
 
-                <div class="detail-item">
-                    <span class="detail-label">Timezone</span>
-                    <span class="detail-value" id="timezone-val">-</span>
+                <h3 class="section-title">Device Fingerprint</h3>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="ph-fill ph-device-mobile"></i> OS / Device</span>
+                        <span class="detail-value" id="os-val">Detecting...</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label"><i class="ph-fill ph-browser"></i> Browser</span>
+                        <span class="detail-value" id="browser-val">Detecting...</span>
+                    </div>
                 </div>
-
-                <div class="detail-item">
-                    <span class="detail-label">Connection</span>
-                    <span class="detail-value" id="connection-val">-</span>
-                </div>
-
             </div>
 
-            <button id="refresh-btn" class="secondary-btn full-width">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-                Refresh Data
+            <button id="refresh-btn" class="secondary-btn full-width mt-4">
+                <i class="ph-bold ph-arrows-clockwise" style="font-size: 20px;"></i> Refresh Network Data
             </button>
 
         </div>
 
         <article class="tool-content" style="max-width: 800px; margin: 50px auto; padding: 0 16px; color: var(--text-muted);">
             <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
-            
-            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">What is My IP Address?</h2>
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px; font-weight: 800;">What is My IP Address?</h2>
             <p style="margin-bottom: 20px; line-height: 1.6;">
-                Your IP (Internet Protocol) address is a unique number assigned to your device when you connect to the internet. WebKaar IP Checker allows you to see your public IPv4 address, identify your Internet Service Provider (ISP), and check your approximate geolocation.
+                Your IP (Internet Protocol) address is a unique number assigned to your device when you connect to the internet. WebKaar IP Checker allows you to see your public IPv4/IPv6 address, identify your Internet Service Provider (ISP), and check your network geolocation on a map.
             </p>
-
-            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why check your IP?</h3>
-            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
-                <li><strong>Verify VPN:</strong> Check if your VPN is working correctly by seeing if your location has changed.</li>
-                <li><strong>Network Issues:</strong> Identifying your ISP and IP can help troubleshoot connection problems.</li>
-                <li><strong>Security:</strong> Know what information websites can see about you.</li>
-            </ul>
-
-            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Privacy Note</h3>
-            <p style="line-height: 1.6;">
-                This tool simply displays the information your browser sends to the web. We do not log, store, or track your IP address history. Your privacy is our priority.
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px; font-weight: 700;">Why is the location not exact?</h3>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                IP addresses show the location of your ISP's server routing your data, not your exact GPS coordinates. For mobile data users, this often shows a major city in your state instead of your specific town. This is completely normal and protects your privacy!
             </p>
         </article>
-
     </main>
 
-    <footer class="main-footer" style="margin-top: 40px;">
-        <p>&copy; 2026 WebKaar Inc.</p>
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>About IP Checker</h3>
+                <button id="close-modal" class="icon-button"><i class="ph-bold ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <ul class="info-list">
+                    <li><i class="ph-fill ph-shield-check" style="color:#10b981;"></i> <strong>Privacy First:</strong> We do not log or save your IP address.</li>
+                    <li><i class="ph-fill ph-map-pin" style="color:var(--primary-blue);"></i> <strong>ISP Location:</strong> Shows your network's server location, not exact GPS.</li>
+                    <li><i class="ph-fill ph-device-mobile" style="color:#f59e0b;"></i> <strong>Fingerprint:</strong> Displays the OS and Browser data your device shares.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2026 WebKaar Inc. • Built by Ayush Tiwari</p>
         <div class="footer-links">
-            <a href="../../pages/about.html">About</a> •
-            <a href="../../pages/contact.html">Contact</a> •
-            <a href="../../pages/privacy.html">Privacy</a> •
-            <a href="../../pages/disclaimer.html">Disclaimer</a>
+            <a href="../../pages/about">About</a> •
+            <a href="../../pages/contact">Contact</a> •
+            <a href="../../pages/privacy">Privacy</a> •
+            <a href="../../pages/disclaimer">Disclaimer</a>
         </div>
     </footer>
 
     <script src="../../js/api.js"></script> 
     <script src="script.js"></script>
-    
-    <script>
-        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-    </script>
 </body>
 </html>
