@@ -62,7 +62,7 @@
     <!-- HEADER -->
     <header class="main-header" style="position: sticky; top: 0; z-index: 100;">
         <div class="header-content">
-            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+            <button onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); } else { window.location.href = '../../'; }" class="icon-button" aria-label="Go Back">
                 <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
             </button>
             <div class="header-title">

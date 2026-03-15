@@ -75,7 +75,7 @@
 
     <header class="main-header">
         <div class="header-content">
-            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+            <button onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); } else { window.location.href = '../../'; }" class="icon-button" aria-label="Go Back">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             </button>
             <div class="header-title">
