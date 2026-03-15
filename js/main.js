@@ -27,6 +27,17 @@ const TOOLS_DB = [
     { id: 'gradient-generator', title: 'Gradient Generator', category: 'design', desc: 'Create CSS gradients', tags: ['css', 'color', 'background'], url: 'tools/gradient-generator/', featured: true, badge: 'new' },
 
 { 
+        id: 'img-to-drawing', 
+        title: 'Image to Drawing', 
+        category: 'design', 
+        desc: 'Convert photos to pencil sketches', 
+        tags: ['photo', 'sketch', 'pencil', 'draw', 'art'], 
+        url: 'tools/img-to-drawing/', 
+        featured: true, 
+        badge: 'new' 
+    },
+
+{ 
         id: 'youtube-thumbnail', 
         title: 'YouTube Thumbnail Grabber', 
         category: 'utility', 
@@ -157,7 +168,9 @@ const ICON_LIBRARY = {
 
 'youtube-thumbnail': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>',
 
-'game-optimizer': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="4" ry="4"></rect><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line></svg>'
+'game-optimizer': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="4" ry="4"></rect><line x1="6" y1="12" x2="10" y2="12"></line><line x1="8" y1="10" x2="8" y2="14"></line><line x1="15" y1="13" x2="15.01" y2="13"></line><line x1="18" y1="11" x2="18.01" y2="11"></line></svg>',
+
+'img-to-drawing': '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.17 3.25a3 3 0 0 0-4.24 0L4 16.17V20h3.83l12.94-12.94a3 3 0 0 0 0-4.24z"></path><line x1="15" y1="5" x2="19" y2="9"></line></svg>'
 
 };
 

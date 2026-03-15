@@ -8,7 +8,7 @@
   "theme_color": "#0f172a",
   "description": "50+ Free Tools for Developers, Students & Creators. Image Compressor, Handwriting Converter, YT Downloader & More.",
   "orientation": "portrait-primary",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "icons": [
     {
       "src": "images/icon192.png",

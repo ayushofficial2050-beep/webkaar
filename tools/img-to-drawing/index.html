@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G0FCCE2LMY');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Image to Drawing Reference Pro | Sketch, Grid & Outline Tool | WebKaar</title>
+    <meta name="description" content="Convert any photo into a drawing reference instantly. Get pencil sketch effect, grid overlay, contour lines, symmetry mirror, color palette & more. 100% free & offline. Perfect for artists.">
+    <meta name="keywords" content="image to drawing, photo to sketch, drawing reference tool, grid overlay, contour lines, pencil effect, art reference, drawing tool online, WebKaar">
+    <meta name="author" content="Ayush Tiwari - WebKaar">
+    <meta name="theme-color" content="#0f172a">
+
+    <meta property="og:title" content="Image to Drawing Reference Pro | WebKaar">
+    <meta property="og:description" content="The ultimate free tool for artists. Convert photos to sketch references with grid, contours, mirror, palette & more. 100% offline & secure.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/img-to-drawing">
+    <meta property="og:site_name" content="WebKaar">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Image to Drawing Reference Pro | WebKaar">
+    <meta name="twitter:description" content="Convert any photo to a drawing reference with sketch, grid, contour, mirror & more. Free & offline.">
+
+<meta property="og:image" content="https://webkaar.pages.dev/images/og-img-to-drawing.jpg">
+    <meta property="og:image:secure_url" content="https://webkaar.pages.dev/images/og-img-to-drawing.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Image to Drawing Reference Pro Tool Preview">
+
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-img-to-drawing.jpg">
+    <meta name="twitter:image:alt" content="Convert Photos to Pencil Sketches instantly on WebKaar">
+
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/img-to-drawing">
+
+    <script>
+        if(localStorage.getItem('webkaar_theme_pref') === 'dark' || (!localStorage.getItem('webkaar_theme_pref') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+    </script>
+
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body class="drawing-app-body">
+    <script>if(document.documentElement.classList.contains('dark-mode')) document.body.classList.add('dark-mode');</script>
+
+    <!-- HEADER -->
+    <header class="main-header" style="position: sticky; top: 0; z-index: 100;">
+        <div class="header-content">
+            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+                <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
+            </button>
+            <div class="header-title">
+                <h1 class="app-name" style="font-size: 1.1rem;">Drawing Reference Pro</h1>
+            </div>
+            <button id="info-btn" class="icon-button" aria-label="Info">
+                <i class="ph-bold ph-info" style="font-size: 22px;"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="app-main-content">
+        <div class="tool-container">
+
+            <!-- UPLOAD AREA -->
+            <div class="upload-area" id="drop-zone">
+                <input type="file" id="file-input" accept="image/png, image/jpeg, image/jpg, image/webp" hidden>
+                <div class="upload-icon-wrapper"><i class="ph-fill ph-paint-brush-broad"></i></div>
+                <h3>Upload Your Reference Photo</h3>
+                <p>JPG, PNG or WebP — processed 100% in your browser</p>
+                <button class="primary-btn" onclick="document.getElementById('file-input').click()">
+                    <i class="ph-bold ph-image"></i> Choose Image
+                </button>
+            </div>
+
+            <!-- WORKSPACE -->
+            <div id="workspace-area" class="workspace hidden">
+
+                <!-- TOOLS TABS -->
+                <div class="tools-tab-bar">
+                    <button class="tab-btn active" data-tab="sketch"><i class="ph-bold ph-pencil-simple"></i> Sketch</button>
+                    <button class="tab-btn" data-tab="grid"><i class="ph-bold ph-grid-four"></i> Grid</button>
+                    <button class="tab-btn" data-tab="contour"><i class="ph-bold ph-path"></i> Contour</button>
+                    <button class="tab-btn" data-tab="grayscale"><i class="ph-bold ph-circle-half-tilt"></i> Value</button>
+                    <button class="tab-btn" data-tab="mirror"><i class="ph-bold ph-arrows-left-right"></i> Mirror</button>
+                    <button class="tab-btn" data-tab="palette"><i class="ph-bold ph-palette"></i> Palette</button>
+                    <button class="tab-btn" data-tab="onion"><i class="ph-bold ph-stack"></i> Onion</button>
+                    <button class="tab-btn" data-tab="simplify"><i class="ph-bold ph-wave-sine"></i> Simplify</button>
+                </div>
+
+                <!-- CANVAS AREA -->
+                <div class="canvas-wrapper" id="canvas-wrapper">
+                    <canvas id="main-canvas"></canvas>
+                    <canvas id="overlay-canvas"></canvas>
+                    <div id="grid-overlay" class="grid-overlay hidden"></div>
+                </div>
+
+                <!-- ===== TAB PANELS ===== -->
+
+                <!-- SKETCH PANEL -->
+                <div class="panel active" id="panel-sketch">
+                    <div class="panel-title"><i class="ph-bold ph-pencil-simple"></i> Pencil Sketch Effect</div>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>Sketch Intensity <span id="sketch-intensity-val">50</span>%</label>
+                            <input type="range" id="sketch-intensity" min="10" max="100" value="50" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label>Edge Thickness <span id="sketch-thickness-val">1</span></label>
+                            <input type="range" id="sketch-thickness" min="1" max="5" value="1" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label>Style</label>
+                            <select id="sketch-style" class="custom-select">
+                                <option value="pencil">Pencil Sketch</option>
+                                <option value="charcoal">Charcoal</option>
+                                <option value="ink">Ink Lines</option>
+                                <option value="hatching">Cross Hatching</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Background</label>
+                            <select id="sketch-bg" class="custom-select">
+                                <option value="white">White Paper</option>
+                                <option value="cream">Cream Paper</option>
+                                <option value="dark">Dark / Invert</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="apply-btn" id="apply-sketch"><i class="ph-bold ph-magic-wand"></i> Apply Sketch</button>
+                </div>
+
+                <!-- GRID PANEL -->
+                <div class="panel hidden" id="panel-grid">
+                    <div class="panel-title"><i class="ph-bold ph-grid-four"></i> Grid Overlay</div>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>Grid Type</label>
+                            <select id="grid-type" class="custom-select">
+                                <option value="3x3">3×3 Rule of Thirds</option>
+                                <option value="4x4">4×4 Grid</option>
+                                <option value="5x5">5×5 Grid</option>
+                                <option value="6x6">6×6 Fine Grid</option>
+                                <option value="diagonal">Diagonal Guide</option>
+                                <option value="golden">Golden Ratio</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Grid Color</label>
+                            <select id="grid-color" class="custom-select">
+                                <option value="red">Red</option>
+                                <option value="blue">Blue</option>
+                                <option value="green">Green</option>
+                                <option value="white">White</option>
+                                <option value="black">Black</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Opacity <span id="grid-opacity-val">60</span>%</label>
+                            <input type="range" id="grid-opacity" min="10" max="100" value="60" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label>Number Labels</label>
+                            <select id="grid-labels" class="custom-select">
+                                <option value="on">Show Labels</option>
+                                <option value="off">Hide Labels</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="apply-btn" id="apply-grid"><i class="ph-bold ph-grid-four"></i> Apply Grid</button>
+                </div>
+
+                <!-- CONTOUR PANEL -->
+                <div class="panel hidden" id="panel-contour">
+                    <div class="panel-title"><i class="ph-bold ph-path"></i> Contour & Outline</div>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>Edge Sensitivity <span id="contour-sensitivity-val">50</span></label>
+                            <input type="range" id="contour-sensitivity" min="5" max="150" value="50" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label>Line Color</label>
+                            <select id="contour-color" class="custom-select">
+                                <option value="black">Black on White</option>
+                                <option value="white">White on Black</option>
+                                <option value="blue">Blue Lines</option>
+                                <option value="red">Red Lines</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Detail Level</label>
+                            <select id="contour-detail" class="custom-select">
+                                <option value="low">Low (Main Shapes)</option>
+                                <option value="mid" selected>Medium (Balanced)</option>
+                                <option value="high">High (All Details)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="apply-btn" id="apply-contour"><i class="ph-bold ph-path"></i> Apply Contour</button>
+                </div>
+
+                <!-- GRAYSCALE / VALUE PANEL -->
+                <div class="panel hidden" id="panel-grayscale">
+                    <div class="panel-title"><i class="ph-bold ph-circle-half-tilt"></i> Value Study (Grayscale)</div>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>Contrast <span id="contrast-val">100</span>%</label>
+                            <input type="range" id="contrast-slider" min="50" max="300" value="100" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label>Brightness <span id="brightness-val">100</span>%</label>
+                            <input type="range" id="brightness-slider" min="50" max="200" value="100" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label>Mode</label>
+                            <select id="grayscale-mode" class="custom-select">
+                                <option value="standard">Standard Grayscale</option>
+                                <option value="high-contrast">High Contrast B&W</option>
+                                <option value="posterize">Posterize (3 Values)</option>
+                                <option value="sepia">Sepia Tone</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Blur (Squint Effect) <span id="blur-val">0</span></label>
+                            <input type="range" id="blur-slider" min="0" max="10" value="0" class="slider">
+                        </div>
+                    </div>
+                    <button class="apply-btn" id="apply-grayscale"><i class="ph-bold ph-circle-half-tilt"></i> Apply Value Study</button>
+                </div>
+
+                <!-- MIRROR PANEL -->
+                <div class="panel hidden" id="panel-mirror">
+                    <div class="panel-title"><i class="ph-bold ph-arrows-left-right"></i> Symmetry Mirror</div>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>Mirror Axis</label>
+                            <select id="mirror-axis" class="custom-select">
+                                <option value="vertical">Vertical (Left↔Right)</option>
+                                <option value="horizontal">Horizontal (Top↔Bottom)</option>
+                                <option value="both">Both Axes (Quad)</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Mirror Side</label>
+                            <select id="mirror-side" class="custom-select">
+                                <option value="left">Use Left Side</option>
+                                <option value="right">Use Right Side</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Guide Line</label>
+                            <select id="mirror-guide" class="custom-select">
+                                <option value="on">Show Center Line</option>
+                                <option value="off">Hide Line</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="apply-btn" id="apply-mirror"><i class="ph-bold ph-arrows-left-right"></i> Apply Mirror</button>
+                </div>
+
+                <!-- PALETTE PANEL -->
+                <div class="panel hidden" id="panel-palette">
+                    <div class="panel-title"><i class="ph-bold ph-palette"></i> Color Palette Extractor</div>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>Number of Colors</label>
+                            <select id="palette-count" class="custom-select">
+                                <option value="5">5 Colors</option>
+                                <option value="8" selected>8 Colors</option>
+                                <option value="12">12 Colors</option>
+                                <option value="16">16 Colors</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Palette Style</label>
+                            <select id="palette-style" class="custom-select">
+                                <option value="dominant">Dominant Colors</option>
+                                <option value="vibrant">Most Vibrant</option>
+                                <option value="muted">Muted / Subtle</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="apply-btn" id="apply-palette"><i class="ph-bold ph-palette"></i> Extract Palette</button>
+                    <div id="palette-result" class="palette-result hidden"></div>
+                </div>
+
+                <!-- ONION SKIN PANEL -->
+                <div class="panel hidden" id="panel-onion">
+                    <div class="panel-title"><i class="ph-bold ph-stack"></i> Onion Skin Overlay</div>
+                    <p class="panel-desc">Upload your drawing to compare it with the reference image.</p>
+                    <div class="onion-upload-row">
+                        <button class="secondary-btn" id="onion-upload-btn"><i class="ph-bold ph-upload"></i> Upload My Drawing</button>
+                        <input type="file" id="onion-file-input" accept="image/*" hidden>
+                        <span id="onion-file-name" class="file-name-label">No file chosen</span>
+                    </div>
+                    <div class="controls-grid" style="margin-top:16px;">
+                        <div class="control-group">
+                            <label>Drawing Opacity <span id="onion-opacity-val">50</span>%</label>
+                            <input type="range" id="onion-opacity" min="10" max="90" value="50" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label>Blend Mode</label>
+                            <select id="onion-blend" class="custom-select">
+                                <option value="normal">Normal</option>
+                                <option value="multiply">Multiply</option>
+                                <option value="screen">Screen</option>
+                                <option value="difference">Difference</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="apply-btn" id="apply-onion"><i class="ph-bold ph-stack"></i> Apply Onion Skin</button>
+                </div>
+
+                <!-- SIMPLIFY PANEL -->
+                <div class="panel hidden" id="panel-simplify">
+                    <div class="panel-title"><i class="ph-bold ph-wave-sine"></i> Line Simplifier</div>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>Simplify Level <span id="simplify-val">50</span>%</label>
+                            <input type="range" id="simplify-slider" min="10" max="100" value="50" class="slider">
+                        </div>
+                        <div class="control-group">
+                            <label>Output Style</label>
+                            <select id="simplify-style" class="custom-select">
+                                <option value="outline">Clean Outline</option>
+                                <option value="cartoon">Cartoon Style</option>
+                                <option value="minimal">Minimal Lines</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Line Weight</label>
+                            <select id="simplify-weight" class="custom-select">
+                                <option value="thin">Thin</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="thick">Thick</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="apply-btn" id="apply-simplify"><i class="ph-bold ph-wave-sine"></i> Simplify Lines</button>
+                </div>
+
+                <!-- ACTION ROW -->
+                <div class="action-row">
+                    <button id="reset-btn" class="text-btn danger"><i class="ph-bold ph-arrow-counter-clockwise"></i> Reset</button>
+                    <button id="change-img-btn" class="text-btn success" onclick="document.getElementById('file-input').click()"><i class="ph-bold ph-image"></i> Change Image</button>
+                </div>
+
+            </div>
+            <!-- END WORKSPACE -->
+
+        </div>
+
+        <!-- SEO ARTICLE CONTENT -->
+        <article class="tool-content" style="max-width: 800px; margin: 40px auto; padding: 0 16px; color: var(--text-muted);">
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 30px;">
+            <h2 style="color: var(--text-main); font-size: 1.4rem; margin-bottom: 12px; font-weight: 800;">The Ultimate Drawing Reference Tool for Artists</h2>
+            <p style="margin-bottom: 16px; line-height: 1.6;">Whether you're a beginner learning proportions or a professional artist needing a quick sketch reference, this tool converts any photo into a powerful drawing guide instantly — no signup, no upload to any server.</p>
+
+            <h3 style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Pencil Sketch & Contour Mode</h3>
+            <p style="margin-bottom: 16px; line-height: 1.6;">Our edge-detection algorithm extracts clean outlines from your photo, making it easy to trace proportions and shapes. Choose from pencil, charcoal, ink, or cross-hatching styles.</p>
+
+            <h3 style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Grid Overlay System</h3>
+            <p style="margin-bottom: 16px; line-height: 1.6;">Artists have used the grid method for centuries to transfer proportions accurately. Our tool supports 3×3, 4×4, 6×6 grids, diagonal guides, and even golden ratio overlays.</p>
+
+            <h3 style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">Color Palette & Value Study</h3>
+            <p style="margin-bottom: 16px; line-height: 1.6;">Extract the dominant colors from any reference photo as hex codes ready for your palette. Use the grayscale value study mode to understand light and shadow distribution before painting.</p>
+
+            <h3 style="color: var(--text-main); font-size: 1.1rem; margin-bottom: 8px; font-weight: 700;">100% Offline & Secure</h3>
+            <p style="line-height: 1.6;">All processing happens inside your browser using the HTML5 Canvas API. Your images never leave your device — no server uploads, no data collection, fully private.</p>
+        </article>
+    </main>
+
+    <!-- BOTTOM ACTION BAR -->
+    <div id="bottom-action-bar" class="bottom-action-bar hidden">
+        <button id="download-btn" class="ultra-primary-btn">
+            <i class="ph-bold ph-download-simple"></i> Download Result
+        </button>
+    </div>
+
+    <!-- TOAST -->
+    <div id="toast" class="toast hidden">Done!</div>
+
+    <!-- INFO MODAL -->
+    <div id="info-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>How to Use</h3>
+                <button id="close-modal" class="icon-button"><i class="ph-bold ph-x"></i></button>
+            </div>
+            <div class="modal-body">
+                <p><strong><i class="ph-bold ph-pencil-simple"></i> Sketch:</strong> Convert photo to pencil/charcoal effect.</p>
+                <p><strong><i class="ph-bold ph-grid-four"></i> Grid:</strong> Overlay a drawing grid for proportions.</p>
+                <p><strong><i class="ph-bold ph-path"></i> Contour:</strong> Extract clean outlines only.</p>
+                <p><strong><i class="ph-bold ph-circle-half-tilt"></i> Value:</strong> Grayscale + contrast study for shading.</p>
+                <p><strong><i class="ph-bold ph-arrows-left-right"></i> Mirror:</strong> Symmetry check for faces & figures.</p>
+                <p><strong><i class="ph-bold ph-palette"></i> Palette:</strong> Extract all colors as hex codes.</p>
+                <p><strong><i class="ph-bold ph-stack"></i> Onion:</strong> Overlay your drawing on the reference.</p>
+                <p><strong><i class="ph-bold ph-wave-sine"></i> Simplify:</strong> Reduce to minimal clean lines.</p>
+                <p style="margin-top:12px; color: var(--text-muted); font-size:0.9rem;"><i class="ph-bold ph-lock"></i> 100% offline — your images never leave your device.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer" style="margin-top: 20px; padding-bottom: 120px;">
+        <p>&copy; 2026 WebKaar Inc. • Built by Ayush Tiwari</p>
+        <div class="footer-links">
+            <a href="../../pages/about">About</a> •
+            <a href="../../pages/contact">Contact</a> •
+            <a href="../../pages/privacy">Privacy</a> •
+            <a href="../../pages/disclaimer">Disclaimer</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
