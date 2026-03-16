@@ -1,29 +1,15 @@
 /* ═══════════════════════════════════════════════════
-   SPEED TEST PRO — script.js FINAL v4
+   SPEED TEST PRO — script.js FINAL v5
    WebKaar | Ayush Tiwari
-
-   DOWNLOAD STRATEGY (3-tier fallback):
-   1. fetch() + ReadableStream (Cloudflare) — best accuracy
-   2. fetch() + ArrayBuffer (Wikimedia)     — wide compat
-   3. Image timing method                   — works EVERYWHERE
-      (loads images sequentially, measures bytes/time)
-      This NEVER fails — no CORS needed for images.
-
-   This guarantees download test works on:
-   ✔ Jio 4G / 5G
-   ✔ Airtel 4G / 5G
-   ✔ Vi / BSNL
-   ✔ Any WiFi hotspot
-   ✔ Samsung Internet, Chrome, Firefox, Safari
+   ✔ Ping/Upload card display fixed
+   ✔ 3-tier download fallback (never fails)
+   ✔ All features working
 ═══════════════════════════════════════════════════ */
 
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ─────────────────────────────────────────────
-     DOM
-  ───────────────────────────────────────────── */
   const $ = id => document.getElementById(id);
 
   const gaugeArc    = $('gauge-arc');
@@ -67,59 +53,37 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ─────────────────────────────────────────────
      CONFIG
   ───────────────────────────────────────────── */
-
-  // Tier 1: fetch() + ReadableStream (most accurate)
   const FETCH_SERVERS = [
-    {
-      name: 'Cloudflare',
-      url:  'https://speed.cloudflare.com/__down?bytes=10000000',
-      size: 10_000_000,
-    },
-    {
-      name: 'Cloudflare 5MB',
-      url:  'https://speed.cloudflare.com/__down?bytes=5000000',
-      size: 5_000_000,
-    },
+    { name:'Cloudflare 10MB', url:'https://speed.cloudflare.com/__down?bytes=10000000', size:10_000_000 },
+    { name:'Cloudflare 5MB',  url:'https://speed.cloudflare.com/__down?bytes=5000000',  size:5_000_000  },
   ];
 
-  // Tier 2: fetch() + ArrayBuffer
   const ARRAYBUFFER_SERVERS = [
-    {
-      name: 'Wikimedia',
-      url:  'https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg',
-      size: 5_245_329,
-    },
+    { name:'Wikimedia', url:'https://upload.wikimedia.org/wikipedia/commons/2/2d/Snake_River_%285mb%29.jpg', size:5_245_329 },
   ];
 
-  // Tier 3: Image timing (ALWAYS works — no CORS needed)
-  // Uses multiple known-size public images from Wikimedia
   const IMAGE_SERVERS = [
-    // ~500KB images — load multiple to get accurate speed
-    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Gatto_europeo4.jpg/1280px-Gatto_europeo4.jpg', size: 180_000 },
-    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/1280px-Camponotus_flavomarginatus_ant.jpg', size: 220_000 },
-    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png', size: 70_000 },
-    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Bikesgonewild.jpg/1280px-Bikesgonewild.jpg', size: 290_000 },
-    { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Felis_silvestris_silvestris_small_gradual_decrease.png/400px-Felis_silvestris_silvestris_small_gradual_decrease.png', size: 100_000 },
+    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Gatto_europeo4.jpg/1280px-Gatto_europeo4.jpg',                                              size:180_000 },
+    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camponotus_flavomarginatus_ant.jpg/1280px-Camponotus_flavomarginatus_ant.jpg',               size:220_000 },
+    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparency_demonstration_1.png/280px-PNG_transparency_demonstration_1.png',            size:70_000  },
+    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Bikesgonewild.jpg/1280px-Bikesgonewild.jpg',                                                 size:290_000 },
+    { url:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Felis_silvestris_silvestris_small_gradual_decrease.png/400px-Felis_silvestris_silvestris_small_gradual_decrease.png', size:100_000 },
   ];
 
-  const UL_URL    = 'https://httpbin.org/post';
-  const UL_SIZE   = 1_000_000; // 1MB upload
-  const PING_URL  = 'https://1.1.1.1/cdn-cgi/trace';
+  const UL_URL     = 'https://httpbin.org/post';
+  const UL_SIZE    = 1_000_000;
+  const PING_URL   = 'https://1.1.1.1/cdn-cgi/trace';
   const PING_COUNT = 8;
 
-  // Gauge geometry
+  // Gauge geometry r=110, 270° arc
   const CIRCUM  = 2 * Math.PI * 110;
   const ARC_LEN = CIRCUM * 0.75;
   const D_EMPTY = CIRCUM;
-  const D_FULL  = CIRCUM - ARC_LEN;
   const NDL_MIN = -135, NDL_MAX = 135, SPEED_MAX = 1000;
 
-  const HIST_KEY = 'wk_spt_v4';
+  const HIST_KEY = 'wk_spt_v5';
   const HIST_MAX = 7;
 
-  /* ─────────────────────────────────────────────
-     STATE
-  ───────────────────────────────────────────── */
   let testing    = false;
   let lastResult = null;
   let toastTimer = null;
@@ -141,9 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!gaugeTicks) return;
     const cx = 150, cy = 150, outerR = 132, total = 60;
     for (let i = 0; i <= total; i++) {
-      const pct = i / total;
-      const deg = -225 + pct * 270;
-      const rad = deg * Math.PI / 180;
+      const pct   = i / total;
+      const deg   = -225 + pct * 270;
+      const rad   = deg * Math.PI / 180;
       const major = i % 10 === 0;
       const len   = major ? 10 : 5;
       const x1 = cx + outerR * Math.cos(rad);
@@ -175,9 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
         mbps < 10 ? 'url(#grad-slow)' :
         mbps < 50 ? '#f59e0b' : 'url(#grad-normal)');
     }
-    if (gaugeNeedle) {
+    if (gaugeNeedle)
       gaugeNeedle.style.transform = `rotate(${deg.toFixed(1)}deg)`;
-    }
   }
 
   function resetGauge() {
@@ -217,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function detectConn() {
     const nc = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     if (!nc) { if (connText) connText.textContent = 'Unknown'; return; }
-    const map = { 'slow-2g':'2G','2g':'2G','3g':'3G','4g':'4G/LTE','wifi':'WiFi','ethernet':'Ethernet' };
+    const map = {'slow-2g':'2G','2g':'2G','3g':'3G','4g':'4G/LTE','wifi':'WiFi','ethernet':'Ethernet'};
     let label = map[(nc.effectiveType || nc.type || '').toLowerCase()] || '';
     if (!label) {
       const dl = nc.downlink || 0;
@@ -235,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (d?.success && d.connection?.isp) {
         let name = d.connection.isp
           .replace(/\b(Limited|Ltd\.?|Private|Pvt\.?)\b/gi, '')
-          .replace(/\s{2,}/g,' ').trim();
-        if (name.length > 26) name = name.slice(0,24) + '…';
+          .replace(/\s{2,}/g, ' ').trim();
+        if (name.length > 26) name = name.slice(0, 24) + '…';
         if (ispText) ispText.textContent = name || 'Unknown ISP';
       } else throw 0;
     } catch (_) {
@@ -258,16 +221,16 @@ document.addEventListener('DOMContentLoaded', () => {
       onSample?.(i + 1, times[times.length - 1]);
       await sleep(60);
     }
-    times.sort((a,b) => a - b);
+    times.sort((a, b) => a - b);
     const tr  = times.slice(1, -1);
-    const avg = Math.round(tr.reduce((s,v) => s+v, 0) / tr.length);
+    const avg = Math.round(tr.reduce((s, v) => s + v, 0) / tr.length);
     let jSum  = 0;
-    for (let i = 1; i < tr.length; i++) jSum += Math.abs(tr[i] - tr[i-1]);
+    for (let i = 1; i < tr.length; i++) jSum += Math.abs(tr[i] - tr[i - 1]);
     return { ping: avg, jitter: Math.round(jSum / (tr.length - 1)) || 0 };
   }
 
   /* ─────────────────────────────────────────────
-     DOWNLOAD — TIER 1: fetch() ReadableStream
+     DOWNLOAD — TIER 1: fetch ReadableStream
   ───────────────────────────────────────────── */
   async function dlTier1(srv, onLive, onProg) {
     const sep = srv.url.includes('?') ? '&' : '?';
@@ -276,16 +239,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const tid  = setTimeout(() => ctrl.abort(), 30_000);
     const t0   = performance.now();
     let loaded = 0;
-
     try {
       const res = await fetch(url, {
-        cache:  'no-store',
-        mode:   'cors',
-        signal: ctrl.signal,
-        headers: { 'Cache-Control':'no-cache, no-store', 'Pragma':'no-cache' },
+        cache:'no-store', mode:'cors', signal:ctrl.signal,
+        headers:{'Cache-Control':'no-cache, no-store','Pragma':'no-cache'},
       });
       if (!res.ok) throw new Error('HTTP ' + res.status);
-
       const reader = res.body.getReader();
       while (true) {
         const { done, value } = await reader.read();
@@ -293,8 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loaded += value.byteLength;
         const elapsed = (performance.now() - t0) / 1000;
         if (elapsed > 0.3) {
-          const mbps = (loaded * 8) / (elapsed * 1e6);
-          onLive?.(mbps);
+          onLive?.((loaded * 8) / (elapsed * 1e6));
           onProg?.(Math.min(loaded / srv.size, 0.97));
         }
       }
@@ -302,14 +260,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const elapsed = (performance.now() - t0) / 1000;
       onProg?.(1);
       return +(loaded * 8 / (elapsed * 1e6)).toFixed(2);
-    } catch (e) {
-      clearTimeout(tid);
-      throw e;
-    }
+    } catch (e) { clearTimeout(tid); throw e; }
   }
 
   /* ─────────────────────────────────────────────
-     DOWNLOAD — TIER 2: fetch() ArrayBuffer
+     DOWNLOAD — TIER 2: fetch ArrayBuffer
   ───────────────────────────────────────────── */
   async function dlTier2(srv, onLive, onProg) {
     const sep = srv.url.includes('?') ? '&' : '?';
@@ -317,177 +272,112 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctrl = new AbortController();
     const tid  = setTimeout(() => ctrl.abort(), 30_000);
     const t0   = performance.now();
-
-    // Fake progress ticker since ArrayBuffer doesn't stream
     let fakeProg = 0;
     const ticker = setInterval(() => {
       fakeProg = Math.min(fakeProg + 0.05, 0.9);
       const elapsed = (performance.now() - t0) / 1000;
       if (elapsed > 0.3) {
-        const estMbps = (srv.size * fakeProg * 8) / (elapsed * 1e6);
-        onLive?.(estMbps);
+        onLive?.((srv.size * fakeProg * 8) / (elapsed * 1e6));
         onProg?.(fakeProg);
       }
     }, 300);
-
     try {
-      const res = await fetch(url, {
-        cache:  'no-store',
-        mode:   'cors',
-        signal: ctrl.signal,
-      });
+      const res = await fetch(url, { cache:'no-store', mode:'cors', signal:ctrl.signal });
       if (!res.ok) throw new Error('HTTP ' + res.status);
-      const buf     = await res.arrayBuffer();
-      clearTimeout(tid);
-      clearInterval(ticker);
+      const buf = await res.arrayBuffer();
+      clearTimeout(tid); clearInterval(ticker);
       const elapsed = (performance.now() - t0) / 1000;
       onProg?.(1);
       return +(buf.byteLength * 8 / (elapsed * 1e6)).toFixed(2);
-    } catch (e) {
-      clearTimeout(tid);
-      clearInterval(ticker);
-      throw e;
-    }
+    } catch (e) { clearTimeout(tid); clearInterval(ticker); throw e; }
   }
 
   /* ─────────────────────────────────────────────
-     DOWNLOAD — TIER 3: Image timing (ALWAYS works)
-     No CORS needed. Loads images via <img> tags
-     and measures bytes loaded vs time elapsed.
-     This is the universal fallback that NEVER fails.
+     DOWNLOAD — TIER 3: Image timing (NEVER fails)
   ───────────────────────────────────────────── */
   function dlTier3(onLive, onProg) {
     return new Promise((resolve) => {
-      const t0          = performance.now();
-      let totalBytes    = 0;
-      let loadedImages  = 0;
-      const total       = IMAGE_SERVERS.length;
-      const results     = [];
+      const t0 = performance.now();
+      let loadedImages = 0;
+      const results    = [];
+      const total      = IMAGE_SERVERS.length;
 
-      // Load all images in parallel
       IMAGE_SERVERS.forEach((imgSrv, idx) => {
         const img  = new Image();
         const imgT = performance.now();
-
         img.onload = img.onerror = () => {
           const elapsed = (performance.now() - imgT) / 1000;
-          const bytes   = imgSrv.size;
-          const mbps    = elapsed > 0.05 ? (bytes * 8) / (elapsed * 1e6) : 0;
-
+          const mbps    = elapsed > 0.05 ? (imgSrv.size * 8) / (elapsed * 1e6) : 0;
           results.push(mbps);
-          totalBytes  += bytes;
           loadedImages++;
-
-          // Update live display with running average
-          const runningAvg = results.reduce((s,v)=>s+v,0) / results.length;
-          onLive?.(runningAvg);
+          onLive?.(results.reduce((s,v) => s+v, 0) / results.length);
           onProg?.(loadedImages / total);
-
           if (loadedImages === total) {
-            // Final: weighted average (drop lowest outlier)
-            const sorted = [...results].sort((a,b)=>a-b);
+            const sorted  = [...results].sort((a,b) => a-b);
             const trimmed = sorted.length > 2 ? sorted.slice(1) : sorted;
-            const avg = trimmed.reduce((s,v)=>s+v,0) / trimmed.length;
-            resolve(+avg.toFixed(2));
+            resolve(+(trimmed.reduce((s,v) => s+v,0) / trimmed.length).toFixed(2));
           }
         };
-
-        // Cache bust each image
         img.src = imgSrv.url + '?_wk=' + Date.now() + '&i=' + idx;
       });
 
-      // Safety timeout — 25 seconds max
       setTimeout(() => {
-        if (results.length > 0) {
-          const avg = results.reduce((s,v)=>s+v,0) / results.length;
-          resolve(+avg.toFixed(2));
-        } else {
-          resolve(0);
-        }
+        if (results.length > 0)
+          resolve(+(results.reduce((s,v) => s+v,0) / results.length).toFixed(2));
+        else resolve(0);
       }, 25_000);
     });
   }
 
   /* ─────────────────────────────────────────────
      MAIN DOWNLOAD ORCHESTRATOR
-     Tries each tier in order — guaranteed to work
   ───────────────────────────────────────────── */
   async function doDownload(onLive, onProg) {
-    // Tier 1: fetch() ReadableStream
     for (const srv of FETCH_SERVERS) {
       try {
         const mbps = await dlTier1(srv, onLive, onProg);
-        if (mbps > 0.1) {
-          console.log(`[DL] Tier1 ${srv.name}: ${mbps} Mbps`);
-          return mbps;
-        }
-      } catch (e) {
-        console.warn(`[DL] Tier1 ${srv.name} failed:`, e.message);
-      }
+        if (mbps > 0.1) return mbps;
+      } catch (e) { console.warn(`[DL] Tier1 ${srv.name}:`, e.message); }
     }
-
-    // Tier 2: fetch() ArrayBuffer
     for (const srv of ARRAYBUFFER_SERVERS) {
       try {
         const mbps = await dlTier2(srv, onLive, onProg);
-        if (mbps > 0.1) {
-          console.log(`[DL] Tier2 ${srv.name}: ${mbps} Mbps`);
-          return mbps;
-        }
-      } catch (e) {
-        console.warn(`[DL] Tier2 ${srv.name} failed:`, e.message);
-      }
+        if (mbps > 0.1) return mbps;
+      } catch (e) { console.warn(`[DL] Tier2 ${srv.name}:`, e.message); }
     }
-
-    // Tier 3: Image timing — this ALWAYS works
-    console.log('[DL] Using Tier3: Image timing method');
-    setStatus('Measuring speed…', 'st-active');
+    console.log('[DL] Tier3: image timing');
     const mbps = await dlTier3(onLive, onProg);
     if (mbps > 0) return mbps;
-
     throw new Error('All download methods failed');
   }
 
   /* ─────────────────────────────────────────────
-     UPLOAD TEST
+     UPLOAD
   ───────────────────────────────────────────── */
   async function doUpload(onLive, onProg) {
     try {
       const blob = makeBlob(UL_SIZE);
       const t0   = performance.now();
-
       let fakeProg = 0;
       const ticker = setInterval(() => {
         fakeProg = Math.min(fakeProg + 0.1, 0.95);
         const elapsed = (performance.now() - t0) / 1000;
         if (elapsed > 0.2) {
-          const est = (UL_SIZE * fakeProg * 8) / (elapsed * 1e6);
-          onLive?.(Math.max(0, est));
+          onLive?.(Math.max(0, (UL_SIZE * fakeProg * 8) / (elapsed * 1e6)));
           onProg?.(fakeProg);
         }
       }, 200);
-
       const ctrl = new AbortController();
       const tid  = setTimeout(() => ctrl.abort(), 15_000);
-
       try {
         await fetch(UL_URL + '?_wk=' + Date.now(), {
-          method:  'POST',
-          body:    blob,
-          headers: { 'Content-Type':'application/octet-stream' },
-          signal:  ctrl.signal,
-          cache:   'no-store',
+          method:'POST', body:blob, signal:ctrl.signal, cache:'no-store',
+          headers:{'Content-Type':'application/octet-stream'},
         });
-        clearTimeout(tid);
-        clearInterval(ticker);
+        clearTimeout(tid); clearInterval(ticker);
         onProg?.(1);
-        const elapsed = (performance.now() - t0) / 1000;
-        return +(UL_SIZE * 8 / (elapsed * 1e6)).toFixed(2);
-      } catch (_) {
-        clearTimeout(tid);
-        clearInterval(ticker);
-        return 0;
-      }
+        return +((UL_SIZE * 8) / ((performance.now() - t0) / 1000 * 1e6)).toFixed(2);
+      } catch (_) { clearTimeout(tid); clearInterval(ticker); return 0; }
     } catch (_) { return 0; }
   }
 
@@ -502,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ─────────────────────────────────────────────
-     MAIN TEST PIPELINE
+     MAIN PIPELINE
   ───────────────────────────────────────────── */
   startBtn?.addEventListener('click', runTest);
 
@@ -525,7 +415,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let ping = 0, jitter = 0, dl = 0, ul = 0;
 
     try {
-      /* PHASE 1: PING */
+      /* PING */
       setStatus('Testing ping & stability…', 'st-active');
       setCenter('—', 'ms', 'PING', '#f59e0b');
 
@@ -537,43 +427,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
       ping   = pr.ping;
       jitter = pr.jitter;
+
+      // ── FIX: Immediately set values before animation ──
+      if (pingValEl)   pingValEl.textContent   = ping;
+      if (jitterValEl) jitterValEl.textContent = jitter;
+
       setCard(pingValEl,   pingBarEl,   pingGradeEl, ping,   true,  gradePing(ping));
       setCard(jitterValEl, jitterBarEl, jitterGrEl,  jitter, true,  gradeJitter(jitter));
       setStatus('Ping done. Testing download…', 'st-active');
 
-      /* PHASE 2: DOWNLOAD */
+      /* DOWNLOAD */
       setCenter('0.0', 'Mbps', 'DOWNLOAD ↓', '#3b82f6');
       setGauge(0);
 
       dl = await doDownload(
-        (live) => {
-          setCenter(live.toFixed(1), 'Mbps', 'DOWNLOAD ↓', '#3b82f6');
-          setGauge(live);
-        },
-        (pct) => setProg(0.20 + pct * 0.50)
+        (live) => { setCenter(live.toFixed(1), 'Mbps', 'DOWNLOAD ↓', '#3b82f6'); setGauge(live); },
+        (pct)  => setProg(0.20 + pct * 0.50)
       );
 
+      // ── FIX: Set immediately before animation ──
+      if (dlValEl) dlValEl.textContent = dl.toFixed(1);
       setCard(dlValEl, dlBarEl, dlGradeEl, dl, false, gradeSpeed(dl));
       setStatus('Download done. Testing upload…', 'st-active');
 
-      /* PHASE 3: UPLOAD */
+      /* UPLOAD */
       setCenter('0.0', 'Mbps', 'UPLOAD ↑', '#10b981');
       setGauge(0);
 
       ul = await doUpload(
-        (live) => {
-          setCenter(live.toFixed(1), 'Mbps', 'UPLOAD ↑', '#10b981');
-          setGauge(live);
-        },
-        (pct) => setProg(0.70 + pct * 0.30)
+        (live) => { setCenter(live.toFixed(1), 'Mbps', 'UPLOAD ↑', '#10b981'); setGauge(live); },
+        (pct)  => setProg(0.70 + pct * 0.30)
       );
 
-      if (ul > 0) setCard(ulValEl, ulBarEl, ulGradeEl, ul, false, gradeSpeed(ul));
-      else if (ulValEl) ulValEl.textContent = 'N/A';
+      if (ul > 0) {
+        // ── FIX: Set immediately before animation ──
+        if (ulValEl) ulValEl.textContent = ul.toFixed(1);
+        setCard(ulValEl, ulBarEl, ulGradeEl, ul, false, gradeSpeed(ul));
+      } else {
+        if (ulValEl) ulValEl.textContent = 'N/A';
+      }
 
-      /* PHASE 4: FINISH */
+      /* FINISH */
       setProg(1);
-
       animCount(parseFloat(speedVal?.textContent) || 0, dl, 900, (v) => {
         setCenter(v.toFixed(1), 'Mbps', '', '');
         setGauge(v);
@@ -584,8 +479,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ambientEl?.classList.remove('state-testing');
       ambientEl?.classList.add(dl >= 50 ? 'state-fast' : 'state-slow');
 
-      document.querySelectorAll('.spt-metric').forEach((c,i) => {
-        setTimeout(() => { c.classList.remove('popping'); void c.offsetWidth; c.classList.add('popping'); }, i*70);
+      document.querySelectorAll('.spt-metric').forEach((c, i) => {
+        setTimeout(() => { c.classList.remove('popping'); void c.offsetWidth; c.classList.add('popping'); }, i * 70);
       });
 
       lastResult = { ping, jitter, dl, ul, ts: Date.now() };
@@ -621,7 +516,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function setProg(pct) {
-    const p = Math.round(Math.min(Math.max(pct,0),1) * 100);
+    const p = Math.round(Math.min(Math.max(pct, 0), 1) * 100);
     if (progFill) progFill.style.width = p + '%';
     if (progPct)  progPct.textContent  = p + '%';
   }
@@ -631,17 +526,27 @@ document.addEventListener('DOMContentLoaded', () => {
     if (startLabel) startLabel.textContent = label;
   }
 
+  /* ── FIX: Immediately set value + then animate ── */
   function setCard(valEl, barEl, gradeEl, value, lowerBetter, grade) {
     if (!valEl) return;
-    animCount(0, value, 550, (v) => {
+
+    // Set immediately so value always shows even if animation glitches
+    valEl.textContent = lowerBetter ? Math.round(value) : value.toFixed(1);
+
+    // Then animate from 0
+    animCount(0, value, 600, (v) => {
       valEl.textContent = lowerBetter ? Math.round(v) : v.toFixed(1);
     });
+
     if (barEl && grade) {
       const max = lowerBetter ? 300 : 500;
-      const pct = lowerBetter ? Math.max(0, 1 - value/max) : Math.min(value/max, 1);
-      barEl.style.width      = Math.max(pct*100, 4) + '%';
+      const pct = lowerBetter
+        ? Math.max(0, 1 - value / max)
+        : Math.min(value / max, 1);
+      barEl.style.width      = Math.max(pct * 100, 4) + '%';
       barEl.style.background = grade.color;
     }
+
     if (gradeEl && grade) {
       gradeEl.textContent = grade.label;
       gradeEl.className   = 'spt-grade show ' + grade.cls;
@@ -649,9 +554,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function resetCards() {
-    [pingValEl, jitterValEl, dlValEl, ulValEl].forEach(el => { if(el) el.textContent = '—'; });
-    [pingBarEl, jitterBarEl, dlBarEl, ulBarEl].forEach(el => { if(el){ el.style.width='0%'; el.style.background=''; }});
-    [pingGradeEl, jitterGrEl, dlGradeEl, ulGradeEl].forEach(el => { if(el){ el.textContent=''; el.className='spt-grade'; }});
+    [pingValEl, jitterValEl, dlValEl, ulValEl].forEach(el => { if (el) el.textContent = '—'; });
+    [pingBarEl, jitterBarEl, dlBarEl, ulBarEl].forEach(el => {
+      if (el) { el.style.width = '0%'; el.style.background = ''; }
+    });
+    [pingGradeEl, jitterGrEl, dlGradeEl, ulGradeEl].forEach(el => {
+      if (el) { el.textContent = ''; el.className = 'spt-grade'; }
+    });
   }
 
   /* ─────────────────────────────────────────────
@@ -680,20 +589,23 @@ document.addEventListener('DOMContentLoaded', () => {
      HISTORY
   ───────────────────────────────────────────── */
   function getHistory() {
-    try { return JSON.parse(localStorage.getItem(HIST_KEY) || '[]'); } catch(_){ return []; }
+    try { return JSON.parse(localStorage.getItem(HIST_KEY) || '[]'); } catch (_) { return []; }
   }
   function saveHistory(r) {
     try {
       let h = getHistory(); h.unshift(r);
-      localStorage.setItem(HIST_KEY, JSON.stringify(h.slice(0,HIST_MAX)));
-    } catch(_) {}
+      localStorage.setItem(HIST_KEY, JSON.stringify(h.slice(0, HIST_MAX)));
+    } catch (_) {}
   }
   function renderHistory() {
     if (!histList) return;
     const h = getHistory();
-    if (!h.length) { histList.innerHTML='<p class="spt-empty">No tests yet. Run your first test above!</p>'; return; }
+    if (!h.length) {
+      histList.innerHTML = '<p class="spt-empty">No tests yet. Run your first test above!</p>';
+      return;
+    }
     histList.innerHTML = h.map(r => {
-      const g = gradeSpeed(r.dl||0);
+      const g = gradeSpeed(r.dl || 0);
       return `<div class="spt-hist-item">
         <span class="spt-hist-dot" style="background:${g.color};"></span>
         <span class="spt-hist-dl">${(r.dl||0).toFixed(1)}<small> Mbps ↓</small></span>
@@ -705,17 +617,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   clearBtn?.addEventListener('click', () => {
-    try { localStorage.removeItem(HIST_KEY); } catch(_){}
-    renderHistory(); showToast('History cleared');
+    try { localStorage.removeItem(HIST_KEY); } catch (_) {}
+    renderHistory();
+    showToast('History cleared');
   });
 
   function relTime(ts) {
-    const m = Math.floor((Date.now()-ts)/60000);
-    if (m<1) return 'Just now';
-    if (m<60) return m+'m ago';
-    const h = Math.floor(m/60);
-    if (h<24) return h+'h ago';
-    return new Date(ts).toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+    const m = Math.floor((Date.now() - ts) / 60000);
+    if (m < 1)  return 'Just now';
+    if (m < 60) return m + 'm ago';
+    const h = Math.floor(m / 60);
+    if (h < 24) return h + 'h ago';
+    return new Date(ts).toLocaleDateString('en-IN', { day:'numeric', month:'short' });
   }
 
   /* ─────────────────────────────────────────────
@@ -724,8 +637,11 @@ document.addEventListener('DOMContentLoaded', () => {
   shareBtn?.addEventListener('click', async () => {
     if (!lastResult) return;
     const txt = buildText(lastResult);
-    if (navigator.share) { try { await navigator.share({title:'My Internet Speed — WebKaar',text:txt}); } catch(_){} }
-    else clip(txt, () => showToast('Result copied!'));
+    if (navigator.share) {
+      try { await navigator.share({ title:'My Internet Speed — WebKaar', text:txt }); } catch (_) {}
+    } else {
+      clip(txt, () => showToast('Result copied!'));
+    }
   });
 
   copyBtn?.addEventListener('click', () => {
@@ -734,8 +650,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   function buildText(r) {
-    const ul = r.ul>0 ? `⬆ Upload:   ${r.ul.toFixed(1)} Mbps\n` : '';
-    return `📡 Internet Speed (WebKaar)\n⬇ Download: ${(r.dl||0).toFixed(1)} Mbps\n${ul}📶 Ping:     ${r.ping||0} ms\n〰 Jitter:   ${r.jitter||0} ms\n🔗 webkaar.pages.dev/tools/speed-test/`;
+    const ul = r.ul > 0 ? `⬆ Upload:   ${r.ul.toFixed(1)} Mbps\n` : '';
+    return `📡 Internet Speed (WebKaar)\n` +
+           `⬇ Download: ${(r.dl||0).toFixed(1)} Mbps\n${ul}` +
+           `📶 Ping:     ${r.ping||0} ms\n` +
+           `〰 Jitter:   ${r.jitter||0} ms\n` +
+           `🔗 webkaar.pages.dev/tools/speed-test/`;
   }
 
   /* ─────────────────────────────────────────────
@@ -743,8 +663,11 @@ document.addEventListener('DOMContentLoaded', () => {
   ───────────────────────────────────────────── */
   infoBtn?.addEventListener('click',    () => infoModal?.classList.remove('hidden'));
   closeModal?.addEventListener('click', () => infoModal?.classList.add('hidden'));
-  infoModal?.addEventListener('click',  e => { if(e.target===infoModal) infoModal.classList.add('hidden'); });
-  document.addEventListener('keydown',  e => { if(e.key==='Escape' && infoModal && !infoModal.classList.contains('hidden')) infoModal.classList.add('hidden'); });
+  infoModal?.addEventListener('click',  e => { if (e.target === infoModal) infoModal.classList.add('hidden'); });
+  document.addEventListener('keydown',  e => {
+    if (e.key === 'Escape' && infoModal && !infoModal.classList.contains('hidden'))
+      infoModal.classList.add('hidden');
+  });
 
   /* ─────────────────────────────────────────────
      TOAST
@@ -755,7 +678,10 @@ document.addEventListener('DOMContentLoaded', () => {
     toastEl.textContent = msg;
     toastEl.classList.remove('hidden');
     toastEl.classList.add('show');
-    toastTimer = setTimeout(() => { toastEl.classList.remove('show'); toastEl.classList.add('hidden'); }, 3000);
+    toastTimer = setTimeout(() => {
+      toastEl.classList.remove('show');
+      toastEl.classList.add('hidden');
+    }, 3000);
   }
 
   /* ─────────────────────────────────────────────
@@ -763,18 +689,24 @@ document.addEventListener('DOMContentLoaded', () => {
   ───────────────────────────────────────────── */
   function clip(text, onOk) {
     if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(onOk).catch(() => clipFb(text,onOk));
-    } else clipFb(text,onOk);
+      navigator.clipboard.writeText(text).then(onOk).catch(() => clipFb(text, onOk));
+    } else {
+      clipFb(text, onOk);
+    }
   }
   function clipFb(text, onOk) {
     const el = document.createElement('textarea');
-    el.value = text; el.style.cssText='position:fixed;top:-9999px;opacity:0;';
-    document.body.appendChild(el); el.select();
-    try { document.execCommand('copy'); onOk?.(); } catch(_){}
+    el.value = text;
+    el.style.cssText = 'position:fixed;top:-9999px;opacity:0;';
+    document.body.appendChild(el);
+    el.select();
+    try { document.execCommand('copy'); onOk?.(); } catch (_) {}
     document.body.removeChild(el);
   }
 
-  function sleep(ms) { return new Promise(r => setTimeout(r,ms)); }
-  function esc(s) { return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+  function esc(s) {
+    return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
 
 }); // end DOMContentLoaded
