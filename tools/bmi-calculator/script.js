@@ -218,20 +218,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const bmrLine = lastBmr ? `\nDaily Calorie Need: ${lastBmr}` : '';
         const shareText =
 `My BMI Result — WebKaar Tools
-──────────────────────
-BMI Score    : ${lastBmi}
-Category     : ${lastStatus}
-Ideal Weight : ${lastIdeal}${bmrLine}
-──────────────────────
-Check yours free: https://webkaar.pages.dev/tools/bmi-calculator/`;
+
+BMI Score: ${lastBmi}
+Category: ${lastStatus}
+Ideal Weight: ${lastIdeal}${bmrLine}
+
+Check yours free 👉 https://webkaar.pages.dev/tools/bmi-calculator/`;
 
         // Use Web Share API if available (Android/iOS native share sheet)
         if (navigator.share) {
             navigator.share({
-                title: 'My BMI Result — WebKaar Tools',
-                text: shareText,
-                url: 'https://webkaar.pages.dev/tools/bmi-calculator/'
-            }).catch(() => {
+    title: 'My BMI Result — WebKaar Tools',
+    text: shareText
+})
+
+.catch(() => {
                 // User cancelled share — do nothing
             });
         } else {
