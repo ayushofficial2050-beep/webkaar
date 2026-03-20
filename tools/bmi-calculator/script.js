@@ -1,29 +1,65 @@
+// ============================================
+//   BMI CALCULATOR - SCRIPT
+//   WebKaar Tools | script.js
+// ============================================
+
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // Toggle Elements
-    const metricBtn = document.querySelector('[data-unit="metric"]');
-    const imperialBtn = document.querySelector('[data-unit="imperial"]');
-    const metricInputs = document.getElementById('metric-inputs');
+
+    // ── ELEMENTS ──────────────────────────────
+    const metricBtn      = document.querySelector('[data-unit="metric"]');
+    const imperialBtn    = document.querySelector('[data-unit="imperial"]');
+    const metricInputs   = document.getElementById('metric-inputs');
     const imperialInputs = document.getElementById('imperial-inputs');
-    
-    // Input Elements
-    const heightCm = document.getElementById('height-cm');
-    const weightKg = document.getElementById('weight-kg');
-    const heightFt = document.getElementById('height-ft');
-    const heightIn = document.getElementById('height-in');
-    const weightLbs = document.getElementById('weight-lbs');
-    
-    // Result Elements
-    const calculateBtn = document.getElementById('calculate-btn');
-    const resultCard = document.getElementById('result-card');
-    const bmiValueEl = document.getElementById('bmi-value');
-    const bmiStatusEl = document.getElementById('bmi-status');
-    const bmiDescEl = document.getElementById('bmi-desc');
-    const meterFill = document.getElementById('meter-fill');
+
+    const heightCm       = document.getElementById('height-cm');
+    const weightKg       = document.getElementById('weight-kg');
+    const heightFt       = document.getElementById('height-ft');
+    const heightIn       = document.getElementById('height-in');
+    const weightLbs      = document.getElementById('weight-lbs');
+    const ageInput       = document.getElementById('age-input');
+    const genderInput    = document.getElementById('gender-input');
+
+    const calculateBtn   = document.getElementById('calculate-btn');
+    const resetBtn       = document.getElementById('reset-btn');
+    const shareBtn       = document.getElementById('share-btn');
+
+    const resultCard     = document.getElementById('result-card');
+    const bmiValueEl     = document.getElementById('bmi-value');
+    const bmiStatusEl    = document.getElementById('bmi-status');
+    const bmiDescEl      = document.getElementById('bmi-desc');
+    const meterFill      = document.getElementById('meter-fill');
+
+    const idealWeightVal = document.getElementById('ideal-weight-value');
+    const bmrRow         = document.getElementById('bmr-row');
+    const bmrVal         = document.getElementById('bmr-value');
+    const healthTip      = document.getElementById('health-tip');
+
+    const infoBtn        = document.getElementById('info-btn');
+    const modal          = document.getElementById('info-modal');
+    const closeModal     = document.getElementById('close-modal');
+    const toastEl        = document.getElementById('toast');
 
     let currentUnit = 'metric';
+    let lastBmi     = 0;
+    let lastStatus  = '';
+    let lastIdeal   = '';
+    let lastBmr     = '';
+    let toastTimer  = null;
 
-    // 1. Unit Switcher Logic
+    // ── TOAST ────────────────────────────────
+    function showToast(msg) {
+        if (toastTimer) clearTimeout(toastTimer);
+        toastEl.textContent = msg;
+        toastEl.classList.remove('hidden');
+        void toastEl.offsetWidth;
+        toastEl.classList.add('show');
+        toastTimer = setTimeout(() => {
+            toastEl.classList.remove('show');
+            setTimeout(() => toastEl.classList.add('hidden'), 300);
+        }, 2500);
+    }
+
+    // ── UNIT SWITCHER ────────────────────────
     function switchUnit(unit) {
         currentUnit = unit;
         if (unit === 'metric') {
@@ -37,100 +73,193 @@ document.addEventListener('DOMContentLoaded', () => {
             imperialInputs.classList.remove('hidden');
             metricInputs.classList.add('hidden');
         }
-        resultCard.classList.add('hidden'); // Hide result on switch
+        resultCard.classList.add('hidden');
+        resetBtn.classList.add('hidden');
+        clearErrors();
     }
 
     metricBtn.addEventListener('click', () => switchUnit('metric'));
     imperialBtn.addEventListener('click', () => switchUnit('imperial'));
 
-    // 2. Calculation Logic
+    // ── INPUT VALIDATION ─────────────────────
+    function clearErrors() {
+        document.querySelectorAll('input').forEach(i => i.classList.remove('input-error'));
+    }
+
+    function setError(el) {
+        el.classList.add('input-error');
+        el.addEventListener('input', () => el.classList.remove('input-error'), { once: true });
+    }
+
+    // ── CALCULATE ────────────────────────────
     calculateBtn.addEventListener('click', () => {
-        let bmi = 0;
+        clearErrors();
+        let bmi        = 0;
+        let heightM    = 0;
+        let weightKgVal = 0;
 
         if (currentUnit === 'metric') {
             const h = parseFloat(heightCm.value);
             const w = parseFloat(weightKg.value);
-            
-            if (!h || !w) return alert("Please enter both height and weight");
-            
-            // BMI = kg / m^2
-            bmi = w / ((h / 100) * (h / 100));
+            let valid = true;
+            if (!h || h <= 0) { setError(heightCm); valid = false; }
+            if (!w || w <= 0) { setError(weightKg); valid = false; }
+            if (!valid) { showToast('Please enter valid height and weight'); return; }
+            heightM     = h / 100;
+            weightKgVal = w;
+            bmi         = w / (heightM * heightM);
 
         } else {
-            const ft = parseFloat(heightFt.value) || 0;
+            const ft  = parseFloat(heightFt.value) || 0;
             const inc = parseFloat(heightIn.value) || 0;
             const lbs = parseFloat(weightLbs.value);
-
-            if ((!ft && !inc) || !lbs) return alert("Please enter height and weight");
-
-            // Convert to metric internally
+            let valid = true;
+            if (ft <= 0 && inc <= 0) { setError(heightFt); setError(heightIn); valid = false; }
+            if (!lbs || lbs <= 0)    { setError(weightLbs); valid = false; }
+            if (!valid) { showToast('Please enter valid height and weight'); return; }
             const totalInches = (ft * 12) + inc;
-            // BMI = 703 * (lbs / inches^2)
-            bmi = 703 * (lbs / (totalInches * totalInches));
+            heightM           = totalInches * 0.0254;
+            weightKgVal       = lbs * 0.453592;
+            bmi               = 703 * (lbs / (totalInches * totalInches));
         }
 
-        bmi = parseFloat(bmi.toFixed(1));
-        showResult(bmi);
+        bmi     = parseFloat(bmi.toFixed(1));
+        lastBmi = bmi;
+        showResult(bmi, heightM, weightKgVal);
     });
 
-    // 3. Display Result Logic
-    function showResult(bmi) {
+    // ── SHOW RESULT ──────────────────────────
+    function showResult(bmi, heightM, weightKgVal) {
         bmiValueEl.textContent = bmi;
-        
-        let status = '';
-        let color = '';
-        let desc = '';
-        let percent = 0; // For meter bar position
+
+        let status, color, desc, percent, tip;
+
+        // Accurate meter: BMI 10–40 mapped to 0–100%
+        const clampedBmi = Math.min(Math.max(bmi, 10), 40);
+        percent = ((clampedBmi - 10) / 30) * 100;
 
         if (bmi < 18.5) {
             status = 'Underweight';
-            color = '#3b82f6'; // Blue
-            desc = "You are in the underweight range. It's important to eat nutritious food.";
-            percent = 10; // Left side
-        } else if (bmi >= 18.5 && bmi < 25) {
+            color  = '#3b82f6';
+            desc   = 'You are below the healthy weight range. Focus on nutritious, balanced meals.';
+            tip    = 'Eat more protein-rich foods like eggs, lentils, and nuts. Consult a doctor if needed.';
+        } else if (bmi < 25) {
             status = 'Normal Weight';
-            color = '#10b981'; // Green
-            desc = "Great job! You are in the healthy weight range.";
-            percent = 35; // Middle Left
-        } else if (bmi >= 25 && bmi < 30) {
+            color  = '#10b981';
+            desc   = 'You are in the healthy weight range. Keep it up!';
+            tip    = 'Maintain your weight with regular exercise and a balanced diet.';
+        } else if (bmi < 30) {
             status = 'Overweight';
-            color = '#f59e0b'; // Orange
-            desc = "You are in the overweight range. Consider a balanced diet.";
-            percent = 65; // Middle Right
+            color  = '#f59e0b';
+            desc   = 'You are slightly above the healthy weight range. Small lifestyle changes can help.';
+            tip    = 'Try 30 minutes of walking daily and reduce sugary drinks and junk food.';
         } else {
             status = 'Obese';
-            color = '#ef4444'; // Red
-            desc = "You are in the obese range. Consult a healthcare provider for advice.";
-            percent = 90; // Right side
+            color  = '#ef4444';
+            desc   = 'You are in the obese range. It is recommended to consult a healthcare provider.';
+            tip    = 'Consult a doctor or nutritionist for a safe weight loss plan tailored to you.';
         }
 
+        lastStatus = status;
+
+        bmiValueEl.style.color  = color;
         bmiStatusEl.textContent = status;
         bmiStatusEl.style.color = color;
-        bmiDescEl.textContent = desc;
-        
-        // Meter Animation
+        bmiDescEl.textContent   = desc;
+        healthTip.textContent   = tip;
+
+        // ── Ideal Weight Range ──
+        const minIdeal = (18.5 * heightM * heightM).toFixed(1);
+        const maxIdeal = (24.9 * heightM * heightM).toFixed(1);
+
+        if (currentUnit === 'metric') {
+            lastIdeal = `${minIdeal} kg – ${maxIdeal} kg`;
+        } else {
+            const minLbs = (minIdeal * 2.20462).toFixed(1);
+            const maxLbs = (maxIdeal * 2.20462).toFixed(1);
+            lastIdeal = `${minLbs} lbs – ${maxLbs} lbs`;
+        }
+        idealWeightVal.textContent = lastIdeal;
+
+        // ── BMR (Mifflin-St Jeor) ──
+        const age    = parseFloat(ageInput.value);
+        const gender = genderInput.value;
+
+        if (age > 0 && gender) {
+            let bmr;
+            if (gender === 'male') {
+                bmr = (10 * weightKgVal) + (6.25 * heightM * 100) - (5 * age) + 5;
+            } else {
+                bmr = (10 * weightKgVal) + (6.25 * heightM * 100) - (5 * age) - 161;
+            }
+            lastBmr                = `~${Math.round(bmr)} kcal/day`;
+            bmrVal.textContent     = lastBmr;
+            bmrRow.style.display   = 'flex';
+        } else {
+            lastBmr              = '';
+            bmrRow.style.display = 'none';
+        }
+
+        // ── Show card & reset button ──
         resultCard.classList.remove('hidden');
-        
-        // Small delay for animation
+        resetBtn.classList.remove('hidden');
+
+        // ── Animate meter marker ──
         setTimeout(() => {
-            meterFill.style.left = percent + '%';
+            meterFill.style.left            = percent + '%';
             meterFill.style.backgroundColor = color;
         }, 100);
 
-        // Scroll to result
         resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // Modal Logic
-    const infoBtn = document.getElementById('info-btn');
-    const modal = document.getElementById('info-modal');
-    const closeModal = document.getElementById('close-modal');
+    // ── SHARE BUTTON ─────────────────────────
+    shareBtn.addEventListener('click', () => {
+        const bmrLine = lastBmr ? `\nDaily Calorie Need: ${lastBmr}` : '';
+        const shareText =
+`My BMI Result — WebKaar Tools
+──────────────────────
+BMI Score    : ${lastBmi}
+Category     : ${lastStatus}
+Ideal Weight : ${lastIdeal}${bmrLine}
+──────────────────────
+Check yours free: https://webkaar.pages.dev/tools/bmi-calculator/`;
 
-    if(infoBtn && modal && closeModal) {
+        // Use Web Share API if available (Android/iOS native share sheet)
+        if (navigator.share) {
+            navigator.share({
+                title: 'My BMI Result — WebKaar Tools',
+                text: shareText,
+                url: 'https://webkaar.pages.dev/tools/bmi-calculator/'
+            }).catch(() => {
+                // User cancelled share — do nothing
+            });
+        } else {
+            // Fallback: copy to clipboard
+            navigator.clipboard.writeText(shareText)
+                .then(() => showToast('Result copied — share it anywhere!'))
+                .catch(() => showToast('Could not share. Please try manually.'));
+        }
+    });
+
+    // ── RESET ────────────────────────────────
+    resetBtn.addEventListener('click', () => {
+        [heightCm, weightKg, heightFt, heightIn, weightLbs, ageInput].forEach(el => {
+            if (el) el.value = '';
+        });
+        if (genderInput) genderInput.value = '';
+        resultCard.classList.add('hidden');
+        resetBtn.classList.add('hidden');
+        clearErrors();
+        showToast('Reset done');
+    });
+
+    // ── INFO MODAL ───────────────────────────
+    if (infoBtn && modal && closeModal) {
         infoBtn.addEventListener('click', () => modal.classList.remove('hidden'));
         closeModal.addEventListener('click', () => modal.classList.add('hidden'));
         modal.addEventListener('click', (e) => {
-            if(e.target === modal) modal.classList.add('hidden');
+            if (e.target === modal) modal.classList.add('hidden');
         });
     }
 

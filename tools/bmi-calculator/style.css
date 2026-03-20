@@ -1,4 +1,9 @@
-/* Tool Specific Styles */
+/* ============================================
+   BMI CALCULATOR - TOOL SPECIFIC STYLES
+   WebKaar Tools | style.css
+   ============================================ */
+
+/* ── CONTAINER ── */
 .tool-container {
     max-width: 600px;
     margin: 0 auto;
@@ -8,12 +13,12 @@
     gap: 20px;
 }
 
-/* Toggle Switch */
+/* ── TOGGLE SWITCH ── */
 .toggle-container {
     display: flex;
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
-    border-radius: 50px; /* Pill shape */
+    border-radius: 50px;
     padding: 4px;
     margin-bottom: 10px;
 }
@@ -37,7 +42,7 @@
     box-shadow: 0 2px 4px rgba(37, 99, 235, 0.3);
 }
 
-/* Input Card */
+/* ── INPUT CARD ── */
 .input-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
@@ -59,16 +64,33 @@
     display: flex;
     gap: 16px;
 }
+
 .input-group-row .input-group {
     flex: 1;
 }
 
+/* ── LABELS ── */
 label {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
+/* ── OPTIONAL TAG ── */
+.optional-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 1px 8px;
+}
+
+/* ── INPUT FIELDS ── */
 input {
     width: 100%;
     height: 50px;
@@ -80,13 +102,85 @@ input {
     font-size: 1.1rem;
     outline: none;
     transition: border-color 0.2s;
+    box-sizing: border-box;
 }
 
 input:focus {
     border-color: var(--primary-blue);
 }
 
-/* Result Card */
+input.input-error {
+    border-color: #ef4444;
+}
+
+/* ── SELECT DROPDOWN ── */
+.select-input {
+    width: 100%;
+    height: 50px;
+    padding: 0 16px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.select-input:focus {
+    border-color: var(--primary-blue);
+}
+
+/* ── INPUT HINT TEXT ── */
+.input-hint {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+/* ── PRIMARY BUTTON ── */
+.primary-btn {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 16px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+}
+
+/* ── SECONDARY BUTTON ── */
+.secondary-btn {
+    background-color: transparent;
+    color: var(--primary-blue);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 2px solid var(--primary-blue);
+    cursor: pointer;
+    width: 100%;
+    transition: transform 0.1s, background-color 0.2s;
+}
+
+.secondary-btn:active {
+    transform: scale(0.98);
+    background-color: rgba(37, 99, 235, 0.07);
+}
+
+/* ── RESULT CARD ── */
 .result-card {
     background-color: var(--bg-surface);
     border: 1px solid var(--border-color);
@@ -109,6 +203,7 @@ input:focus {
     color: var(--text-main);
     line-height: 1;
     margin-bottom: 8px;
+    transition: color 0.3s;
 }
 
 .bmi-status {
@@ -122,9 +217,11 @@ input:focus {
     color: var(--text-muted);
     font-size: 0.95rem;
     margin-top: 20px;
+    margin-bottom: 0;
+    line-height: 1.5;
 }
 
-/* BMI Visual Meter */
+/* ── BMI VISUAL METER ── */
 .bmi-meter {
     margin-top: 10px;
     position: relative;
@@ -133,32 +230,32 @@ input:focus {
 .meter-bar {
     height: 12px;
     border-radius: 10px;
-    background: linear-gradient(to right, 
-        #3b82f6 0%,    /* Underweight (Blue) */
-        #3b82f6 18.5%, 
-        #10b981 18.5%, /* Normal (Green) */
-        #10b981 50%, 
-        #f59e0b 50%,   /* Overweight (Orange) */
-        #f59e0b 75%, 
-        #ef4444 75%,   /* Obese (Red) */
+    background: linear-gradient(to right,
+        #3b82f6 0%,
+        #3b82f6 18.5%,
+        #10b981 18.5%,
+        #10b981 50%,
+        #f59e0b 50%,
+        #f59e0b 75%,
+        #ef4444 75%,
         #ef4444 100%
     );
     width: 100%;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .meter-fill {
-    /* We use a marker instead of fill for this gradient bar */
     position: absolute;
     top: -4px;
     width: 4px;
     height: 20px;
     background-color: var(--text-main);
     border: 2px solid white;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    left: 0%; /* Dynamic */
-    transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.35);
+    left: 0%;
+    transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .meter-labels {
@@ -169,47 +266,203 @@ input:focus {
     margin-top: 8px;
 }
 
-/* Primary Button */
-.primary-btn {
-    background-color: var(--primary-blue);
-    color: white;
-    padding: 16px;
+/* ── EXTRA RESULT CARD ── */
+.result-extra-card {
+    margin-top: 20px;
+    background-color: var(--bg-body);
+    border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
+    overflow: hidden;
+    text-align: left;
+}
+
+.result-extra-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.result-extra-row:last-child {
+    border-bottom: none;
+}
+
+.result-extra-label {
+    font-size: 0.85rem;
     font-weight: 600;
-    font-size: 1.1rem;
-    border: none;
-    cursor: pointer;
+    color: var(--text-muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.result-extra-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+    text-align: right;
+}
+
+.tip-text {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: right;
+    line-height: 1.4;
+}
+
+/* ── SHARE BANNER ── */
+.share-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    transition: transform 0.1s;
+    margin-top: 20px;
+    padding: 14px 16px;
+    background-color: var(--bg-body);
+    border: 1.5px solid var(--primary-blue);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    box-sizing: border-box;
+    text-align: left;
 }
 
-.primary-btn:active {
+.share-banner:active {
     transform: scale(0.98);
+    background-color: rgba(37, 99, 235, 0.07);
 }
 
+.share-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.share-banner-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background-color: rgba(37, 99, 235, 0.12);
+    border-radius: 10px;
+    color: var(--primary-blue);
+    flex-shrink: 0;
+}
+
+.share-banner-text-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.share-banner-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    line-height: 1.2;
+}
+
+.share-banner-sub {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.2;
+}
+
+.share-banner-arrow {
+    color: var(--primary-blue);
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+/* ── TOAST NOTIFICATION ── */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background-color: #1e293b;
+    color: #f1f5f9;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ── MODAL ── */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.hidden { display: none; }
+
+.modal-content {
+    background: var(--bg-surface);
+    width: 90%;
+    max-width: 400px;
+    padding: 24px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-header h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.modal-body p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 4px;
+}
+
+/* ── ICON BUTTON ── */
+.icon-button {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    color: var(--text-muted);
+}
+
+/* ── UTILITY ── */
 .hidden {
     display: none !important;
 }
 
+/* ── ANIMATIONS ── */
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
 }
-
-/* Reused Modal Styles */
-.modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0, 0, 0, 0.5); z-index: 2000;
-    display: flex; align-items: center; justify-content: center;
-    backdrop-filter: blur(4px);
-}
-.modal-overlay.hidden { display: none; }
-.modal-content {
-    background: var(--bg-surface); width: 90%; max-width: 400px;
-    padding: 24px; border-radius: var(--radius-lg);
-    border: 1px solid var(--border-color);
-}
-.modal-header { display: flex; justify-content: space-between; margin-bottom: 16px; }
-.modal-header h3 { font-size: 1.2rem; font-weight: 700; color: var(--text-main); }
-.icon-button { background: none; border: none; padding: 6px; cursor: pointer; color: var(--text-muted); }
