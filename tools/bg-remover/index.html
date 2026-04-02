@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G0FCCE2LMY');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Background Remover Pro | Free AI BG Removal | WebKaar Tools</title>
+    <meta name="description" content="Remove image backgrounds instantly using AI. Free, no login, 100% private — runs entirely in your browser. Powered by RMBG-1.4 AI model. WebKaar Tools.">
+    <meta name="keywords" content="background remover, remove background from image, free bg remover, ai background removal, transparent background, webkaar tools">
+    <meta name="author" content="Ayush Tiwari">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="canonical" href="https://webkaar.pages.dev/tools/bg-remover/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkaar.pages.dev/tools/bg-remover/">
+    <meta property="og:title" content="Background Remover Pro - Free AI BG Removal">
+    <meta property="og:description" content="Remove image backgrounds instantly using AI. Free, private, browser-based. WebKaar Tools.">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/og-bg-remover.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="WebKaar Tools">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Background Remover Pro | AI Tool - WebKaar">
+    <meta name="twitter:description" content="Remove image backgrounds with AI. Free, private, no server upload.">
+    <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-bg-remover.jpg">
+    <script>
+        (function() {
+            const t = localStorage.getItem('webkaar_theme_pref');
+            const d = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (t === 'dark' || (!t && d)) document.documentElement.classList.add('dark-mode');
+            else document.documentElement.classList.remove('dark-mode');
+        })();
+    </script>
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Background Remover Pro by WebKaar","applicationCategory":"MultimediaApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free AI background remover. Runs entirely in browser using RMBG-1.4 model. No server upload, 100% private.","url":"https://webkaar.pages.dev/tools/bg-remover/","author":{"@type":"Person","name":"Ayush Tiwari"}}
+    </script>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="header-content">
+        <button onclick="if(document.referrer&&document.referrer.includes(window.location.hostname)){history.back();}else{window.location.href='../../';}" class="icon-button" aria-label="Go Back">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <div class="header-title">
+            <h1 class="app-name" style="font-size:1.1rem;">BG Remover Pro</h1>
+        </div>
+        <button id="info-btn" class="icon-button" aria-label="Info">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        </button>
+    </div>
+</header>
+
+<main class="app-body">
+    <div class="tool-container">
+
+        <!-- AI Model Loading Banner -->
+        <div id="model-banner" class="model-banner hidden">
+            <div class="model-banner-inner">
+                <div class="model-spinner"></div>
+                <div class="model-text">
+                    <span class="model-title">Loading AI Model</span>
+                    <span class="model-sub" id="model-sub">Downloading RMBG-1.4 (~45MB) first time only...</span>
+                </div>
+            </div>
+            <div class="model-progress-bar"><div class="model-progress-fill" id="model-progress-fill"></div></div>
+        </div>
+
+        <!-- Upload Area -->
+        <div id="upload-area" class="upload-area">
+            <input type="file" id="file-input" accept="image/*" hidden>
+            <div class="upload-inner">
+                <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="upload-icon">
+                    <rect x="3" y="3" width="18" height="18" rx="3"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                </svg>
+                <p class="upload-title">Upload Image</p>
+                <p class="upload-sub">Tap to select or drag and drop<br>JPG, PNG, WEBP — any size</p>
+                <button class="primary-btn upload-btn" id="upload-btn">Choose Image</button>
+            </div>
+        </div>
+
+        <!-- Editor -->
+        <div id="editor-area" class="editor-area hidden">
+
+            <!-- Preview Row -->
+            <div class="preview-row" id="preview-row">
+
+                <!-- Original -->
+                <div class="preview-card">
+                    <span class="preview-label">Original</span>
+                    <div class="preview-img-wrap">
+                        <img id="original-img" alt="Original">
+                    </div>
+                </div>
+
+                <!-- Result -->
+                <div class="preview-card">
+                    <span class="preview-label">Result</span>
+                    <div class="preview-img-wrap checker" id="result-wrap">
+                        <canvas id="result-canvas"></canvas>
+                        <!-- Processing overlay -->
+                        <div id="processing-overlay" class="processing-overlay">
+                            <div class="proc-spinner"></div>
+                            <span id="proc-text">Removing background...</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Background Options (shown after removal) -->
+            <div id="bg-options" class="bg-options hidden">
+                <p class="section-label">Background</p>
+                <div class="bg-option-row">
+                    <button class="bg-opt active" data-bg="transparent" title="Transparent">
+                        <span class="bg-opt-checker"></span>
+                    </button>
+                    <button class="bg-opt" data-bg="#ffffff" title="White" style="background:#ffffff;border:1.5px solid #e2e8f0;"></button>
+                    <button class="bg-opt" data-bg="#000000" title="Black" style="background:#000000;"></button>
+                    <button class="bg-opt" data-bg="#ef4444" title="Red" style="background:#ef4444;"></button>
+                    <button class="bg-opt" data-bg="#3b82f6" title="Blue" style="background:#3b82f6;"></button>
+                    <button class="bg-opt" data-bg="#10b981" title="Green" style="background:#10b981;"></button>
+                    <button class="bg-opt" data-bg="#f59e0b" title="Yellow" style="background:#f59e0b;"></button>
+                    <button class="bg-opt bg-opt-custom" data-bg="custom" title="Custom color">
+                        <input type="color" id="custom-color" value="#8b5cf6">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 8v4l3 3"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-row">
+                <button id="new-image-btn" class="secondary-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    New Image
+                </button>
+                <button id="retry-btn" class="secondary-btn hidden">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.54"/></svg>
+                    Retry
+                </button>
+            </div>
+
+            <!-- Download -->
+            <div id="download-section" class="download-section hidden">
+                <p class="download-label">Download Result</p>
+                <div class="download-row">
+                    <button id="download-png" class="download-btn download-filled">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        PNG (Transparent)
+                    </button>
+                    <button id="download-jpg" class="download-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        JPG (With BG)
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- AI Badge -->
+        <div class="ai-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            Powered by RMBG-1.4 AI Model &nbsp;•&nbsp; 100% Private &nbsp;•&nbsp; No Server Upload
+        </div>
+
+    </div>
+
+    <!-- SEO -->
+    <article class="tool-content" style="max-width:800px;margin:50px auto;padding:0 16px;color:var(--text-muted);">
+        <hr style="border:0;border-top:1px solid var(--border-color);margin-bottom:40px;">
+        <h2 style="color:var(--text-main);font-size:1.5rem;margin-bottom:15px;">AI Background Remover</h2>
+        <p style="margin-bottom:20px;line-height:1.6;">Remove backgrounds from any image instantly using the RMBG-1.4 AI model — running entirely in your browser. No server, no account, no limits.</p>
+        <h3 style="color:var(--text-main);font-size:1.2rem;margin-bottom:10px;">Works Great For</h3>
+        <ul style="margin-bottom:20px;padding-left:20px;line-height:1.8;">
+            <li>Product photos for e-commerce</li>
+            <li>Profile pictures and portraits</li>
+            <li>Logo and sticker creation</li>
+            <li>Social media content</li>
+        </ul>
+        <h3 style="color:var(--text-main);font-size:1.2rem;margin-bottom:10px;">100% Private</h3>
+        <p style="line-height:1.6;">Your image never leaves your device. The AI model runs locally using WebAssembly. First load downloads the model (~45MB), after that it works offline too.</p>
+    </article>
+</main>
+
+<!-- Info Modal -->
+<div id="info-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>About BG Remover Pro</h3>
+            <button id="close-modal" class="icon-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p><strong>How it works:</strong> Upload an image and the AI automatically detects and removes the background.</p>
+            <br>
+            <p><strong>AI Model:</strong> RMBG-1.4 by BRIA AI — one of the best open-source background removal models.</p>
+            <br>
+            <p><strong>First use:</strong> The model (~45MB) downloads once and is cached. After that it works instantly even offline.</p>
+            <br>
+            <p><strong>Background colors:</strong> After removal, you can set transparent, white, black, or any custom color as background.</p>
+            <br>
+            <p><strong>Download:</strong> PNG keeps transparency. JPG uses the selected background color.</p>
+            <br>
+            <p><strong>Privacy:</strong> Your image never leaves your device. Zero server upload.</p>
+        </div>
+    </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+<footer class="main-footer" style="margin-top:40px;">
+    <p>&copy; 2026 WebKaar Inc.</p>
+    <div class="footer-links">
+        <a href="../../pages/about.html">About</a> •
+        <a href="../../pages/contact.html">Contact</a> •
+        <a href="../../pages/privacy.html">Privacy</a> •
+        <a href="../../pages/disclaimer.html">Disclaimer</a>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+<script>if(localStorage.getItem('webkaar_theme_pref')==='dark'){document.body.classList.add('dark-mode');}</script>
+</body>
+</html>
