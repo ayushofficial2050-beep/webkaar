@@ -1,46 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- 🔥 GOOGLE ANALYTICS (New GA4) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-G0FCCE2LMY');
-</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8468144152871993"
+     crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G0FCCE2LMY');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <!-- 🔥 TITLE (Optimized: Keyword first + exact features + brand) -->
-    <title>Age Calculator Online | Exact Years, Months, Days & Birthday Countdown | WebKaar</title>
+    <title>Age & Death Calculator Online | Life Expectancy Estimator | WebKaar</title>
 
-    <!-- 🔥 META DESCRIPTION (Engaging, ~155 chars, benefits + privacy + CTA) -->
-    <meta name="description" content="Calculate exact age in years, months, days, hours & seconds from date of birth. See days lived, birthday countdown & day you were born. Free, accurate, 100% client-side – no login, no tracking. WebKaar Tools.">
+    <meta name="description" content="Calculate your exact age in years, months, days and estimate your life expectancy (Death Calculator) based on health factors. 100% private & free on WebKaar Tools.">
 
-    <!-- 🔥 KEYWORDS (Expanded with high-search terms) -->
-    <meta name="keywords" content="age calculator, age calculator online, calculate age, date of birth calculator, how old am i, exact age calculator, birthday countdown, days lived calculator, age in years months days, webkaar tools">
+    <meta name="keywords" content="age calculator, death calculator, life expectancy calculator, when will i die calculator, exact age calculator, birthday countdown, days lived calculator, webkaar tools">
 
     <meta name="author" content="Ayush Tiwari">
     <meta name="theme-color" content="#0f172a">
 
-    <!-- 🔥 CANONICAL (Already perfect) -->
     <link rel="canonical" href="https://webkaar.pages.dev/tools/age-calculator/">
 
-    <!-- 🔥 OPEN GRAPH (Synced with new title/desc for better social shares) -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://webkaar.pages.dev/tools/age-calculator/">
-    <meta property="og:title" content="Age Calculator Online - Exact Age in Years, Months, Days">
-    <meta property="og:description" content="Get precise age calculation: years, months, days lived + next birthday countdown. Privacy-first, client-side tool – no data sent to servers. Try now on WebKaar!">
+    <meta property="og:title" content="Age & Death Calculator Online - WebKaar">
+    <meta property="og:description" content="Find your exact age and estimate your lifespan on Earth. Privacy-first, client-side tool. Try now!">
     <meta property="og:image" content="https://webkaar.pages.dev/images/og-age-calc.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
-    <!-- 🔥 TWITTER CARDS (Updated) -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Age Calculator | Exact Age & Birthday Countdown - WebKaar">
-    <meta name="twitter:description" content="Find your exact age in years/months/days, days until birthday & more. Free & private online tool. No login needed!">
+    <meta name="twitter:title" content="Age & Death Calculator | Exact Age & Lifespan Estimator">
+    <meta name="twitter:description" content="Find your exact age in years/months/days and estimate your life expectancy. Free & private online tool.">
     <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-age-calc.jpg">
 
     <link rel="stylesheet" href="../../css/style.css">
@@ -49,12 +44,11 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- 🔥 STRUCTURED DATA (Enhanced for better rich results & trust) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Age Calculator by WebKaar",
+      "name": "Age & Death Calculator by WebKaar",
       "applicationCategory": "UtilityApplication",
       "operatingSystem": "Any",
       "offers": {
@@ -62,7 +56,7 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "description": "Free online age calculator to compute exact age in years, months, days, hours, seconds from date of birth. Includes birthday countdown, total days lived, day of week born. 100% client-side, privacy-focused, no login required.",
+      "description": "Free online age calculator to compute exact age and a fun death calculator to estimate life expectancy based on health habits. 100% client-side.",
       "url": "https://webkaar.pages.dev/tools/age-calculator/",
       "author": {
         "@type": "Person",
@@ -79,7 +73,7 @@
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             </button>
             <div class="header-title">
-                <h1 class="app-name" style="font-size: 1.1rem;">Age Calculator</h1>
+                <h1 class="app-name" style="font-size: 1.1rem;">Age & Death Calc</h1>
             </div>
             <button id="info-btn" class="icon-button" aria-label="Tool Info">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
@@ -101,8 +95,37 @@
                     <input type="date" id="todayInput" class="date-picker">
                 </div>
 
+                <hr style="border: 0; border-top: 1px dashed var(--border-color); margin: 25px 0;">
+                <h3 style="font-size: 1.1rem; color: var(--text-main); margin-bottom: 15px;">Life Expectancy Factors (Optional)</h3>
+
+                <div class="input-group">
+                    <label>Gender</label>
+                    <select id="genderInput" class="date-picker">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+
+                <div class="input-group" style="margin-top: 15px;">
+                    <label>Lifestyle & Habits</label>
+                    <select id="lifestyleInput" class="date-picker">
+                        <option value="healthy">Healthy & Active (Exercises, Good Diet)</option>
+                        <option value="average">Average / Normal</option>
+                        <option value="unhealthy">Unhealthy / Smoker</option>
+                    </select>
+                </div>
+
+                <div class="input-group" style="margin-top: 15px;">
+                    <label>Stress Level</label>
+                    <select id="stressInput" class="date-picker">
+                        <option value="low">Low (Relaxed & Happy)</option>
+                        <option value="medium">Medium (Normal)</option>
+                        <option value="high">High (Depressed / Stressed)</option>
+                    </select>
+                </div>
+
                 <button id="calcBtn" class="primary-btn full-width" style="margin-top: 25px;">
-                    Calculate Age
+                    Calculate Age & Lifespan
                 </button>
             </div>
 
@@ -140,7 +163,34 @@
                     </div>
                 </div>
 
-                <button id="resetBtn" class="secondary-btn full-width" style="margin-top: 20px;">
+                <hr style="border: 0; border-top: 1px dashed var(--border-color); margin: 25px 0;">
+                <h3 style="text-align: center; color: var(--accent-red); margin-bottom: 15px; font-size: 1.2rem;">Life Expectancy Estimation</h3>
+                
+                <div class="age-display">
+                    <div class="age-box main-box" style="background: linear-gradient(135deg, #1f2937, #0f172a);">
+                        <span id="lifespanVal">--</span>
+                        <small>Estimated Lifespan (Years)</small>
+                    </div>
+                </div>
+
+                <div class="extra-info">
+                    <div class="info-row">
+                        <span>Estimated Passing Year:</span>
+                        <strong id="passingYear">...</strong>
+                    </div>
+                    <div class="info-row">
+                        <span>Time Remaining:</span>
+                        <strong id="remainingTime">...</strong>
+                    </div>
+                </div>
+
+                <div style="background: rgba(239, 68, 68, 0.1); border-left: 4px solid var(--accent-red); padding: 14px; margin-top: 25px; border-radius: 6px;">
+                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-main); line-height: 1.6;">
+                        <strong>Disclaimer: We estimate your lifespan on Earth based on general health factors. This is purely an estimation for entertainment and informational purposes, not medical advice.</strong>
+                    </p>
+                </div>
+
+                <button id="resetBtn" class="secondary-btn full-width" style="margin-top: 25px;">
                     Check Another Date
                 </button>
             </div>
@@ -150,38 +200,15 @@
         <article class="tool-content" style="max-width: 800px; margin: 40px auto; padding: 0 16px; color: var(--text-muted);">
             <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
             
-            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">About Age Calculator</h2>
+            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px;">About Age & Death Calculator</h2>
             <p style="margin-bottom: 20px; line-height: 1.6;">
-                The <strong>WebKaar Age Calculator</strong> is a free online utility that helps you determine your exact age in years, months, and days. While most people know their age in years, calculating the precise number of months and days since you were born can be tricky due to leap years and varying month lengths. Our tool does the complex math for you instantly.
+                The <strong>WebKaar Age & Death Calculator</strong> is an advanced utility that not only tells you your exact chronological age in years, months, and days but also gives you a theoretical estimation of your life expectancy based on biological and lifestyle factors.
             </p>
 
-            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">How to Calculate Your Age?</h3>
-            <ol style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
-                <li><strong>Enter Date of Birth:</strong> Select the day, month, and year you were born from the calendar picker.</li>
-                <li><strong>Select Target Date:</strong> By default, it is set to "Today", but you can choose a past or future date to calculate your age at that specific time.</li>
-                <li><strong>Click Calculate:</strong> Hit the button to see your detailed age report instantly.</li>
-            </ol>
-
-            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Why Use This Tool?</h3>
-            <ul style="margin-bottom: 20px; padding-left: 20px; line-height: 1.8;">
-                <li><strong>Job Applications:</strong> Many government exams and job applications require your age as of a specific cut-off date (e.g., "Age as of 1st Jan 2026"). This tool gives you that exact figure.</li>
-                <li><strong>Birthday Countdown:</strong> Find out exactly how many days are left until your next birthday so you can start planning your party!</li>
-                <li><strong>Fun Stats:</strong> Discover interesting facts like the day of the week you were born (e.g., Monday, Friday) and the total number of days you have lived on Earth.</li>
-            </ul>
-
-            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">Frequently Asked Questions (FAQ)</h3>
-            <div style="margin-bottom: 15px;">
-                <strong style="color: var(--text-main); display: block; margin-bottom: 5px;">Is this age calculator accurate?</strong>
-                <p>Yes, our algorithm accounts for leap years (years with 366 days) and the specific number of days in each month (28, 30, or 31) to provide 100% accurate results.</p>
-            </div>
-            <div style="margin-bottom: 15px;">
-                <strong style="color: var(--text-main); display: block; margin-bottom: 5px;">Can I calculate age for a future date?</strong>
-                <p>Absolutely! Just change the "Age at Date" field to any future date to see how old you will be at that time. This is useful for planning retirement or milestones.</p>
-            </div>
-             <div style="margin-bottom: 15px;">
-                <strong style="color: var(--text-main); display: block; margin-bottom: 5px;">Is my data saved?</strong>
-                <p>No. WebKaar operates entirely in your browser. The dates you enter are processed locally on your device and are never sent to any server, ensuring complete privacy.</p>
-            </div>
+            <h3 style="color: var(--text-main); font-size: 1.2rem; margin-bottom: 10px;">How does the Death Calculator work?</h3>
+            <p style="margin-bottom: 20px; line-height: 1.6;">
+                While nobody can predict the exact date of passing, science shows that factors like gender, stress levels, and lifestyle habits significantly impact your lifespan. By selecting your health habits, our algorithm calculates an estimated age you might reach, helping you realize the value of time.
+            </p>
         </article>
     </main>
 
@@ -192,24 +219,14 @@
         <a href="#" class="social-btn copy-link" onclick="copyLink(); return false;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></a>
     </div>
 
-    <footer class="main-footer" style="margin-top: 40px;">
-        <p>&copy; 2026 WebKaar Inc.</p>
-        <div class="footer-links">
-            <a href="../../pages/about.html">About</a> •
-            <a href="../../pages/contact.html">Contact</a> •
-            <a href="../../pages/privacy.html">Privacy</a> •
-            <a href="../../pages/disclaimer.html">Disclaimer</a>
-        </div>
-    </footer>
-
     <div id="info-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>About</h3>
+                <h3>About This Tool</h3>
                 <button id="close-modal" class="icon-button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
             </div>
-            <div class="modal-body">
-                <p>This tool calculates the difference between two dates to find your precise chronological age.</p>
+            <div class="modal-body" style="color: var(--text-muted); font-size: 0.95rem; padding: 20px;">
+                <p>Calculates precise age and provides an estimated lifespan based on statistical health data.</p>
             </div>
         </div>
     </div>
@@ -221,4 +238,3 @@
     </script>
 </body>
 </html>
-
