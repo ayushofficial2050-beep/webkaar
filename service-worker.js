@@ -4,7 +4,7 @@
  * Version: v60 (Always change this number when you update code)
  */
 
-const CACHE_NAME = 'webkaar-v61-live'; // ✅ Jab bhi code update karo, ye number badha dena (v8 -> v60)
+const CACHE_NAME = 'webkaar-v62-live'; // ✅ Jab bhi code update karo, ye number badha dena (v8 -> v60)
 
 // 1. FILES TO CACHE IMMEDIATELY (App Shell)
 // Sirf wo files jo website khulne ke liye zaroori hain
