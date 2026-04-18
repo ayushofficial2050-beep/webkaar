@@ -15,11 +15,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>About WebKaar | Privacy-First Tools</title>
-    <meta name="description" content="Learn about WebKaar: A free, privacy-focused online tools platform built by Ayush Tiwari. 100% client-side processing with no server uploads.">
+    <title>About Ayush Tiwari | Founder of Panthera Store & WebKaar</title>
+    <meta name="title" content="About Ayush Tiwari | Founder of Panthera Store & WebKaar">
+    <meta name="description" content="Meet Ayush Tiwari, a passionate Student, Web & Android Developer with 3 years of experience. Founder of Panthera Store and creator of WebKaar.">
+    <meta name="keywords" content="Ayush Tiwari, Panthera Store, WebKaar Founder, Ayush Tiwari Developer, Android Developer Jaunpur, Ayush Tiwari Rooppur">
     <meta name="author" content="Ayush Tiwari">
     <meta name="theme-color" content="#0f172a">
-    <link rel="canonical" href="https://webkaar.pages.dev/pages/about">
+    
+    <link rel="canonical" href="https://webkaar.pages.dev/pages/about.html">
+    <link rel="manifest" href="/manifest.json">
+
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://webkaar.pages.dev/pages/about.html">
+    <meta property="og:title" content="About Ayush Tiwari | Founder of Panthera Store">
+    <meta property="og:description" content="Self-taught Web & Android Developer from Jaunpur, UP. Building fast, privacy-focused digital tools.">
+    <meta property="og:image" content="https://webkaar.pages.dev/images/ayush.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://webkaar.pages.dev/pages/about.html">
+    <meta property="twitter:title" content="About Ayush Tiwari | Founder of Panthera Store">
+    <meta property="twitter:description" content="Self-taught Web & Android Developer from Jaunpur, UP. Building fast, privacy-focused digital tools.">
+    <meta property="twitter:image" content="https://webkaar.pages.dev/images/ayush.jpg">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://webkaar.pages.dev/pages/about.html#person",
+      "name": "Ayush Tiwari",
+      "birthDate": "2009-02-05",
+      "jobTitle": ["Student", "Software Developer", "Android Developer"],
+      "description": "Self-taught Android and Web Developer with 3 years of experience. Founder of Panthera Store and WebKaar.",
+      "image": "https://webkaar.pages.dev/images/ayush.jpg",
+      "url": "https://webkaar.pages.dev/pages/about.html",
+      "sameAs": [
+        "https://www.instagram.com/hvk_op",
+        "https://youtube.com/@hvk_op"
+      ],
+      "parent": [
+        {
+          "@type": "Person",
+          "name": "Nityanand Tiwari"
+        },
+        {
+          "@type": "Person",
+          "name": "Archana Tiwari"
+        }
+      ],
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Rooppur, Jaunpur",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Jaunpur",
+          "addressRegion": "Uttar Pradesh",
+          "addressCountry": "India"
+        }
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Panthera Store"
+      },
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "Self-Taught"
+      }
+    }
+    </script>
 
     <script>
         (function() {
@@ -40,7 +102,7 @@
 
     <style>
         /* =========================================
-           🚀 JABARDAST ABOUT PAGE STYLES (Isolated)
+           🚀 MATERIAL 3 ABOUT PAGE STYLES (Isolated)
            ========================================= */
         body { overflow-x: hidden; }
 
@@ -77,21 +139,37 @@
 
         .ab-logo {
             width: 100px; height: 100px;
-            border-radius: 24px;
+            border-radius: 28px; /* Material 3 Squircle feel */
             position: relative; z-index: 2;
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             border: 2px solid rgba(255,255,255,0.1);
         }
 
         .ab-title {
-            font-size: 2.8rem;
+            font-size: 3.2rem; /* Big WebKaar Text */
             font-weight: 900;
             letter-spacing: -1.5px;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
             background: linear-gradient(135deg, var(--text-main) 30%, var(--primary-blue) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             line-height: 1.2;
+        }
+
+        .ab-company-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary-blue);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
         }
 
         .ab-subtitle {
@@ -115,22 +193,22 @@
         .ab-badge {
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
-            padding: 8px 16px;
+            padding: 10px 18px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
             box-shadow: var(--shadow-sm);
         }
 
-        .ab-badge i { color: var(--primary-blue); font-size: 1.1rem; }
+        .ab-badge i { color: var(--primary-blue); font-size: 1.2rem; }
         .ab-badge.green i { color: #10b981; }
         .ab-badge.orange i { color: #f59e0b; }
 
-        /* --- FOUNDER SECTION (Clean & Premium) --- */
+        /* --- FOUNDER SECTION (Material 3 Enhanced) --- */
         .ab-section-title {
             text-align: left;
             font-size: 0.85rem;
@@ -145,60 +223,82 @@
         .ab-founder-card {
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 30px;
+            border-radius: 28px; /* Material 3 Standard Large Border Radius */
+            padding: 32px;
             text-align: left;
             display: flex;
             align-items: center;
-            gap: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            gap: 30px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.06);
             margin-bottom: 50px;
             transition: transform 0.3s ease;
         }
         
-        body.dark-mode .ab-founder-card { box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .ab-founder-card:hover { transform: translateY(-3px); border-color: var(--primary-blue); }
+        body.dark-mode .ab-founder-card { box-shadow: 0 12px 36px rgba(0,0,0,0.25); }
+        .ab-founder-card:hover { transform: translateY(-4px); border-color: var(--primary-blue); }
 
+        /* 🔥 BIG PHOTO FIX 🔥 */
         .ab-founder-img {
-            width: 90px; height: 90px;
+            width: 140px; 
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--bg-body);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 4px solid var(--bg-body); /* Creates a ring effect */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             flex-shrink: 0;
+            background: var(--border-color); /* Fallback bg */
         }
 
         .ab-founder-info h3 {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--text-main);
-            margin-bottom: 4px;
+            margin-bottom: 6px;
             line-height: 1.2;
+            letter-spacing: -0.5px;
         }
 
         .ab-founder-role {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--primary-blue);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            padding: 4px 12px;
+            border-radius: 8px;
         }
 
         .ab-founder-bio {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--text-muted);
             line-height: 1.6;
         }
 
-        /* Mobile Adjustments for Founder Card */
+        /* Mobile Adjustments for Big Photo */
         @media (max-width: 480px) {
-            .ab-founder-card { flex-direction: column; text-align: center; padding: 24px 16px; gap: 16px; }
+            .ab-founder-card { 
+                flex-direction: column; 
+                text-align: center; 
+                padding: 36px 20px 24px 20px; 
+                gap: 20px; 
+            }
+            .ab-founder-img {
+                width: 150px; /* Even bigger on mobile center */
+                height: 150px;
+                margin-top: -10px; /* Pulls it up slightly */
+            }
+            .ab-founder-info {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
-        /* --- SOCIAL GRID (100% Fixed Overlap Issue) --- */
+        /* --- SOCIAL GRID (Material 3 Surface Buttons) --- */
         .ab-social-grid {
             display: grid;
-            grid-template-columns: 1fr; /* Single column layout */
+            grid-template-columns: 1fr; 
             gap: 16px;
             margin-bottom: 50px;
         }
@@ -206,8 +306,8 @@
         .ab-social-btn {
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 16px 20px;
+            border-radius: 20px; /* M3 Pill/Rounded look */
+            padding: 18px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -219,37 +319,37 @@
         .ab-social-btn:hover, .ab-social-btn:active {
             transform: scale(0.98);
             border-color: var(--primary-blue);
+            background: rgba(37, 99, 235, 0.02);
         }
 
-        /* OVERLAP FIX: Force vertical stacking */
         .ab-social-left {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 20px;
         }
 
         .ab-social-text {
             display: flex;
-            flex-direction: column; /* This guarantees no overlap */
+            flex-direction: column; 
             align-items: flex-start;
-            gap: 4px; /* Space between title and description */
+            gap: 4px; 
         }
 
         .ab-s-title {
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--text-main);
             line-height: 1;
         }
 
         .ab-s-desc {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             line-height: 1;
         }
 
         .ab-s-icon {
-            font-size: 32px;
+            font-size: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -261,7 +361,7 @@
 
         .ab-arrow {
             color: var(--text-muted);
-            font-size: 20px;
+            font-size: 22px;
             opacity: 0.5;
         }
 
@@ -304,7 +404,7 @@
 
     <header class="main-header" style="background: var(--bg-surface); backdrop-filter: blur(12px);">
         <div class="header-content">
-            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+            <button onclick="window.history.length > 1 ? history.back() : window.location.href = '/';" class="icon-button" aria-label="Go Back">
                 <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
             </button>
             <div class="header-title">
@@ -322,7 +422,13 @@
                     <div class="ab-logo-glow"></div>
                     <img src="../images/logo.png" alt="WebKaar Logo" class="ab-logo">
                 </div>
+                
                 <h1 class="ab-title">WebKaar</h1>
+                
+                <div class="ab-company-badge">
+                    <i class="ph-fill ph-rocket-launch"></i> By Panthera Store
+                </div>
+
                 <p class="ab-subtitle">We build fast, secure, and client-side utilities for everyday creators. Everything runs locally on your device.</p>
                 
                 <div class="ab-badges">
@@ -335,11 +441,11 @@
             <div class="ab-section-title slide-up-fade d-1">Behind The Code</div>
             
             <div class="ab-founder-card slide-up-fade d-1">
-                <img src="../images/ayush.jpg" alt="Ayush Tiwari" class="ab-founder-img" onerror="this.src='../images/logo.png'">
+                <img src="../images/ayush.jpg" alt="Ayush Tiwari - Founder" class="ab-founder-img" onerror="this.src='../images/logo.png'">
                 <div class="ab-founder-info">
                     <h3>Ayush Tiwari</h3>
-                    <span class="ab-founder-role">Sole Founder & Developer</span>
-                    <p class="ab-founder-bio">An independent developer passionate about building tools that respect user privacy. Transforming complex tasks into simple clicks without tracking your data.</p>
+                    <span class="ab-founder-role">Founder | Web & Android Dev</span>
+                    <p class="ab-founder-bio">A self-taught Developer from Jaunpur with 3 years of experience. Founder of Panthera Store, building digital products that prioritize speed, privacy, and user experience.</p>
                 </div>
             </div>
 
@@ -347,23 +453,23 @@
             
             <div class="ab-social-grid slide-up-fade d-2">
                 
-                <a href="https://www.instagram.com/fsthavoc?igsh=MWpvd284NTZnM29zMw==" target="_blank" class="ab-social-btn">
+                <a href="https://www.instagram.com/hvk_op" target="_blank" class="ab-social-btn">
                     <div class="ab-social-left">
                         <i class="ph-fill ph-instagram-logo ab-s-icon ab-icon-insta"></i>
                         <div class="ab-social-text">
                             <span class="ab-s-title">Instagram</span>
-                            <span class="ab-s-desc">Follow @fsthavoc</span>
+                            <span class="ab-s-desc">Follow @hvk_op</span>
                         </div>
                     </div>
                     <i class="ph-bold ph-caret-right ab-arrow"></i>
                 </a>
 
-                <a href="https://youtube.com/@havocfst?si=d0w5K4dqcPbPHFs8" target="_blank" class="ab-social-btn">
+                <a href="https://youtube.com/@hvk_op" target="_blank" class="ab-social-btn">
                     <div class="ab-social-left">
                         <i class="ph-fill ph-youtube-logo ab-s-icon ab-icon-yt"></i>
                         <div class="ab-social-text">
                             <span class="ab-s-title">YouTube</span>
-                            <span class="ab-s-desc">Subscribe Fst Havoc</span>
+                            <span class="ab-s-desc">Subscribe HVK OP</span>
                         </div>
                     </div>
                     <i class="ph-bold ph-caret-right ab-arrow"></i>
@@ -383,7 +489,7 @@
             </div>
 
             <div class="ab-footer-credit slide-up-fade d-3">
-                <div class="ab-brand-mark">WEBKAAR</div>
+                <div class="ab-brand-mark">PANTHERA STORE</div>
                 <div style="font-size: 0.85rem; color: var(--text-muted); display: flex; justify-content: center; align-items: center; gap: 6px;">
                     Made with <i class="ph-fill ph-heart" style="color: #ef4444;"></i> in India 🇮🇳
                 </div>
@@ -397,3 +503,4 @@
 
 </body>
 </html>
+
