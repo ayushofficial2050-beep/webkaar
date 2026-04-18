@@ -5,96 +5,183 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Privacy Policy | WebKaar</title>
+    <title>Privacy Policy | WebKaar Tools</title>
+    <meta name="description" content="Privacy Policy for WebKaar Tools. Learn how we protect your data, our client-side processing technology, and our advertising cookie policies.">
     <meta name="theme-color" content="#0f172a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G0FCCE2LMY');
+    </script>
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('webkaar_theme_pref');
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                    document.documentElement.classList.add('dark-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
 
     <style>
-        /* --- Privacy Page Specific Styles --- */
+        /* =========================================
+           🚀 MATERIAL 3 LEGAL PAGE STYLES
+           ========================================= */
         .legal-container {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px 16px;
-            line-height: 1.6;
+            padding: 30px 20px 80px 20px;
+        }
+
+        .legal-header-area {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .legal-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--md-sys-color-on-background);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .legal-subtitle {
+            font-size: 1.05rem;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 500;
         }
 
         .last-updated {
-            color: var(--text-muted);
+            display: inline-block;
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 6px 16px;
+            border-radius: 50px;
             font-size: 0.85rem;
-            margin-bottom: 24px;
-            display: block;
+            font-weight: 700;
+            margin-top: 16px;
         }
 
-        /* Card Style for Sections */
+        /* Material 3 Card Style */
         .policy-card {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: 24px;
-            margin-bottom: 20px;
-            box-shadow: var(--shadow-sm);
+            background-color: var(--md-sys-color-surface);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: var(--md-sys-shape-large); /* 24px Squircle */
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--md-sys-elevation-1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .policy-card:hover {
+            box-shadow: var(--md-sys-elevation-2);
         }
 
         .policy-card h2 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 12px;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--md-sys-color-on-surface);
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .policy-card h2 i {
+            color: var(--md-sys-color-primary);
+            font-size: 1.6rem;
+            background: var(--md-sys-color-primary-container);
+            padding: 8px;
+            border-radius: 12px;
         }
         
         .policy-card p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
+            font-size: 1rem;
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 16px;
+            line-height: 1.7;
         }
 
         .policy-card ul {
-            list-style: disc;
-            padding-left: 20px;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 12px;
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 16px;
         }
 
         .policy-card li {
-            margin-bottom: 6px;
+            font-size: 1rem;
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 12px;
+            line-height: 1.7;
+            position: relative;
+            padding-left: 28px;
         }
 
-        /* Highlight Box */
+        .policy-card li::before {
+            content: '•';
+            color: var(--md-sys-color-primary);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 8px;
+            top: -4px;
+        }
+
+        /* Highlight Box (M3 Tonal Container) */
         .highlight-box {
-            background-color: var(--primary-light);
-            border-left: 4px solid var(--primary-blue);
-            padding: 12px 16px;
-            border-radius: 4px;
-            margin: 16px 0;
-            color: var(--text-main);
-            font-size: 0.9rem;
+            background-color: var(--md-sys-color-primary-container);
+            border-left: 4px solid var(--md-sys-color-primary);
+            padding: 20px;
+            border-radius: 0 var(--md-sys-shape-medium) var(--md-sys-shape-medium) 0;
+            margin: 24px 0;
+            color: var(--md-sys-color-on-primary-container);
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
-        /* Contact Link */
         .contact-link {
-            color: var(--primary-blue);
-            font-weight: 600;
-            text-decoration: underline;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: opacity 0.2s;
+        }
+
+        .contact-link:hover {
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
 
-    <header class="main-header">
+    <header class="main-header" style="background: var(--md-sys-color-surface); backdrop-filter: blur(12px);">
         <div class="header-content">
-            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            <button onclick="window.history.length > 1 ? history.back() : window.location.href = '/';" class="icon-button" aria-label="Go Back">
+                <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
             </button>
             <div class="header-title">
-                <h1 class="app-name" style="font-size: 1.1rem;">Privacy Policy</h1>
+                <h1 class="app-name" style="font-size: 1.15rem;">Legal Information</h1>
             </div>
             <div style="width: 40px;"></div>
         </div>
@@ -103,84 +190,72 @@
     <main class="app-body">
         <div class="legal-container">
             
-            <span class="last-updated">Last Updated: January 2026</span>
+            <div class="legal-header-area">
+                <h1 class="legal-title">Privacy Policy</h1>
+                <p class="legal-subtitle">Transparency and security are the core foundations of WebKaar.</p>
+                <span class="last-updated">Effective Date: April 2026</span>
+            </div>
 
             <div class="policy-card">
-                <p>Welcome to <strong>WebKaar</strong>. Your privacy is critically important to us. This Privacy Policy document contains types of information that is collected and recorded by WebKaar and how we use it.</p>
+                <h2><i class="ph-fill ph-shield-check"></i> Introduction & Consent</h2>
+                <p>Welcome to <strong>WebKaar</strong> (accessible from https://webkaar.pages.dev/), a product developed and maintained by Panthera Store. At WebKaar, the privacy of our visitors is of extreme importance to us. This comprehensive Privacy Policy document outlines the types of personal information that is received and collected by WebKaar and how it is utilized.</p>
+                <p>By using our website, you hereby consent to our Privacy Policy and agree to its terms. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.</p>
+            </div>
+
+            <div class="policy-card">
+                <h2><i class="ph-fill ph-cpu"></i> 100% Client-Side Processing (Zero Data Retention)</h2>
+                <p>We pride ourselves on providing a secure utility ecosystem. Unlike traditional web services, WebKaar operates heavily on <strong>Client-Side Processing</strong>.</p>
                 <div class="highlight-box">
-                    <strong>Core Promise:</strong> We do not store your files. Tools like Image Compressor, Converter, etc., process your files locally in your browser.
+                    <strong>Our Core Privacy Promise:</strong> When you use tools such as the Image Compressor, PDF Tools, or Code Formatters, your files and data are processed entirely within your local web browser. <strong>Your files are NEVER uploaded to our servers.</strong> We do not have the capability to view, store, copy, or distribute the files you process using our platform.
                 </div>
             </div>
 
             <div class="policy-card">
-                <h2>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                    1. Information We Collect
-                </h2>
-                <p>We believe in data minimization. We only collect:</p>
+                <h2><i class="ph-fill ph-database"></i> Information Collection and Use</h2>
+                <p>WebKaar follows a strict data minimization protocol. The limited information we collect is used solely to improve our services and maintain a secure environment.</p>
                 <ul>
-                    <li><strong>Usage Data:</strong> Anonymous data about how you interact with our website (e.g., pages visited, time spent) to help us improve user experience.</li>
-                    <li><strong>Device Information:</strong> Basic info like device type (Mobile/Desktop) and browser version to optimize our layout.</li>
-                </ul>
-                <p>We <strong>do not</strong> collect Personal Identifiable Information (PII) like your name, phone number, or address unless you explicitly contact us.</p>
-            </div>
-
-            <div class="policy-card">
-                <h2>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                    2. Security & File Processing
-                </h2>
-                <p>Most of our tools (Image Compression, PDF Tools, Converters) are built using <strong>Client-Side Technology</strong>.</p>
-                <ul>
-                    <li>Your files never leave your device.</li>
-                    <li>Processing happens inside your web browser.</li>
-                    <li>We do not have access to view or copy your uploaded files.</li>
+                    <li><strong>Log Files:</strong> Like many standard web servers, we utilize log files. The information inside the log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and number of clicks. This information is not linked to any information that is personally identifiable.</li>
+                    <li><strong>Device Preferences:</strong> We use HTML5 Local Storage within your browser to save your UI preferences (such as Dark Mode/Light Mode settings). This data remains on your device.</li>
                 </ul>
             </div>
 
             <div class="policy-card">
-                <h2>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
-                    3. Cookies & Local Storage
-                </h2>
-                <p>We use "Local Storage" to save your preferences, such as:</p>
+                <h2><i class="ph-fill ph-target"></i> Google AdSense & Advertising Cookies</h2>
+                <p>To keep WebKaar free for all users, we monetize our platform using third-party advertising networks, including Google AdSense. Advertising partners use cookies and web beacons on our site to serve personalized ads based on your browsing history.</p>
                 <ul>
-                    <li><strong>Theme Preference:</strong> To remember if you prefer Dark Mode or Light Mode.</li>
-                    <li><strong>Recent Tools:</strong> To show you tools you use frequently.</li>
+                    <li><strong>Google DART Cookie:</strong> Google, as a third-party vendor, uses cookies to serve ads on WebKaar. Google's use of the DART cookie enables it to serve ads to our site's visitors based upon their visit to WebKaar and other sites on the Internet.</li>
+                    <li><strong>Opt-Out:</strong> Users may opt-out of the use of the DART cookie and personalized advertising by visiting the <a href="https://myadcenter.google.com/" target="_blank" style="color: var(--md-sys-color-primary); font-weight: 700;">Google Ads Settings page</a>.</li>
+                    <li>We do not have access to or control over these cookies that are used by third-party advertisers. You should consult the respective privacy policies of these third-party ad servers for more detailed information on their practices.</li>
                 </ul>
-                <p>You can clear this data anytime by clearing your browser cache.</p>
             </div>
 
             <div class="policy-card">
-                <h2>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                    4. Third-Party Links
-                </h2>
-                <p>WebKaar may contain links to other websites (e.g., YouTube, Instagram). If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by us, and we advise you to review their Privacy Policy.</p>
+                <h2><i class="ph-fill ph-link"></i> External Links & Third Parties</h2>
+                <p>Our website may contain links to external sites that are not operated by us (such as YouTube, Instagram, or affiliate partners). If you click on a third-party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
             </div>
 
             <div class="policy-card">
-                <h2>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    Contact Us
-                </h2>
-                <p>If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us at:</p>
-                <a href="mailto:ayushofficial2050@gmail.com" class="contact-link">ayushofficial2050@gmail.com</a>
+                <h2><i class="ph-fill ph-baby"></i> Children's Information</h2>
+                <p>Another part of our priority is adding protection for children while using the internet. WebKaar does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records.</p>
+            </div>
+
+            <div class="policy-card">
+                <h2><i class="ph-fill ph-envelope-simple"></i> Contact Information</h2>
+                <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please reach out to the founder and developer directly.</p>
+                <a href="mailto:ayushofficial2050@gmail.com" class="contact-link">
+                    <i class="ph-bold ph-paper-plane-tilt"></i> ayushofficial2050@gmail.com
+                </a>
             </div>
 
         </div>
     </main>
 
-    <footer class="main-footer">
-        <p>&copy; 2026 WebKaar. All rights reserved.</p>
+    <footer class="main-footer" style="text-align: center; padding: 20px; color: var(--md-sys-color-on-surface-variant); border-top: 1px solid var(--md-sys-color-outline-variant);">
+        <p style="font-size: 0.9rem; font-weight: 600;">&copy; 2026 WebKaar by Panthera Store. All rights reserved.</p>
     </footer>
 
-    <script>
-        const savedTheme = localStorage.getItem('webkaar_theme_pref');
-        if (savedTheme === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-    </script>
+    <script src="../js/api.js"></script>
+    <script src="../js/main.js"></script>
 
 </body>
 </html>

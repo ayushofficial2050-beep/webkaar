@@ -2,59 +2,224 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disclaimer | WebKaar</title>
-    <meta name="theme-color" content="#0f172a">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
+    <title>Disclaimer | WebKaar Tools</title>
+    <meta name="description" content="Legal disclaimer for WebKaar Tools. Information about warranties, third-party advertisements, professional advice, and tool usage liabilities.">
+    <meta name="theme-color" content="#0f172a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-G0FCCE2LMY');
+    </script>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('webkaar_theme_pref');
+                const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+                    document.documentElement.classList.add('dark-mode');
+                }
+            } catch (e) {}
+        })();
+    </script>
+
     <style>
-        .content-box h2 { margin-top: 20px; margin-bottom: 10px; font-size: 1.2rem; }
-        .content-box p { color: var(--text-muted); line-height: 1.6; margin-bottom: 15px; }
+        /* =========================================
+           🚀 MATERIAL 3 LEGAL PAGE STYLES
+           ========================================= */
+        .legal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px 20px 80px 20px;
+        }
+
+        .legal-header-area {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .legal-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--md-sys-color-on-background);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .legal-subtitle {
+            font-size: 1.05rem;
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 500;
+        }
+
+        .last-updated {
+            display: inline-block;
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-top: 16px;
+        }
+
+        /* Material 3 Card Style */
+        .policy-card {
+            background-color: var(--md-sys-color-surface);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            border-radius: var(--md-sys-shape-large);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--md-sys-elevation-1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .policy-card:hover {
+            box-shadow: var(--md-sys-elevation-2);
+        }
+
+        .policy-card h2 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--md-sys-color-on-surface);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .policy-card h2 i {
+            color: var(--md-sys-color-primary);
+            font-size: 1.6rem;
+            background: var(--md-sys-color-primary-container);
+            padding: 8px;
+            border-radius: 12px;
+        }
+        
+        .policy-card p {
+            font-size: 1rem;
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        /* Highlight Box (Warning Style) */
+        .highlight-box {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 0 var(--md-sys-shape-medium) var(--md-sys-shape-medium) 0;
+            margin: 24px 0;
+            color: var(--md-sys-color-on-background);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 10px;
+            transition: opacity 0.2s;
+        }
+
+        .contact-link:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
 
-    <header class="main-header">
+    <header class="main-header" style="background: var(--md-sys-color-surface); backdrop-filter: blur(12px);">
         <div class="header-content">
-            <a href="../index.html" class="icon-button">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            </a>
+            <button onclick="window.history.length > 1 ? history.back() : window.location.href = '/';" class="icon-button" aria-label="Go Back">
+                <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
+            </button>
             <div class="header-title">
-                <h1 class="app-name">Disclaimer</h1>
+                <h1 class="app-name" style="font-size: 1.15rem;">Legal Information</h1>
             </div>
             <div style="width: 40px;"></div>
         </div>
     </header>
 
-   <main class="app-body" style="max-width: 800px; margin: 0 auto; padding: 20px; padding-top: 80px;">
-
-        <div class="tool-card content-box" style="text-align: left; cursor: default; align-items: flex-start;">
+    <main class="app-body">
+        <div class="legal-container">
             
-            <h1>Disclaimer for WebKaar</h1>
-            <p>Last updated: January 2026</p>
+            <div class="legal-header-area">
+                <h1 class="legal-title">Disclaimer</h1>
+                <p class="legal-subtitle">Important legal information regarding the use of WebKaar Tools.</p>
+                <span class="last-updated">Effective Date: April 2026</span>
+            </div>
 
-            <h2>1. General Information</h2>
-            <p>The information provided by WebKaar ("we," "us," or "our") on this application is for general informational purposes only. All information is provided in good faith, however, we make no representation or warranty of any kind regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the Site.</p>
+            <div class="policy-card">
+                <h2><i class="ph-fill ph-info"></i> General Disclaimer</h2>
+                <p>The information provided by <strong>WebKaar</strong>, a product of Panthera Store ("we," "us," or "our"), on https://webkaar.pages.dev/ (the "Site") is for general informational and utility purposes only. All tools, code snippets, and information on the Site are provided in good faith.</p>
+                <p>However, we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information or tool on the Site. Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred as a result of the use of the site or reliance on any information provided on the site.</p>
+            </div>
 
-            <h2>2. No Professional Advice</h2>
-            <p>The tools provided (like BMI Calculator, Unit Converter, etc.) are for educational purposes only. They should not substitute professional advice. Accordingly, before taking any actions based upon such information, we encourage you to consult with the appropriate professionals.</p>
+            <div class="policy-card">
+                <h2><i class="ph-fill ph-stethoscope"></i> No Professional Advice</h2>
+                <p>The Site offers various utility tools, including but not limited to, health calculators (e.g., BMI Calculator), technical formatting tools, and text utilities. This information is provided for general educational and informational purposes only and is not a substitute for professional advice.</p>
+                <p>Accordingly, before taking any actions based upon such tools or information, we encourage you to consult with the appropriate professionals (medical, legal, financial, or technical). We do not provide any kind of professional advice. The use or reliance of any information contained on this site is solely at your own risk.</p>
+            </div>
 
-            <h2>3. Data Privacy</h2>
-            <p>Most of our tools (Image Compressor, Password Generator) run locally in your browser. We do not store your files on our servers. However, users are advised to use their discretion while processing sensitive data.</p>
+            <div class="policy-card">
+                <h2><i class="ph-fill ph-speaker-high"></i> External Links & Affiliates</h2>
+                <p>The Site may contain (or you may be sent through the Site) links to other websites or content belonging to or originating from third parties or links to websites and features in banners or other advertising.</p>
+                <p>Such external links are not investigated, monitored, or checked for accuracy, adequacy, validity, reliability, availability, or completeness by us. We do not warrant, endorse, guarantee, or assume responsibility for the accuracy or reliability of any information offered by third-party websites linked through the site or any website or feature linked in any banner or other advertising.</p>
+            </div>
 
-            <h2>4. External Links</h2>
-            <p>The Site may contain links to other websites. We do not warrant, endorse, guarantee, or assume responsibility for the accuracy or reliability of any information offered by third-party websites.</p>
+            <div class="policy-card">
+                <h2><i class="ph-fill ph-megaphone"></i> Third-Party Advertisements</h2>
+                <div class="highlight-box">
+                    <strong>Notice:</strong> WebKaar Tools contains third-party advertisements (such as Google AdSense). We do not endorse or guarantee the accuracy of any third-party ads, services, or products shown on the website.
+                </div>
+                <p>Any dealings you have with advertisers found while using the Service are between you and the advertiser, and you agree that Panthera Store and WebKaar are not liable for any loss or claim that you may have against an advertiser.</p>
+            </div>
+
+            <div class="policy-card">
+                <h2><i class="ph-fill ph-file-dashed"></i> Errors and Omissions</h2>
+                <p>While we strive to ensure that the tools and algorithms on WebKaar function flawlessly, technology is subject to bugs, server outages, and browser inconsistencies. We assume no responsibility or liability for any errors or omissions in the content of this site. The information contained in this site is provided on an "as is" basis with no guarantees of completeness, accuracy, usefulness, or timeliness.</p>
+            </div>
+
+            <div class="policy-card">
+                <h2><i class="ph-fill ph-envelope-simple"></i> Contact Us</h2>
+                <p>If you require any more information or have any questions about our site's disclaimer, please feel free to contact us by email.</p>
+                <a href="mailto:ayushofficial2050@gmail.com" class="contact-link">
+                    <i class="ph-bold ph-paper-plane-tilt"></i> ayushofficial2050@gmail.com
+                </a>
+            </div>
 
         </div>
     </main>
 
-    <script>
-        if(localStorage.getItem('webkaar_theme_pref') === 'dark') {
-            document.body.classList.add('dark-mode');
-        }
-    </script>
+    <footer class="main-footer" style="text-align: center; padding: 20px; color: var(--md-sys-color-on-surface-variant); border-top: 1px solid var(--md-sys-color-outline-variant);">
+        <p style="font-size: 0.9rem; font-weight: 600;">&copy; 2026 WebKaar by Panthera Store. All rights reserved.</p>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/main.js"></script>
+
 </body>
 </html>

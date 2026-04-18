@@ -41,14 +41,14 @@
 
     <style>
         /* =========================================
-           🚀 PREMIUM CONTACT PAGE STYLES
+           🚀 PREMIUM CONTACT PAGE STYLES (M3)
            ========================================= */
         body { overflow-x: hidden; }
 
         .ct-container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 30px 16px 80px 16px; /* Adjust padding for mobile screens */
+            padding: 30px 16px 80px 16px;
             text-align: center;
         }
 
@@ -89,15 +89,15 @@
             margin: 0 auto;
         }
 
-        /* --- CONTACT CARDS (Overflow Fixed) --- */
+        /* --- CONTACT CARDS --- */
         .ct-card {
             background: var(--bg-surface);
             border: 1px solid var(--border-color);
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 20px;
             display: flex;
             align-items: center;
-            gap: 16px; /* Reduced gap slightly for mobile breathing room */
+            gap: 16px;
             text-align: left;
             text-decoration: none;
             margin-bottom: 16px;
@@ -128,12 +128,13 @@
         .ct-icon-box.whatsapp { background: rgba(37, 211, 102, 0.1); color: #25D366; }
         .ct-icon-box.email { background: rgba(59, 130, 246, 0.1); color: var(--primary-blue); }
         .ct-icon-box.insta { background: rgba(225, 48, 108, 0.1); color: #E1306C; }
+        .ct-icon-box.youtube { background: rgba(255, 0, 0, 0.1); color: #FF0000; }
         .ct-icon-box.loc { background: rgba(16, 185, 129, 0.1); color: #10b981; }
 
-        /* 🔥 FIX FOR OVERFLOWING TEXT 🔥 */
+        /* Fix for Overflowing Text */
         .ct-info { 
             flex: 1; 
-            min-width: 0; /* Important: Allows text to wrap/truncate inside flex container */
+            min-width: 0; 
         }
         .ct-info h3 { font-size: 1.1rem; color: var(--text-main); font-weight: 700; margin-bottom: 4px; line-height: 1.2; }
         .ct-info p { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-bottom: 4px; line-height: 1.3; }
@@ -141,7 +142,7 @@
             font-weight: 600; 
             font-size: 0.95rem; 
             display: block;
-            word-wrap: break-word; /* Forces long emails to break to next line instead of overflowing */
+            word-wrap: break-word;
             overflow-wrap: break-word;
         }
 
@@ -152,6 +153,7 @@
         .ct-card.wa-card:hover .ct-arrow { color: #25D366; }
         .ct-card.mail-card:hover .ct-arrow { color: var(--primary-blue); }
         .ct-card.ig-card:hover .ct-arrow { color: #E1306C; }
+        .ct-card.yt-card:hover .ct-arrow { color: #FF0000; }
 
         /* --- ANIMATIONS --- */
         .slide-up-fade {
@@ -164,6 +166,7 @@
         .d-2 { animation-delay: 0.2s; }
         .d-3 { animation-delay: 0.3s; }
         .d-4 { animation-delay: 0.4s; }
+        .d-5 { animation-delay: 0.5s; }
 
     </style>
 </head>
@@ -177,7 +180,7 @@
 
     <header class="main-header" style="background: var(--bg-surface); backdrop-filter: blur(12px);">
         <div class="header-content">
-            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+            <button onclick="window.history.length > 1 ? history.back() : window.location.href = '/';" class="icon-button" aria-label="Go Back">
                 <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
             </button>
             <div class="header-title">
@@ -222,19 +225,31 @@
                 <i class="ph-bold ph-caret-right ct-arrow"></i>
             </a>
 
-            <a href="https://www.instagram.com/fsthavoc?igsh=MWpvd284NTZnM29zMw==" target="_blank" class="ct-card ig-card slide-up-fade d-3">
+            <a href="https://www.instagram.com/hvk_op" target="_blank" class="ct-card ig-card slide-up-fade d-3">
                 <div class="ct-icon-box insta">
                     <i class="ph-fill ph-instagram-logo"></i>
                 </div>
                 <div class="ct-info">
                     <h3>Instagram</h3>
                     <p>Stay updated with our progress.</p>
-                    <span class="ct-highlight" style="color: #E1306C;">@fsthavoc</span>
+                    <span class="ct-highlight" style="color: #E1306C;">@hvk_op</span>
                 </div>
                 <i class="ph-bold ph-caret-right ct-arrow"></i>
             </a>
 
-            <div class="ct-card slide-up-fade d-4" style="cursor: default;">
+            <a href="https://youtube.com/@hvk_op?si=BU8ccOd7yoD0e3gw" target="_blank" class="ct-card yt-card slide-up-fade d-4">
+                <div class="ct-icon-box youtube">
+                    <i class="ph-fill ph-youtube-logo"></i>
+                </div>
+                <div class="ct-info">
+                    <h3>YouTube</h3>
+                    <p>Subscribe to our channel.</p>
+                    <span class="ct-highlight" style="color: #FF0000;">HVK OP</span>
+                </div>
+                <i class="ph-bold ph-caret-right ct-arrow"></i>
+            </a>
+
+            <div class="ct-card slide-up-fade d-5" style="cursor: default;">
                 <div class="ct-icon-box loc">
                     <i class="ph-fill ph-map-pin"></i>
                 </div>
@@ -249,12 +264,12 @@
     </main>
 
     <footer class="main-footer">
-        <p>&copy; 2026 WebKaar Inc. • Built by Ayush Tiwari</p>
-        <div class="footer-links">
-            <a href="../pages/about">About</a> •
-            <a href="../pages/contact">Contact</a> •
-            <a href="../pages/privacy">Privacy</a> •
-            <a href="../pages/disclaimer">Disclaimer</a>
+        <p>&copy; 2026 Panthera Store. • Built by Ayush Tiwari</p>
+        <div class="footer-links" style="margin-top: 10px;">
+            <a href="../pages/about.html">About</a> •
+            <a href="../pages/contact.html">Contact</a> •
+            <a href="../pages/privacy.html">Privacy</a> •
+            <a href="../pages/disclaimer.html">Disclaimer</a>
         </div>
     </footer>
 
