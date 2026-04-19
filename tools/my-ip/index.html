@@ -3,16 +3,9 @@
 <head>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8468144152871993"
      crossorigin="anonymous"></script>
-  <!-- ═══════════════════════════════════════════
-       IP CHECKER PRO — index.html
-       WebKaar | Ayush Tiwari | Ultimate Edition
-       7 New Features | Rock-Solid Architecture
-  ═══════════════════════════════════════════ -->
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-G0FCCE2LMY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -25,26 +18,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
   <title>What Is My IP Address? | IPv4, IPv6, VPN Detector & Location | WebKaar</title>
-  <meta name="description" content="Check your public IP address instantly. See IPv4 & IPv6, detect VPN/Proxy/Tor, ISP, ASN, geolocation, latency test, blacklist check & IP history. 100% free.">
-  <meta name="keywords" content="what is my ip, ip address checker, vpn detector, ip location, ipv4, ipv6, ip history, latency test, WebKaar">
-  <meta name="author" content="Ayush Tiwari - WebKaar">
+  <meta name="description" content="Check your public IP address instantly. See IPv4 & IPv6, detect VPN/Proxy/Tor, ISP, ASN, geolocation, latency test, blacklist check & IP history. 100% free & private.">
+  <meta name="keywords" content="what is my ip, ip address checker, vpn detector, ip location, ipv4, ipv6, ip history, latency test, webkaar tools">
+  <meta name="author" content="Ayush Tiwari">
+  <meta name="owner" content="Panthera Store">
   <meta name="theme-color" content="#0f172a">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="IP Checker Pro | WebKaar">
-  <meta property="og:description" content="Check IP, detect VPN/Proxy, test latency, see ASN info & IP history. 100% free.">
+  <meta property="og:title" content="IP Checker Pro | What Is My IP? | WebKaar">
+  <meta property="og:description" content="Check your exact IP, detect VPN/Proxy, test latency, see ASN info & IP history. 100% free and private tool by Panthera Store.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://webkaar.pages.dev/tools/ip-checker">
-  <meta property="og:site_name" content="WebKaar">
+  <meta property="og:url" content="https://webkaar.pages.dev/tools/ip-checker/">
+  <meta property="og:image" content="https://webkaar.pages.dev/images/og-ip-checker.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="WebKaar Tools">
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="IP Checker Pro | WebKaar">
-  <meta name="twitter:description" content="Public IP, VPN/Proxy detector, ASN, latency test, blacklist check & more. Free.">
+  <meta name="twitter:title" content="IP Checker Pro | Find Your IP Address - WebKaar">
+  <meta name="twitter:description" content="Public IP, VPN/Proxy detector, ASN, latency test, blacklist check & more. Fast & completely free.">
+  <meta name="twitter:image" content="https://webkaar.pages.dev/images/og-ip-checker.jpg">
 
-  <link rel="canonical" href="https://webkaar.pages.dev/tools/ip-checker">
+  <link rel="canonical" href="https://webkaar.pages.dev/tools/ip-checker/">
 
-  <!-- Theme flash prevention -->
+  <link rel="manifest" href="../../manifest.json">
+  <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png">
+
   <script>
     (function () {
       var s = localStorage.getItem('webkaar_theme_pref');
@@ -53,26 +54,35 @@
     })();
   </script>
 
-  <!-- Parent site CSS -->
   <link rel="stylesheet" href="../../css/style.css">
   <link rel="stylesheet" href="../../css/responsive.css">
 
-  <!-- Tool CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "IP Checker Pro by WebKaar",
+    "applicationCategory": "NetworkApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "description": "Advanced online tool to check public IPv4 and IPv6 addresses. Includes VPN/Proxy/Tor detection, ASN routing info, geolocation mapping, and live latency testing.",
+    "url": "https://webkaar.pages.dev/tools/ip-checker/",
+    "author": { "@type": "Person", "name": "Ayush Tiwari" }
+  }
+  </script>
 </head>
 
-<body>
+<body class="light-mode">
   <script>
     if (document.documentElement.classList.contains('dark-mode'))
       document.body.classList.add('dark-mode');
   </script>
 
-  <!-- ══════════════════════════════════
-       HEADER
-  ══════════════════════════════════ -->
   <header class="main-header" style="position: sticky; top: 0; z-index: 100;">
     <div class="header-content">
       <button
@@ -89,34 +99,26 @@
     </div>
   </header>
 
-  <!-- ══════════════════════════════════
-       MAIN
-  ══════════════════════════════════ -->
   <main class="app-body">
     <div class="tool-container">
 
-      <!-- ── MAIN IP CARD ─────────────────────── -->
       <div id="ip-card-main" class="ip-card" role="region" aria-label="Your IP Address">
 
         <div class="card-header-actions">
           <p class="label">Your Public IP Address</p>
           <div style="display:flex; gap:8px; align-items:center;">
-            <!-- IPv4 / IPv6 Toggle -->
             <div class="ip-version-toggle" id="ip-version-toggle" title="Toggle IPv4 / IPv6">
               <button class="ver-btn active" id="btn-ipv4" aria-label="Show IPv4">IPv4</button>
               <button class="ver-btn" id="btn-ipv6" aria-label="Show IPv6">IPv6</button>
             </div>
-            <!-- Copy button -->
             <button id="copy-ip-btn" class="icon-button card-icon-btn" aria-label="Copy IP" title="Copy IP">
               <i class="ph-bold ph-copy"></i>
             </button>
           </div>
         </div>
 
-        <!-- IP Display -->
         <h2 id="ip-display" class="ip-number" aria-live="polite">Detecting...</h2>
 
-        <!-- Badges -->
         <div class="badges-row">
           <span id="isp-display" class="isp-badge">
             <i class="ph-bold ph-spinner ph-spin"></i> Fetching Network...
@@ -128,12 +130,8 @@
         </div>
 
       </div>
-      <!-- END IP CARD -->
-
-      <!-- ── DETAILS BOX ──────────────────────── -->
       <div class="details-wrapper hidden" id="details-box">
 
-        <!-- Live Map -->
         <div class="map-container" id="map-container">
           <iframe
             id="map-frame"
@@ -146,7 +144,6 @@
           </iframe>
         </div>
 
-        <!-- ── Network Info ───────────────────── -->
         <h3 class="section-title">
           <i class="ph-bold ph-globe"></i> Network Info
         </h3>
@@ -184,7 +181,6 @@
 
         </div>
 
-        <!-- ── ASN / Routing ──────────────────── -->
         <h3 class="section-title">
           <i class="ph-bold ph-graph"></i> ASN &amp; Routing
         </h3>
@@ -220,7 +216,6 @@
 
         </div>
 
-        <!-- ── Security / VPN ─────────────────── -->
         <h3 class="section-title">
           <i class="ph-bold ph-shield"></i> Security Analysis
         </h3>
@@ -256,7 +251,6 @@
 
         </div>
 
-        <!-- ── Blacklist Check ────────────────── -->
         <h3 class="section-title">
           <i class="ph-bold ph-prohibit"></i> Blacklist Check
           <span class="section-badge">Beta</span>
@@ -267,7 +261,6 @@
           </div>
         </div>
 
-        <!-- ── Latency Test ───────────────────── -->
         <h3 class="section-title">
           <i class="ph-bold ph-activity"></i> Latency Test
         </h3>
@@ -277,7 +270,6 @@
           </div>
         </div>
 
-        <!-- ── Device Fingerprint ─────────────── -->
         <h3 class="section-title">
           <i class="ph-bold ph-device-mobile"></i> Device Fingerprint
         </h3>
@@ -313,7 +305,6 @@
 
         </div>
 
-        <!-- ── IP History ─────────────────────── -->
         <h3 class="section-title">
           <i class="ph-bold ph-clock-counter-clockwise"></i> IP History
           <button id="clear-history-btn" class="clear-history-btn" aria-label="Clear IP history">
@@ -325,44 +316,86 @@
         </div>
 
       </div>
-      <!-- END DETAILS BOX -->
-
-      <!-- ── REFRESH BUTTON ───────────────────── -->
       <button id="refresh-btn" class="secondary-btn full-width mt-4" aria-label="Refresh network data">
         <i class="ph-bold ph-arrows-clockwise" style="font-size:20px;"></i>
         Refresh Network Data
       </button>
 
     </div>
-    <!-- END TOOL CONTAINER -->
+    <article class="seo-content" style="max-width: 820px; margin: 10px auto 20px; padding: 40px 24px; background: var(--bg-surface); border-radius: 28px; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,0,0,0.06); font-family: 'Inter', sans-serif;">
+        
+        <div style="text-align: center; margin-bottom: 32px;">
+            <span style="background: rgba(37, 99, 235, 0.1); color: var(--primary-blue); padding: 6px 16px; border-radius: 100px; font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">Network & Security</span>
+            <h2 style="font-size: 2rem; font-weight: 800; margin: 16px 0 12px; color: var(--text-main); letter-spacing: -0.5px;">Advanced IP Checker & VPN Detector</h2>
+            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); max-width: 650px; margin: 0 auto;">
+                Discover your true digital footprint. WebKaar IP Checker Pro instantly reveals your public IPv4 and IPv6 addresses, network ISP, and precise geographic location. Designed for privacy and speed, it operates securely within your browser.
+            </p>
+        </div>
 
-    <!-- ── SEO ARTICLE ──────────────────────────── -->
-    <article class="tool-content" style="max-width:800px; margin:50px auto; padding:0 16px; color:var(--text-muted);">
-      <hr style="border:0; border-top:1px solid var(--border-color); margin-bottom:40px;">
-      <h2 style="color:var(--text-main); font-size:1.5rem; margin-bottom:15px; font-weight:800;">What is My IP Address?</h2>
-      <p style="margin-bottom:20px; line-height:1.6;">Your IP (Internet Protocol) address is a unique identifier assigned to your device when you connect to the internet. WebKaar IP Checker Pro shows your public IPv4 and IPv6 address, detects VPN/Proxy/Tor usage, displays your ISP and ASN routing info, and tests your connection latency to major global servers.</p>
-      <h3 style="color:var(--text-main); font-size:1.2rem; margin-bottom:10px; font-weight:700;">What is a VPN Detector?</h3>
-      <p style="margin-bottom:20px; line-height:1.6;">Our VPN/Proxy/Tor detection uses trusted IP intelligence databases to check if your connection is being routed through a virtual private network, proxy server, or the Tor anonymity network.</p>
-      <h3 style="color:var(--text-main); font-size:1.2rem; margin-bottom:10px; font-weight:700;">Why is the location not exact?</h3>
-      <p style="margin-bottom:20px; line-height:1.6;">IP addresses reflect your ISP's routing server location, not your exact GPS coordinates. For mobile users, this often shows a major city in your state. This protects your privacy.</p>
-      <h3 style="color:var(--text-main); font-size:1.2rem; margin-bottom:10px; font-weight:700;">What is ASN?</h3>
-      <p style="line-height:1.6;">An Autonomous System Number (ASN) identifies a network operator or ISP. It shows which organization controls the IP block your address belongs to.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px;">
+            <div style="padding: 20px; border-radius: 20px; background: rgba(239, 68, 68, 0.04); border: 1px solid rgba(239, 68, 68, 0.1);">
+                <div style="font-weight: 700; color: #ef4444; font-size: 1.1rem; margin-bottom: 6px;">🕵️ VPN & Proxy Detector</div>
+                <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Our advanced algorithm detects hidden networks, VPNs, and Tor usage instantly.</div>
+            </div>
+            <div style="padding: 20px; border-radius: 20px; background: rgba(139, 92, 246, 0.04); border: 1px solid rgba(139, 92, 246, 0.1);">
+                <div style="font-weight: 700; color: #8b5cf6; font-size: 1.1rem; margin-bottom: 6px;">⚡ Live Latency Test</div>
+                <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Pings global servers to check your real-time internet speed and connection health.</div>
+            </div>
+            <div style="padding: 20px; border-radius: 20px; background: rgba(16, 185, 129, 0.04); border: 1px solid rgba(16, 185, 129, 0.1);">
+                <div style="font-weight: 700; color: #10b981; font-size: 1.1rem; margin-bottom: 6px;">🛡️ Privacy First</div>
+                <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Your IP data and history are stored locally. We never log or track your network details.</div>
+            </div>
+        </div>
+
+        <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; color: var(--text-main);">Frequently Asked Questions</h3>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <details style="background: rgba(37, 99, 235, 0.03); border-radius: 16px; border: 1px solid var(--border-color); overflow: hidden;">
+                <summary style="padding: 16px 20px; font-weight: 700; font-size: 1.05rem; color: var(--text-main); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    Why is my location not 100% exact?
+                    <span style="color: var(--primary-blue); font-size: 1.4rem; line-height: 1;">+</span>
+                </summary>
+                <div style="padding: 0 20px 16px; font-size: 0.95rem; line-height: 1.7; color: var(--text-muted);">
+                    IP geolocation maps to your ISP's routing center or data facility, not your physical GPS coordinates. This is a standard architectural feature of the internet designed to protect individual user privacy while providing general regional accuracy.
+                </div>
+            </details>
+
+            <details style="background: rgba(37, 99, 235, 0.03); border-radius: 16px; border: 1px solid var(--border-color); overflow: hidden;">
+                <summary style="padding: 16px 20px; font-weight: 700; font-size: 1.05rem; color: var(--text-main); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    What does ASN mean?
+                    <span style="color: var(--primary-blue); font-size: 1.4rem; line-height: 1;">+</span>
+                </summary>
+                <div style="padding: 0 20px 16px; font-size: 0.95rem; line-height: 1.7; color: var(--text-muted);">
+                    ASN stands for Autonomous System Number. It is a unique, globally assigned identifier given to your internet service provider (ISP) or network operator. It helps routers worldwide understand which network block your IP address belongs to.
+                </div>
+            </details>
+            
+            <details style="background: rgba(37, 99, 235, 0.03); border-radius: 16px; border: 1px solid var(--border-color); overflow: hidden;">
+                <summary style="padding: 16px 20px; font-weight: 700; font-size: 1.05rem; color: var(--text-main); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    Does this tool save my IP history?
+                    <span style="color: var(--primary-blue); font-size: 1.4rem; line-height: 1;">+</span>
+                </summary>
+                <div style="padding: 0 20px 16px; font-size: 0.95rem; line-height: 1.7; color: var(--text-muted);">
+                    No, we do not save your IP history on our servers. Your IP history is saved entirely in your browser's local storage for your personal convenience. If you clear your browser data or click the 'Clear' button, it is permanently deleted.
+                </div>
+            </details>
+        </div>
     </article>
 
   </main>
 
-  <!-- ══════════════════════════════════
-       TOAST
-  ══════════════════════════════════ -->
+  <div class="sticky-social-bar">
+      <a href="#" class="social-btn whatsapp" onclick="shareTo('whatsapp'); return false;"><i class="ph-bold ph-whatsapp-logo" style="font-size: 20px;"></i></a>
+      <a href="#" class="social-btn facebook" onclick="shareTo('facebook'); return false;"><i class="ph-bold ph-facebook-logo" style="font-size: 20px;"></i></a>
+      <a href="#" class="social-btn twitter" onclick="shareTo('twitter'); return false;"><i class="ph-bold ph-twitter-logo" style="font-size: 20px;"></i></a>
+      <a href="#" class="social-btn copy-link" onclick="copyLink(); return false;"><i class="ph-bold ph-copy" style="font-size: 20px;"></i></a>
+  </div>
+
   <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
 
-  <!-- ══════════════════════════════════
-       INFO MODAL
-  ══════════════════════════════════ -->
   <div id="info-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <div class="modal-content">
       <div class="modal-header">
-        <h3 id="modal-title">About IP Checker Pro</h3>
+        <h3 id="modal-title" style="color: var(--text-main);">About IP Checker Pro</h3>
         <button id="close-modal" class="icon-button" aria-label="Close modal">
           <i class="ph-bold ph-x"></i>
         </button>
@@ -398,21 +431,34 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════
-       FOOTER
-  ══════════════════════════════════ -->
-  <footer class="main-footer">
-    <p>&copy; 2026 WebKaar Inc. &bull; Built by Ayush Tiwari</p>
-    <div class="footer-links">
-      <a href="../../pages/about">About</a> &bull;
-      <a href="../../pages/contact">Contact</a> &bull;
-      <a href="../../pages/privacy">Privacy</a> &bull;
-      <a href="../../pages/disclaimer">Disclaimer</a>
-    </div>
+  <footer class="main-footer" style="padding: 40px 20px 100px; border-top: 1px solid var(--border-color); text-align: center; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(37, 99, 235, 0.04)); margin-top: 10px;">
+      <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px;">
+          <img src="../../images/logo.png" alt="WebKaar" width="36" height="36" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+          <span style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px;">WebKaar</span>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 30px;">
+          <a href="../../pages/about" style="color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600;">About</a>
+          <span style="color: var(--border-color); opacity: 0.5;">•</span>
+          <a href="../../pages/contact" style="color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600;">Contact</a>
+          <span style="color: var(--border-color); opacity: 0.5;">•</span>
+          <a href="../../pages/privacy" style="color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600;">Privacy</a>
+          <span style="color: var(--border-color); opacity: 0.5;">•</span>
+          <a href="../../pages/terms" style="color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600;">Terms</a>
+      </div>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+          &copy; 2026 Panthera Store. All rights reserved.
+      </p>
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 99, 235, 0.08); border: 1px solid rgba(37, 99, 235, 0.15); padding: 8px 18px; border-radius: 100px; font-size: 0.85rem; font-weight: 700; color: var(--primary-blue);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="color: #ef4444;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+          Built by Ayush Tiwari
+      </div>
   </footer>
 
-  <!-- api.js MUST load before script.js -->
   <script src="../../js/api.js"></script>
   <script src="script.js"></script>
+  <script>
+      function shareTo(p){const u=encodeURIComponent(window.location.href);const t=encodeURIComponent(document.title);let l="";if(p==='whatsapp')l=`https://api.whatsapp.com/send?text=${t}%20${u}`;else if(p==='facebook')l=`https://www.facebook.com/sharer/sharer.php?u=${u}`;else if(p==='twitter')l=`https://twitter.com/intent/tweet?text=${t}&url=${u}`;window.open(l,'_blank');}
+      function copyLink(){navigator.clipboard.writeText(window.location.href);const toast=document.getElementById('toast');if(toast){toast.textContent='Link Copied!';toast.classList.remove('hidden');toast.classList.add('toast--visible');setTimeout(()=>{toast.classList.remove('toast--visible');setTimeout(()=>toast.classList.add('hidden'),300);},2500);}}
+  </script>
 </body>
 </html>

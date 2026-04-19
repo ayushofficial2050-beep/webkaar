@@ -71,7 +71,7 @@
 
     <header class="main-header" style="background: var(--bg-surface); backdrop-filter: blur(12px);">
         <div class="header-content">
-            <button onclick="history.back()" class="icon-button" aria-label="Go Back">
+            <button onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); } else { window.location.href = '../../'; }" class="icon-button" aria-label="Go Back">
                 <i class="ph-bold ph-arrow-left" style="font-size: 20px;"></i>
             </button>
             <div class="header-title">
@@ -153,58 +153,108 @@
             </div>
         </div>
 
-        <article class="tool-content" style="max-width: 800px; margin: 20px auto 60px; padding: 0 16px; color: var(--text-muted);">
-            <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 40px;">
+        <article class="tool-content" style="max-width: 820px; margin: 40px auto 60px; padding: 40px 24px; background: var(--bg-surface); border-radius: 28px; border: 1px solid var(--border-color); box-shadow: 0 10px 40px rgba(0,0,0,0.06); font-family: 'Inter', sans-serif;">
             
-            <h2 style="color: var(--text-main); font-size: 1.5rem; margin-bottom: 15px; font-weight: 800; letter-spacing: -0.5px;">Compress Images Online without Quality Loss</h2>
-            <p style="margin-bottom: 24px; line-height: 1.6; font-size: 0.95rem;">
-                WebKaar Image Compressor is a smart tool that helps you reduce the file size of your photos (JPG, PNG, WEBP) by up to 80% while maintaining the best quality. Whether you need to upload a photo for a government form, optimize your website speed, or save storage space, this tool does it instantly.
-            </p>
+    <div style="text-align: center; margin-bottom: 32px;">
+        <span style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px 16px; border-radius: 100px; font-size: 0.85rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">Free Utility</span>
+        <h2 style="font-size: 2rem; font-weight: 800; margin: 16px 0 12px; color: var(--text-main); letter-spacing: -0.5px;">Compress Images Online</h2>
+        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-muted); max-width: 650px; margin: 0 auto;">
+            WebKaar Image Compressor reduces the file size of your photos (JPG, PNG, WEBP) by up to 80% without losing visible quality. Perfect for optimizing website speed, saving storage, or uploading documents.
+        </p>
+    </div>
 
-            <h3 style="color: var(--text-main); font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">Why choose WebKaar Compressor?</h3>
-            <ul style="margin-bottom: 24px; padding-left: 20px; line-height: 1.8; font-size: 0.95rem;">
-                <li><strong style="color: var(--text-main);">100% Privacy:</strong> Unlike other sites, your photos are compressed locally in your browser. No image is ever uploaded to a server.</li>
-                <li><strong style="color: var(--text-main);">Custom Quality & Format:</strong> Use the slider to balance file size and visual quality. Easily convert between WEBP, JPG, and PNG formats.</li>
-                <li><strong style="color: var(--text-main);">Unlimited & Free:</strong> Compress as many images as you want without any restrictions or watermarks.</li>
-            </ul>
-
-            <h3 style="color: var(--text-main); font-size: 1.15rem; margin-bottom: 12px; font-weight: 700;">How to reduce image size in KB?</h3>
-            <ol style="padding-left: 20px; line-height: 1.8; font-size: 0.95rem;">
-                <li>Click on <strong>"Choose File"</strong> or drag & drop your image.</li>
-                <li>Select your desired Output Format (WEBP is best for websites).</li>
-                <li>Adjust the <strong>Compression Quality Slider</strong> (Lower % means smaller size).</li>
-                <li>Preview the "Before" and "After" size instantly.</li>
-                <li>Click <strong>Download Image</strong> to save your optimized file.</li>
-            </ol>
-        </article>
-
-    </main>
-
-    <div id="info-modal" class="modal-overlay hidden">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>About Image Compressor</h3>
-                <button id="close-modal" class="icon-button"><i class="ph-bold ph-x"></i></button>
-            </div>
-            <div class="modal-body">
-                <ul class="info-list">
-                    <li><i class="ph-fill ph-shield-check" style="color:#10b981;"></i> <strong>100% Private:</strong> Images are compressed locally in your browser. Nothing is uploaded to our servers.</li>
-                    <li><i class="ph-fill ph-file-zip" style="color:var(--primary-blue);"></i> <strong>WEBP Format:</strong> Recommended for the highest compression with best quality for modern websites.</li>
-                    <li><i class="ph-fill ph-drop" style="color:#f59e0b;"></i> <strong>Transparency:</strong> Converting a transparent PNG to JPG will automatically give it a white background.</li>
-                </ul>
-            </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 40px;">
+        <div style="padding: 20px; border-radius: 20px; background: rgba(37, 99, 235, 0.04); border: 1px solid rgba(37, 99, 235, 0.1);">
+            <div style="font-weight: 700; color: var(--primary-blue); font-size: 1.1rem; margin-bottom: 6px;">🔒 100% Privacy</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Compressed locally in your browser. No server uploads.</div>
+        </div>
+        <div style="padding: 20px; border-radius: 20px; background: rgba(139, 92, 246, 0.04); border: 1px solid rgba(139, 92, 246, 0.1);">
+            <div style="font-weight: 700; color: #8b5cf6; font-size: 1.1rem; margin-bottom: 6px;">⚙️ Custom Control</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">Adjust quality sliders and switch formats (JPG, PNG, WEBP).</div>
+        </div>
+        <div style="padding: 20px; border-radius: 20px; background: rgba(245, 158, 11, 0.04); border: 1px solid rgba(245, 158, 11, 0.1);">
+            <div style="font-weight: 700; color: #f59e0b; font-size: 1.1rem; margin-bottom: 6px;">♾️ Unlimited & Free</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;">No watermarks, no sign-ups, and no usage limits.</div>
         </div>
     </div>
 
-    <footer class="main-footer">
-        <p>&copy; 2026 WebKaar Inc. • Built by Ayush Tiwari</p>
-        <div class="footer-links">
-            <a href="../../pages/about">About</a> •
-            <a href="../../pages/contact">Contact</a> •
-            <a href="../../pages/privacy">Privacy</a> •
-            <a href="../../pages/disclaimer">Disclaimer</a>
+    <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; color: var(--text-main);">How to reduce image size?</h3>
+    <ol style="padding-left: 20px; margin-bottom: 40px; line-height: 1.8; font-size: 1rem; color: var(--text-muted);">
+        <li>Click on <strong style="color: var(--text-main);">"Choose File"</strong> or drag & drop your image.</li>
+        <li>Select your desired Output Format (WEBP is recommended).</li>
+        <li>Adjust the <strong style="color: var(--text-main);">Quality Slider</strong> (Lower % means smaller size).</li>
+        <li>Preview the "Before" and "After" size instantly.</li>
+        <li>Click <strong style="color: var(--text-main);">Download Image</strong> to save your file.</li>
+    </ol>
+
+    <h3 style="font-size: 1.3rem; font-weight: 800; margin-bottom: 16px; color: var(--text-main);">Frequently Asked Questions</h3>
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+        <details style="background: rgba(37, 99, 235, 0.03); border-radius: 16px; border: 1px solid var(--border-color); overflow: hidden;">
+            <summary style="padding: 16px 20px; font-weight: 700; font-size: 1.05rem; color: var(--text-main); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                Does compressing an image reduce its quality?
+                <span style="color: var(--primary-blue); font-size: 1.4rem; line-height: 1;">+</span>
+            </summary>
+            <div style="padding: 0 20px 16px; font-size: 0.95rem; line-height: 1.7; color: var(--text-muted);">
+                Our smart compression algorithm removes unnecessary data from the image file while preserving visual clarity. Unless you set the quality slider very low, the difference is usually unnoticeable to the human eye.
+            </div>
+        </details>
+
+        <details style="background: rgba(37, 99, 235, 0.03); border-radius: 16px; border: 1px solid var(--border-color); overflow: hidden;">
+            <summary style="padding: 16px 20px; font-weight: 700; font-size: 1.05rem; color: var(--text-main); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                Which format is best for website speed?
+                <span style="color: var(--primary-blue); font-size: 1.4rem; line-height: 1;">+</span>
+            </summary>
+            <div style="padding: 0 20px 16px; font-size: 0.95rem; line-height: 1.7; color: var(--text-muted);">
+                WEBP is the highly recommended format. It provides superior compression compared to JPG and PNG, making your website load faster and improving your Google PageSpeed scores.
+            </div>
+        </details>
+    </div>
+</article>
+
+</main>
+
+<div id="info-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>About Image Compressor</h3>
+            <button id="close-modal" class="icon-button"><i class="ph-bold ph-x"></i></button>
         </div>
-    </footer>
+        <div class="modal-body">
+            <ul class="info-list" style="line-height: 1.7;">
+                <li style="margin-bottom: 12px;"><i class="ph-fill ph-shield-check" style="color:#10b981; margin-right: 8px;"></i> <strong>100% Private:</strong> Images are compressed locally in your browser. Nothing is uploaded to our servers.</li>
+                <li style="margin-bottom: 12px;"><i class="ph-fill ph-file-zip" style="color:var(--primary-blue); margin-right: 8px;"></i> <strong>WEBP Format:</strong> Recommended for the highest compression with best quality for modern websites.</li>
+                <li><i class="ph-fill ph-drop" style="color:#f59e0b; margin-right: 8px;"></i> <strong>Transparency:</strong> Converting a transparent PNG to JPG will automatically give it a white background.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<footer class="main-footer" style="padding: 40px 20px 100px; border-top: 1px solid var(--border-color); text-align: center; background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(37, 99, 235, 0.04)); margin-top: 20px;">
+    
+    <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 24px;">
+        <img src="../../images/logo.png" alt="WebKaar" width="36" height="36" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.08);">
+        <span style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px;">WebKaar</span>
+    </div>
+
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; margin-bottom: 30px;">
+        <a href="../../pages/about" style="color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600;">About</a>
+        <span style="color: var(--border-color); opacity: 0.5;">•</span>
+        <a href="../../pages/contact" style="color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600;">Contact</a>
+        <span style="color: var(--border-color); opacity: 0.5;">•</span>
+        <a href="../../pages/privacy" style="color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600;">Privacy</a>
+        <span style="color: var(--border-color); opacity: 0.5;">•</span>
+        <a href="../../pages/terms" style="color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 600;">Terms</a>
+    </div>
+
+    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+        &copy; 2026 Panthera Store. All rights reserved.
+    </p>
+    
+    <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(37, 99, 235, 0.08); border: 1px solid rgba(37, 99, 235, 0.15); padding: 8px 18px; border-radius: 100px; font-size: 0.85rem; font-weight: 700; color: var(--primary-blue);">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" style="color: #ef4444;"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path></svg>
+        Built by Ayush Tiwari
+    </div>
+</footer>
 
     <script src="script.js"></script>
 </body>
